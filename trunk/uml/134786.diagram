@@ -1,0 +1,19 @@
+format 75
+
+packagecanvas 128002 
+  package_ref 128002 // UI
+    xyzwh 73 138 2000 169 133
+end
+packagecanvas 128130 
+  package_ref 128130 // Core
+    xyzwh 328 147 2000 143 123
+end
+packagecanvas 128258 
+  package_ref 128258 // Persist
+    xyzwh 540 155 2000 129 109
+end
+packagecanvas 128514 
+  package_ref 128386 // Util
+    xyzwh 347 372 2000 97 91
+end
+end
