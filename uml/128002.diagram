@@ -1,0 +1,27 @@
+format 75
+
+classcanvas 128002 class_ref 128002 // Personne
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 68 146 2000
+end
+classcanvas 128130 class_ref 128130 // Enseignant
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 64 317 2000
+end
+usecasecanvas 128386 usecase_ref 128002 // Demande de reservation enseignement
+  xyzwh 246 313 3005 229 57 label_xy 265 331
+end
+usecasecanvas 128642 usecase_ref 128130 // Authentification
+  xyzwh 588 315 3005 117 55 label_xy 609 335
+end
+relationcanvas 128258 relation_ref 128002 // <generalisation>
+  from ref 128130 z 2001 to ref 128002
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+line 128514 ---- decenter_begin 395
+  from ref 128130 z 3006 to ref 128386
+simplerelationcanvas 128770 simplerelation_ref 128002
+  from ref 128386 z 3006 to ref 128642
+end
+end
