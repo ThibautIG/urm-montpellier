@@ -1,0 +1,23 @@
+window_sizes 1280 750 300 900 533 82
+diagrams
+  active  classdiagram_ref 128003 // Login
+    974 592 100 4 180 0
+  sequencediagram_ref 128131 // LoginViewSeq
+    775 473 100 4 0 0
+  classdiagram_ref 128259 // Menu
+    775 473 100 4 0 0
+  classdiagram_ref 128515 // Consulter
+    775 473 100 4 0 0
+  sequencediagram_ref 128643 // ConsulterViewSeq
+    775 473 100 4 144 0
+end
+show_stereotypes
+selected 
+  package_ref 129 // URM
+open
+  class_ref 128771 // Persistfactory
+  class_ref 129283 // ConsulterView
+  usecaseview_ref 128003 // usecase
+end
+end
+verbose
