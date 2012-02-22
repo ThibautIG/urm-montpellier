@@ -1,0 +1,160 @@
+format 75
+
+classinstancecanvas 128515 classinstance_ref 128131 // 
+  xyz 267 4 2000 life_line_z 2000
+end
+classinstancecanvas 128643 classinstance_ref 128259 // 
+  xyz 405 32 2005 life_line_z 2000
+end
+classinstancecanvas 128771 classinstance_ref 128387 // 
+  xyz 601 10 2000 life_line_z 2000
+end
+classinstancecanvas 128899 classinstance_ref 128515 // 
+  xyz 494 143 2000 life_line_z 2000
+end
+classinstancecanvas 130691 classinstance_ref 128643 // 
+  xyz 45 4 2005 life_line_z 2000
+end
+classinstancecanvas 135171 classinstance_ref 128771 // 
+  xyz 133 486 2000 life_line_z 2000
+end
+durationcanvas 130179 classinstance_ref 128643 // :Compte
+  xyzwh 425 114 2010 11 32
+end
+durationcanvas 130435 classinstance_ref 128515 // :LoginView
+  xyzwh 295 51 2010 11 56
+end
+durationcanvas 131203 classinstance_ref 128771 // :PersistfactoryJDBC
+  xyzwh 650 126 2010 11 107
+end
+durationcanvas 131459 classinstance_ref 128899 // :PersonneJDBC
+  xyzwh 532 194 2010 11 36
+end
+durationcanvas 132227 classinstance_ref 128643 // :Compte
+  xyzwh 425 83 2010 11 29
+end
+durationcanvas 132867 classinstance_ref 130691 // :User
+  xyzwh 54 247 2010 11 49
+end
+durationcanvas 132995 classinstance_ref 128515 // :LoginView
+  xyzwh 295 247 2010 11 26
+end
+durationcanvas 133507 classinstance_ref 128515 // :LoginView
+  xyzwh 295 282 2010 11 40
+end
+durationcanvas 134019 classinstance_ref 128515 // :LoginView
+  xyzwh 295 335 2010 11 40
+end
+durationcanvas 134275 classinstance_ref 128515 // :LoginView
+  xyzwh 295 383 2010 11 40
+end
+durationcanvas 134531 classinstance_ref 128515 // :LoginView
+  xyzwh 295 429 2010 11 40
+end
+durationcanvas 134659 classinstance_ref 128643 // :Compte
+  xyzwh 425 431 2010 11 87
+end
+durationcanvas 134915 classinstance_ref 128899 // :PersonneJDBC
+  xyzwh 532 446 2010 11 25
+end
+durationcanvas 135555 classinstance_ref 128515 // :LoginView
+  xyzwh 295 553 2010 11 40
+end
+durationcanvas 135683 classinstance_ref 135171 // :MenuView
+  xyzwh 161 553 2010 11 25
+end
+durationcanvas 135939 classinstance_ref 135171 // :MenuView
+  xyzwh 161 620 2010 11 40
+end
+durationcanvas 136067 classinstance_ref 128643 // :Compte
+  xyzwh 425 620 2010 11 25
+end
+durationcanvas 136323 classinstance_ref 135171 // :MenuView
+  xyzwh 161 677 2010 11 40
+end
+durationcanvas 136579 classinstance_ref 128515 // :LoginView
+  xyzwh 295 732 2010 11 40
+end
+durationcanvas 136707 classinstance_ref 135171 // :MenuView
+  xyzwh 161 732 2010 11 25
+end
+reflexivemsg 130563 synchronous
+  to durationcanvas_ref 130435
+  yz 51 2015 explicitmsg "1. LoginView()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 314 29
+msg 131331 synchronous
+  from durationcanvas_ref 130179
+  to durationcanvas_ref 131203
+  yz 126 2015 explicitmsg "3. getInstance()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 532 113
+msg 131587 synchronous
+  from durationcanvas_ref 131203
+  to durationcanvas_ref 131459
+  yz 203 2015 explicitmsg "4. createPersonne() : PersonneJDBC"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 576 189
+msg 132355 synchronous
+  from durationcanvas_ref 130435
+  to durationcanvas_ref 132227
+  yz 83 2015 explicitmsg "2. new"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 354 69
+msg 133123 synchronous
+  from durationcanvas_ref 132867
+  to durationcanvas_ref 132995
+  yz 247 2015 explicitmsg "5. clic()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 100 233
+reflexivemsg 133635 synchronous
+  to durationcanvas_ref 133507
+  yz 282 2015 explicitmsg "6. actionPerformed()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 266 268
+reflexivemsg 134147 synchronous
+  to durationcanvas_ref 134019
+  yz 335 2015 explicitmsg "7. getId() : string"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 276 321
+reflexivemsg 134403 synchronous
+  to durationcanvas_ref 134275
+  yz 383 2015 explicitmsg "8. getPwd() : string"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 269 369
+msg 134787 synchronous
+  from durationcanvas_ref 134531
+  to durationcanvas_ref 134659
+  yz 431 2015 explicitmsg "9.connect(id,pwd)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 321 417
+msg 135043 synchronous
+  from durationcanvas_ref 134659
+  to durationcanvas_ref 134915
+  yz 448 2015 explicitmsg "10. load(id,pwd)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 486 434
+msg 135811 synchronous
+  from durationcanvas_ref 135555
+  to durationcanvas_ref 135683
+  yz 553 2015 explicitmsg "11. MenuView(c : Compte)"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 169 539
+msg 136195 synchronous
+  from durationcanvas_ref 135939
+  to durationcanvas_ref 136067
+  yz 620 2015 explicitmsg "12. getDroits()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 264 606
+reflexivemsg 136451 synchronous
+  to durationcanvas_ref 136323
+  yz 677 2015 explicitmsg "13. initDroits()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 148 663
+msg 136835 synchronous
+  from durationcanvas_ref 136579
+  to durationcanvas_ref 136707
+  yz 732 2015 explicitmsg "14. run()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 212 718
+end
