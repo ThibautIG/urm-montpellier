@@ -21,18 +21,18 @@ end
 msg 128258 synchronous
   from durationcanvas_ref 128002
   to durationcanvas_ref 128130
-  yz 74 2015 explicitmsg "1. getReservationsValides(in week : int) : Reservation [*]"
+  yz 74 2015 explicitmsg "1. getReservationsValidees(in week : int) : Reservation [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 96 60
 msg 128514 synchronous
   from durationcanvas_ref 128130
   to durationcanvas_ref 128386
-  yz 93 2015 explicitmsg "2. getReservationsValides() : Reservation [*]"
+  yz 93 2015 explicitmsg "2. getReservationsValidees() : Reservation [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 438 79
 reflexivemsg 129155 synchronous
   to durationcanvas_ref 129027
-  yz 139 2015 explicitmsg "3. genCalendar(in listeReservationsValides : Reservation [*]) : void"
+  yz 139 2015 explicitmsg "3. genCalendar(in listeReservationsValidees : Reservation [*]) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 90 119
 end
