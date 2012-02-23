@@ -1,7 +1,14 @@
-window_sizes 1167 822 261 1013 853 35
+window_sizes 1280 962 261 1013 853 35
+diagrams
+  classdiagram_ref 128259 // Menu
+    716 570 100 4 0 0
+  active  classdiagram_ref 128003 // Login
+    1013 853 100 4 0 0
+end
 show_stereotypes
-selected sequencediagram_ref 128643 // ConsulterViewSeq
+selected class_ref 128771 // PersistFactory
 open
+  class_ref 128771 // PersistFactory
   classview_ref 128002 // Menu
   class_ref 129283 // ConsulterView
 end
