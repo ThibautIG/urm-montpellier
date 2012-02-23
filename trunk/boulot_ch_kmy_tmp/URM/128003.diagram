@@ -4,7 +4,7 @@ classcanvas 128003 class_ref 128003 // LoginView
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
   xyzwh 24 118 2000 105 113
 end
-classcanvas 128131 class_ref 128131 // Compte
+classcanvas 128131 class_ref 128131 // EnseignantFacade
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
   xyzwh 233 119.2 2000 279 113
 end
@@ -22,11 +22,11 @@ classcanvas 128643 class_ref 128643 // MenuView
 end
 classcanvas 129539 class_ref 128899 // PersistFactoryJDBC
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 608 469 2000
+  xyz 604 469 2000
 end
 classcanvas 129795 class_ref 128771 // PersistFactory
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyzwh 361.2 465.8 2000 179 75
+  xyzwh 361.2 465.8 2000 195 91
 end
 relationcanvas 128002 relation_ref 128002 // <dependency>
   from ref 129539 z 2001 to ref 128387
@@ -52,14 +52,14 @@ relationcanvas 129283 relation_ref 128515 // <unidirectional association>
   decenter_begin 442
   decenter_end 238
   from ref 128003 z 2001 to ref 128643
-  role_a_pos 80 383 3000 no_role_b
-  multiplicity_a_pos 54 383 3000 multiplicity_b_pos 54 237 3000
+  role_a_pos 93 383 3000 no_role_b
+  multiplicity_a_pos 67 383 3000 multiplicity_b_pos 54 237 3000
 end
 relationcanvas 129411 relation_ref 128643 // 
   decenter_end 64
   from ref 128643 z 2001 to ref 128131
-  role_a_pos 256 238 3000 no_role_b
-  multiplicity_a_pos 230 238 3000 multiplicity_b_pos 121 383 3000
+  role_a_pos 257 238 3000 no_role_b
+  multiplicity_a_pos 231 238 3000 multiplicity_b_pos 143 383 3000
 end
 relationcanvas 130051 relation_ref 128899 // <generalisation>
   from ref 129539 z 2001 to ref 129795
