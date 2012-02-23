@@ -81,12 +81,6 @@ end
 durationcanvas 136067 classinstance_ref 128643 // :Compte
   xyzwh 440 620 2010 11 25
 end
-durationcanvas 136579 classinstance_ref 128515 // :LoginView
-  xyzwh 295 683 2010 11 47
-end
-durationcanvas 136707 classinstance_ref 135171 // :MenuView
-  xyzwh 139 682 2010 11 55
-end
 msg 128642 synchronous
   from durationcanvas_ref 128386
   to durationcanvas_ref 128514
@@ -113,7 +107,7 @@ reflexivemsg 130563 synchronous
 msg 131331 synchronous
   from durationcanvas_ref 130179
   to durationcanvas_ref 131203
-  yz 124 2015 explicitmsg "3. getInstance()"
+  yz 124 2015 explicitmsg "3. getInstance() : PersistFactory"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 528 111
 msg 132355 synchronous
@@ -125,7 +119,7 @@ msg 132355 synchronous
 msg 133123 synchronous
   from durationcanvas_ref 132867
   to durationcanvas_ref 132995
-  yz 261 2015 explicitmsg "6. connect() : bool"
+  yz 261 2015 explicitmsg "6. connect() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 117 247
 reflexivemsg 134147 synchronous
@@ -141,13 +135,13 @@ reflexivemsg 134403 synchronous
 msg 134787 synchronous
   from durationcanvas_ref 134531
   to durationcanvas_ref 134659
-  yz 429 2015 explicitmsg "9. connect(in id : string, in pwd : string) : bool"
+  yz 429 2015 explicitmsg "9. connect(in id : string, in pwd : string) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 320 402
 msg 135043 synchronous
   from durationcanvas_ref 134659
   to durationcanvas_ref 134915
-  yz 448 2015 explicitmsg "10. load(in id : string, in pwd : string) : bool"
+  yz 448 2015 explicitmsg "10. load(in id : string, in pwd : string) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 474 430
 msg 135811 synchronous
@@ -162,10 +156,4 @@ msg 136195 synchronous
   yz 620 2015 explicitmsg "12. isSuperUser() : bool"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 176 604
-msg 136835 synchronous
-  from durationcanvas_ref 136579
-  to durationcanvas_ref 136707
-  yz 692 2015 explicitmsg "14. run()"
-  show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 190 678
 end

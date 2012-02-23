@@ -3,44 +3,36 @@ format 76
 classinstance 128003 class_ref 129283 // ConsulterView
   name ""   xyz 31 9 2000 life_line_z 2000
 classinstance 128131 class_ref 128131 // Compte
-  name ""   xyz 214 15 2000 life_line_z 2000
+  name ""   xyz 397 10 2000 life_line_z 2000
 classinstance 128259 class_ref 128387 // EnseignantJDBC
-  name ""   xyz 347 13 2000 life_line_z 2000
+  name ""   xyz 631 8 2000 life_line_z 2000
 durationcanvas 128002 classinstance_ref 128003 // :ConsulterView
   xyzwh 69 74 2010 11 40
 end
 durationcanvas 128130 classinstance_ref 128131 // :Compte
-  xyzwh 234 74 2010 11 31
+  xyzwh 417 74 2010 11 31
 end
 durationcanvas 128386 classinstance_ref 128259 // :EnseignantJDBC
-  xyzwh 388 94 2010 11 25
+  xyzwh 672 93 2010 11 26
 end
 durationcanvas 129027 classinstance_ref 128003 // :ConsulterView
   xyzwh 69 139 2010 11 44
 end
-durationcanvas 129283 classinstance_ref 128003 // :ConsulterView
-  xyzwh 69 201 2010 11 49
-end
 msg 128258 synchronous
   from durationcanvas_ref 128002
   to durationcanvas_ref 128130
-  yz 74 2015 msg operation_ref 130307 // "getReservationsValides() : Reservation [*]"
+  yz 74 2015 explicitmsg "1. getReservationsValides(in week : int) : Reservation [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 96 60
 msg 128514 synchronous
   from durationcanvas_ref 128130
   to durationcanvas_ref 128386
-  yz 94 2015 msg operation_ref 148738 // "getReservationsValides() : Reservation [*]"
+  yz 93 2015 explicitmsg "2. getReservationsValides() : Reservation [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 255 80
+  label_xy 438 79
 reflexivemsg 129155 synchronous
   to durationcanvas_ref 129027
-  yz 139 2015 msg operation_ref 129923 // "genCalendar(in listeReservationsValides : Reservation [*]) : void"
+  yz 139 2015 explicitmsg "3. genCalendar(in listeReservationsValides : Reservation [*]) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 90 119
-reflexivemsg 129411 synchronous
-  to durationcanvas_ref 129283
-  yz 201 2015 msg operation_ref 130179 // "run() : void"
-  show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 100 185
 end

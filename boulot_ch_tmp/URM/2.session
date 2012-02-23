@@ -1,21 +1,8 @@
-window_sizes 1280 962 178 1096 512 82
-diagrams
-  active  sequencediagram_ref 128131 // LoginViewSeq
-    1096 806 100 4 0 0
-  classdiagram_ref 128259 // Menu
-    872 644 100 4 0 0
-  sequencediagram_ref 128643 // ConsulterViewSeq
-    1026 734 100 4 0 0
-  classdiagram_ref 128003 // Login
-    872 644 100 4 0 0
-end
+window_sizes 1167 822 261 1013 853 35
 show_stereotypes
-selected sequencediagram_ref 128131 // LoginViewSeq
+selected sequencediagram_ref 128643 // ConsulterViewSeq
 open
-  class_ref 128003 // LoginView
-  class_ref 128131 // Compte
-  class_ref 128387 // EnseignantJDBC
   classview_ref 128002 // Menu
-  classview_ref 128130 // Consulter
+  class_ref 129283 // ConsulterView
 end
 end
