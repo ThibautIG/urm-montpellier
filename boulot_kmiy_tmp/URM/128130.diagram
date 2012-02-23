@@ -1,0 +1,131 @@
+format 76
+
+classinstancecanvas 128130 classinstance_ref 128130 // 
+  xyz 260 41 2000 life_line_z 2000
+end
+classinstancecanvas 128258 classinstance_ref 128258 // 
+  xyz 440 38 2000 life_line_z 2000
+end
+classinstancecanvas 128386 classinstance_ref 134786 // 
+  xyz 38 27 2005 life_line_z 2000
+end
+classinstancecanvas 131842 classinstance_ref 141314 // 
+  xyz 129 34 2000 life_line_z 2000
+end
+durationcanvas 129026 classinstance_ref 128130 // :HandlingFacade
+  xyzwh 300 186 2010 11 39
+end
+durationcanvas 129538 classinstance_ref 128258 // :ReservationJDBC
+  xyzwh 484 208 2010 11 25
+end
+durationcanvas 129794 classinstance_ref 128258 // :ReservationJDBC
+  xyzwh 484 253 2010 11 40
+end
+durationcanvas 130050 classinstance_ref 128130 // :HandlingFacade
+  xyzwh 300 317 2010 11 40
+end
+durationcanvas 131970 classinstance_ref 128386 // :User
+  xyzwh 47 109 2010 11 40
+end
+durationcanvas 132098 classinstance_ref 131842 // :HandlingView
+  xyzwh 164 109 2010 11 25
+end
+durationcanvas 132354 classinstance_ref 131842 // :HandlingView
+  xyzwh 164 150 2010 11 40
+end
+durationcanvas 132482 classinstance_ref 128130 // :HandlingFacade
+  xyzwh 300 150 2010 11 25
+end
+durationcanvas 132738 classinstance_ref 128386 // :User
+  xyzwh 47 392 2010 11 40
+end
+durationcanvas 132866 classinstance_ref 131842 // :HandlingView
+  xyzwh 164 392 2010 11 25
+end
+durationcanvas 133122 classinstance_ref 131842 // :HandlingView
+  xyzwh 164 453 2010 11 40
+end
+durationcanvas 133250 classinstance_ref 128130 // :HandlingFacade
+  xyzwh 300 453 2010 11 25
+end
+durationcanvas 133506 classinstance_ref 128130 // :HandlingFacade
+  xyzwh 300 498 2010 11 40
+end
+durationcanvas 133634 classinstance_ref 128258 // :ReservationJDBC
+  xyzwh 484 498 2010 11 25
+end
+durationcanvas 133890 classinstance_ref 131842 // :HandlingView
+  xyzwh 164 573 2010 11 40
+end
+durationcanvas 134146 classinstance_ref 131842 // :HandlingView
+  xyzwh 164 629 2010 11 40
+end
+durationcanvas 134402 classinstance_ref 128386 // :User
+  xyzwh 47 724 2010 11 40
+end
+durationcanvas 134530 classinstance_ref 131842 // :HandlingView
+  xyzwh 164 724 2010 11 25
+end
+msg 129666 synchronous
+  from durationcanvas_ref 129026
+  to durationcanvas_ref 129538
+  yz 208 2015 msg operation_ref 128642 // "getListeDemandes() : Reservation [*]"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 339 194
+reflexivemsg 129922 synchronous
+  to durationcanvas_ref 129794
+  yz 253 2015 msg operation_ref 128898 // "loadDemandes()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 459 239
+reflexivemsg 130178 synchronous
+  to durationcanvas_ref 130050
+  yz 317 2015 msg operation_ref 128386 // "repartitionDemandes(in listeReservation : Reservation [*]) : Reservation [*]"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 241 303
+msg 132226 synchronous
+  from durationcanvas_ref 131970
+  to durationcanvas_ref 132098
+  yz 109 2015 msg operation_ref 136578 // "traiterDemandes()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 66 95
+msg 132610 synchronous
+  from durationcanvas_ref 132354
+  to durationcanvas_ref 132482
+  yz 150 2015 msg operation_ref 128130 // "getListeDemandes() : Reservation [*]"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 189 136
+msg 132994 synchronous
+  from durationcanvas_ref 132738
+  to durationcanvas_ref 132866
+  yz 392 2015 msg operation_ref 143106 // "selectDemandes()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 67 378
+msg 133378 synchronous
+  from durationcanvas_ref 133122
+  to durationcanvas_ref 133250
+  yz 453 2015 msg operation_ref 128258 // "getDemande(in reference : int) : Reservation"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 194 439
+msg 133762 synchronous
+  from durationcanvas_ref 133506
+  to durationcanvas_ref 133634
+  yz 498 2015 msg operation_ref 128770 // "getDemande(in reference : int) : Reservation"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 322 486
+reflexivemsg 134018 synchronous
+  to durationcanvas_ref 133890
+  yz 573 2015 msg operation_ref 143234 // "afficheDonnees()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 176 556
+reflexivemsg 134274 synchronous
+  to durationcanvas_ref 134146
+  yz 629 2015 msg operation_ref 143362 // "genCalendar()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 190 614
+msg 134658 synchronous
+  from durationcanvas_ref 134402
+  to durationcanvas_ref 134530
+  yz 724 2015 msg operation_ref 143490 // "valider()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 91 710
+end
