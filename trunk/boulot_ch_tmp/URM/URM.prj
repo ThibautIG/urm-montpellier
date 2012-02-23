@@ -1,6 +1,6 @@
 format 75
 "URM"
-  revision 1
+  revision 2
   modified_by 3 "OB3"
   cpp_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/cpp/"
   java_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/java/"
@@ -59,6 +59,7 @@ format 75
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
+    associated_deployment_view deploymentview_ref 128003 // Login
     classdiagram 128003 "Login"
       draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
@@ -76,7 +77,7 @@ ${members}}
       explicit_switch_type ""
       
       operation 128003 "connect"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 2
 	  param in name "id" explicit_type "string"
 	  param in name "pwd" explicit_type "string"
@@ -90,12 +91,12 @@ ${members}}
 	comment "Connecte l'utilisateur si son id/pwd est valide"
       end
 
-      classrelation 128003 // <unidirectional association>
+      classrelation 128003 // compte (<unidirectional association>)
 	relation 128003 --->
-	  a role_name "" private
+	  a role_name "compte" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128003 // <unidirectional association>
+	    classrelation_ref 128003 // compte (<unidirectional association>)
 	  b parent class_ref 128131 // Compte
       end
 
@@ -147,7 +148,7 @@ ${members}}
       explicit_switch_type ""
       
       operation 128131 "connect"
-	public explicit_return_type ""
+	public explicit_return_type "bool"
 	nparams 2
 	  param in name "id" explicit_type "string"
 	  param in name "pwd" explicit_type "string"
@@ -161,12 +162,12 @@ ${members}}
 	comment "Connecte l'utilisateur si id/pwd est valide"
       end
 
-      classrelation 128259 // <unidirectional association>
+      classrelation 128259 // personne (<unidirectional association>)
 	relation 128131 --->
-	  a role_name "" private
+	  a role_name "personne" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128259 // <unidirectional association>
+	    classrelation_ref 128259 // personne (<unidirectional association>)
 	  b parent class_ref 128259 // Personne
       end
 
@@ -184,7 +185,7 @@ ${members}}
       end
 
       operation 130307 "getReservationsValides"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -193,11 +194,8 @@ ${members}}
 	
 	
 	
-	comment "Renvoie la liste des Réservations validées"
-      end
-
-      classrelation 130179 // <association>
-	relation_ref 129283 // <association>
+	comment "Renvoie la liste des Réservations validées
+Type de retour à modifier..."
       end
     end
 
@@ -224,7 +222,7 @@ ${members}}
       end
 
       operation 128259 "load"
-	public explicit_return_type ""
+	public explicit_return_type "bool"
 	nparams 2
 	  param in name "id" explicit_type "string"
 	  param in name "pwd" explicit_type "string"
@@ -251,7 +249,7 @@ ${members}}
       end
 
       operation 130435 "getreservationsValides"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -260,6 +258,7 @@ ${members}}
 	
 	
 	
+	comment "Type de retour à modifier"
       end
     end
 
@@ -274,8 +273,28 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      operation 128387 "load"
-	public explicit_return_type ""
+      classrelation 128515 // <generalisation>
+	relation 128259 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128515 // <generalisation>
+	  b parent class_ref 128259 // Personne
+      end
+
+      operation 137603 "getDroits"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137731 "load"
+	public explicit_return_type "bool"
 	nparams 2
 	  param in name "id" explicit_type "string"
 	  param in name "pwd" explicit_type "string"
@@ -286,22 +305,11 @@ ${members}}
 	
 	
 	
+	comment "Charge dans la BD l'utilisateur id si le pwd est correct et rempli la structure"
       end
 
-      classrelation 128515 // <generalisation>
-	relation 128259 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128515 // <generalisation>
-	  b parent class_ref 128259 // Personne
-      end
-
-      classrelation 129923 // <association>
-	relation_ref 129155 // <association>
-      end
-
-      operation 129411 "getDroits"
-	public explicit_return_type "int"
+      operation 137859 "getreservationsValides"
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -310,6 +318,7 @@ ${members}}
 	
 	
 	
+	comment "Type de retour à modifier"
       end
     end
 
@@ -324,8 +333,41 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      operation 128515 "load"
-	public explicit_return_type ""
+      classrelation 128643 // <generalisation>
+	relation 128387 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128643 // <generalisation>
+	  b parent class_ref 128259 // Personne
+      end
+
+      operation 137347 "getDroits"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 137475 "getreservationsValides"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Type de retour à modifier"
+      end
+
+      operation 137987 "load"
+	public explicit_return_type "bool"
 	nparams 2
 	  param in name "id" explicit_type "string"
 	  param in name "pwd" explicit_type "string"
@@ -336,30 +378,7 @@ ${members}}
 	
 	
 	
-      end
-
-      classrelation 128643 // <generalisation>
-	relation 128387 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128643 // <generalisation>
-	  b parent class_ref 128259 // Personne
-      end
-
-      classrelation 129667 // <association>
-	relation_ref 129027 // <association>
-      end
-
-      operation 129539 "getDroits"
-	public explicit_return_type "int"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
+	comment "Charge dans la BD l'utilisateur id si le pwd est correct et rempli la structure"
       end
     end
 
@@ -389,7 +408,7 @@ ${members}}
       end
 
       operation 128771 "run"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -401,17 +420,17 @@ ${members}}
 	comment "lance la fenêtre principale et la boucle d'évènements de la fenêtre de menu"
       end
 
-      classrelation 129027 // <unidirectional association>
+      classrelation 129027 // user (<unidirectional association>)
 	relation 128643 --->
-	  a role_name "" private
+	  a role_name "user" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 129027 // <unidirectional association>
+	    classrelation_ref 129027 // user (<unidirectional association>)
 	  b parent class_ref 128131 // Compte
       end
 
       operation 129667 "initDroits"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -423,12 +442,12 @@ ${members}}
 	comment "Initialise la fenête en fonction des droits qui lui sont passés en paramètre"
       end
 
-      classrelation 130307 // <unidirectional association>
+      classrelation 130307 // consulterview (<unidirectional association>)
 	relation 129411 --->
-	  a role_name "" private
+	  a role_name "consulterview" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 130307 // <unidirectional association>
+	    classrelation_ref 130307 // consulterview (<unidirectional association>)
 	  b parent class_ref 129283 // ConsulterView
       end
     end
@@ -506,16 +525,13 @@ ${members}}
 	  b parent class_ref 128771 // Persistfactory
       end
 
-      classrelation 129795 // <association>
-	relation 129155 ----
+      classrelation 129795 // <unidirectional association>
+	relation 129155 --->
 	  a role_name "" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 129795 // <association>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 129923 // <association>
+	    classrelation_ref 129795 // <unidirectional association>
+	  b parent class_ref 128387 // PersonneJDBC
       end
 
       operation 130819 "createPersonne"
@@ -550,16 +566,12 @@ ${members}}
 	  b parent class_ref 128771 // Persistfactory
       end
 
-      classrelation 129539 // <association>
-	relation 129027 ----
-	  a role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 129539 // <association>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 129667 // <association>
+      classrelation 129539 // <realization>
+	relation 129027 -_-|>
+	  a private
+	    java "${type}"
+	    classrelation_ref 129539 // <realization>
+	  b parent class_ref 128515 // PersonneFile
       end
 
       operation 130691 "createPersonne"
@@ -605,7 +617,7 @@ ${members}}
     end
 
     classdiagram 128515 "Consulter"
-      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
     end
 
@@ -632,7 +644,7 @@ ${members}}
       end
 
       operation 129923 "genCalendar"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -645,7 +657,7 @@ ${members}}
       end
 
       operation 130051 "aff"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -658,7 +670,7 @@ ${members}}
       end
 
       operation 130179 "run"
-	public explicit_return_type ""
+	public explicit_return_type "void"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -670,16 +682,13 @@ ${members}}
 	comment "lance la boucle d'évènements de la fenête de consultation de ses séances."
       end
 
-      classrelation 130051 // <association>
-	relation 129283 ----
-	  a role_name "" private
+      classrelation 130051 // user (<unidirectional association>)
+	relation 129283 --->
+	  a role_name "user" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 130051 // <association>
-	  b role_name "" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 130179 // <association>
+	    classrelation_ref 130051 // user (<unidirectional association>)
+	  b parent class_ref 128131 // Compte
       end
     end
 
@@ -719,6 +728,121 @@ ${members}}
       
     end
   end
-preserve_bodies
+
+  deploymentview 128003 "Login"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 128003 "LoginView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128003 // LoginView
+      end
+    end
+
+    artifact 128131 "Compte"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128131 // Compte
+      end
+    end
+
+    artifact 128259 "Personne"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128259 // Personne
+      end
+    end
+
+    artifact 128387 "PersonneJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128387 // PersonneJDBC
+      end
+    end
+
+    artifact 128515 "PersonneFile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128515 // PersonneFile
+      end
+    end
+
+    artifact 128643 "MenuView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128643 // MenuView
+      end
+    end
+
+    artifact 128771 "Persistfactory"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128771 // Persistfactory
+      end
+    end
+
+    artifact 128899 "PersistfactoryJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128899 // PersistfactoryJDBC
+      end
+    end
+
+    artifact 129027 "PersistfactoryFile"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 129027 // PersistfactoryFile
+      end
+    end
+
+    artifact 129155 "ConsulterView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 129283 // ConsulterView
+      end
+    end
+  end
+add_operation_profile
 
 end
