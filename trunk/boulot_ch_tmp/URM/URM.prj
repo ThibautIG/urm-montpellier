@@ -1,7 +1,7 @@
-format 75
+format 76
 "URM"
-  revision 2
-  modified_by 3 "OB3"
+  revision 8
+  modified_by 2 "Kmiy"
   cpp_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/cpp/"
   java_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/java/"
 
@@ -16,7 +16,7 @@ format 75
   //sequence diagram settings
   show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes show_stereotype_properties no show_class_context_mode no show_msg_context_mode no
   //collaboration diagram settings
-  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no show_msg_context no draw_all_relations yes shadow yes show_stereotype_properties no
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes class_drawing_mode natural drawing_language uml package_name_in_tab no show_context no show_msg_context no draw_all_relations yes shadow yes show_stereotype_properties no
   //object diagram settings
    write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes show_stereotype_properties no
   //component diagram settings
@@ -47,7 +47,7 @@ format 75
     //class diagram settings
     draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
     //collaboration diagram settings
-    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
     //object diagram settings
      write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
     //sequence diagram settings
@@ -59,7 +59,6 @@ format 75
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
-    associated_deployment_view deploymentview_ref 128003 // Login
     classdiagram 128003 "Login"
       draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
@@ -76,11 +75,21 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      operation 128258 "LoginView"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
       operation 128003 "connect"
-	public explicit_return_type "void"
-	nparams 2
-	  param in name "id" explicit_type "string"
-	  param in name "pwd" explicit_type "string"
+	public explicit_return_type "bool"
+	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
   ${body}}
@@ -93,20 +102,20 @@ ${members}}
 
       classrelation 128003 // compte (<unidirectional association>)
 	relation 128003 --->
-	  a role_name "compte" private
+	  a role_name "compte" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
 	    classrelation_ref 128003 // compte (<unidirectional association>)
-	  b parent class_ref 128131 // Compte
+	  b multiplicity "1" parent class_ref 128131 // Compte
       end
 
-      classrelation 128771 // <unidirectional association>
+      classrelation 128771 // menu (<unidirectional association>)
 	relation 128515 --->
-	  a role_name "" private
+	  a role_name "menu" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128771 // <unidirectional association>
-	  b parent class_ref 128643 // MenuView
+	    classrelation_ref 128771 // menu (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 128643 // MenuView
       end
 
       operation 128899 "getId"
@@ -134,6 +143,18 @@ ${members}}
 	
 	comment "récupère le champ pwd"
       end
+
+      operation 141954 "main"
+	class_operation public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     class 128131 "Compte"
@@ -147,6 +168,18 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      operation 128386 "Compte"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
       operation 128131 "connect"
 	public explicit_return_type "bool"
 	nparams 2
@@ -162,13 +195,13 @@ ${members}}
 	comment "Connecte l'utilisateur si id/pwd est valide"
       end
 
-      classrelation 128259 // personne (<unidirectional association>)
+      classrelation 128259 // user (<unidirectional association>)
 	relation 128131 --->
-	  a role_name "personne" private
+	  a role_name "user" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128259 // personne (<unidirectional association>)
-	  b parent class_ref 128259 // Personne
+	    classrelation_ref 128259 // user (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 128259 // Enseignant
       end
 
       operation 129155 "getDroits"
@@ -185,7 +218,8 @@ ${members}}
       end
 
       operation 130307 "getReservationsValides"
-	public explicit_return_type "void"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -197,9 +231,21 @@ ${members}}
 	comment "Renvoie la liste des Réservations validées
 Type de retour à modifier..."
       end
+
+      operation 155266 "isSuperUser"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
-    class 128259 "Personne"
+    class 128259 "Enseignant"
       abstract visibility package 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
@@ -210,8 +256,8 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      attribute 128003 "droits"
-	private explicit_type "int"
+      attribute 128003 "super_user"
+	private explicit_type "bool"
 	cpp_decl ""
 	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
@@ -236,8 +282,8 @@ ${members}}
 	comment "Charge dans la BD l'utilisateur id si le pwd est correct et rempli la structure"
       end
 
-      operation 129283 "getDroits"
-	public explicit_return_type "int"
+      operation 129283 "isSuperUser"
+	public explicit_return_type "bool"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -248,8 +294,9 @@ ${members}}
 	
       end
 
-      operation 130435 "getreservationsValides"
-	public explicit_return_type "void"
+      operation 130435 "getReservationsValides"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -260,9 +307,39 @@ ${members}}
 	
 	comment "Type de retour à modifier"
       end
+
+      attribute 128002 "nom_enseignant"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128130 "prenom_enseignant"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 128258 "mot_de_passe"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
     end
 
-    class 128387 "PersonneJDBC"
+    class 128387 "EnseignantJDBC"
       visibility package 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
@@ -273,24 +350,24 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 128515 // <generalisation>
-	relation 128259 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128515 // <generalisation>
-	  b parent class_ref 128259 // Personne
-      end
-
-      operation 137603 "getDroits"
-	public explicit_return_type "int"
+      operation 128130 "EnseignantJDBC"
+	public explicit_return_type ""
 	nparams 0
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
   ${body}}
 "
 	
 	
 	
+      end
+
+      classrelation 128515 // <generalisation>
+	relation 128259 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128515 // <generalisation>
+	  b parent class_ref 128259 // Enseignant
       end
 
       operation 137731 "load"
@@ -308,77 +385,30 @@ ${members}}
 	comment "Charge dans la BD l'utilisateur id si le pwd est correct et rempli la structure"
       end
 
-      operation 137859 "getreservationsValides"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	comment "Type de retour à modifier"
-      end
-    end
-
-    class 128515 "PersonneFile"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 128643 // <generalisation>
-	relation 128387 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128643 // <generalisation>
-	  b parent class_ref 128259 // Personne
-      end
-
-      operation 137347 "getDroits"
-	public explicit_return_type "int"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 137475 "getreservationsValides"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	comment "Type de retour à modifier"
-      end
-
-      operation 137987 "load"
+      operation 142082 "isSuperUser"
 	public explicit_return_type "bool"
-	nparams 2
-	  param in name "id" explicit_type "string"
-	  param in name "pwd" explicit_type "string"
+	nparams 0
 	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
   ${body}}
 "
 	
 	
 	
-	comment "Charge dans la BD l'utilisateur id si le pwd est correct et rempli la structure"
+      end
+
+      operation 148738 "getReservationsValides"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Type de retour à modifier"
       end
     end
 
@@ -393,7 +423,7 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      operation 128643 "Menu"
+      operation 128643 "MenuView"
 	public explicit_return_type ""
 	nparams 1
 	  param in name "c" type class_ref 128131 // Compte
@@ -407,26 +437,13 @@ ${members}}
 	comment "Constructeur"
       end
 
-      operation 128771 "run"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	comment "lance la fenêtre principale et la boucle d'évènements de la fenêtre de menu"
-      end
-
-      classrelation 129027 // user (<unidirectional association>)
-	relation 128643 --->
-	  a role_name "user" private
+      classrelation 129027 // user ()
+	relation 128643 ---> name ""
+	  a role_name "user" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 129027 // user (<unidirectional association>)
-	  b parent class_ref 128131 // Compte
+	    classrelation_ref 129027 // user ()
+	  b multiplicity "1" parent class_ref 128131 // Compte
       end
 
       operation 129667 "initDroits"
@@ -442,38 +459,30 @@ ${members}}
 	comment "Initialise la fenête en fonction des droits qui lui sont passés en paramètre"
       end
 
-      classrelation 130307 // consulterview (<unidirectional association>)
+      classrelation 130307 // consulterView (<unidirectional association>)
 	relation 129411 --->
-	  a role_name "consulterview" private
+	  a role_name "consulterView" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 130307 // consulterview (<unidirectional association>)
-	  b parent class_ref 129283 // ConsulterView
+	    classrelation_ref 130307 // consulterView (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 129283 // ConsulterView
+      end
+
+      operation 128771 "run"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "lance la fenêtre principale et la boucle d'évènements de la fenêtre de menu"
       end
     end
 
-    sequencediagram 128131 "LoginViewSeq"
-      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
-      overlapping_bars size A4
-    end
-
-    classinstance 128131 ""
-      type class_ref 128003 // LoginView
-      attributes
-        end
-      relations
-        end
-    end
-
-    classinstance 128259 ""
-      type class_ref 128131 // Compte
-      attributes
-        end
-      relations
-        end
-    end
-
-    class 128771 "Persistfactory"
+    class 128771 "PersistFactory"
       abstract visibility package 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
@@ -484,8 +493,8 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      operation 130563 "createPersonne"
-	public return_type class_ref 128259 // Personne
+      operation 130563 "createEnseignant"
+	private return_type class_ref 128259 // Enseignant
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -496,17 +505,31 @@ ${members}}
 	
 	comment "Renvoie un objet de type Personne"
       end
+
+      attribute 134786 "factory"
+	private explicit_type ""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 135298 "getInstance"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
-    classinstance 128387 ""
-      type class_ref 128899 // PersistfactoryJDBC
-      attributes
-        end
-      relations
-        end
-    end
-
-    class 128899 "PersistfactoryJDBC"
+    class 128899 "PersistFactoryJDBC"
       visibility package 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
@@ -522,7 +545,7 @@ ${members}}
 	  a public
 	    java "${type}"
 	    classrelation_ref 129411 // <generalisation>
-	  b parent class_ref 128771 // Persistfactory
+	  b parent class_ref 128771 // PersistFactory
       end
 
       classrelation 129795 // <unidirectional association>
@@ -531,11 +554,18 @@ ${members}}
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
 	    classrelation_ref 129795 // <unidirectional association>
-	  b parent class_ref 128387 // PersonneJDBC
+	  b parent class_ref 128387 // EnseignantJDBC
       end
 
-      operation 130819 "createPersonne"
-	public return_type class_ref 128387 // PersonneJDBC
+      classrelation 128002 // <dependency>
+	relation 128002 -_->
+	  a package
+	    classrelation_ref 128002 // <dependency>
+	  b parent class_ref 128387 // EnseignantJDBC
+      end
+
+      operation 128642 "createEnseignant"
+	public return_type class_ref 128259 // Enseignant
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -544,10 +574,30 @@ ${members}}
 	
 	
 	
+	comment "Renvoie un objet de type Personne"
+      end
+
+      operation 135170 "PersistFactoryJDBC"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 134530 // <dependency>
+	relation 134530 -_->
+	  a default
+	    classrelation_ref 134530 // <dependency>
+	  b parent class_ref 128387 // EnseignantJDBC
       end
     end
 
-    class 129027 "PersistfactoryFile"
+    class 128002 "Reservation"
       visibility package 
       cpp_decl ""
       java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
@@ -558,45 +608,31 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 129283 // <generalisation>
-	relation 128771 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 129283 // <generalisation>
-	  b parent class_ref 128771 // Persistfactory
-      end
-
-      classrelation 129539 // <realization>
-	relation 129027 -_-|>
-	  a private
-	    java "${type}"
-	    classrelation_ref 129539 // <realization>
-	  b parent class_ref 128515 // PersonneFile
-      end
-
-      operation 130691 "createPersonne"
-	public return_type class_ref 128515 // PersonneFile
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
     end
 
-    classinstance 128515 ""
-      type class_ref 128387 // PersonneJDBC
+    sequencediagram 128131 "LoginViewSeq"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
+    end
+
+    classinstance 128643 ""
+      type class_ref 129155 // User
       attributes
         end
       relations
         end
     end
 
-    classinstance 128643 ""
-      type class_ref 129155 // User
+    classinstance 128515 ""
+      type class_ref 128387 // EnseignantJDBC
+      attributes
+        end
+      relations
+        end
+    end
+
+    classinstance 128131 ""
+      type class_ref 128003 // LoginView
       attributes
         end
       relations
@@ -611,90 +647,20 @@ ${members}}
         end
     end
 
-    classdiagram 128259 "Menu"
-      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-      size A4
+    classinstance 128387 ""
+      type class_ref 128899 // PersistFactoryJDBC
+      attributes
+        end
+      relations
+        end
     end
 
-    classdiagram 128515 "Consulter"
-      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-      size A4
-    end
-
-    class 129283 "ConsulterView"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      attribute 128131 "week"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-	comment "la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours"
-      end
-
-      operation 129923 "genCalendar"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	comment "Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre"
-      end
-
-      operation 130051 "aff"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	comment "Affiche la fenête après l'avoir initialisée et après un changement de semaine"
-      end
-
-      operation 130179 "run"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	comment "lance la boucle d'évènements de la fenête de consultation de ses séances."
-      end
-
-      classrelation 130051 // user (<unidirectional association>)
-	relation 129283 --->
-	  a role_name "user" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 130051 // user (<unidirectional association>)
-	  b parent class_ref 128131 // Compte
-      end
-    end
-
-    sequencediagram 128643 "ConsulterViewSeq"
-      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
-      overlapping_bars size A4
+    classinstance 128259 ""
+      type class_ref 128131 // Compte
+      attributes
+        end
+      relations
+        end
     end
   end
 
@@ -704,7 +670,7 @@ ${members}}
     //sequence diagram settings
     show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
     //collaboration diagram settings
-    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
     //class diagram settings
     draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
     //object diagram settings
@@ -729,117 +695,123 @@ ${members}}
     end
   end
 
-  deploymentview 128003 "Login"
-    //deployment diagram settings
-    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
-    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
-    artifact 128003 "LoginView"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128003 // LoginView
-      end
+  classview 128002 "Menu"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 128259 "Menu"
+      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
+    end
+  end
+
+  classview 128130 "Consulter"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    classdiagram 128515 "Consulter"
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      size A4
     end
 
-    artifact 128131 "Compte"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128131 // Compte
-      end
+    sequencediagram 128643 "ConsulterViewSeq"
+      show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+      overlapping_bars size A4
     end
 
-    artifact 128259 "Personne"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128259 // Personne
+    class 129283 "ConsulterView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 135426 "ConsulterView"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
       end
-    end
 
-    artifact 128387 "PersonneJDBC"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128387 // PersonneJDBC
+      attribute 128131 "week"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours"
       end
-    end
 
-    artifact 128515 "PersonneFile"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128515 // PersonneFile
+      operation 129923 "genCalendar"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "listeReservationsValides" explicit_type "Reservation"
+	multiplicity "*"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre"
       end
-    end
 
-    artifact 128643 "MenuView"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128643 // MenuView
+      operation 130179 "run"
+	public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "lance la boucle d'évènements de la fenête de consultation de ses séances."
       end
-    end
 
-    artifact 128771 "Persistfactory"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128771 // Persistfactory
-      end
-    end
-
-    artifact 128899 "PersistfactoryJDBC"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 128899 // PersistfactoryJDBC
-      end
-    end
-
-    artifact 129027 "PersistfactoryFile"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 129027 // PersistfactoryFile
-      end
-    end
-
-    artifact 129155 "ConsulterView"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 129283 // ConsulterView
+      classrelation 130051 // user (<unidirectional association>)
+	relation 129283 --->
+	  a role_name "user" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130051 // user (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 128131 // Compte
       end
     end
   end
