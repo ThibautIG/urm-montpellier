@@ -1,0 +1,22 @@
+window_sizes 1280 750 299 975 533 82
+diagrams
+  active  classdiagram_ref 128003 // Login
+    974 594 100 4 180 0
+  sequencediagram_ref 128131 // LoginViewSeq
+    775 473 100 4 0 0
+  classdiagram_ref 128259 // Menu
+    775 473 100 4 0 0
+  classdiagram_ref 128515 // Consulter
+    775 473 100 4 0 0
+  sequencediagram_ref 128643 // ConsulterViewSeq
+    775 473 100 4 144 0
+end
+show_stereotypes
+selected artifact_ref 134531 // LoginView
+open
+  classview_ref 128003 // Login
+  usecaseview_ref 128003 // usecase
+  deploymentview_ref 134531 // Login
+end
+end
+verbose
