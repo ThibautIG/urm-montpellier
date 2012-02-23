@@ -1,15 +1,13 @@
-window_sizes 1280 962 261 1013 853 35
+window_sizes 1249 936 258 985 853 35
 diagrams
-  classdiagram_ref 128259 // Menu
-    716 570 100 4 0 0
-  active  classdiagram_ref 128003 // Login
-    1013 853 100 4 0 0
+  active  classdiagram_ref 128002 // Handling
+    851 755 100 4 0 0
 end
 show_stereotypes
-selected class_ref 128771 // PersistFactory
+selected classdiagram_ref 128003 // Login
 open
   class_ref 128771 // PersistFactory
-  classview_ref 128002 // Menu
-  class_ref 129283 // ConsulterView
+  class_ref 128899 // PersistFactoryJDBC
+  class_ref 141186 // Salle
 end
 end

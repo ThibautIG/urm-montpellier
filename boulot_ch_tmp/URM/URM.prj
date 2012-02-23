@@ -1,6 +1,6 @@
 format 76
 "URM"
-  revision 10
+  revision 13
   modified_by 2 "Kmiy"
   cpp_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/cpp/"
   java_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/java/"
@@ -204,7 +204,7 @@ ${members}}
 	  b multiplicity "1" parent class_ref 128259 // Enseignant
       end
 
-      operation 130307 "getReservationsValides"
+      operation 130307 "getReservationsValidees"
 	public return_type class_ref 128002 // Reservation
 	multiplicity "*"
 	nparams 1
@@ -220,7 +220,7 @@ ${members}}
 Type de retour à modifier..."
       end
 
-      operation 161794 "getReservationsValides"
+      operation 161794 "getReservationsValidees"
 	public return_type class_ref 128002 // Reservation
 	nparams 0
 	
@@ -294,7 +294,7 @@ ${members}}
 	
       end
 
-      operation 130435 "getReservationsValides"
+      operation 130435 "getReservationsValidees"
 	public return_type class_ref 128002 // Reservation
 	multiplicity "*"
 	nparams 0
@@ -336,6 +336,18 @@ ${members}}
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      classrelation 141058 // <association>
+	relation 141058 ----
+	  a role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141058 // <association>
+	  b role_name "" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 141186 // <association>
       end
     end
 
@@ -382,7 +394,7 @@ ${members}}
 	
       end
 
-      operation 148738 "getReservationsValides"
+      operation 175874 "getReservationsValidees"
 	public return_type class_ref 128002 // Reservation
 	multiplicity "*"
 	nparams 0
@@ -569,6 +581,13 @@ ${members}}
 	    classrelation_ref 134530 // <dependency>
 	  b parent class_ref 128387 // EnseignantJDBC
       end
+
+      classrelation 141442 // <dependency>
+	relation 141314 -_->
+	  a default
+	    classrelation_ref 141442 // <dependency>
+	  b parent class_ref 141442 // ReservationJDBC
+      end
     end
 
     class 128002 "Reservation"
@@ -582,6 +601,70 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      classrelation 141186 // <association>
+	relation_ref 141058 // <association>
+      end
+
+      operation 176130 "Reservation"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 176258 "getDemandesNonValidees"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 176514 "loadDemande"
+	public return_type class_ref 128002 // Reservation
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      attribute 148226 "date"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 176642 "saveDemande"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reservation" type class_ref 128002 // Reservation
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
 
     sequencediagram 128131 "LoginViewSeq"
@@ -749,7 +832,7 @@ ${members}}
       operation 129923 "genCalendar"
 	public explicit_return_type "void"
 	nparams 1
-	  param in name "listeReservationsValides" type class_ref 128002 // Reservation
+	  param in name "listeReservationsValidees" type class_ref 128002 // Reservation
 	multiplicity "*"
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
@@ -794,8 +877,311 @@ ${members}}
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
     classdiagram 128002 "Handling"
-      draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+      draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A4
+    end
+
+    class 134530 "HandlingView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 168450 "HandlingView"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 168578 "selectDemande"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 168706 "afficheDonnees"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 168834 "genCalendar"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 168962 "valider"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 169090 "refuser"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      attribute 141314 "demandeSelectionnee"
+	private explicit_type "int"
+	init_value "-1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 176002 "trierDemandes"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "listeDemandes" type class_ref 128002 // Reservation
+	multiplicity "*"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 141058 "HandlingFacade"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 175618 "HandlingFacade"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 175746 "getDemandesNonValidees"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Renvoie la liste de toutes les demandes de reservations 
+des enseignants qui ne sont pas validees"
+      end
+
+      operation 176386 "getDemande"
+	public return_type class_ref 128002 // Reservation
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 141186 "Salle"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 148098 "numeroSalle"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 183682 "getNumeroSalle"
+	public explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 141314 "Creneaux"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 147842 "heureDebut"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 147970 "heureFin"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 141442 "ReservationJDBC"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 176770 "ReservationJDBC"
+	public explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 141314 // <generalisation>
+	relation 141186 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 141314 // <generalisation>
+	  b parent class_ref 128002 // Reservation
+      end
+
+      operation 176898 "getDemandesNonValidees"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 177026 "loadDemande"
+	public return_type class_ref 128002 // Reservation
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 177154 "saveDemande"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reservation" type class_ref 128002 // Reservation
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
     end
   end
 add_operation_profile

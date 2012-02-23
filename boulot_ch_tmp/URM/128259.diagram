@@ -22,12 +22,12 @@ relationcanvas 128515 relation_ref 129283 // <unidirectional association>
   decenter_begin 726
   decenter_end 465
   from ref 128387 z 2013 to ref 128131
-  role_a_pos 625 224 3000 no_role_b
-  multiplicity_a_pos 599 224 3000 multiplicity_b_pos 599 440 3000
+  role_a_pos 628 224 3000 no_role_b
+  multiplicity_a_pos 602 224 3000 multiplicity_b_pos 603 440 3000
 end
 relationcanvas 128643 relation_ref 129411 // <unidirectional association>
   from ref 128003 z 2013 to ref 128387
-  role_a_pos 513 440 3000 no_role_b
-  multiplicity_a_pos 487 440 3000 multiplicity_b_pos 220 158 3000
+  role_a_pos 516 440 3000 no_role_b
+  multiplicity_a_pos 490 440 3000 multiplicity_b_pos 221 158 3000
 end
 end
