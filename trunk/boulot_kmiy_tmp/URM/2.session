@@ -1,0 +1,15 @@
+window_sizes 1164 739 241 917 512 82
+diagrams
+  active  classdiagram_ref 128002 // Class
+    840 759 100 4 180 0
+  sequencediagram_ref 128130 // Sequence
+    840 759 100 4 0 0
+end
+show_stereotypes
+open
+  class_ref 128770 // PersistFactory
+  class_ref 128898 // PersistFactoryJDBC
+  class_ref 141954 // HandlingView
+  usecaseview_ref 134530 // UseCase
+end
+end
