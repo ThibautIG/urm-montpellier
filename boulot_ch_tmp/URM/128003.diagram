@@ -38,12 +38,12 @@ classcanvas 129795 class_ref 128771 // Persistfactory
 end
 relationcanvas 128771 relation_ref 128003 // <unidirectional association>
   from ref 128003 z 2001 to ref 128131
-  no_role_a no_role_b
+  role_a_pos 153 101 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 128899 relation_ref 128131 // <unidirectional association>
   from ref 128131 z 2001 to ref 128259
-  no_role_a no_role_b
+  role_a_pos 343 101 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129027 relation_ref 128259 // <generalisation>
@@ -63,7 +63,7 @@ relationcanvas 129283 relation_ref 128515 // <unidirectional association>
 end
 relationcanvas 129411 relation_ref 128643 // <unidirectional association>
   from ref 128643 z 2001 to ref 128131
-  no_role_a no_role_b
+  role_a_pos 184 133 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 end
 relationcanvas 129923 relation_ref 128771 // <generalisation>
@@ -73,16 +73,6 @@ relationcanvas 129923 relation_ref 128771 // <generalisation>
 end
 relationcanvas 130051 relation_ref 128899 // <generalisation>
   from ref 129539 z 2001 to ref 129795
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 130179 relation_ref 129027 // <association>
-  from ref 129667 z 2001 to ref 128515
-  no_role_a no_role_b
-  no_multiplicity_a no_multiplicity_b
-end
-relationcanvas 130307 relation_ref 129155 // <association>
-  from ref 129539 z 2001 to ref 128387
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end

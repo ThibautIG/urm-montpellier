@@ -1,7 +1,7 @@
-window_sizes 1280 750 300 900 533 82
+window_sizes 1280 750 299 975 533 82
 diagrams
   active  classdiagram_ref 128003 // Login
-    974 592 100 4 180 0
+    974 594 100 4 180 0
   sequencediagram_ref 128131 // LoginViewSeq
     775 473 100 4 0 0
   classdiagram_ref 128259 // Menu
@@ -12,12 +12,11 @@ diagrams
     775 473 100 4 144 0
 end
 show_stereotypes
-selected 
-  package_ref 129 // URM
+selected artifact_ref 134531 // LoginView
 open
-  class_ref 128771 // Persistfactory
-  class_ref 129283 // ConsulterView
+  classview_ref 128003 // Login
   usecaseview_ref 128003 // usecase
+  deploymentview_ref 134531 // Login
 end
 end
 verbose

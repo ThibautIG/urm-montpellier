@@ -24,23 +24,23 @@ end
 msg 128643 synchronous
   from durationcanvas_ref 128387
   to durationcanvas_ref 128515
-  yz 84 2015 msg operation_ref 130307 // "getReservationsValides()"
+  yz 84 2015 msg operation_ref 130307 // "getReservationsValides() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 89 70
 msg 128899 synchronous
   from durationcanvas_ref 128515
   to durationcanvas_ref 128771
-  yz 98 2015 msg operation_ref 130435 // "getreservationsValides()"
+  yz 98 2015 msg operation_ref 130435 // "getreservationsValides() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 232 84
 reflexivemsg 129155 synchronous
   to durationcanvas_ref 129027
-  yz 161 2015 msg operation_ref 129923 // "genCalendar()"
+  yz 161 2015 msg operation_ref 129923 // "genCalendar() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 55 147
 reflexivemsg 129411 synchronous
   to durationcanvas_ref 129283
-  yz 211 2015 msg operation_ref 130051 // "aff()"
+  yz 211 2015 msg operation_ref 130051 // "aff() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 78 197
 end
