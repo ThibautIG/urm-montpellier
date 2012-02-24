@@ -1,7 +1,7 @@
 format 76
 "URM"
-  revision 14
-  modified_by 2 "Kmiy"
+  revision 15
+  modified_by 3 "OB3"
   cpp_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/cpp/"
   java_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/java/"
 
@@ -645,7 +645,6 @@ ${members}}
 	python_decl ""
 	idl_decl ""
       end
-
     end
 
     sequencediagram 128131 "LoginViewSeq"
@@ -787,11 +786,12 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      operation 135426 "ConsulterView"
+      operation 135426 "ConsulterViewC"
 	public explicit_return_type ""
-	nparams 0
+	nparams 1
+	  param in name "c" type class_ref 128131 // EnseignantFacade
 	
-	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${)}${throws} {
+	java_def "  ${comment}${@}${visibility}${final}${synchronized}${name}${(}${t0} ${p0}${)}${throws} {
   ${body}}
 "
 	
@@ -961,7 +961,7 @@ ${members}}
 	idl_decl ""
       end
 
-      operation 176002 "trierDemandes"
+      operation 176002 "colorerDemandes"
 	public explicit_return_type "void"
 	nparams 1
 	  param in name "listeDemandes" type class_ref 128002 // Reservation
@@ -1021,19 +1021,6 @@ ${members}}
 	
 	comment "Renvoie la liste de toutes les demandes de reservations 
 des enseignants qui ne sont pas validees"
-      end
-
-      operation 176386 "getDemande"
-	public return_type class_ref 128002 // Reservation
-	nparams 1
-	  param in name "reference" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
       end
 
       classrelation 148354 // <unidirectional association>
@@ -1143,8 +1130,9 @@ ${members}}
 	  b parent class_ref 147970 // Gestionnaire
       end
 
-      operation 191874 "loadDemandesNonValidees"
-	public return_type class_ref 147970 // Gestionnaire
+      operation 137091 "loadDemandesNonValidees"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -1155,11 +1143,25 @@ ${members}}
 	
       end
 
-      operation 192258 "loadDemandes"
-	public return_type class_ref 147970 // Gestionnaire
+      operation 137219 "loadDemandes"
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      operation 192002 "saveDemande"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "demande" type class_ref 128002 // Reservation
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
 "
 	
@@ -1172,19 +1174,6 @@ ${members}}
 	nparams 1
 	  param in name "listeDemandes" type class_ref 128002 // Reservation
 	multiplicity "*"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 192002 "saveDemande"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "demande" type class_ref 128002 // Reservation
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -1207,7 +1196,8 @@ ${members}}
       explicit_switch_type ""
       
       operation 190338 "loadDemandesNonValidees"
-	public return_type class_ref 147970 // Gestionnaire
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -1219,7 +1209,8 @@ ${members}}
       end
 
       operation 190722 "loadDemandes"
-	public return_type class_ref 147970 // Gestionnaire
+	public return_type class_ref 128002 // Reservation
+	multiplicity "*"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
