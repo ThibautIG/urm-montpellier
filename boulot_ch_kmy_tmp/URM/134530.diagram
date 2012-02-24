@@ -69,12 +69,12 @@ msg 129154 synchronous
 msg 129538 synchronous
   from durationcanvas_ref 129282
   to durationcanvas_ref 129410
-  yz 161 2015 explicitmsg "3. loadDemandesNonValidees() : Gestionnaire"
+  yz 161 2015 explicitmsg "3. loadDemandesNonValidees() : Reservation [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 557 144
 reflexivemsg 130050 synchronous
   to durationcanvas_ref 129922
-  yz 237 2015 explicitmsg "4. trierDemandes(in listeDemandes : Reservation [*]) : void"
+  yz 237 2015 explicitmsg "4. colorerDemandes(in listeDemandes : Reservation [*]) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 248 218
 msg 130434 synchronous

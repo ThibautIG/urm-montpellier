@@ -2,15 +2,15 @@ format 76
 
 classinstance 128003 class_ref 129283 // ConsulterView
   name ""   xyz 31 9 2000 life_line_z 2000
-classinstance 128131 class_ref 128131 // Compte
+classinstance 128131 class_ref 128131 // EnseignantFacade
   name ""   xyz 397 10 2000 life_line_z 2000
 classinstance 128259 class_ref 128387 // EnseignantJDBC
   name ""   xyz 631 8 2000 life_line_z 2000
 durationcanvas 128002 classinstance_ref 128003 // :ConsulterView
   xyzwh 69 74 2010 11 40
 end
-durationcanvas 128130 classinstance_ref 128131 // :Compte
-  xyzwh 417 74 2010 11 31
+durationcanvas 128130 classinstance_ref 128131 // :EnseignantFacade
+  xyzwh 443 74 2010 11 31
 end
 durationcanvas 128386 classinstance_ref 128259 // :EnseignantJDBC
   xyzwh 672 93 2010 11 26

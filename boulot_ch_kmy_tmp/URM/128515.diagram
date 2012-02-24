@@ -2,19 +2,19 @@ format 76
 
 classcanvas 128003 class_ref 129283 // ConsulterView
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 40 51 2000
+  xyz 40.4 51.6 2000
 end
-classcanvas 128131 class_ref 128131 // Compte
+classcanvas 128131 class_ref 128131 // EnseignantFacade
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 63 366 2000
+  xyz 63.2 366.2 2000
 end
 classcanvas 128387 class_ref 128771 // PersistFactory
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyzwh 536.5 491.5 2000 179 75
+  xyzwh 536.1 491.1 2000 191 91
 end
 classcanvas 128643 class_ref 128899 // PersistFactoryJDBC
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 532.5 375.5 2000
+  xyz 532.7 375.7 2000
 end
 classcanvas 128771 class_ref 128387 // EnseignantJDBC
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -22,7 +22,7 @@ classcanvas 128771 class_ref 128387 // EnseignantJDBC
 end
 classcanvas 129027 class_ref 128259 // Enseignant
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 515.5 27.5 2000
+  xyz 515.5 27.1 2000
 end
 relationcanvas 128002 relation_ref 134530 // <dependency>
   from ref 128643 z 2001 to ref 128771
@@ -31,8 +31,8 @@ relationcanvas 128002 relation_ref 134530 // <dependency>
 end
 relationcanvas 128259 relation_ref 129283 // <unidirectional association>
   from ref 128003 z 2001 to ref 128131
-  role_a_pos 209 347 3000 no_role_b
-  multiplicity_a_pos 183 347 3000 multiplicity_b_pos 183 132 3000
+  role_a_pos 210 356 3000 no_role_b
+  multiplicity_a_pos 189 356 3000 multiplicity_b_pos 189 126 3000
 end
 relationcanvas 129155 relation_ref 128899 // <generalisation>
   from ref 128643 z 2001 to ref 128387
