@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documentation produced by the Html generator of Bouml (http://bouml.free.fr) -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Class Booking</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+
+<div class = "title">Class Booking</div>
+<p></p>
+
+<!-- ============================================================= -->
+
+<a name="ref4_154754"></a>
+<p>Declaration :</p><ul>
+<li>Java : package abstract class Booking </li></ul><p>Directly inherited by : <a href="class154882.html#refclass154882"><b>BookingJDBC</b></a> </p>
+<div class="sub">
+<a name="ref2_164994"></a>
+<table><tr><td><div class="element">Operation <b>load</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : + load(in date : string, in comments : string, in capacity : int, in teaching : <a href="class155522.html#refclass155522"><b>Teaching</b></a>, in schedule : <a href="class155266.html#refclass155266"><b>Schedule</b></a>, in feats : list&lt;Feature&gt;) : </li><li>Java : public load(String date, String comments, int capacity, <a href="class155522.html#refclass155522"><b>Teaching</b></a> teaching, <a href="class155266.html#refclass155266"><b>Schedule</b></a> schedule, list&lt;Feature&gt; feats) </li></ul><a name="ref1_143362"></a>
+<table><tr><td><div class="element">Attribute <b>id</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - id : string</li><li>Java : private String id</li></ul><a name="ref1_142210"></a>
+<table><tr><td><div class="element">Attribute <b>capacity</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - capacity : int</li><li>Java : private int capacity</li></ul><a name="ref2_149634"></a>
+<table><tr><td><div class="element">Operation <b>checkFreeRooms</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : abstract, ~ checkFreeRooms() : int</li><li>Java : package abstract int checkFreeRooms()</li></ul><a name="ref2_149762"></a>
+<table><tr><td><div class="element">Operation <b>save</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : abstract, ~ save() : </li></ul><a name="ref0_155778"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class134786.html#refclass134786"><b>TeacherFacade</b></a>, multiplicity : *</li><li>Java : private &lt;<a href="class134786.html#refclass134786"><b>TeacherFacade</b></a>&gt; </li></ul><a name="ref0_169090"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class155522.html#refclass155522"><b>Teaching</b></a>, multiplicity : 1</li><li>Java : private <a href="class155522.html#refclass155522"><b>Teaching</b></a> </li></ul><a name="ref0_169218"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class155394.html#refclass155394"><b>Feature</b></a>, multiplicity : *</li><li>Java : private &lt;<a href="class155394.html#refclass155394"><b>Feature</b></a>&gt; </li></ul><a name="ref0_169602"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class155266.html#refclass155266"><b>Schedule</b></a>, multiplicity : 1</li><li>Java : private <a href="class155266.html#refclass155266"><b>Schedule</b></a> </li></ul><a name="ref1_143490"></a>
+<table><tr><td><div class="element">Attribute <b>date</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - date : string</li><li>Java : private String date</li></ul><a name="ref1_143618"></a>
+<table><tr><td><div class="element">Attribute <b>comments</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - comments : string</li><li>Java : private String comments</li></ul></div>
+<p>All public operations : <a href="class154754.html#ref2_164994"><b>load</b></a> </p>
+</body>
+</html>

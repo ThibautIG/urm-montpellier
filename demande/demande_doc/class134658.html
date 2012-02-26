@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documentation produced by the Html generator of Bouml (http://bouml.free.fr) -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Class AskingView</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+
+<div class = "title">Class AskingView</div>
+<p></p>
+
+<!-- ============================================================= -->
+
+<a name="ref4_134658"></a>
+<p>Declaration :</p><ul>
+<li>Java : package class AskingView </li></ul><div class="sub">
+<a name="ref0_134530"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class134786.html#refclass134786"><b>TeacherFacade</b></a>, multiplicity : 1</li><li>Java : private <a href="class134786.html#refclass134786"><b>TeacherFacade</b></a> </li></ul><a name="ref0_134786"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class134786.html#refclass134786"><b>TeacherFacade</b></a>, multiplicity : 1</li><li>Java : private <a href="class134786.html#refclass134786"><b>TeacherFacade</b></a> </li></ul><a name="ref2_142722"></a>
+<table><tr><td><div class="element">Operation <b>AskingView</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : ~ AskingView(in teacherId : string) : </li><li>Java : package AskingView(String teacherId) </li></ul><a name="ref2_134658"></a>
+<table><tr><td><div class="element">Operation <b>selectRequestType</b></div></td></tr></table><p>Méthode qui écoute les événement sur les radios boutons e sélection du type de demande.<br /></p><p>Declaration :</p><ul><li>Uml : ~ selectRequestType() : void</li><li>Java : package void selectRequestType()</li></ul><a name="ref2_134914"></a>
+<table><tr><td><div class="element">Operation <b>selectTeaching</b></div></td></tr></table><p>Méthode qui écoute le widget pour la sélection d'un enseignement et sauvegarde l'enseignement choisi.<br /></p><p>Declaration :</p><ul><li>Uml : ~ selectTeaching() : void</li><li>Java : package void selectTeaching()</li></ul><a name="ref1_128002"></a>
+<table><tr><td><div class="element">Attribute <b>teachingSelected</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - teachingSelected : string</li><li>Java : private String teachingSelected</li></ul><a name="ref2_135042"></a>
+<table><tr><td><div class="element">Operation <b>selectDate</b></div></td></tr></table><p>coute les événements du calendrier et sauvegarde la date choisie.<br /></p><p>Declaration :</p><ul><li>Uml : ~ selectDate() : void</li><li>Java : package void selectDate()</li></ul><a name="ref1_128130"></a>
+<table><tr><td><div class="element">Attribute <b>dateSelected</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - dateSelected : string</li><li>Java : private String dateSelected</li></ul><a name="ref2_135170"></a>
+<table><tr><td><div class="element">Operation <b>selectSchedule</b></div></td></tr></table><p>coute les événements sur la ComboBox de selection du créneau et sauvegarde le créneau choisi.<br /></p><p>Declaration :</p><ul><li>Uml : ~ selectSchedule() : void</li><li>Java : package void selectSchedule()</li></ul><a name="ref1_128258"></a>
+<table><tr><td><div class="element">Attribute <b>scheduleSelected</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - scheduleSelected : string</li><li>Java : private String scheduleSelected</li></ul><a name="ref2_135298"></a>
+<table><tr><td><div class="element">Operation <b>addFeature</b></div></td></tr></table><p>Ajoute les caractéristiques sélectionnées dans la liste de droite. Sauvegarde ces caractéristiques.<br /></p><p>Declaration :</p><ul><li>Uml : ~ addFeature() : </li><li>Java : package  addFeature()</li></ul><a name="ref1_128386"></a>
+<table><tr><td><div class="element">Attribute <b>featuresSelected</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - featuresSelected : string</li><li>Java : private String featuresSelected</li></ul><p>Stereotype: list</p>
+<a name="ref2_135426"></a>
+<table><tr><td><div class="element">Operation <b>setCapacity</b></div></td></tr></table><p>coute la boite d'éddition capacité et sauvegarde la donnée rentrée.<br /></p><p>Declaration :</p><ul><li>Uml : ~ setCapacity() : void</li><li>Java : package void setCapacity()</li></ul><a name="ref1_128514"></a>
+<table><tr><td><div class="element">Attribute <b>capacity</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - capacity : int</li><li>Java : private int capacity</li></ul><a name="ref2_135554"></a>
+<table><tr><td><div class="element">Operation <b>setComments</b></div></td></tr></table><p>coute la zone d'éddition et sauvegarde le contenu de celle-ci.<br /></p><p>Declaration :</p><ul><li>Uml : ~ setComments() : void</li><li>Java : package void setComments()</li></ul><a name="ref1_128642"></a>
+<table><tr><td><div class="element">Attribute <b>comments</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - comments : string</li><li>Java : private String comments</li></ul><a name="ref2_135682"></a>
+<table><tr><td><div class="element">Operation <b>checkFreeRooms</b></div></td></tr></table><p>retourne le nombre de salles libres avec les paramètres de la réservation.<br /></p><p>Declaration :</p><ul><li>Uml : ~ checkFreeRooms() : int</li><li>Java : package int checkFreeRooms()</li></ul><a name="ref2_135810"></a>
+<table><tr><td><div class="element">Operation <b>confirmBooking</b></div></td></tr></table><p>Valide la réservation avec les paramètres choisis. Si un paramètre n'est pas sélectionné alors la validation renvoie une erreur.<br /></p><p>Declaration :</p><ul><li>Uml : ~ confirmBooking() : void</li><li>Java : package void confirmBooking()</li></ul></div>
+</body>
+</html>

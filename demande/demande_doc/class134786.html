@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documentation produced by the Html generator of Bouml (http://bouml.free.fr) -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Class TeacherFacade</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+
+<div class = "title">Class TeacherFacade</div>
+<p></p>
+
+<!-- ============================================================= -->
+
+<a name="ref4_134786"></a>
+<p>Declaration :</p><ul>
+<li>Java : package class TeacherFacade </li></ul><p>Properties:</p><ul>
+<li>:<br /><div class="sub"></div></li>
+</ul>
+<div class="sub">
+<a name="ref0_134658"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class134658.html#refclass134658"><b>AskingView</b></a>, multiplicity : *</li><li>Java : private <a href="class134658.html#refclass134658"><b>AskingView</b></a> </li></ul><a name="ref0_134914"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class134658.html#refclass134658"><b>AskingView</b></a>, multiplicity : *</li><li>Java : private <a href="class134658.html#refclass134658"><b>AskingView</b></a> </li></ul><a name="ref2_142338"></a>
+<table><tr><td><div class="element">Operation <b>TeacherFacade</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : ~ TeacherFacade(in teacherId : string) : </li><li>Java : package TeacherFacade(String teacherId, ??? ???) </li></ul><a name="ref2_128002"></a>
+<table><tr><td><div class="element">Operation <b>getSchedules</b></div></td></tr></table><p>Retourne la liste des créneaux disponibles pour une composante sous la forme d'une liste de String<br /></p><p>Declaration :</p><ul><li>Uml : ~ getSchedules() : string</li><li>Java : package String getSchedules()</li></ul><p>Stereotype: list</p>
+<a name="ref2_134530"></a>
+<table><tr><td><div class="element">Operation <b>getFeatures</b></div></td></tr></table><p>retourne la liste des caractéristiques disponibles dans un tableau de String.<br /></p><p>Declaration :</p><ul><li>Uml : ~ getFeatures() : string</li><li>Java : package String getFeatures()</li></ul><p>Stereotype: list</p>
+<a name="ref2_134786"></a>
+<table><tr><td><div class="element">Operation <b>getTeaching</b></div></td></tr></table><p>retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans un tableau de String.<br /></p><p>Declaration :</p><ul><li>Uml : + getTeaching() : string</li><li>Java : public String getTeaching(??? ???)</li></ul><p>Stereotype: list</p>
+<a name="ref2_142466"></a>
+<table><tr><td><div class="element">Operation <b>checkFreeRooms</b></div></td></tr></table><p>retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie.<br /></p><p>Declaration :</p><ul><li>Uml : ~ checkFreeRooms(in features : &lt;list&gt;string, in date : string, in schedule : string, in capacity : int) : int</li><li>Java : package int checkFreeRooms(&lt;list&gt;string features, String date, String schedule, int capacity)</li></ul><a name="ref2_142594"></a>
+<table><tr><td><div class="element">Operation <b>confirmBooking</b></div></td></tr></table><p>Valide définitivement la reservation, c'est à dire sauvegarde les données de celle-ci.<br /></p><p>Declaration :</p><ul><li>Uml : ~ confirmBooking(in teaching : string, in date : string, in schedule : string, in features : list&lt;string&gt;, in capacity : int, in comments : string) : void</li><li>Java : package void confirmBooking(String teaching, String date, String schedule, list&lt;string&gt; features, int capacity, String comments)</li></ul><a name="ref0_141954"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class141442.html#refclass141442"><b>Teacher</b></a>, multiplicity : 1</li><li>Java : private <a href="class141442.html#refclass141442"><b>Teacher</b></a> </li></ul><a name="ref0_155522"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class154498.html#refclass154498"><b>Manager</b></a>, multiplicity : 1</li><li>Java : private <a href="class154498.html#refclass154498"><b>Manager</b></a> </li></ul><a name="ref0_155906"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class154754.html#refclass154754"><b>Booking</b></a>, multiplicity : 1</li><li>Java : private <a href="class154754.html#refclass154754"><b>Booking</b></a> </li></ul></div>
+<p>All public operations : <a href="class134786.html#ref2_134786"><b>getTeaching</b></a> </p>
+</body>
+</html>
