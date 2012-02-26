@@ -1,0 +1,11 @@
+window_sizes 1280 738 300 900 533 82
+diagrams
+  active  classdiagram_ref 134530 // demande_reservation
+    974 582 92 0 0 376
+end
+show_stereotypes
+selected classview_ref 128002 // Demande_reservation
+open
+  classview_ref 128002 // Demande_reservation
+end
+end
