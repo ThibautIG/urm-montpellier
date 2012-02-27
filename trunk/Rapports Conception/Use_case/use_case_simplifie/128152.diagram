@@ -1,0 +1,43 @@
+format 76
+
+classcanvas 128024 class_ref 128152 // Enseignant
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 61 71 2000
+end
+classcanvas 128152 class_ref 128280 // Gestionnaire
+  class_drawing_mode default show_context_mode default show_stereotype_properties default
+  xyz 58 210 2000
+end
+usecasecanvas 128408 usecase_ref 128152 // Demande de réservation
+  xyzwh 243 86 3005 64 32 label_xy 216 118
+end
+usecasecanvas 128536 usecase_ref 128280 // Login
+  xyzwh 446 182 3005 64 32 label_xy 465 214
+end
+usecasecanvas 128664 usecase_ref 128408 // Consulter planning
+  xyzwh 245 158 3005 64 32 label_xy 233 190
+end
+usecasecanvas 128792 usecase_ref 128536 // Traiter demande de reservation
+  xyzwh 247 240 3005 64 32 label_xy 204 272
+end
+relationcanvas 128280 relation_ref 128152 // <generalisation>
+  from ref 128152 z 2001 to ref 128024
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end
+simplerelationcanvas 128920 simplerelation_ref 128152
+  from ref 128408 z 3006 to ref 128536
+end
+simplerelationcanvas 129048 simplerelation_ref 128280
+  from ref 128664 z 3006 to ref 128536
+end
+simplerelationcanvas 129176 simplerelation_ref 128408
+  from ref 128792 z 3006 to ref 128536
+end
+line 129304 ----
+  from ref 128024 z 3006 to ref 128408
+line 129432 ----
+  from ref 128024 z 3006 to ref 128664
+line 129560 ----
+  from ref 128152 z 3006 to ref 128792
+end

@@ -1,11 +1,17 @@
-window_sizes 1228 642 240 720 512 82
+window_sizes 1008 946 240 720 512 82
 diagrams
-  active  usecasediagram_ref 128002 // debut_annee
-    980 491 100 4 0 0
+  usecasediagram_ref 128002 // debut_annee
+    1030 782 100 4 0 0
+  active  classdiagram_ref 134530 // demande_reservation
+    820 644 102 0 13 0
 end
 show_stereotypes
+selected classdiagram_ref 134530 // demande_reservation
 open
   class_ref 128130 // Enseignant
   usecase_ref 128002 // Demande de reservation enseignement
+  classview_ref 128002 // Demande_reservation
+  deploymentview_ref 128024 // Demande_reservation
 end
 end
+verbose
