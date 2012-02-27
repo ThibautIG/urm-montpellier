@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documentation produced by the Html generator of Bouml (http://bouml.free.fr) -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Class EnseignantFacade</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+
+<div class = "title">Class EnseignantFacade</div>
+<p></p>
+
+<!-- ============================================================= -->
+
+<a name="ref4_128131"></a>
+<p>Declaration :</p><ul>
+<li>Java : package class EnseignantFacade </li></ul><div class="sub">
+<a name="ref2_128386"></a>
+<table><tr><td><div class="element">Operation <b>EnseignantFacade</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : + EnseignantFacade() : </li><li>Java : public EnseignantFacade() </li></ul><a name="ref2_128131"></a>
+<table><tr><td><div class="element">Operation <b>connect</b></div></td></tr></table><p>Connecte l'utilisateur si id/pwd est valide<br /></p><p>Declaration :</p><ul><li>Uml : + connect(in id : string, in pwd : string) : void</li><li>Java : public void connect(String id, String pwd)</li></ul><a name="ref0_128259"></a>
+<table><tr><td><div class="element">Relation <b>user (&lt;unidirectional association&gt;)</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : - user : <a href="class128259.html#refclass128259"><b>Enseignant</b></a>, multiplicity : 1</li><li>Java : private <a href="class128259.html#refclass128259"><b>Enseignant</b></a> user</li></ul><a name="ref2_130307"></a>
+<table><tr><td><div class="element">Operation <b>getReservationsValidees</b></div></td></tr></table><p>Renvoie la liste des Réservations validées<br />Type de retour à modifier...<br /></p><p>Declaration :</p><ul><li>Uml : + getReservationsValidees(in week : int) : <a href="class128002.html#refclass128002"><b>Reservation</b></a> [*]</li><li>Java : public <a href="class128002.html#refclass128002"><b>Reservation</b></a> getReservationsValidees(int week)</li></ul><a name="ref2_161794"></a>
+<table><tr><td><div class="element">Operation <b>getReservationsValidees</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : + getReservationsValidees() : <a href="class128002.html#refclass128002"><b>Reservation</b></a></li><li>Java : public <a href="class128002.html#refclass128002"><b>Reservation</b></a> getReservationsValidees()</li></ul><a name="ref2_155266"></a>
+<table><tr><td><div class="element">Operation <b>isSuperUser</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : + isSuperUser() : bool</li><li>Java : public boolean isSuperUser()</li></ul></div>
+<p>All public operations : <a href="class128131.html#ref2_128131"><b>connect</b></a> , <a href="class128131.html#ref2_161794"><b>getReservationsValidees</b></a> , <a href="class128131.html#ref2_130307"><b>getReservationsValidees</b></a> , <a href="class128131.html#ref2_155266"><b>isSuperUser</b></a> </p>
+</body>
+</html>
