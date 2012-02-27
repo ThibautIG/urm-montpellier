@@ -1,0 +1,27 @@
+window_sizes 1280 1004 217 1057 895 35
+diagrams
+  classdiagram_ref 128003 // Login
+    974 594 140 4 8 0
+  sequencediagram_ref 128131 // LoginViewSeq
+    775 473 100 4 0 0
+  classdiagram_ref 128259 // Menu
+    775 473 150 4 0 0
+  classdiagram_ref 128515 // Consulter
+    775 473 150 4 0 0
+  sequencediagram_ref 128643 // ConsulterViewSeq
+    775 473 100 4 36 0
+  active  classdiagram_ref 128002 // Handling
+    1057 895 150 4 320 223
+  sequencediagram_ref 134530 // HandlingSeq
+    776 716 100 4 0 0
+end
+show_stereotypes
+selected class_ref 141442 // GestionnaireJDBC
+open
+  classview_ref 128003 // Login
+  classview_ref 128002 // Menu
+  class_ref 129283 // ConsulterView
+  classview_ref 134658 // Handling
+end
+end
+verbose

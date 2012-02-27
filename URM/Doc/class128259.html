@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Documentation produced by the Html generator of Bouml (http://bouml.free.fr) -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Class Enseignant</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body bgcolor="#ffffff">
+
+<div class = "title">Class Enseignant</div>
+<p></p>
+
+<!-- ============================================================= -->
+
+<a name="ref4_128259"></a>
+<p>Declaration :</p><ul>
+<li>Java : package abstract class Enseignant </li></ul><p>Directly inherited by : <a href="class128387.html#refclass128387"><b>EnseignantJDBC</b></a> </p>
+<div class="sub">
+<a name="ref1_128003"></a>
+<table><tr><td><div class="element">Attribute <b>super_user</b></div></td></tr></table>
+<p>Un attribut représentant les droits de l'utilisateur<br /></p><p>Declaration :</p><ul><li>Uml : - super_user : bool</li><li>Java : private boolean super_user</li></ul><a name="ref2_128259"></a>
+<table><tr><td><div class="element">Operation <b>load</b></div></td></tr></table><p>Charge dans la BD l'utilisateur id si le pwd est correct et rempli la structure<br /></p><p>Declaration :</p><ul><li>Uml : + load(in id : string, in pwd : string) : void</li><li>Java : public void load(String id, String pwd)</li></ul><a name="ref2_129283"></a>
+<table><tr><td><div class="element">Operation <b>isSuperUser</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : + isSuperUser() : bool</li><li>Java : public boolean isSuperUser()</li></ul><a name="ref2_130435"></a>
+<table><tr><td><div class="element">Operation <b>getReservationsValidees</b></div></td></tr></table><p>Type de retour à modifier<br /></p><p>Declaration :</p><ul><li>Uml : + getReservationsValidees() : <a href="class128002.html#refclass128002"><b>Reservation</b></a> [*]</li><li>Java : public <a href="class128002.html#refclass128002"><b>Reservation</b></a> getReservationsValidees()</li></ul><a name="ref1_128002"></a>
+<table><tr><td><div class="element">Attribute <b>nom_enseignant</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - nom_enseignant : string</li><li>Java : private String nom_enseignant</li></ul><a name="ref1_128130"></a>
+<table><tr><td><div class="element">Attribute <b>prenom_enseignant</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - prenom_enseignant : string</li><li>Java : private String prenom_enseignant</li></ul><a name="ref1_128258"></a>
+<table><tr><td><div class="element">Attribute <b>mot_de_passe</b></div></td></tr></table>
+<p>Declaration :</p><ul><li>Uml : - mot_de_passe : string</li><li>Java : private String mot_de_passe</li></ul><a name="ref0_141058"></a>
+<table><tr><td><div class="element">Relation <b>&lt;association&gt;</b></div></td></tr></table><p>Declaration :</p><ul><li>Uml : -  : <a href="class128002.html#refclass128002"><b>Reservation</b></a></li><li>Java : private <a href="class128002.html#refclass128002"><b>Reservation</b></a> </li></ul></div>
+<p>All public operations : <a href="class128259.html#ref2_130435"><b>getReservationsValidees</b></a> , <a href="class128259.html#ref2_129283"><b>isSuperUser</b></a> , <a href="class128259.html#ref2_128259"><b>load</b></a> </p>
+</body>
+</html>
