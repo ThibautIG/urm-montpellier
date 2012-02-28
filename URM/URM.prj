@@ -1,6 +1,6 @@
 format 76
 "URM"
-  revision 25
+  revision 26
   modified_by 2 "D-Day"
   cpp_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/cpp/"
   java_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/java/"
@@ -220,24 +220,6 @@ ${members}}
 	comment "Connecte l'utilisateur si son id/pwd est valide"
       end
 
-      classrelation 128003 // <unidirectional association>
-	relation 128003 --->
-	  a role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 128003 // <unidirectional association>
-	  b multiplicity "*" parent class_ref 128131 // TeacherFacade
-      end
-
-      classrelation 128771 // <unidirectional association>
-	relation 128515 --->
-	  a role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 128771 // <unidirectional association>
-	  b multiplicity "*" parent class_ref 128643 // MenuView
-      end
-
       operation 128899 "getId"
 	public explicit_return_type "string"
 	nparams 0
@@ -262,6 +244,24 @@ ${members}}
 	
 	
 	comment "récupère le champ pwd"
+      end
+
+      classrelation 128003 // account (<unidirectional association>)
+	relation 128003 --->
+	  a role_name "account" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128003 // account (<unidirectional association>)
+	  b multiplicity "*" parent class_ref 128131 // TeacherFacade
+      end
+
+      classrelation 128771 // menu (<unidirectional association>)
+	relation 128515 --->
+	  a role_name "menu" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128771 // menu (<unidirectional association>)
+	  b multiplicity "*" parent class_ref 128643 // MenuView
       end
     end
 
@@ -290,25 +290,7 @@ ${members}}
 	comment "Constructeur"
       end
 
-      classrelation 129027 // ()
-	relation 128643 ---> name ""
-	  a role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 129027 // ()
-	  b multiplicity "*" parent class_ref 128131 // TeacherFacade
-      end
-
-      classrelation 130307 // consulterView (<unidirectional association>)
-	relation 129411 --->
-	  a role_name "consulterView" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 130307 // consulterView (<unidirectional association>)
-	  b multiplicity "1" parent class_ref 129283 // ConsulterView
-      end
-
-      operation 212482 "ActionPerformed"
+      operation 212482 "selectBouton"
 	package explicit_return_type ""
 	nparams 0
 	
@@ -318,32 +300,33 @@ ${members}}
 	
 	
 	
+	comment "Ecoute les actions sur le bouton."
       end
 
-      classrelation 167810 // <unidirectional association>
+      classrelation 167810 // consulting (<unidirectional association>)
 	relation 164994 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "consulting" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 167810 // <unidirectional association>
+	    classrelation_ref 167810 // consulting (<unidirectional association>)
 	  b multiplicity "1" parent class_ref 129283 // ConsulterView
       end
 
-      classrelation 176258 // <unidirectional association>
+      classrelation 176258 // Asking (<unidirectional association>)
 	relation 172546 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "Asking" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 176258 // <unidirectional association>
+	    classrelation_ref 176258 // Asking (<unidirectional association>)
 	  b multiplicity "1" parent class_ref 154882 // AskingView
       end
 
-      classrelation 176514 // <unidirectional association>
+      classrelation 176514 // Handling (<unidirectional association>)
 	relation 172674 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "Handling" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 176514 // <unidirectional association>
+	    classrelation_ref 176514 // Handling (<unidirectional association>)
 	  b multiplicity "1" parent class_ref 134530 // HandlingView
       end
     end
@@ -397,7 +380,7 @@ ${members}}
 	
 	
 	
-	comment "Retourne la liste des créneaux disponibles pour une composante sous la forme d'une liste de String"
+	comment "Retourne la liste des créneaux disponibles sous la forme d'une liste de String."
       end
 
       operation 200194 "getFeatures"
@@ -410,11 +393,11 @@ ${members}}
 	
 	
 	
-	comment "retourne la liste des caractéristiques disponibles dans un tableau de String."
+	comment "retourne la liste des caractéristiques disponibles dans une liste de String."
       end
 
       operation 200322 "getTeaching"
-	public explicit_return_type "string"
+	package explicit_return_type "list<string>"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -423,12 +406,11 @@ ${members}}
 	
 	
 	
-	comment "retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans un tableau de String."
+	comment "retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans une liste de String."
       end
 
       operation 130307 "getValidBooking"
-	stereotype "list"
-	public return_type class_ref 155266 // Booking
+	public explicit_return_type "list<Booking>"
 	multiplicity "*"
 	nparams 1
 	  param in name "week" explicit_type "int"
@@ -439,11 +421,11 @@ ${members}}
 	
 	
 	
-	comment "Renvoie la liste des Réservations validées"
+	comment "Renvoie la liste des Réservations faites par l'enseignant qui sont validées."
       end
 
       operation 155266 "isSuperUser"
-	public explicit_return_type "bool"
+	package explicit_return_type "bool"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -452,6 +434,7 @@ ${members}}
 	
 	
 	
+	comment "Retourne vrai si l'utilisateur est le gestionnaire de l'emploi du temps, faux sinon."
       end
 
       operation 200578 "confirmBooking"
@@ -487,33 +470,33 @@ ${members}}
 	
 	
 	
-	comment "retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie."
+	comment "Retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie."
       end
 
-      classrelation 128259 // <unidirectional association>
+      classrelation 128259 // teacher (<unidirectional association>)
 	relation 128131 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "teacher" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 128259 // <unidirectional association>
+	    classrelation_ref 128259 // teacher (<unidirectional association>)
 	  b multiplicity "*" parent class_ref 128259 // Teacher
       end
 
-      classrelation 174594 // <unidirectional association>
+      classrelation 174594 // manager (<unidirectional association>)
 	relation 171650 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "manager" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 174594 // <unidirectional association>
+	    classrelation_ref 174594 // manager (<unidirectional association>)
 	  b multiplicity "*" parent class_ref 147970 // Manager
       end
 
-      classrelation 174850 // <unidirectional association>
+      classrelation 174850 // myBooking (<unidirectional association>)
 	relation 171778 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "myBooking" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 174850 // <unidirectional association>
+	    classrelation_ref 174850 // myBooking (<unidirectional association>)
 	  b multiplicity "1" parent class_ref 155266 // Booking
       end
     end
@@ -569,77 +552,6 @@ ${members}}
 	idl_decl ""
       end
 
-      attribute 156034 "superUser"
-	private explicit_type "bool"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      operation 200834 "getTeaching"
-	abstract package return_type class_ref 155778 // Teaching
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 200706 "load"
-	abstract package explicit_return_type ""
-	nparams 1
-	  param in name "id" explicit_type "string"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 129283 "isSuperUser"
-	public explicit_return_type "bool"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 130435 "getValidBooking"
-	stereotype "list"
-	public return_type class_ref 155266 // Booking
-	multiplicity "*"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-	comment "Type de retour à modifier"
-      end
-
-      classrelation 175106 // <unidirectional association>
-	relation 171906 --->
-	  a role_name "" multiplicity "*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
-"
-	    classrelation_ref 175106 // <unidirectional association>
-	  b multiplicity "1" parent class_ref 155778 // Teaching
-      end
-
       attribute 171010 "phone"
 	private explicit_type "string"
 	cpp_decl ""
@@ -658,6 +570,80 @@ ${members}}
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      attribute 156034 "superUser"
+	private explicit_type "bool"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      operation 200706 "load"
+	abstract package explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge l'enseignant qui a l'id donné en paramètre."
+      end
+
+      operation 200834 "getTeachings"
+	abstract package explicit_return_type "list<Teaching>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste des enseignements de cet enseignant."
+      end
+
+      operation 129283 "isSuperUser"
+	public explicit_return_type "bool"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne vrai si l'enseignant est le gestionnaire, faux sinon."
+      end
+
+      operation 130435 "getValidBooking"
+	package explicit_return_type "list<Booking>"
+	multiplicity "*"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste des réservations qui ont été faites par l'utilisateur et qui ont été validées (Qui ont reçu une salle). "
+      end
+
+      classrelation 175106 // myTeachings (<association>)
+	relation 171906 ----
+	  a role_name "myTeachings" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 175106 // myTeachings (<association>)
+	  b role_name "teacher" multiplicity "1" private
+	    classrelation_ref 189826 // teacher (<association>)
       end
     end
 
@@ -683,14 +669,6 @@ ${members}}
 	
 	
 	
-      end
-
-      classrelation 128515 // <generalisation>
-	relation 128259 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 128515 // <generalisation>
-	  b parent class_ref 128259 // Teacher
       end
 
       operation 211842 "getTeaching"
@@ -730,6 +708,14 @@ ${members}}
 	
 	comment "Type de retour à modifier"
       end
+
+      classrelation 128515 // <generalisation>
+	relation 128259 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 128515 // <generalisation>
+	  b parent class_ref 128259 // Teacher
+      end
     end
 
     class 155906 "PersistFactory"
@@ -743,6 +729,16 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      attribute 157954 "PersistFactory"
+	class_attribute private type class_ref 155906 // PersistFactory
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
       operation 202370 "getInstance"
 	class_operation public return_type class_ref 155906 // PersistFactory
 	nparams 0
@@ -753,10 +749,11 @@ ${members}}
 	
 	
 	
+	comment "Retourne l'instance de la persistFactory."
       end
 
       operation 202498 "createTeacher"
-	abstract package explicit_return_type "Teacher"
+	abstract package return_type class_ref 128259 // Teacher
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -765,16 +762,7 @@ ${members}}
 	
 	
 	
-      end
-
-      attribute 157954 "PersistFactory"
-	class_attribute private type class_ref 155906 // PersistFactory
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+	comment "Renvoie un objet de type enseignant."
       end
 
       operation 202626 "createTeaching"
@@ -787,6 +775,7 @@ ${members}}
 	
 	
 	
+	comment "Renvoie un objet de type enseignement."
       end
 
       operation 202754 "createBooking"
@@ -799,6 +788,7 @@ ${members}}
 	
 	
 	
+	comment "Renvoie un objet de type reservation."
       end
 
       operation 202882 "createFeature"
@@ -811,10 +801,12 @@ ${members}}
 	
 	
 	
+	comment "Renvoie un objet de type caractéristique.
+"
       end
 
       operation 203010 "createSchedule"
-	abstract package explicit_return_type "Schedule"
+	abstract package return_type class_ref 141314 // Schedule
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -823,10 +815,11 @@ ${members}}
 	
 	
 	
+	comment "Renvoie un objet de type créneau horaire."
       end
 
       operation 203138 "createManager"
-	abstract package explicit_return_type "Manager"
+	abstract package return_type class_ref 147970 // Manager
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -835,6 +828,7 @@ ${members}}
 	
 	
 	
+	comment "Renvoie un objet de type gestionnaire."
       end
     end
 
@@ -849,12 +843,15 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      classrelation 155138 // <generalisation>
-	relation 155010 ---|>
-	  a public
-	    java "${type}"
-	    classrelation_ref 155138 // <generalisation>
-	  b parent class_ref 155906 // PersistFactory
+      attribute 164482 "connect"
+	private explicit_type "JDBC"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Objet qui contient la connection à la base de données."
       end
 
       operation 203522 "createBooking"
@@ -929,14 +926,12 @@ ${members}}
 	
       end
 
-      attribute 164482 "connect"
-	private explicit_type "JDBC"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+      classrelation 155138 // <generalisation>
+	relation 155010 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 155138 // <generalisation>
+	  b parent class_ref 155906 // PersistFactory
       end
     end
 
@@ -1046,15 +1041,15 @@ ${members}}
 	
 	
 	
-	comment "Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre"
+	comment "Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre."
       end
 
-      classrelation 130051 // <unidirectional association>
+      classrelation 130051 // account (<unidirectional association>)
 	relation 129283 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "account" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 130051 // <unidirectional association>
+	    classrelation_ref 130051 // account (<unidirectional association>)
 	  b multiplicity "1" parent class_ref 128131 // TeacherFacade
       end
     end
@@ -1097,6 +1092,66 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      attribute 155138 "featuresSelected"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155010 "scheduleSelected"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154882 "dateSelected"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 154754 "teachingSelected"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155266 "capacity"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
+      attribute 155394 "comments"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
       operation 198658 "AskingView"
 	package explicit_return_type ""
 	nparams 1
@@ -1120,7 +1175,7 @@ ${members}}
 	
 	
 	
-	comment "Méthode qui écoute les événement sur les radios boutons e sélection du type de demande."
+	comment "Méthode qui écoute les événement sur les radios boutons de sélection du type de demande."
       end
 
       operation 198914 "selectTeaching"
@@ -1136,16 +1191,6 @@ ${members}}
 	comment "Méthode qui écoute le widget pour la sélection d'un enseignement et sauvegarde l'enseignement choisi."
       end
 
-      attribute 154754 "teachingSelected"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
       operation 199042 "selectDate"
 	package explicit_return_type "void"
 	nparams 0
@@ -1157,16 +1202,6 @@ ${members}}
 	
 	
 	comment "écoute les événements du calendrier et sauvegarde la date choisie."
-      end
-
-      attribute 154882 "dateSelected"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
       end
 
       operation 199170 "selectSchedule"
@@ -1182,16 +1217,6 @@ ${members}}
 	comment "écoute les événements sur la ComboBox de selection du créneau et sauvegarde le créneau choisi."
       end
 
-      attribute 155010 "scheduleSelected"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
       operation 199298 "addFeature"
 	package explicit_return_type ""
 	nparams 0
@@ -1202,17 +1227,7 @@ ${members}}
 	
 	
 	
-	comment "Ajoute les caractéristiques sélectionnées dans la liste de droite. Sauvegarde ces caractéristiques."
-      end
-
-      attribute 155138 "featuresSelected"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
+	comment "Ajoute la caractéristique sélectionnée dans la liste de gauche à la liste de droite. Sauvegarde cette caractéristique."
       end
 
       operation 199426 "setCapacity"
@@ -1228,16 +1243,6 @@ ${members}}
 	comment "écoute la boite d'éddition capacité et sauvegarde la donnée rentrée."
       end
 
-      attribute 155266 "capacity"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
       operation 199554 "setComments"
 	package explicit_return_type "void"
 	nparams 0
@@ -1249,16 +1254,6 @@ ${members}}
 	
 	
 	comment "écoute la zone d'éddition et sauvegarde le contenu de celle-ci."
-      end
-
-      attribute 155394 "comments"
-	private explicit_type "string"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
       end
 
       operation 199682 "checkFreeRooms"
@@ -1287,12 +1282,12 @@ ${members}}
 	comment "Valide la réservation avec les paramètres choisis. Si un paramètre n'est pas sélectionné alors la validation renvoie une erreur."
       end
 
-      classrelation 174338 // <unidirectional association>
+      classrelation 174338 // account (<unidirectional association>)
 	relation 171522 --->
-	  a role_name "" multiplicity "1" private
+	  a role_name "account" multiplicity "1" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 174338 // <unidirectional association>
+	    classrelation_ref 174338 // account (<unidirectional association>)
 	  b multiplicity "1" parent class_ref 128131 // TeacherFacade
       end
     end
@@ -1309,7 +1304,7 @@ ${members}}
       explicit_switch_type ""
       
       operation 201474 "getFeatures"
-	abstract package return_type class_ref 155650 // Feature
+	abstract package explicit_return_type "list<Feature>"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -1318,10 +1313,11 @@ ${members}}
 	
 	
 	
+	comment "retourne une liste de toutes les caractéristiques existantes."
       end
 
       operation 201346 "getSchedules"
-	abstract package explicit_return_type "Schedule"
+	abstract package explicit_return_type "list<Schedule>"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -1330,10 +1326,11 @@ ${members}}
 	
 	
 	
+	comment "retourne une liste de tous les créneaux existants."
       end
 
       operation 190338 "getAllUnvalidBookings"
-	abstract cpp_virtual package return_type class_ref 155266 // Booking
+	abstract cpp_virtual package explicit_return_type "list<Booking>"
 	multiplicity "*"
 	nparams 0
 	
@@ -1343,33 +1340,7 @@ ${members}}
 	
 	
 	
-      end
-
-      classrelation 175362 // <unidirectional association>
-	relation 172034 --->
-	  a role_name "" multiplicity "*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
-"
-	    classrelation_ref 175362 // <unidirectional association>
-	  b multiplicity "1" parent class_ref 155650 // Feature
-      end
-
-      classrelation 175618 // <unidirectional association>
-	relation 172162 --->
-	  a role_name "" multiplicity "*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
-"
-	    classrelation_ref 175618 // <unidirectional association>
-	  b multiplicity "1" parent class_ref 141314 // Schedule
-      end
-
-      classrelation 176770 // allBookings (<unidirectional association>)
-	relation 172802 --->
-	  a role_name "allBookings" multiplicity "*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
-"
-	    classrelation_ref 176770 // allBookings (<unidirectional association>)
-	  b multiplicity "1" parent class_ref 155266 // Booking
+	comment "Retourne la liste de toutes les réservations qui ne sont pas encore validées, c'est à dire pour lesquelles aucune salle n'est attribuée."
       end
 
       operation 226050 "selectBooking"
@@ -1383,20 +1354,11 @@ ${members}}
 	
 	
 	
-      end
-
-      classrelation 183298 // selectedBooking (<unidirectional association>)
-	relation 179330 --->
-	  a role_name "selectedBooking" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 183298 // selectedBooking (<unidirectional association>)
-	  b multiplicity "1" parent class_ref 155266 // Booking
+	comment "Ecoute les événements sur le tableau, lors d'un clique sur celui-ci enregistre la réservation sélectionné puis affiche toutes ses informations."
       end
 
       operation 233218 "getBookingTeacherInfos"
-	stereotype "struct"
-	package explicit_return_type "string"
+	package explicit_return_type "struct string"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -1405,6 +1367,7 @@ ${members}}
 	
 	
 	
+	comment "retourne sous la forme d'une structure composée de strings toutes les informations sur le teacher, c'est à dire nom, prénom, téléphone, mail et enseignement."
       end
 
       operation 233346 "getSelectedBookingDate"
@@ -1417,6 +1380,7 @@ ${members}}
 	
 	
 	
+	comment "Retourne la date de la réservation selectionnée."
       end
 
       operation 233474 "getSelectedBookingSchedule"
@@ -1429,11 +1393,11 @@ ${members}}
 	
 	
 	
+	comment "Retourne le créneau de la réservation selectionnée."
       end
 
       operation 234242 "getWeekUnvalidSchedules"
-	stereotype "struct"
-	abstract cpp_virtual package explicit_return_type "string"
+	abstract cpp_virtual package explicit_return_type "list struct string"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -1442,30 +1406,7 @@ ${members}}
 	
 	
 	
-      end
-
-      operation 234882 "saveSelectedBooking"
-	package explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 235138 "deleteSelectedBooking"
-	abstract cpp_virtual package explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
+	comment "Retourne sous forme de liste de structure les dates et créneaux pour lesquelles il y aucune salle libre avec les paramètre de la réservation selectionnée."
       end
 
       operation 235906 "setSelectedBookingDate"
@@ -1479,6 +1420,7 @@ ${members}}
 	
 	
 	
+	comment "Remplace l'ancienne date de la reservation par la nouvelle date."
       end
 
       operation 236162 "setSelectedBookingSchedule"
@@ -1492,6 +1434,7 @@ ${members}}
 	
 	
 	
+	comment "Remplace l'ancien créneau de la reservation par le nouveau créneau."
       end
 
       operation 236418 "setSelectedBookingFeatures"
@@ -1505,6 +1448,69 @@ ${members}}
 	
 	
 	
+	comment "Remplace les anciennes caractéristiques de la reservation par les nouvelles."
+      end
+
+      operation 234882 "saveSelectedBooking"
+	package explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Sauvegarde la réservation selectionnée et lui associe une salle."
+      end
+
+      operation 235138 "deleteSelectedBooking"
+	abstract cpp_virtual package explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Supprime la réservation selectionnée."
+      end
+
+      classrelation 175362 // allFeatures (<unidirectional association>)
+	relation 172034 --->
+	  a role_name "allFeatures" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 175362 // allFeatures (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 155650 // Feature
+      end
+
+      classrelation 175618 // allSchedules (<unidirectional association>)
+	relation 172162 --->
+	  a role_name "allSchedules" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 175618 // allSchedules (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 141314 // Schedule
+      end
+
+      classrelation 176770 // allBookings (<unidirectional association>)
+	relation 172802 --->
+	  a role_name "allBookings" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 176770 // allBookings (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 155266 // Booking
+      end
+
+      classrelation 183298 // selectedBooking (<unidirectional association>)
+	relation 179330 --->
+	  a role_name "selectedBooking" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 183298 // selectedBooking (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 155266 // Booking
       end
     end
 
@@ -1576,19 +1582,6 @@ ${members}}
 	
       end
 
-      operation 234370 "getWeekUnvalidSchedules"
-	stereotype "struct"
-	cpp_virtual package explicit_return_type "string"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
       operation 235266 "deleteSelectedBooking"
 	cpp_virtual package explicit_return_type "void"
 	nparams 0
@@ -1599,6 +1592,19 @@ ${members}}
 	
 	
 	
+      end
+
+      operation 249986 "getWeekValidSchedules"
+	cpp_virtual package explicit_return_type "list struct string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne sous forme de liste de structure les dates et créneaux pour lesquelles il y des salles libre avec les paramètre de la réservation selectionnée."
       end
     end
 
@@ -1623,31 +1629,6 @@ ${members}}
 	idl_decl ""
       end
 
-      operation 201602 "load"
-	abstract package explicit_return_type ""
-	nparams 1
-	  param in name "id" explicit_type "string"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 201730 "getId"
-	package explicit_return_type "string"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
       attribute 156930 "endTime"
 	private explicit_type "string"
 	cpp_decl ""
@@ -1666,6 +1647,34 @@ ${members}}
 	php_decl ""
 	python_decl ""
 	idl_decl ""
+      end
+
+      operation 201602 "load"
+	abstract package explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge le créneau avec l'id correspondant.
+"
+      end
+
+      operation 201730 "getId"
+	package explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne l'id du créneau."
       end
     end
 
@@ -1735,19 +1744,6 @@ ${members}}
 	idl_decl ""
       end
 
-      operation 202114 "load"
-	abstract package explicit_return_type ""
-	nparams 1
-	  param in name "id" explicit_type "string"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
       attribute 157442 "hours"
 	private explicit_type "int"
 	cpp_decl ""
@@ -1788,6 +1784,20 @@ ${members}}
 	idl_decl ""
       end
 
+      operation 202114 "load"
+	abstract package explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge l'enseignement correspondant à l'id donné en paramètre."
+      end
+
       operation 234626 "getTeacher"
 	package return_type class_ref 128259 // Teacher
 	nparams 0
@@ -1798,6 +1808,11 @@ ${members}}
 	
 	
 	
+	comment "Retourne l'enseignant qui enseigne cet enseignement."
+      end
+
+      classrelation 189826 // teacher (<association>)
+	relation_ref 171906 // <association>
       end
     end
 
@@ -1845,19 +1860,6 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
-      operation 201858 "load"
-	abstract package explicit_return_type ""
-	nparams 1
-	  param in name "id" explicit_type "string"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
       attribute 157058 "id"
 	private explicit_type "string"
 	cpp_decl ""
@@ -1878,6 +1880,20 @@ ${members}}
 	idl_decl ""
       end
 
+      operation 201858 "load"
+	abstract package explicit_return_type ""
+	nparams 1
+	  param in name "id" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Chage la caractéristique correspondant à l'id donné en paramètre."
+      end
+
       operation 201986 "getId"
 	package explicit_return_type "string"
 	nparams 0
@@ -1888,6 +1904,7 @@ ${members}}
 	
 	
 	
+	comment "Retourne l'id de la caractéristique."
       end
     end
 
@@ -1948,24 +1965,6 @@ ${members}}
       explicit_switch_type ""
       
       comment "																																																																																																																																																																																																										"
-      operation 200962 "create"
-	package explicit_return_type ""
-	nparams 6
-	  param in name "date" explicit_type "string"
-	  param in name "comments" explicit_type "string"
-	  param in name "capacity" explicit_type "int"
-	  param in name "teaching" type class_ref 155778 // Teaching
-	  param in name "schedule" type class_ref 141314 // Schedule
-	  param in name "feats" explicit_type "list<Feature>"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
       attribute 156162 "id"
 	private explicit_type "string"
 	cpp_decl ""
@@ -1984,30 +1983,6 @@ ${members}}
 	php_decl ""
 	python_decl ""
 	idl_decl ""
-      end
-
-      operation 201090 "checkFreeRooms"
-	abstract package explicit_return_type "int"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 201218 "save"
-	abstract package explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
       end
 
       attribute 156418 "date"
@@ -2030,31 +2005,60 @@ ${members}}
 	idl_decl ""
       end
 
-      classrelation 160386 // <unidirectional association>
-	relation 158082 --->
-	  a role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+      attribute 177666 "idSalle"
+	private explicit_type "string"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	    classrelation_ref 160386 // <unidirectional association>
-	  b multiplicity "*" parent class_ref 155778 // Teaching
+	php_decl ""
+	python_decl ""
+	idl_decl ""
       end
 
-      classrelation 160642 // <unidirectional association>
-	relation 158210 --->
-	  a role_name "" multiplicity "*" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+      operation 200962 "create"
+	package explicit_return_type ""
+	nparams 6
+	  param in name "date" explicit_type "string"
+	  param in name "comments" explicit_type "string"
+	  param in name "capacity" explicit_type "int"
+	  param in name "teaching" type class_ref 155778 // Teaching
+	  param in name "schedule" type class_ref 141314 // Schedule
+	  param in name "feats" explicit_type "list<Feature>"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
 "
-	    classrelation_ref 160642 // <unidirectional association>
-	  b multiplicity "*" parent class_ref 155650 // Feature
+	
+	
+	
+	comment "Crée une nouvelle réservation."
       end
 
-      classrelation 175874 // <unidirectional association>
-	relation 172290 --->
-	  a role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+      operation 235394 "load"
+	abstract cpp_virtual package explicit_return_type ""
+	nparams 1
+	  param in name "reference" explicit_type "string"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
 "
-	    classrelation_ref 175874 // <unidirectional association>
-	  b multiplicity "*" parent class_ref 141314 // Schedule
+	
+	
+	
+	comment "Charge la réservation qui à pour id reference."
+      end
+
+      operation 201090 "checkFreeRooms"
+	abstract package explicit_return_type "int"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne le nombre de salles de disponibles pour les paramètres de cette réservation."
       end
 
       operation 234498 "getTeaching"
@@ -2067,10 +2071,11 @@ ${members}}
 	
 	
 	
+	comment "Retourne l'enseignement lié à cette réservation."
       end
 
-      operation 235394 "load"
-	abstract cpp_virtual package explicit_return_type ""
+      operation 243202 "getDate"
+	package explicit_return_type "string"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -2079,6 +2084,8 @@ ${members}}
 	
 	
 	
+	comment "Retourne la date de réservation.
+"
       end
 
       operation 236034 "setDate"
@@ -2092,6 +2099,21 @@ ${members}}
 	
 	
 	
+	comment "Remplace la date de reservation.
+"
+      end
+
+      operation 243330 "getSchedule"
+	package explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne le créneau de réservation."
       end
 
       operation 236290 "setSchedule"
@@ -2105,6 +2127,20 @@ ${members}}
 	
 	
 	
+	comment "Remplace le créneau de réservation."
+      end
+
+      operation 243458 "getFeatures"
+	package explicit_return_type "list<string>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste des caractéristiques de la réservation."
       end
 
       operation 236546 "setFeatures"
@@ -2118,10 +2154,11 @@ ${members}}
 	
 	
 	
+	comment "Remplace la liste des caractéristiques de la réservation."
       end
 
-      operation 243202 "getDate"
-	package explicit_return_type "string"
+      operation 250114 "setSalle"
+	abstract cpp_virtual package explicit_return_type ""
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -2130,10 +2167,11 @@ ${members}}
 	
 	
 	
+	comment "Associe une salle à la réservation."
       end
 
-      operation 243330 "getSchedule"
-	package explicit_return_type "string"
+      operation 201218 "save"
+	abstract package explicit_return_type ""
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -2142,19 +2180,34 @@ ${members}}
 	
 	
 	
+	comment "Sauvegarde la réservation."
       end
 
-      operation 243458 "getFeatures"
-	stereotype "list"
-	package explicit_return_type "string"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
+      classrelation 175874 // schedule (<unidirectional association>)
+	relation 172290 --->
+	  a role_name "schedule" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	
-	
-	
+	    classrelation_ref 175874 // schedule (<unidirectional association>)
+	  b multiplicity "*" parent class_ref 141314 // Schedule
+      end
+
+      classrelation 160642 // feature (<unidirectional association>)
+	relation 158210 --->
+	  a role_name "feature" multiplicity "*" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 160642 // feature (<unidirectional association>)
+	  b multiplicity "*" parent class_ref 155650 // Feature
+      end
+
+      classrelation 160386 // teaching (<unidirectional association>)
+	relation 158082 --->
+	  a role_name "teaching" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 160386 // teaching (<unidirectional association>)
+	  b multiplicity "*" parent class_ref 155778 // Teaching
       end
     end
 
@@ -2175,6 +2228,18 @@ ${members}}
 	    java "${type}"
 	    classrelation_ref 155522 // <generalisation>
 	  b parent class_ref 155266 // Booking
+      end
+
+      operation 235522 "load"
+	cpp_virtual package explicit_return_type ""
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
 
       operation 204546 "checkFreeRooms"
@@ -2200,18 +2265,6 @@ ${members}}
 	
 	
       end
-
-      operation 235522 "load"
-	cpp_virtual package explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
     end
 
     classinstance 135554 ""
@@ -2222,7 +2275,7 @@ ${members}}
         end
     end
 
-    classinstance 135042 "Bob"
+    classinstance 135042 ""
       type class_ref 154754 // Enseignant
       attributes
         end
@@ -2284,7 +2337,7 @@ ${members}}
       size A0
     end
 
-    sequencediagram 134530 "HandlingSeq"
+    sequencediagram 134530 "HandlingCase1"
       show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
       overlapping_bars size A0
     end
@@ -2300,6 +2353,17 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      attribute 141314 "askingSelected"
+	private explicit_type "int"
+	init_value "-1"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+      end
+
       operation 168450 "HandlingView"
 	public explicit_return_type ""
 	nparams 0
@@ -2322,6 +2386,7 @@ ${members}}
 	
 	
 	
+	comment "Ecoute les événement sur le tableau des réservation, quand une réservation est sélectionne on déclenche l'affichage de celle-ci."
       end
 
       operation 168706 "displayBookingData"
@@ -2336,51 +2401,6 @@ ${members}}
 	
       end
 
-      operation 168962 "valid"
-	public explicit_return_type "void"
-	nparams 1
-	  param in name "reference" explicit_type "int"
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 169090 "delete"
-	public explicit_return_type "void"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      attribute 141314 "askingSelected"
-	private explicit_type "int"
-	init_value "-1"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      classrelation 148482 // <unidirectional association>
-	relation 148354 --->
-	  a role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 148482 // <unidirectional association>
-	  b multiplicity "1" parent class_ref 141058 // HandlingFacade
-      end
-
       operation 235778 "changeBookingData"
 	package explicit_return_type "void"
 	nparams 0
@@ -2391,6 +2411,43 @@ ${members}}
 	
 	
 	
+	comment "Ecoute les événement de l'emploi du temps ainsi que ceux de la liste déroulante des créneau, de la date et des caractéristiques.
+En cas d'événement les paramètres de la réservation sont changés."
+      end
+
+      operation 168962 "valid"
+	package explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Ecoute le bouton valider et sauvegarde et trouve une salle pour la réservation en cas de clique."
+      end
+
+      operation 169090 "delete"
+	package explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Ecoute le bouton supprimer et supprime la réservation selectionné en cas de clique."
+      end
+
+      classrelation 148482 // handler (<unidirectional association>)
+	relation 148354 --->
+	  a role_name "handler" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 148482 // handler (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 141058 // HandlingFacade
       end
     end
 
@@ -2419,8 +2476,7 @@ ${members}}
       end
 
       operation 175746 "getAllUnvalidBookings"
-	stereotype "list"
-	package explicit_return_type "struct String"
+	package explicit_return_type "list <struct String>"
 	multiplicity "*"
 	nparams 0
 	
@@ -2431,16 +2487,7 @@ ${members}}
 	
 	
 	comment "Renvoie la liste de toutes les demandes de reservations 
-des enseignants qui ne sont pas validees"
-      end
-
-      classrelation 148354 // <unidirectional association>
-	relation 148226 --->
-	  a role_name "" multiplicity "1" private
-	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	    classrelation_ref 148354 // <unidirectional association>
-	  b multiplicity "1" parent class_ref 147970 // Manager
+des enseignants qui ne sont pas validees."
       end
 
       operation 225922 "selectBooking"
@@ -2454,11 +2501,12 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
+	comment "Selectionne la réservation avec la reference donnée en paramètre.
+"
       end
 
       operation 232578 "getBookingTeacherInfos"
-	stereotype "struct"
-	package explicit_return_type "string"
+	package explicit_return_type "struct string"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -2467,32 +2515,7 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
-      end
-
-      operation 232706 "getFeatures"
-	stereotype "list"
-	package explicit_return_type "string"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
-      end
-
-      operation 232834 "getSchedules"
-	stereotype "list"
-	package explicit_return_type "string"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
+	comment "retourne sous la forme d'une structure composée de strings toutes les informations sur le teacher, c'est à dire nom, prénom, téléphone, mail et enseignement."
       end
 
       operation 232962 "getSelectedBookingDate"
@@ -2505,6 +2528,46 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
+	comment "Retourne la date de la réservation selectionnée."
+      end
+
+      operation 232706 "getFeatures"
+	package explicit_return_type "list<string>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la listes de toutes les caractéristiques disponibles."
+      end
+
+      operation 243074 "getSelectedBookingFeatures"
+	package explicit_return_type "list<string>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste des caractéristiques de la réservation selectionnée."
+      end
+
+      operation 232834 "getSchedules"
+	package explicit_return_type "list<string>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste de tout les créneaux disponibles."
       end
 
       operation 233090 "getSelectedBookingSchedule"
@@ -2517,11 +2580,11 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
+	comment "Retourne le créneau de la réservation selectionnée."
       end
 
-      operation 234114 "getWeekUnvalidSchedules"
-	stereotype "struct"
-	package explicit_return_type "string"
+      operation 234114 "getWeekValidSchedules"
+	package explicit_return_type "struct string"
 	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
@@ -2530,6 +2593,7 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
+	comment "Retourne toutes les créneaux pour toutes les dates de la semaine pour lesquels il y a des salles de disponibles avec cette réservation."
       end
 
       operation 234754 "validBooking"
@@ -2542,6 +2606,7 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
+	comment "Sauvegarde la réservation et lui associe une salle."
       end
 
       operation 235010 "deleteBooking"
@@ -2554,6 +2619,7 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
+	comment "Supprime la réservation."
       end
 
       operation 235650 "changeBookingData"
@@ -2569,53 +2635,16 @@ des enseignants qui ne sont pas validees"
 	
 	
 	
+	comment "Remplace les données dans la réservation selectionnée."
       end
 
-      operation 243074 "getSelectedBookingFeatures"
-	stereotype "list"
-	package explicit_return_type "string"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
+      classrelation 148354 // manager (<unidirectional association>)
+	relation 148226 --->
+	  a role_name "manager" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
 "
-	
-	
-	
-      end
-    end
-
-    class 141186 "Salle"
-      visibility package 
-      cpp_decl ""
-      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
-${members}}
-"
-      php_decl ""
-      python_2_2 python_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      attribute 148098 "numeroSalle"
-	private explicit_type "int"
-	cpp_decl ""
-	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
-"
-	php_decl ""
-	python_decl ""
-	idl_decl ""
-      end
-
-      operation 183682 "getNumeroSalle"
-	public explicit_return_type "int"
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
+	    classrelation_ref 148354 // manager (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 147970 // Manager
       end
     end
 

@@ -96,16 +96,16 @@ durationcanvas 144386 classinstance_ref 128386 // :ManagerJDBC
   xyzwh 735 774 2010 11 28
 end
 durationcanvas 144770 classinstance_ref 128130 // :HandlingView
-  xyzwh 238 1109 2010 11 65
+  xyzwh 238 1109 2010 11 86
 end
 durationcanvas 145154 classinstance_ref 128258 // :HandlingFacade
-  xyzwh 534 1110 2010 11 53
+  xyzwh 534 1110 2010 11 85
 end
 durationcanvas 145538 classinstance_ref 128386 // :ManagerJDBC
-  xyzwh 735 1123 2010 11 36
+  xyzwh 735 1125 2010 11 69
 end
 durationcanvas 145922 classinstance_ref 140034 // :BookingJDBC
-  xyzwh 863 1130 2010 11 25
+  xyzwh 863 1172 2010 11 25
 end
 durationcanvas 146178 classinstance_ref 128130 // :HandlingView
   xyzwh 238 867 2010 11 213
@@ -131,13 +131,16 @@ end
 durationcanvas 148866 classinstance_ref 140034 // :BookingJDBC
   xyzwh 863 1004 2010 11 36
 end
+durationcanvas 149250 classinstance_ref 140034 // :BookingJDBC
+  xyzwh 863 1131 2010 11 25
+end
 lostfoundmsgsupport 135682 xyz 83 158 2015
 lostfoundmsgsupport 144898 xyz 82 1111 2015
 lostfoundmsgsupport 146306 xyz 82 869 2015
 msg 129154 asynchronous
   from durationcanvas_ref 128898
   to durationcanvas_ref 129026
-  yz 76 2015 msg operation_ref 175746 // "getAllUnvalidBookings() : struct String [*]"
+  yz 76 2015 msg operation_ref 175746 // "getAllUnvalidBookings() : list <struct String> [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 340 62
 msg 133506 asynchronous
@@ -192,7 +195,7 @@ reflexivemsg 136834 asynchronous
 msg 137090 asynchronous
   from durationcanvas_ref 136706
   to durationcanvas_ref 136962
-  yz 268 2030 msg operation_ref 232578 // "getBookingTeacherInfos() : string"
+  yz 268 2030 msg operation_ref 232578 // "getBookingTeacherInfos() : struct string"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 332 254
 msg 137218 return
@@ -214,7 +217,7 @@ msg 137602 return
 msg 137858 asynchronous
   from durationcanvas_ref 136706
   to durationcanvas_ref 137730
-  yz 459 2025 msg operation_ref 232834 // "getSchedules() : string"
+  yz 459 2025 msg operation_ref 232834 // "getSchedules() : list<string>"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 357 445
 msg 137986 return
@@ -236,7 +239,7 @@ msg 138370 return
 msg 138626 asynchronous
   from durationcanvas_ref 136706
   to durationcanvas_ref 138498
-  yz 609 2025 msg operation_ref 232706 // "getFeatures() : string"
+  yz 609 2025 msg operation_ref 232706 // "getFeatures() : list<string>"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 361 595
 msg 138754 return
@@ -247,7 +250,7 @@ msg 138754 return
 msg 139010 asynchronous
   from durationcanvas_ref 136706
   to durationcanvas_ref 138882
-  yz 685 2025 msg operation_ref 243074 // "getSelectedBookingFeatures() : string"
+  yz 685 2025 msg operation_ref 243074 // "getSelectedBookingFeatures() : list<string>"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 321 671
 msg 139138 return
@@ -258,7 +261,7 @@ msg 139138 return
 msg 139394 asynchronous
   from durationcanvas_ref 136706
   to durationcanvas_ref 139266
-  yz 767 2025 msg operation_ref 234114 // "getWeekUnvalidSchedules() : string"
+  yz 767 2025 msg operation_ref 234114 // "getWeekValidSchedules() : struct string"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 326 753
 msg 139522 return
@@ -269,7 +272,7 @@ msg 139522 return
 msg 139778 asynchronous
   from durationcanvas_ref 136962
   to durationcanvas_ref 139650
-  yz 275 2015 msg operation_ref 233218 // "getBookingTeacherInfos() : string"
+  yz 275 2015 msg operation_ref 233218 // "getBookingTeacherInfos() : struct string"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 578 261
 msg 139906 return
@@ -379,7 +382,7 @@ msg 143874 return
 msg 144130 asynchronous
   from durationcanvas_ref 143618
   to durationcanvas_ref 144002
-  yz 703 2020 msg operation_ref 243458 // "getFeatures() : string"
+  yz 703 2020 msg operation_ref 243458 // "getFeatures() : list<string>"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 771 689
 msg 144258 return
@@ -390,7 +393,7 @@ msg 144258 return
 msg 144514 asynchronous
   from durationcanvas_ref 139266
   to durationcanvas_ref 144386
-  yz 774 2015 msg operation_ref 234370 // "getWeekUnvalidSchedules() : string"
+  yz 774 2015 msg operation_ref 249986 // "getWeekValidSchedules() : list struct string"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 572 760
 msg 144642 return
@@ -401,7 +404,7 @@ msg 144642 return
 msg 145026 found_synchronous
   from lostfoundmsgsupport_ref 144898
   to durationcanvas_ref 144770
-  yz 1109 2015 msg operation_ref 168962 // "valid(in reference : int) : void"
+  yz 1109 2015 msg operation_ref 168962 // "valid() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 149 1095
 msg 145282 asynchronous
@@ -413,25 +416,25 @@ msg 145282 asynchronous
 msg 145410 return
   from durationcanvas_ref 145154
   to durationcanvas_ref 144770
-  yz 1152 2015 unspecifiedmsg
+  yz 1184 2015 unspecifiedmsg
   show_full_operations_definition default drawing_language default show_context_mode default
 msg 145666 asynchronous
   from durationcanvas_ref 145154
   to durationcanvas_ref 145538
-  yz 1123 2015 msg operation_ref 234882 // "saveSelectedBooking() : void"
+  yz 1125 2015 msg operation_ref 234882 // "saveSelectedBooking() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 592 1109
+  label_xy 592 1111
 msg 145794 return
   from durationcanvas_ref 145538
   to durationcanvas_ref 145154
-  yz 1148 2015 unspecifiedmsg
+  yz 1178 2015 unspecifiedmsg
   show_full_operations_definition default drawing_language default show_context_mode default
 msg 146050 asynchronous
   from durationcanvas_ref 145538
   to durationcanvas_ref 145922
-  yz 1130 2020 msg operation_ref 204674 // "save()"
+  yz 1172 2020 msg operation_ref 204674 // "save()"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 796 1116
+  label_xy 796 1158
 msg 146434 found_synchronous
   from lostfoundmsgsupport_ref 146306
   to durationcanvas_ref 146178
@@ -514,5 +517,16 @@ msg 149122 return
   from durationcanvas_ref 148866
   to durationcanvas_ref 147714
   yz 1023 2020 unspecifiedmsg
+  show_full_operations_definition default drawing_language default show_context_mode default
+msg 149378 asynchronous
+  from durationcanvas_ref 145538
+  to durationcanvas_ref 149250
+  yz 1131 2020 msg operation_ref 250114 // "setSalle()"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 781 1117
+msg 149506 return
+  from durationcanvas_ref 149250
+  to durationcanvas_ref 145538
+  yz 1151 3005 unspecifiedmsg
   show_full_operations_definition default drawing_language default show_context_mode default
 end
