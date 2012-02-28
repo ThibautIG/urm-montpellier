@@ -1,6 +1,6 @@
 format 76
 "URM"
-  revision 22
+  revision 23
   modified_by 2 "D-Day"
   cpp_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/cpp/"
   java_root_dir "C:/Users/OB3/Boulot/projet_transversal/bouml/export/java/"
@@ -1383,12 +1383,34 @@ ${members}}
 	  b multiplicity "1" parent class_ref 141314 // Schedule
       end
 
-      classrelation 176770 // <unidirectional association>
+      classrelation 176770 // allBookings (<unidirectional association>)
 	relation 172802 --->
-	  a role_name "" multiplicity "*" private
+	  a role_name "allBookings" multiplicity "*" private
 	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
 "
-	    classrelation_ref 176770 // <unidirectional association>
+	    classrelation_ref 176770 // allBookings (<unidirectional association>)
+	  b multiplicity "1" parent class_ref 155266 // Booking
+      end
+
+      operation 226050 "selectBooking"
+	package explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 183298 // selectedBooking (<unidirectional association>)
+	relation 179330 --->
+	  a role_name "selectedBooking" multiplicity "1" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 183298 // selectedBooking (<unidirectional association>)
 	  b multiplicity "1" parent class_ref 155266 // Booking
       end
     end
@@ -1720,7 +1742,6 @@ ${members}}
 	
 	
       end
-
     end
 
     class 155650 "Feature"
@@ -1823,7 +1844,6 @@ ${members}}
 	
 	
       end
-
     end
 
     class 155266 "Booking"
@@ -1837,6 +1857,7 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      comment "																																																																																																																																																																																																										"
       operation 200962 "load"
 	public explicit_return_type ""
 	nparams 6
@@ -1989,7 +2010,6 @@ ${members}}
 	
 	
       end
-
     end
 
     classinstance 135554 ""
@@ -2092,8 +2112,7 @@ ${members}}
 
       operation 168578 "selectRequest"
 	package explicit_return_type "void"
-	nparams 1
-	  param in name "reference" explicit_type "int"
+	nparams 0
 	
 	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
   ${body}}
@@ -2201,6 +2220,7 @@ ${members}}
       idl_decl ""
       explicit_switch_type ""
       
+      comment "																																																																"
       operation 175618 "HandlingFacade"
 	public explicit_return_type ""
 	nparams 0
@@ -2215,7 +2235,7 @@ ${members}}
 
       operation 175746 "getAllAskings"
 	stereotype "list"
-	public return_type class_ref 155266 // Booking
+	public explicit_return_type "struct String"
 	multiplicity "*"
 	nparams 0
 	
@@ -2236,6 +2256,19 @@ des enseignants qui ne sont pas validees"
 "
 	    classrelation_ref 148354 // <unidirectional association>
 	  b parent class_ref 147970 // Manager
+      end
+
+      operation 225922 "selectRequest"
+	package explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
       end
     end
 
@@ -2283,6 +2316,14 @@ ${members}}
 
     classinstance 128258 ""
       type class_ref 141058 // HandlingFacade
+      attributes
+        end
+      relations
+        end
+    end
+
+    classinstance 155266 ""
+      type class_ref 154754 // Enseignant
       attributes
         end
       relations

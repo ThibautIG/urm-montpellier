@@ -1,25 +1,15 @@
 format 76
 
-classinstancecanvas 128002 classinstance_ref 128002 // 
-  xyz 7 5 2005 life_line_z 2000
-end
 classinstancecanvas 128130 classinstance_ref 128130 // 
   xyz 203 18 2000 life_line_z 2000
 end
 classinstancecanvas 128258 classinstance_ref 128258 // 
   xyz 494 25 2000 life_line_z 2000
 end
-classinstance 128386 class_ref 141442 // GestionnaireJDBC
+classinstance 128386 class_ref 141442 // ManagerJDBC
   name ""   xyz 735 16 2000 life_line_z 2000
-note 131458 "On le fera plus tard
-Trop de classes/associations...
-:("
-  xyzwh 258 455 2000 183 83
-durationcanvas 128514 classinstance_ref 128002 // :User
-  xyzwh 16 81 2010 11 40
-end
-durationcanvas 128642 classinstance_ref 128130 // :HandlingView
-  xyzwh 238 81 2010 11 25
+classinstancecanvas 131970 classinstance_ref 155266 // 
+  xyz 57 26 2005 life_line_z 2000
 end
 durationcanvas 128898 classinstance_ref 128130 // :HandlingView
   xyzwh 238 114 2010 11 40
@@ -30,17 +20,11 @@ end
 durationcanvas 129282 classinstance_ref 128258 // :HandlingFacade
   xyzwh 534 161 2010 11 40
 end
-durationcanvas 129410 classinstance_ref 128386 // :GestionnaireJDBC
-  xyzwh 780 161 2010 11 25
+durationcanvas 129410 classinstance_ref 128386 // :ManagerJDBC
+  xyzwh 771 161 2010 11 25
 end
 durationcanvas 129922 classinstance_ref 128130 // :HandlingView
   xyzwh 238 237 2010 11 40
-end
-durationcanvas 130178 classinstance_ref 128002 // :User
-  xyzwh 16 330 2010 11 40
-end
-durationcanvas 130306 classinstance_ref 128130 // :HandlingView
-  xyzwh 238 330 2010 11 25
 end
 durationcanvas 130946 classinstance_ref 128130 // :HandlingView
   xyzwh 238 386 2010 11 40
@@ -48,44 +32,38 @@ end
 durationcanvas 131202 classinstance_ref 128130 // :HandlingView
   xyzwh 238 640 2010 11 40
 end
-durationcanvas 131586 classinstance_ref 128002 // :User
-  xyzwh 16 702 2010 11 40
+durationcanvas 132098 classinstance_ref 131970 // :Enseignant
+  xyzwh 81 308 2010 11 40
 end
-durationcanvas 131714 classinstance_ref 128130 // :HandlingView
-  xyzwh 238 702 2010 11 25
+durationcanvas 132226 classinstance_ref 128130 // :HandlingView
+  xyzwh 238 309 2010 11 34
 end
-msg 128770 synchronous
-  from durationcanvas_ref 128514
-  to durationcanvas_ref 128642
-  yz 81 2015 explicitmsg "1. HandlingView()"
-  show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 35 68
+durationcanvas 132866 classinstance_ref 128258 // :HandlingFacade
+  xyzwh 534 329 2010 11 35
+end
+durationcanvas 133122 classinstance_ref 128386 // :ManagerJDBC
+  xyzwh 771 344 2010 11 25
+end
 msg 129154 synchronous
   from durationcanvas_ref 128898
   to durationcanvas_ref 129026
-  yz 114 2015 explicitmsg "2. getDemandesNonValidees() : Reservation [*]"
+  yz 114 2015 msg operation_ref 175746 // "getAllAskings() : struct String [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 260 101
+  label_xy 340 100
 msg 129538 synchronous
   from durationcanvas_ref 129282
   to durationcanvas_ref 129410
-  yz 161 2015 explicitmsg "3. loadDemandesNonValidees() : Reservation [*]"
+  yz 161 2015 msg operation_ref 219010 // "loadAllAskings() : Booking [*]"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 557 144
 reflexivemsg 130050 synchronous
   to durationcanvas_ref 129922
-  yz 237 2015 explicitmsg "4. colorerDemandes(in listeDemandes : Reservation [*]) : void"
+  yz 237 2015 msg operation_ref 176002 // "colorAsking(in listeDemandes : Reservation [*]) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 248 218
-msg 130434 synchronous
-  from durationcanvas_ref 130178
-  to durationcanvas_ref 130306
-  yz 330 2015 explicitmsg "5. selectDemande(in reference : int) : void"
-  show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 31 312
 reflexivemsg 131074 synchronous
   to durationcanvas_ref 130946
-  yz 386 2015 explicitmsg "6. afficherDonnees(in reference : int) : void"
+  yz 386 2015 msg operation_ref 168706 // "displayData(in reference : int) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 254 367
 reflexivemsg 131330 synchronous
@@ -93,10 +71,22 @@ reflexivemsg 131330 synchronous
   yz 640 2015 explicitmsg "x. genCalendar(in reference : int) : void"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 273 634
-msg 131842 synchronous
-  from durationcanvas_ref 131586
-  to durationcanvas_ref 131714
-  yz 702 2015 explicitmsg "(x+1). valider(in reference : int) : void"
+msg 132354 synchronous
+  from durationcanvas_ref 132098
+  to durationcanvas_ref 132226
+  yz 309 2015 msg operation_ref 168578 // "selectRequest() : void"
   show_full_operations_definition default drawing_language default show_context_mode default
-  label_xy 42 688
+  label_xy 127 295
+msg 132994 synchronous
+  from durationcanvas_ref 132226
+  to durationcanvas_ref 132866
+  yz 329 2020 msg operation_ref 225922 // "selectRequest(in reference : int) : void"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 353 315
+msg 133250 synchronous
+  from durationcanvas_ref 132866
+  to durationcanvas_ref 133122
+  yz 345 2015 msg operation_ref 226050 // "selectBooking(in reference : int) : void"
+  show_full_operations_definition default drawing_language default show_context_mode default
+  label_xy 621 331
 end
