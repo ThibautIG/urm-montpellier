@@ -14,7 +14,7 @@ classcanvas 128898 class_ref 141442 // ManagerJDBC
 end
 classcanvas 129922 class_ref 147970 // Manager
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 559.4 164.4 2000
+  xyz 555.4 88.4 2000
 end
 classcanvas 130562 class_ref 128643 // MenuView
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -22,7 +22,7 @@ classcanvas 130562 class_ref 128643 // MenuView
 end
 classcanvas 130818 class_ref 155266 // Booking
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 580.8 425.8 2000
+  xyz 580.8 377.8 2000
 end
 classcanvas 130946 class_ref 156418 // BookingJDBC
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -46,15 +46,15 @@ classcanvas 132738 class_ref 128387 // TeacherJDBC
 end
 packagecanvas 132994 
   package_ref 134530 // UI
-    xyzwh 38.9 116.3 1995 179 467
+    xyzwh 38 116 1995 179 467
 end
 packagecanvas 133122 
   package_ref 134658 // BL
-    xyzwh 249.8 33.8 1995 811 651
+    xyzwh 249 33 1995 811 651
 end
 packagecanvas 133250 
   package_ref 134786 // Persist
-    xyzwh 1080.3 32.9 1995 359 650
+    xyzwh 1080 32 1995 359 650
 end
 relationcanvas 130050 relation_ref 147970 // <generalisation>
   decenter_begin 469
@@ -64,17 +64,17 @@ relationcanvas 130050 relation_ref 147970 // <generalisation>
 end
 relationcanvas 130306 relation_ref 148226 // <unidirectional association>
   from ref 128130 z 2001 to ref 129922
-  no_role_a no_role_b
-  multiplicity_a_pos 542 293 3000 multiplicity_b_pos 435 302 3000
+  role_a_pos 502 211 3000 no_role_b
+  multiplicity_a_pos 538 236 3000 multiplicity_b_pos 435 278 3000
 end
 relationcanvas 130434 relation_ref 148354 // <unidirectional association>
   from ref 128002 z 2001 to ref 128130
-  no_role_a no_role_b
+  role_a_pos 218 311 3000 no_role_b
   multiplicity_a_pos 248 336 3000 multiplicity_b_pos 182 377 3000
 end
 relationcanvas 130690 relation_ref 172674 // <unidirectional association>
   from ref 130562 z 2001 to ref 128002
-  no_role_a no_role_b
+  role_a_pos 120 314 3000 no_role_b
   multiplicity_a_pos 98 314 3000 multiplicity_b_pos 98 260 3000
 end
 relationcanvas 131074 relation_ref 155394 // <generalisation>
@@ -85,24 +85,24 @@ end
 relationcanvas 131330 relation_ref 179330 // <unidirectional association>
   decenter_end 688
   from ref 129922 z 2001 to ref 130818
-  role_a_pos 658 406 3000 no_role_b
-  multiplicity_a_pos 632 406 3000 multiplicity_b_pos 626 411 3000
+  role_a_pos 662 358 3000 no_role_b
+  multiplicity_a_pos 636 358 3000 multiplicity_b_pos 620 335 3000
 end
 relationcanvas 131714 relation_ref 172802 // <unidirectional association>
   decenter_begin 209
   decenter_end 82
   from ref 129922 z 2001 to ref 130818
-  role_a_pos 599 406 3000 no_role_b
-  multiplicity_a_pos 575 406 3000 multiplicity_b_pos 575 411 3000
+  role_a_pos 598 358 3000 no_role_b
+  multiplicity_a_pos 574 358 3000 multiplicity_b_pos 572 335 3000
 end
 relationcanvas 132226 relation_ref 158082 // <unidirectional association>
   from ref 130818 z 2001 to ref 132098
-  no_role_a no_role_b
-  multiplicity_a_pos 920 450 3000 multiplicity_b_pos 698 540 3000
+  role_a_pos 885 423 3000 no_role_b
+  multiplicity_a_pos 920 448 3000 multiplicity_b_pos 698 514 3000
 end
-relationcanvas 132354 relation_ref 171906 // <unidirectional association>
+relationcanvas 132354 relation_ref 171906 // <association>
   from ref 131970 z 2001 to ref 132098
-  no_role_a no_role_b
+  role_a_pos 945 346 3000 role_b_pos 896 259 3000
   multiplicity_a_pos 921 346 3000 multiplicity_b_pos 870 259 3000
 end
 relationcanvas 132610 relation_ref 155778 // <generalisation>
