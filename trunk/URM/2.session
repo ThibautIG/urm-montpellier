@@ -1,7 +1,11 @@
 window_sizes 1280 738 258 1016 853 35
+diagrams
+  active  classdiagram_ref 147714 // Class diagram
+    808 503 100 0 0 0
+end
 show_stereotypes
-selected 
-package_ref 129 // URM
+selected classdiagram_ref 147714 // Class diagram
 open
+  classview_ref 154242 // Complete
 end
 end
