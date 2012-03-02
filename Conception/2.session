@@ -1,0 +1,7 @@
+window_sizes 1280 738 258 1016 853 35
+show_stereotypes
+selected class_ref 128003 // LoginView
+open
+  classview_ref 128003 // Login and menu
+end
+end
