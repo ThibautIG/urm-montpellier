@@ -1,6 +1,6 @@
 format 76
 "URM"
-  revision 28
+  revision 29
   modified_by 2 "D-Day"
   java_root_dir "C:/Users/D-Day/workspace/URM/"
 
@@ -1069,7 +1069,6 @@ ${members}}
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
-    associated_deployment_view deploymentview_ref 128130 // Asking
     classdiagram 141058 "Asking"
       draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A0
@@ -2331,7 +2330,6 @@ ${members}}
     //activity diagram settings
     package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
     show_infonote default drawing_language default show_stereotype_properties default
-    associated_deployment_view deploymentview_ref 128002 // Handling
     classdiagram 128002 "Handling"
       draw_all_relations no hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
       size A0
@@ -2695,158 +2693,6 @@ des enseignants qui ne sont pas validees."
 
   package_ref 134786 // Persist
 
-  deploymentview 128002 "Handling"
-    //deployment diagram settings
-    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
-    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
-    artifact 128002 "HandlingView"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 134530 // HandlingView
-      end
-    end
-
-    artifact 128130 "HandlingFacade"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 141058 // HandlingFacade
-      end
-    end
-  end
-
-  deploymentview 128130 "Asking"
-    //deployment diagram settings
-    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
-    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
-    artifact 128258 "AskingView"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 154882 // AskingView
-      end
-    end
-
-    artifact 128386 "Manager"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 147970 // Manager
-      end
-    end
-
-    artifact 128514 "ManagerJDBC"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 141442 // ManagerJDBC
-      end
-    end
-
-    artifact 128642 "Schedule"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 141314 // Schedule
-      end
-    end
-
-    artifact 128770 "ScheduleJDBC"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 156674 // ScheduleJDBC
-      end
-    end
-
-    artifact 128898 "Teaching"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 155778 // Teaching
-      end
-    end
-
-    artifact 129026 "TeachingJDBC"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 156802 // TeachingJDBC
-      end
-    end
-
-    artifact 129154 "Feature"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 155650 // Feature
-      end
-    end
-
-    artifact 129282 "FeatureJDBC"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 156546 // FeatureJDBC
-      end
-    end
-
-    artifact 129410 "Booking"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 155266 // Booking
-      end
-    end
-
-    artifact 129538 "BookingJDBC"
-      stereotype "source"
-      java_src "${comment}
-${package}
-${imports}
-${definition}"
-      associated_classes
-	class_ref 156418 // BookingJDBC
-      end
-    end
-  end
 add_operation_profile
 
 end
