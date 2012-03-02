@@ -1,14 +1,7 @@
 window_sizes 1280 738 258 1016 853 35
-diagrams
-  sequencediagram_ref 141186 // AskingCase1
-    808 503 100 0 0 0
-  active  sequencediagram_ref 134530 // HandlingCase1
-    1012 629 100 0 936 60
-end
 show_stereotypes
-selected sequencediagram_ref 134530 // HandlingCase1
+selected artifact_ref 128002 // HandlingView
 open
-  classview_ref 154242 // Complete
-  classview_ref 134658 // Handling
+  deploymentview_ref 128002 // Handling
 end
 end
