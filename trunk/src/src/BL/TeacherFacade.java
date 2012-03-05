@@ -1,8 +1,8 @@
 package BL;
 
 
-protected class TeacherFacade {
-  TeacherFacade() {
+public class TeacherFacade {
+  public TeacherFacade() {
   }
 
   /**
