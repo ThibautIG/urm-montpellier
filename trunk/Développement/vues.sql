@@ -109,18 +109,17 @@ with object oid(id_salle) as
 
 -- Trigger
 
-create or replace trigger ins_Vabonne 
-instead of insert on Vabonne
+create or replace trigger ins_VReservation 
+instead of insert on VReservation
 for each row
 declare i integer;
 begin
-	INSERT INTO Abonne 
-	VALUES(:new.num_ab, :new.nom, :new.prenom, :new.ville, :new.age, :new.tarif, :new.reduc);
-	
-	if :new.listEmp is not null and :new.listEmp.count >0 then
-		for i in :new.listEmp.first .. :new.listEmp.last loop
-			insert into emprunt (num_ab,num_ex,d_emprunt) values (:new.num_ab,
-				deref(:new.listEmp(i).num_ex).numero, :new.listEmp(i).d_emprunt);
+	INSERT INTO Reservation
+	VALUES(:new.id_reservation, :new.id_salle, :new.id_creneau, :new.id_enseignement, :new.date_reservation);
+	if :new.listCaract is not null and :new.listCaract.count >0 then
+		for i in :new.listCaract.first .. :new.listCaract.last loop
+			insert into RESERVATION_CARACTERISTIQUE(id_caracteristique,id_reservation) 
+				values (:new.id_caracteristique, :new.id_reservation);
 		end loop;
 	end if;
 end;
