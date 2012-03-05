@@ -1,10 +1,16 @@
 package Persist;
+import java.sql.Connection;
+
 import BL.Teacher;
 import BL.Teaching;
 
 
 class TeacherJDBC extends Teacher {
-   load() {
+   public TeacherJDBC(Connection dbConnection) {
+		// TODO Auto-generated constructor stub
+	}
+
+load() {
   }
 
   Teaching getTeaching() {

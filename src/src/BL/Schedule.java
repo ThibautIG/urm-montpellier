@@ -1,6 +1,6 @@
 package BL;
 
-abstract class Schedule {
+public abstract class Schedule {
   private String id;
 
   private String endTime;

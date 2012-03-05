@@ -1,6 +1,6 @@
 package BL;
 
-abstract class Feature {
+public abstract class Feature {
   private String id;
 
   private String name;

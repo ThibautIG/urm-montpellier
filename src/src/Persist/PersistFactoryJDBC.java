@@ -1,5 +1,6 @@
 package Persist;
 import BL.*;
+
 import java.sql.*;
 
 
@@ -8,14 +9,18 @@ class PersistFactoryJDBC extends PersistFactory
   /**
    * Objet qui contient la connection à la base de données.
    */
-  private JDBC connect;
+  private Connection dbConnection;
+  private String driver= "sun.jdbc.odbc.JdbcOdbcDriver";
+  private String url="jdbc:odbc:base_de_donnees";
+  private String login="loginName";
+  private String password="Password";
   
   PersistFactoryJDBC()
   {
 	  // Charger le driver
 	  try 
 	  {
-		  Class.forName("sun.jdbc.odbc.JdbcOdbcDriver"); //Or any other driver
+		  Class.forName(driver); //Or any other driver
 	  }
 	  catch(Exception x)
 	  {
@@ -25,42 +30,44 @@ class PersistFactoryJDBC extends PersistFactory
 	  // Créer la connection
 	  try
 	  {
-		  Connection dbConnection=DriverManager.getConnection(url,"loginName","Password");
+		  this.dbConnection=DriverManager.getConnection(url,login,password);
 	  }
-	  catch( SQLException x )
+	  catch(SQLException x)
 	  {
 		 	System.out.println("Couldn’t get connection!");
 	  }
   }
 
-  BookingJDBC createBooking() 
+  protected Teacher createTeacher() 
   {
-	  
+	  return new TeacherJDBC(this.dbConnection);
   }
 
-  FeatureJDBC createFeature()
+  protected Teaching createTeaching() 
   {
-	  
+	  return new TeachingJDBC(this.dbConnection);
+  }
+  
+  protected Booking createBooking() 
+  {
+	  return new BookingJDBC(this.dbConnection);
   }
 
-  ScheduleJDBC createSchedule() 
+  protected Feature createFeature()
   {
-	  
+	  return new FeatureJDBC(this.dbConnection);
   }
 
-  ManagerJDBC createManager() 
+  protected Schedule createSchedule() 
   {
-	  
+	  return new ScheduleJDBC(this.dbConnection);
   }
 
-  TeacherJDBC createTeacher() 
+  protected Manager createManager() 
   {
-	  
+	  return new ManagerJDBC(this.dbConnection);
   }
 
-  TeachingJDBC createTeaching() 
-  {
-	  
-  }
+
 
 }

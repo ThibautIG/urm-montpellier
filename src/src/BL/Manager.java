@@ -1,7 +1,7 @@
 package BL;
 
 
-abstract class Manager {
+public abstract class Manager {
   /**
    * retourne une liste de toutes les caractéristiques existantes.
    */

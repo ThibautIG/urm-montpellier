@@ -1,7 +1,7 @@
 package BL;
 
 
-abstract class PersistFactory 
+public abstract class PersistFactory 
 {
   private static PersistFactory PersistFactory;
 
@@ -16,31 +16,31 @@ abstract class PersistFactory
   /**
    * Renvoie un objet de type enseignant.
    */
-  abstract Teacher createTeacher();
+  protected abstract Teacher createTeacher();
 
   /**
    * Renvoie un objet de type enseignement.
    */
-  abstract Teaching createTeaching();
+  protected abstract Teaching createTeaching();
 
   /**
    * Renvoie un objet de type reservation.
    */
-  abstract Booking createBooking();
+  protected abstract Booking createBooking();
 
   /**
    * Renvoie un objet de type caractéristique.
    */
-  abstract Feature createFeature();
+  protected abstract Feature createFeature();
 
   /**
    * Renvoie un objet de type créneau horaire.
    */
-  abstract Schedule createSchedule();
+  protected abstract Schedule createSchedule();
 
   /**
    * Renvoie un objet de type gestionnaire.
    */
-  abstract Manager createManager();
+  protected abstract Manager createManager();
 
 }

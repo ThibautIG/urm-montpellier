@@ -1,7 +1,7 @@
 package BL;
 
 
-abstract class Teacher {
+public abstract class Teacher {
   private String id;
 
   private String firstName;
