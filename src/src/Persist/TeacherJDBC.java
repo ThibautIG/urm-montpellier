@@ -1,3 +1,7 @@
+package Persist;
+import BL.Teacher;
+import BL.Teaching;
+
 
 class TeacherJDBC extends Teacher {
    load() {

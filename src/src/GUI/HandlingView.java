@@ -1,3 +1,6 @@
+package GUI;
+import BL.HandlingFacade;
+
 
 class HandlingView {
   private int askingSelected = -1;

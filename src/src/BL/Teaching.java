@@ -1,3 +1,5 @@
+package BL;
+
 
 abstract class Teaching {
   private String id;
