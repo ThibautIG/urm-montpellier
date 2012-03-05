@@ -1,7 +1,7 @@
 package BL;
 
 
-abstract class Teaching {
+public abstract class Teaching {
   private String id;
 
   private int hours;

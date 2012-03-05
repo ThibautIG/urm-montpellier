@@ -4,7 +4,7 @@ package BL;
 /**
  * 																																																																																																																																																																																																										
  */
-abstract class Booking 
+public abstract class Booking 
 {
   private String id;
 

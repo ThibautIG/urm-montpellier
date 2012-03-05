@@ -1,4 +1,6 @@
 package Persist;
+import java.sql.Connection;
+
 import BL.Booking;
 import BL.Feature;
 import BL.Manager;
@@ -9,7 +11,11 @@ class ManagerJDBC extends Manager {
   public ManagerJDBC() {
   }
 
-  Feature getFeatures() {
+  public ManagerJDBC(Connection dbConnection) {
+	// TODO Auto-generated constructor stub
+}
+
+Feature getFeatures() {
   }
 
   Schedule getSchedules() {
