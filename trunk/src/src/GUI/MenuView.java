@@ -1,3 +1,6 @@
+package GUI;
+import BL.TeacherFacade;
+
 
 class MenuView {
   /**

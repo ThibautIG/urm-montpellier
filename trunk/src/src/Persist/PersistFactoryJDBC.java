@@ -1,3 +1,12 @@
+package Persist;
+import BL.Booking;
+import BL.Feature;
+import BL.Manager;
+import BL.PersistFactory;
+import BL.Schedule;
+import BL.Teacher;
+import BL.Teaching;
+
 
 protected class PersistFactoryJDBC extends PersistFactory {
   /**

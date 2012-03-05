@@ -1,3 +1,9 @@
+package Persist;
+import BL.Booking;
+import BL.Feature;
+import BL.Manager;
+import BL.Schedule;
+
 
 class ManagerJDBC extends Manager {
   public ManagerJDBC() {

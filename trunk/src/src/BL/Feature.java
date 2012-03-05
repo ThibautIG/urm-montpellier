@@ -1,3 +1,4 @@
+package BL;
 
 abstract class Feature {
   private String id;

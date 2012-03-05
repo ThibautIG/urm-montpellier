@@ -1,3 +1,4 @@
+package BL;
 
 abstract class Schedule {
   private String id;
