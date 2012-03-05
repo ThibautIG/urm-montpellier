@@ -1,35 +1,66 @@
 package Persist;
-import BL.Booking;
-import BL.Feature;
-import BL.Manager;
-import BL.PersistFactory;
-import BL.Schedule;
-import BL.Teacher;
-import BL.Teaching;
+import BL.*;
+import java.sql.*;
 
 
-protected class PersistFactoryJDBC extends PersistFactory {
+class PersistFactoryJDBC extends PersistFactory 
+{
   /**
    * Objet qui contient la connection à la base de données.
    */
   private JDBC connect;
-
-  Booking createBooking() {
+  
+  PersistFactoryJDBC()
+  {
+	  // Charger le driver
+	  try 
+	  {
+		  Class.forName("sun.jdbc.odbc.JdbcOdbcDriver"); //Or any other driver
+	  }
+	  catch(Exception x)
+	  {
+		  System.out.println("Unable to load the driver class!");
+	  }
+	  
+	  // Créer la connection
+	  try
+	  {
+		  Connection dbConnection=DriverManager.getConnection(url,"loginName","Password");
+	  }
+	  catch( SQLException x )
+	  {
+		 	System.out.println("Couldn’t get connection!");
+	  }
   }
 
-  Feature createFeature() {
+  BookingJDBC createBooking() 
+  {
+	  
   }
 
-  Schedule createSchedule() {
+  FeatureJDBC createFeature()
+  {
+	  
   }
 
-  Manager createManager() {
+  ScheduleJDBC createSchedule() 
+  {
+	  
   }
 
-  Teacher createTeacher() {
+  ManagerJDBC createManager() 
+  {
+	  
   }
 
-  public Teaching createTeaching() {
+  TeacherJDBC createTeacher() 
+  {
+	  
+  }
+
+  TeachingJDBC createTeaching() 
+  {
+	  
   }
 
 }
