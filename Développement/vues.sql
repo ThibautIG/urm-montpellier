@@ -8,12 +8,6 @@ CREATE OR REPLACE TYPE TEnseignement AS OBJECT
 );
 /
 
-CREATE OR REPLACE TYPE TReservationCaracteristique AS OBJECT
-(
-	ID_CARACTERISTIQUE NUMBER(10)  NOT NULL ,
-	ID_RESERVATION NUMBER(10)  NOT NULL
-);
-/
 
 CREATE OR REPLACE TYPE TCaracteristique AS OBJECT
 (
@@ -25,9 +19,6 @@ CREATE OR REPLACE TYPE TCaracteristique AS OBJECT
 CREATE TYPE nt_Caracteristiques AS TABLE OF TCaracteristique;
 
 
-CREATE TYPE nt_ResaCaracteristiques AS TABLE OF TReservationCaracteristique;
-
-
 CREATE OR REPLACE TYPE TReservation AS OBJECT
 (
 	ID_RESERVATION NUMBER(10)  NOT NULL,
@@ -35,7 +26,7 @@ CREATE OR REPLACE TYPE TReservation AS OBJECT
 	ID_CRENEAU NUMBER(10) ,
 	ID_ENSEIGNEMENT NUMBER(10) ,
 	DATE_RESERVATION DATE ,
-	listResaCaract nt_ResaCaracteristiques
+	listCaract nt_Caracteristiques
 );
 /
 
@@ -88,10 +79,11 @@ from enseignant e;
 create view VReservation of TReservation
 with object oid(id_reservation) as
 	SELECT r.id_reservation, r.id_salle, r.id_creneau, r.id_enseignement, r.date_reservation ,
-	   cast (multiset(SELECT *
-					  FROM RESERVATION_CARACTERISTIQUE c
-				      WHERE c.id_reservation = r.id_reservation)
-		as nt_Reservation) ,
+	   cast (multiset(SELECT c.*
+					  FROM CARACTERISTIQUE c, RESERVATION_CARACTERISTIQUE rescar
+				      WHERE c.id_caracteristique = rescar.id_caracteristique
+					  AND rescar.id_reservation = r.id_reservation)
+		as nt_Reservations)
 from Reservation r;
 /
 
@@ -100,12 +92,17 @@ from Reservation r;
 
 create view VSalle of TSalle
 with object oid(id_salle) as
-	SELECT s. ,
-	   cast (multiset(SELECT *
-					  FROM RESERVATION_CARACTERISTIQUE c
-				      WHERE c.id_reservation = r.id_reservation)
-		as nt_Reservation) ,
-from Salle s;
+	SELECT s.id_salle, s.numero_salle,
+		cast (multiset(SELECT c.*
+					  FROM CARACTERISTIQUE c, CARACTERISTIQUE_SALLE carsalle
+				      WHERE c.id_caracteristique = rescar.id_caracteristique
+					  AND carsalle.id_salle = s.id_salle)
+		as nt_Caracteristiques) ,
+		cast (multiset(SELECT *
+					  FROM RESERVATION r
+				      WHERE r.id_salle = s.id_salle)
+		as nt_Reservations)
+	from Salle s;
 /
 
 
