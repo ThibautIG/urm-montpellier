@@ -1,7 +1,8 @@
 window_sizes 1280 738 258 1016 853 35
 show_stereotypes
-selected class_ref 128003 // LoginView
+selected sequencediagram_ref 141186 // AskingCase1
 open
   classview_ref 128003 // Login and menu
+  classview_ref 147714 // Asking
 end
 end

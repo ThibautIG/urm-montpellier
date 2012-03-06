@@ -1,9 +1,9 @@
 import javax.swing.JPanel;
 
-class FeaturePanel extends JPanel
+class FreeRoomPanel extends JPanel
 {
 
-	public FeaturePanel(TeacherFacade tf) {
+	public FreeRoomPanel(TeacherFacade tf) {
 		// TODO Auto-generated constructor stub
 	}
 
