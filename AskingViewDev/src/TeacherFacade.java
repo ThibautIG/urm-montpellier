@@ -16,9 +16,9 @@ public class TeacherFacade
   /**
    * Retourne la liste des créneaux disponibles sous la forme d'une liste de String.
    */
-  String getSchedules() 
+  ArrayList<String> getSchedules() 
   {
-	  return "";
+	  return null;
   }
 
   /**
