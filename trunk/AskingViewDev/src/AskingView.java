@@ -10,16 +10,12 @@ import com.sun.xml.internal.ws.api.server.Container;
 class AskingView extends JFrame implements ActionListener
 {
 	// Données récoltées
-	//private TeacherFacade account;
 	private String featuresSelected;
-	private String scheduleSelected;
-	private String dateSelected;
-	private String teachingSelected;
 	private int capacity;
 	private String comments;
 	
 	// Façade
-	private TeacherFacade tf;
+	private TeacherFacade account;
 	
 	// Panneaux
 	private ChooseTypePanel p1; // Panneau 1 Choix du type de réservation et le cas échéant de l'enseignement
@@ -40,25 +36,26 @@ class AskingView extends JFrame implements ActionListener
 		  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		  
 		  java.awt.Container cp = this.getContentPane();
+		  cp.setLayout(new FlowLayout());
 		  
 		  // Panneau 1 Choix du type de réservation et le cas échéant de l'enseignement
-		  this.p1 = new ChooseTypePanel(this.tf);
-		  cp.add(p1, BorderLayout.NORTH);
+		  this.p1 = new ChooseTypePanel(this.account);
+		  cp.add(p1);
 		  
 		  // Panneau 2 Choix de la date et du créneau
-		  this.p2 = new TimePanel(this.tf);
+		  this.p2 = new TimePanel(this.account);
 		  cp.add(this.p2);
 		  
 		  // Panneau 3 Choix des caractéristiques
-		  this.p3 = new FeaturePanel(this.tf);
+		  this.p3 = new FeaturePanel(this.account);
 		  cp.add(this.p3);
 		  
 		  // Panneau 4 Choix de la capacitée et commentaires
-		  this.p4 = new CommentsCapacityPanel(this.tf);
+		  this.p4 = new CommentsCapacityPanel(this.account);
 		  cp.add(this.p4);
 		  
 		  // Panneau 5 Affichage du nombre de salles libres
-		  this.p5 = new FreeRoomPanel(this.tf);
+		  this.p5 = new FreeRoomPanel(this.account);
 		  cp.add(this.p5);
 		  
 		  // Boutons
@@ -67,24 +64,8 @@ class AskingView extends JFrame implements ActionListener
 		  this.cancel = new JButton("Annuler");
 		  this.p6.add(this.valid);
 		  this.p6.add(this.cancel);
-		  cp.add(p6, BorderLayout.SOUTH);
+		  cp.add(p6);
 	}
-
-  /**
-   * Méthode qui écoute les événement sur les radios boutons de sélection du type de demande.
-   */
-  void selectRequestType() 
-  {
-	  
-  }
-
-  /**
-   * Méthode qui écoute le widget pour la sélection d'un enseignement et sauvegarde l'enseignement choisi.
-   */
-  void selectTeaching() 
-  {
-	  
-  }
 
   /**
    * écoute les événements du calendrier et sauvegarde la date choisie.
