@@ -94,14 +94,7 @@ public class LoginView extends JFrame implements ActionListener{
         pack();
     }
 
-   
-    /**
-     * Connecte l'utilisateur si son id/pwd est valide
-     */
-    public void connect() {
-   
-    }
-    
+      
     /**
      * @param args the command line arguments
      */
@@ -119,7 +112,9 @@ public class LoginView extends JFrame implements ActionListener{
 		if (e.getActionCommand().equals("valid"))
 		{
 			this.account = new TeacherFacade();
-			boolean connected = this.account.connect(this.tfLogin.getText(), this.tfMdp.getPassword().toString());
+			//System.out.println(this.tfLogin.getText());
+			//System.out.println(this.tfMdp.getText());
+			boolean connected = this.account.connect(this.tfLogin.getText(), this.tfMdp.getText());
 			if (!connected)
 			{
 				System.out.println("L'utilisateur n'est pas connecté");

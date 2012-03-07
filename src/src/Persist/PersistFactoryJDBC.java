@@ -4,19 +4,21 @@ import BL.*;
 import java.sql.*;
 
 
-class PersistFactoryJDBC extends PersistFactory 
+public class PersistFactoryJDBC extends PersistFactory 
 {
   /**
    * Objet qui contient la connection à la base de données.
    */
   private Connection dbConnection;
-  private String driver= "sun.jdbc.odbc.JdbcOdbcDriver";
+  private String driver= "oracle.jdbc.driver.OracleDriver";
   private String url="jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ORA10";
   private String login="thibaut.rouquette";
   private String password="oracle";
   
-  PersistFactoryJDBC()
+  public PersistFactoryJDBC()
   {
+	 super();
+	  
 	  // Charger le driver
 	  try 
 	  {

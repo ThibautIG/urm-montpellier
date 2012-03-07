@@ -1,0 +1,15 @@
+window_sizes 1280 962 240 720 512 82
+diagrams
+  active  usecasediagram_ref 128152 // use_case_simplifie
+    672 496 110 0 0 0
+end
+show_stereotypes
+selected usecase_ref 128408 // Consulter planning
+open
+  class_ref 128280 // Gestionnaire
+  usecase_ref 128152 // Demande de réservation
+  usecase_ref 128408 // Consulter planning
+  usecase_ref 128536 // Traiter demande de reservation
+end
+end
+verbose
