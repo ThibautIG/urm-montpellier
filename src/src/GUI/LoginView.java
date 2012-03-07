@@ -18,18 +18,16 @@ import javax.swing.*;
  */
 public class LoginView extends JFrame {
 
-	private TeacherFacade account;
+	//private TeacherFacade account;
 	private MenuView menu;
 	
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private JFrame fLogin; //fenêtre
-    private JPanel pLogin, pNorth, pSouth; //panneau
+    private JPanel pNorth, pSouth; //panneaux
     private JLabel lblLogin; //label Login
     private JLabel lblMdp; //label mot de passe
     private JTextField tfLogin; //champ texte login
-    private JTextField tfMdp; //champ texte mot de passe
+    private JPasswordField tfMdp; //champ texte mot de passe
     private JButton bValid, bCancel;
-    // End of variables declaration//GEN-END:variables
+
 	
 	/**
      * Creates new form LoginView
@@ -46,60 +44,47 @@ public class LoginView extends JFrame {
     private void initComponents() {
 
     	//initialisation des widgets
-    	fLogin = new JFrame("Authentification");
-    	GridLayout glNorth = new GridLayout(2,2);
-    	BorderLayout blSouth = new BorderLayout();
+    	this.setTitle("Authentification");
+    	this.setSize(400,300); //On donne une taille à notre fenêtre
     	
-    	pLogin = new JPanel();
+		/** construction du panneau nord */
+
+    	pNorth = new JPanel (); //panneau nord
     	
-    	pNorth = new JPanel (glNorth);
-    	pSouth = new JPanel (blSouth);
-    	
-    	//création des widgets
-    	pLogin.setSize(getPreferredSize()); //taille du login
-    	//getLogin()
-    	lblLogin = new JLabel();
+    	lblLogin = new JLabel("Login :"); //label Login
     	tfLogin = new JTextField();
-    	//getPwd()
-    	lblMdp = new JLabel();
-    	tfMdp = new JTextField();
-        
-    	//on ajoute au panneau nord
+
+    	lblMdp = new JLabel("Mot de passe :"); //label mot de passe
+    	tfMdp = new JPasswordField();
+    	
+    	/** ajout des widgets du panneau nord */
+    	
     	pNorth.add(lblLogin);
+    	pNorth.add(tfLogin);
+    	pNorth.add(lblMdp);
+    	pNorth.add(tfMdp);
     	
+		/** construction du panneau sud */
+
+    	pSouth = new JPanel (); //panneau sud
     	
+    	bValid = new JButton("Valider");
+    	bCancel = new JButton("Annuler");
     	
-        bValid = new JButton("Valider");
-        bCancel = new JButton("Annuler");
-
-        
-
-        tfLogin.setText("login");
-
-        tfMdp.setText("mdp");
-
-        lblLogin.setText("Login :");
-        lblMdp.setText("Mot de passe : ");
-       
-        //Panneau Nord
-        pLogin.add(lblLogin, glNorth);
-        pLogin.add(tfLogin, glNorth);
-        pLogin.add(lblMdp, glNorth);
-        pLogin.add(tfMdp, glNorth);
-        
-        
-        //Panneau Sud
-        pLogin.add(bValid, blSouth.SOUTH);
-        pLogin.add(bCancel, blSouth.SOUTH);
-        
-        fLogin.setSize(450, 450);
-        fLogin.add(pLogin);
-        
-        fLogin.setVisible(true);
-        fLogin.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    	/** ajout des widgets du panneau sud */
+    	
+    	pSouth.add(bValid);
+    	pSouth.add(bCancel);
+    	
+    	/** ajout des panneaux à la fenêtre */
+    	this.getContentPane().add(pNorth, BorderLayout.NORTH); //On ajoute un panneau au nord
+    	this.getContentPane().add(pSouth, BorderLayout.SOUTH); //On ajoute un panneau au sud
+    	     
+        this.setVisible(true);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
 
    
     /**

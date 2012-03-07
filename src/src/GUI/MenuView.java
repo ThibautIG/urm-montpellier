@@ -1,19 +1,19 @@
-package GUI;
-import BL.TeacherFacade;
+package gui;
+//import BL.TeacherFacade;
 
 
 class MenuView {
   /**
    * Constructeur
    */
-  public  MenuView(TeacherFacade c) {
-  }
+ // public  MenuView(TeacherFacade c) {
+ // }
 
   /**
    * Ecoute les actions sur le bouton.
    */
-   selectBouton() {
-  }
+   //selectBouton() {
+  //}
 
   private ConsulterView consulting;
 

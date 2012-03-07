@@ -1,5 +1,5 @@
-package GUI;
-import BL.HandlingFacade;
+package gui;
+//import BL.HandlingFacade;
 
 
 class HandlingView {
@@ -36,6 +36,6 @@ class HandlingView {
   void delete( ) {
   }
 
-  private HandlingFacade handler;
+  //private HandlingFacade handler;
 
 }

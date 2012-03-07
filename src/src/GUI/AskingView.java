@@ -1,12 +1,12 @@
-package GUI;
+package gui;
 import javax.swing.*;
-import BL.TeacherFacade;
+//import BL.TeacherFacade;
 
 
 class AskingView extends JFrame
 {
 	// Données récoltées
-	private TeacherFacade account;
+//	private TeacherFacade account;
 	private String featuresSelected;
 	private String scheduleSelected;
 	private String dateSelected;
@@ -15,10 +15,10 @@ class AskingView extends JFrame
 	private String comments;
 
 
-	AskingView(TeacherFacade account) 
+	/*AskingView(TeacherFacade account) 
 	{
 		  
-	}
+	}*/
 
   /**
    * Méthode qui écoute les événement sur les radios boutons de sélection du type de demande.
@@ -94,9 +94,9 @@ class AskingView extends JFrame
   
   public static void main()
   {
-	  TeacherFacade tf = new TeacherFacade();
-	  AskingView av = new AskingView(tf);
-	  av.setVisible(true);
+//	  TeacherFacade tf = new TeacherFacade();
+//	  AskingView av = new AskingView(tf);
+	//  av.setVisible(true);
   }
 
 }
