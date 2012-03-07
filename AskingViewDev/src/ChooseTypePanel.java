@@ -31,6 +31,7 @@ class ChooseTypePanel extends JPanel implements ActionListener, ItemListener
 		this.reunion = new JRadioButton("Réunion");
 		this.reunion.setActionCommand("reunion");
 		choice.add(this.reunion);
+		this.reunion.addActionListener(this);
 		this.add(this.reunion);
 		
 		// Liste déroulante des enseignements
@@ -57,7 +58,8 @@ class ChooseTypePanel extends JPanel implements ActionListener, ItemListener
 		}
 		else if(e.getActionCommand().equals("reunion"))
 		{
-			
+			this.enseignements.setEnabled(false);
+			System.out.println("ok");
 		}
 	}
 

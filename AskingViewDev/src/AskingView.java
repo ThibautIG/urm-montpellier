@@ -1,9 +1,7 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
-
 import com.sun.xml.internal.ws.api.server.Container;
 
 
@@ -66,22 +64,6 @@ class AskingView extends JFrame implements ActionListener
 		  this.p6.add(this.cancel);
 		  cp.add(p6);
 	}
-
-  /**
-   * écoute les événements du calendrier et sauvegarde la date choisie.
-   */
-  void selectDate() 
-  {
-	  
-  }
-
-  /**
-   * écoute les événements sur la ComboBox de selection du créneau et sauvegarde le créneau choisi.
-   */
-  void selectSchedule() 
-  {
-	  
-  }
 
   /**
    * Ajoute la caractéristique sélectionnée dans la liste de gauche à la liste de droite. Sauvegarde cette caractéristique.
