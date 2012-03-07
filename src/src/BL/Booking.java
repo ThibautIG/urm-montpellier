@@ -16,78 +16,93 @@ public abstract class Booking
 
   private String idSalle;
 
+  private Schedule schedule;
+
+  private list<Feature> features;
+
+  private Teaching teaching;
+
   /**
    * Crée une nouvelle réservation.
    */
-   create() {
+  public static Booking create() {
   }
 
   /**
    * Charge la réservation qui à pour id reference.
    */
-  abstract  load(String reference) ;
+  public abstract void load(String reference) ;
 
   /**
    * Retourne le nombre de salles de disponibles pour les paramètres de cette réservation.
    */
-  abstract int checkFreeRooms() ;
+  public abstract int checkFreeRooms() ;
 
   /**
    * Retourne l'enseignement lié à cette réservation.
    */
-  Teaching getTeaching() {
+  public Teaching getTeaching() {
+	  	return teaching;
   }
 
   /**
    * Retourne la date de réservation.
    */
-  String getDate() {
+  public String getDate() {
+	  	return date;
   }
 
   /**
    * Remplace la date de reservation.
    */
-  void setDate(String date) {
+  public void setDate(String date) {
+	  	this.date=date;
   }
 
   /**
    * Retourne le créneau de réservation.
    */
-  String getSchedule() {
+  public String getSchedule() {
+	  	return schedule;
   }
 
   /**
    * Remplace le créneau de réservation.
    */
-   setSchedule(String schedule) {
+  public void setSchedule(String schedule) {
+	  	this.schedule = schedule;
   }
 
   /**
    * Retourne la liste des caractéristiques de la réservation.
    */
-  list<string> getFeatures() {
+  public list<string> getFeatures() {
+	  	return features;
   }
 
   /**
    * Remplace la liste des caractéristiques de la réservation.
    */
-  void setFeatures(list<string> features) {
+  public void setFeatures(list<string> features) {
+	  this.features = features;
   }
 
   /**
    * Associe une salle à la réservation.
    */
-  abstract  setSalle() ;
+  public abstract void setSalle() ;
 
   /**
    * Sauvegarde la réservation.
    */
-  abstract  save() ;
-
-  private Schedule schedule;
-
-  private Feature feature;
-
-  private Teaching teaching;
+  public abstract boolean save() ;
+  
+  public String getTeacherInfos() {
+	  return teaching.getTeacherInfos();
+  }
+  
+  public String getStringSchedule() {
+	  return schedule.toString();
+  }
 
 }
