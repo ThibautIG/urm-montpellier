@@ -2,13 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package GUI;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
+
+import BL.TeacherFacade;
 
 
 
@@ -16,9 +22,9 @@ import javax.swing.*;
  *
  * @author Thibaut
  */
-public class LoginView extends JFrame {
+public class LoginView extends JFrame implements ActionListener{
 
-	//private TeacherFacade account;
+	private TeacherFacade account;
 	private MenuView menu;
 	
     private JPanel pNorth, pSouth; //panneaux
@@ -49,13 +55,15 @@ public class LoginView extends JFrame {
     	
 		/** construction du panneau nord */
 
-    	pNorth = new JPanel (); //panneau nord
+    	pNorth = new JPanel (new GridLayout(2,2)); //panneau nord
     	
     	lblLogin = new JLabel("Login :"); //label Login
     	tfLogin = new JTextField();
+    	tfLogin.setPreferredSize(new Dimension (90, 20));
 
     	lblMdp = new JLabel("Mot de passe :"); //label mot de passe
     	tfMdp = new JPasswordField();
+    	tfMdp.setPreferredSize(new Dimension (90, 20));
     	
     	/** ajout des widgets du panneau nord */
     	
@@ -68,8 +76,8 @@ public class LoginView extends JFrame {
 
     	pSouth = new JPanel (); //panneau sud
     	
-    	bValid = new JButton("Valider");
-    	bCancel = new JButton("Annuler");
+    	bValid = new JButton("Valider"); bValid.setActionCommand("valid"); bValid.addActionListener(this);
+    	bCancel = new JButton("Annuler"); bCancel.setActionCommand("cancel"); bCancel.addActionListener(this);
     	
     	/** ajout des widgets du panneau sud */
     	
@@ -101,5 +109,31 @@ public class LoginView extends JFrame {
       
     	new LoginView();
     }
+
+    /**
+     * 
+     */
+
+	public void actionPerformed(ActionEvent e) {
+			
+		if (e.getActionCommand().equals("valid"))
+		{
+			this.account = new TeacherFacade();
+			boolean connected = this.account.connect(this.tfLogin.getText(), this.tfMdp.getPassword().toString());
+			if (!connected)
+			{
+				System.out.println("L'utilisateur n'est pas connecté");
+			}
+			else
+			{
+				menu = new MenuView(account);
+			}
+		}
+		
+		else if (e.getActionCommand().equals("cancel")) 
+		{
+			System.exit(0);
+		}
+	}
 
 }
