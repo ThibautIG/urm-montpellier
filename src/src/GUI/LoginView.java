@@ -52,18 +52,22 @@ public class LoginView extends JFrame implements ActionListener{
     	//initialisation des widgets
     	this.setTitle("Authentification");
     	this.setSize(400,300); //On donne une taille à notre fenêtre
+    	this.setResizable(false);
     	
 		/** construction du panneau nord */
 
     	pNorth = new JPanel (new GridLayout(2,2)); //panneau nord
+    	//pNorth.setPreferredSize(new Dimension (200,150));
     	
     	lblLogin = new JLabel("Login :"); //label Login
     	tfLogin = new JTextField();
     	tfLogin.setPreferredSize(new Dimension (90, 20));
+    	tfLogin.setToolTipText("Enter your login");
 
     	lblMdp = new JLabel("Mot de passe :"); //label mot de passe
     	tfMdp = new JPasswordField();
     	tfMdp.setPreferredSize(new Dimension (90, 20));
+    	tfMdp.setToolTipText("Enter your password");
     	
     	/** ajout des widgets du panneau nord */
     	
@@ -75,6 +79,7 @@ public class LoginView extends JFrame implements ActionListener{
 		/** construction du panneau sud */
 
     	pSouth = new JPanel (); //panneau sud
+    	//pSouth.setPreferredSize(new Dimension (200,150));
     	
     	bValid = new JButton("Valider"); bValid.setActionCommand("valid"); bValid.addActionListener(this);
     	bCancel = new JButton("Annuler"); bCancel.setActionCommand("cancel"); bCancel.addActionListener(this);
@@ -87,7 +92,9 @@ public class LoginView extends JFrame implements ActionListener{
     	/** ajout des panneaux à la fenêtre */
     	this.getContentPane().add(pNorth, BorderLayout.NORTH); //On ajoute un panneau au nord
     	this.getContentPane().add(pSouth, BorderLayout.SOUTH); //On ajoute un panneau au sud
-    	     
+    	
+    	
+    	this.setLocationRelativeTo(null);     
         this.setVisible(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
