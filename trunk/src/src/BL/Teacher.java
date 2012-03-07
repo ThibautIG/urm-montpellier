@@ -1,32 +1,39 @@
 package BL;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 
 public abstract class Teacher {
-  private String id;
+  protected String id;
 
-  private String firstName;
+  protected String firstName;
 
-  private String lastName;
+  protected String lastName;
 
-  private String password;
+  protected String password;
 
-  private String phone;
+  protected String phone;
 
-  private String mail;
+  protected String mail;
 
-  private boolean superUser;
+  protected boolean superUser;
 
-  private list<Teaching> myTeachings;
+  protected ArrayList<Teaching> myTeachings;
 
+  
   /**
    * Charge l'enseignant qui a l'id donné en paramètre.
+ * @param pwd 
+ * @throws Exception 
    */
-  public abstract void load(String id) ;
+  public abstract void load(String id, String pwd) throws Exception ;
 
   /**
    * Retourne la liste des enseignements de cet enseignant.
    */
-  public abstract list<Teaching> getTeachings() ;
+  public abstract ArrayList<Teaching> getTeachings() ;
 
   /**
    * Retourne vrai si l'enseignant est le gestionnaire, faux sinon.
@@ -38,15 +45,11 @@ public abstract class Teacher {
   /**
    * Retourne la liste des réservations qui ont été faites par l'utilisateur et qui ont été validées (Qui ont reçu une salle). 
    */
-  public abstract list<Booking> getValidBooking();
+  public abstract ArrayList<Booking> getValidBooking();
   
   public String toString() {
-	  String result = new String;
+	  String result = "null";
 	  result = id+" "+firstName+" "+lastName+" "+phone+" "+mail+" "+superUser;
-	  Iterator i = myTeachings().iterator();
-	  while(i.hasNext()) {
-		  result+=((Teaching)i.next()).getId()+" ";
-	  }
 	  return result;
   }
 

@@ -1,20 +1,21 @@
 package BL;
+import Persist.*;
 
 
 public abstract class PersistFactory 
 {
   private static PersistFactory PF;
-
+  
   /**
    * Retourne l'instance de la persistFactory.
    */
   public static PersistFactory getInstance()
   {
-		if(PF==NULL) PF = new PersistFactoryJDBC();
-		return PersistFactory;
+		if(PF==null) PF = new PersistFactoryJDBC();
+		return PF;
   }
 
-  /**
+/**
    * Renvoie un objet de type enseignant.
    */
   public abstract Teacher createTeacher();
