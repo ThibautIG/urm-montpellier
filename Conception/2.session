@@ -1,8 +1,11 @@
 window_sizes 1280 738 258 1016 853 35
+diagrams
+  active  classdiagram_ref 147714 // Class diagram
+    1016 629 60 0 36 0
+end
 show_stereotypes
-selected sequencediagram_ref 141186 // AskingCase1
+selected classdiagram_ref 147714 // Class diagram
 open
-  classview_ref 128003 // Login and menu
-  classview_ref 147714 // Asking
+  classview_ref 154242 // Complete
 end
 end
