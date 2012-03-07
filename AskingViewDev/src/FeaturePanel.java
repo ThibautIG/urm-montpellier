@@ -1,10 +1,12 @@
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 class FeaturePanel extends JPanel
 {
 
-	public FeaturePanel(TeacherFacade tf) {
-		// TODO Auto-generated constructor stub
+	public FeaturePanel(TeacherFacade tf) 
+	{
+		
 	}
 
 }
