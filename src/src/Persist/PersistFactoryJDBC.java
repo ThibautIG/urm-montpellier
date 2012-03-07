@@ -11,9 +11,9 @@ class PersistFactoryJDBC extends PersistFactory
    */
   private Connection dbConnection;
   private String driver= "sun.jdbc.odbc.JdbcOdbcDriver";
-  private String url="jdbc:odbc:base_de_donnees";
-  private String login="loginName";
-  private String password="Password";
+  private String url="jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ORA10";
+  private String login="thibaut.rouquette";
+  private String password="oracle";
   
   PersistFactoryJDBC()
   {
@@ -38,32 +38,32 @@ class PersistFactoryJDBC extends PersistFactory
 	  }
   }
 
-  protected Teacher createTeacher() 
+  public Teacher createTeacher() 
   {
 	  return new TeacherJDBC(this.dbConnection);
   }
 
-  protected Teaching createTeaching() 
+  public Teaching createTeaching() 
   {
 	  return new TeachingJDBC(this.dbConnection);
   }
   
-  protected Booking createBooking() 
+  public Booking createBooking() 
   {
 	  return new BookingJDBC(this.dbConnection);
   }
 
-  protected Feature createFeature()
+  public Feature createFeature()
   {
 	  return new FeatureJDBC(this.dbConnection);
   }
 
-  protected Schedule createSchedule() 
+  public Schedule createSchedule() 
   {
 	  return new ScheduleJDBC(this.dbConnection);
   }
 
-  protected Manager createManager() 
+  public Manager createManager() 
   {
 	  return new ManagerJDBC(this.dbConnection);
   }
