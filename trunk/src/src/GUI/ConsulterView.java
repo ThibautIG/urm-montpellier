@@ -1,4 +1,5 @@
-package gui;
+package GUI;
+import BL.Booking;
 import BL.TeacherFacade;
 
 
@@ -14,7 +15,7 @@ class ConsulterView {
   /**
    * Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre.
    */
-  public void genCalendar(Reservation listeReservationsValidees) {
+  public void genCalendar(Booking listeReservationsValidees) {
   }
 
   private TeacherFacade account;

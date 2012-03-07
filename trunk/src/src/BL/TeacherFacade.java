@@ -8,13 +8,17 @@ public class TeacherFacade {
   /**
    * Connecte l'utilisateur si id/pwd est valide
    */
-  public void connect(String id, String pwd) {
+  public boolean connect(String id, String pwd) 
+  {
+	return false;
+	  
   }
 
   /**
    * Retourne la liste des créneaux disponibles sous la forme d'une liste de String.
    */
   String getSchedules() {
+	  return "null";
   }
 
   /**
@@ -33,12 +37,15 @@ public class TeacherFacade {
    * Renvoie la liste des Réservations faites par l'enseignant qui sont validées.
    */
   public list<Booking> getValidBooking(int week) {
+	  
   }
 
   /**
    * Retourne vrai si l'utilisateur est le gestionnaire de l'emploi du temps, faux sinon.
    */
   boolean isSuperUser() {
+	  
+	  return false;
   }
 
   /**
@@ -51,6 +58,8 @@ public class TeacherFacade {
    * Retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie.
    */
   int checkFreeRooms() {
+	  
+	  return 0;
   }
 
   private Teacher teacher;
