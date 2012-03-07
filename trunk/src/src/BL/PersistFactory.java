@@ -3,44 +3,45 @@ package BL;
 
 public abstract class PersistFactory 
 {
-  private static PersistFactory PersistFactory;
+  private static PersistFactory PF;
 
   /**
    * Retourne l'instance de la persistFactory.
    */
   public static PersistFactory getInstance()
   {
-	  return PersistFactory;
+		if(PF==NULL) PF = new PersistFactoryJDBC();
+		return PersistFactory;
   }
 
   /**
    * Renvoie un objet de type enseignant.
    */
-  protected abstract Teacher createTeacher();
+  public abstract Teacher createTeacher();
 
   /**
    * Renvoie un objet de type enseignement.
    */
-  protected abstract Teaching createTeaching();
+  public abstract Teaching createTeaching();
 
   /**
    * Renvoie un objet de type reservation.
    */
-  protected abstract Booking createBooking();
+  public abstract Booking createBooking();
 
   /**
    * Renvoie un objet de type caractéristique.
    */
-  protected abstract Feature createFeature();
+  public abstract Feature createFeature();
 
   /**
    * Renvoie un objet de type créneau horaire.
    */
-  protected abstract Schedule createSchedule();
+  public abstract Schedule createSchedule();
 
   /**
    * Renvoie un objet de type gestionnaire.
    */
-  protected abstract Manager createManager();
+  public abstract Manager createManager();
 
 }

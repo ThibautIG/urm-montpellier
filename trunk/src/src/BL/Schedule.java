@@ -10,12 +10,17 @@ public abstract class Schedule {
   /**
    * Charge le créneau avec l'id correspondant.
    */
-  abstract  load() ;
+  abstract void load(String id) ;
 
   /**
    * Retourne l'id du créneau.
    */
-  String getId() {
+  public String getId() {
+	  	return id;
+  }
+  
+  public String toString() {
+	  return id+" "+startTime+"-"+endTime;
   }
 
 }

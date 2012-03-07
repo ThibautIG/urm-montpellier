@@ -11,16 +11,28 @@ public abstract class Teaching {
   private String type;
 
   private String field;
+  
+  private Teacher eatcher;
 
   /**
    * Charge l'enseignement correspondant à l'id donné en paramètre.
    */
-  abstract  load() ;
+  public abstract void load() ;
 
   /**
    * Retourne l'enseignant qui enseigne cet enseignement.
    */
-  Teacher getTeacher() {
+  public Teacher getTeacher() {
+	return teacher;
+  }
+
+  public StringgetTeacherInfos() {
+	  return teacher.toString();
+  }
+  
+  public String getId() {
+	  return id;
+  }
   }
 
 }
