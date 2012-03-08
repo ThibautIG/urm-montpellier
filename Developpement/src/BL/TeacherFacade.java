@@ -6,10 +6,11 @@ import java.util.ArrayList;
 public class TeacherFacade {
 
 	private Teacher user;
+	private Manager manager;
+	private Booking myBooking;
+	
 	public TeacherFacade() 
-	{
-		
-	}
+	{}
 
 	/**
 	 * Connecte l'utilisateur si id/pwd est valide
@@ -22,13 +23,16 @@ public class TeacherFacade {
 		try 
 		{
 			this.user.load(nom, pwd);
+			System.out.println(this.user.isSuperUser());
 			isConnected = true;
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			e.printStackTrace();
 			System.out.println("non connecté");
 			isConnected = false;
 			this.user = null;
 		}
+		
 
 		return isConnected;
 
@@ -68,9 +72,17 @@ public class TeacherFacade {
 	/**
 	 * Retourne vrai si l'utilisateur est le gestionnaire de l'emploi du temps, faux sinon.
 	 */
-	boolean isSuperUser() {
-
-		return false;
+	public boolean isSuperUser()
+	{
+		System.out.println(this.user.isSuperUser());
+		if(this.user != null)
+		{
+			return this.user.isSuperUser();
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	/**
@@ -86,11 +98,5 @@ public class TeacherFacade {
 
 		return 0;
 	}
-
-	private Teacher teacher;
-
-	private Manager manager;
-
-	private Booking myBooking;
 
 }
