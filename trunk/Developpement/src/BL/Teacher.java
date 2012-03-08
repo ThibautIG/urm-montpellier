@@ -1,8 +1,6 @@
 package BL;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 
 public abstract class Teacher {
@@ -38,8 +36,9 @@ public abstract class Teacher {
   /**
    * Retourne vrai si l'enseignant est le gestionnaire, faux sinon.
    */
-  public boolean isSuperUser() {
-	  	return superUser;
+  public boolean isSuperUser() 
+  {
+	  	return this.superUser;
   }
 
   /**

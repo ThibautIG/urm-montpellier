@@ -1,8 +1,5 @@
 package Persist;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 import BL.Booking;
@@ -21,23 +18,34 @@ class TeacherJDBC extends Teacher
 
 	public void load(String pseudo, String pwd) throws SQLException
 	{
-		String query = "select * from enseignant where nom = '" + pseudo + "' and mdp = '" + pwd + "'";
-		System.out.println(query);
+		String query = "select count(*) from enseignant where nom = '" + pseudo + "' and mdp = '" + pwd + "'";
 		
 		Statement stmt = dbConnection.createStatement();
 		
 		ResultSet results = stmt.executeQuery(query);
 		
+		// vérifier qu'il y a qu'un seul compte
+		results.next();
+		if(results.getInt(1) != 1)
+		{
+			throw new SQLException(); 
+		}
+		
+		// Récupérer les infos de l'enseignant
+		query = "select * from enseignant where nom = '" + pseudo + "' and mdp = '" + pwd + "'";
+		results = stmt.executeQuery(query);
+		
+		results.next();
+		this.id = results.getString(1);
+		this.lastName = results.getString(2);
+		this.firstName = results.getString(3);
+		this.password = results.getString(4);
+		this.superUser = results.getBoolean(5);
 	}
 
 	Teaching getTeaching() 
 	{
 		return null;
-	}
-
-	public boolean isSuperUser()
-	{
-		return false;
 	}
 
 	/**
