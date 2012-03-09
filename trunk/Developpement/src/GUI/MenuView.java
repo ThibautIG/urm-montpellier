@@ -41,7 +41,7 @@ class MenuView extends JFrame implements ActionListener
 
 		//initialisation des widgets
     	this.setTitle("URM Menu");
-    	this.setSize(300,150); //On donne une taille à notre fenêtre
+    	this.setSize(300,110); //On donne une taille à notre fenêtre
     	this.setResizable(false);
     	
     	// liste des boutons
@@ -56,7 +56,8 @@ class MenuView extends JFrame implements ActionListener
     	p.add(ask);
     	if(this.user.isSuperUser())
     	{
-    		handle = new JButton("Traitement des demandes"); handle.setPreferredSize(new Dimension (250,30)); handle.setActionCommand("handle"); handle.addActionListener(this);
+    		this.setSize(300,150); //On donne une taille à notre fenêtre
+			handle = new JButton("Traitement des demandes"); handle.setPreferredSize(new Dimension (250,30)); handle.setActionCommand("handle"); handle.addActionListener(this);
         	p.add(handle);
     	}
     	
