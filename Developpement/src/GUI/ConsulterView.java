@@ -47,10 +47,11 @@ class ConsulterView extends JFrame implements ActionListener{
 	@SuppressWarnings("serial")
 	public ConsulterView(TeacherFacade c) 
 	{
-
 		super("Consultation Planning");
-		this.setSize(new Dimension(800, 600));
+		
+		this.account = c;
 
+		this.setSize(new Dimension(800, 600));
 		getContentPane().setLayout(new BorderLayout(0, 19));
 
 		panel_1 = new JPanel();
@@ -141,6 +142,8 @@ class ConsulterView extends JFrame implements ActionListener{
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
+		
+		this.genCalendar(1);
 	}
 
 
@@ -149,11 +152,17 @@ class ConsulterView extends JFrame implements ActionListener{
 	/**
 	 * Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre.
 	 */
-	public void genCalendar(Booking listeReservationsValidees) 
+	public void genCalendar(int week)
 	{
-		ArrayList<ArrayList<String>> infosPlanning = new ArrayList<ArrayList<String>>();
+		int i,j;
+		ArrayList<ArrayList<String>> infosPlanning;
 		infosPlanning = account.getValidBooking(week);
-		System.out.println();
+		
+		for (i=0; i<infosPlanning.size(); i++){
+			for (j=0; j<infosPlanning.get(i).size(); j++){
+				System.out.println(infosPlanning.get(i).get(j));
+			}
+		}
 
 	}
 

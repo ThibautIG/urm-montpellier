@@ -17,7 +17,7 @@ class ScheduleJDBC extends Schedule {
 
 	public void load(String id) throws Exception 
 	{
-		String query = "select count(*) from Crenaux where id = '" + id + "'";
+		String query = "select count(*) from Crenaux where id_creneau = '" + id + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		
@@ -29,8 +29,9 @@ class ScheduleJDBC extends Schedule {
 		}
 
 		// Récupérer les infos du créneau
-		query = "select * from Crenaux where id = '" + id + "'";
+		query = "select * from Crenaux where id_creneau = '" + id + "'";
 		results = stmt.executeQuery(query);
+		results.next();
 		
 		this.id = results.getString(1);
 		this.startTime = results.getString(2);

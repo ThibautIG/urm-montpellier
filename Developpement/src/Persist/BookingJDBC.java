@@ -37,7 +37,7 @@ class BookingJDBC extends Booking
 		ArrayList<Feature> listFeatures = new ArrayList<Feature>();
 		int idSalle;
 		
-		String query = "select count(*) from Reservation where id = '" + reference + "'";
+		String query = "select count(*) from Reservation where id_reservation = '" + reference + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		
@@ -49,12 +49,15 @@ class BookingJDBC extends Booking
 		}
 		
 		// Récupérer les infos de la réservation
-		query = "select * from Reservation where id = '" + reference + "'";
+		query = "select * from Reservation where id_reservation = '" + reference + "'";
 		stmt = dbConnection.createStatement();
 		results = stmt.executeQuery(query);
+		results.next();
 		
 		Schedule schedule = new ScheduleJDBC(dbConnection);
 		Teaching teaching = new TeachingJDBC(dbConnection);
+
+		
 		schedule.load(results.getString(3));
 		teaching.load(results.getString(4));
 		
@@ -79,6 +82,8 @@ class BookingJDBC extends Booking
 		query = "select NUMERO_SALLE from SALLE where ID_SALLE = '" + idSalle + "'";
 		stmt = dbConnection.createStatement();
 		results = stmt.executeQuery(query);
+		results.next();
+
 		this.room = results.getString(1);
 
 		/** Caractéristique **/

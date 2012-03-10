@@ -22,6 +22,10 @@ public abstract class Teacher
 	 */
 	public abstract void load(String id, String pwd) throws Exception;
 
+	public String getLastName() {
+		return lastName;
+	}
+
 	public String getId() {
 		return id;
 	}

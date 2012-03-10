@@ -7,6 +7,8 @@ public abstract class Teaching
 	protected int hours;
 	protected int group;
 	protected String field;
+
+
 	protected Teacher teacher;
 	protected String type;
 
@@ -29,5 +31,9 @@ public abstract class Teaching
 
 	public String getId() {
 		return id;
+	}	
+
+	public String getField() {
+		return field;
 	}
 }

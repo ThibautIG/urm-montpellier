@@ -6,14 +6,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-
 import BL.TeacherFacade;
 
-/**
- * 
- * @author URM Team
- * @description : classe permettant de générer l'interface graphique pour l'authentification
- */
+@SuppressWarnings("serial")
 public class LoginView extends JFrame implements ActionListener
 {
 	private TeacherFacade account;
@@ -25,40 +20,31 @@ public class LoginView extends JFrame implements ActionListener
     private JTextField tfLogin; //champ texte login
     private JPasswordField tfMdp; //champ texte mot de passe
     private JButton bValid, bCancel; // boutons valider et annuler
-    private MsgPopup erreur;
 
-   /**
-    * @param aucun
-    * @description : constructeur de la fenêtre Login faisant appel à la métode initComponents();
-    */
     public LoginView() 
     {
+    	setResizable(false);
         initComponents();
     }
 
-   /**
-    * @return void
-    * @description : méthode d'initialisation de la fenêtre graphique permettant l'authentification
-    */
     private void initComponents() 
     {
     	//initialisation des widgets
     	this.setTitle("URM Authentification");
-    	this.setSize(400,300); //On donne une taille à notre fenêtre
-    	this.setResizable(false); //elle ne peut pas être redimensionnée
+    	this.setSize(384,232);
     	
 		/** construction du panneau nord */
-    	pNorth = new JPanel (new GridLayout(2,2)); //panneau nord composé de 2 Jlabel et de 2 champs
+    	pNorth = new JPanel (new GridLayout(2,2)); //panneau nord
     	
     	lblLogin = new JLabel("Login :"); //label Login
-    	tfLogin = new JTextField(); //champ texte pour renseigner l'identifiant
-    	tfLogin.setPreferredSize(new Dimension (90, 20)); //redimensionnement du champ texte
-    	tfLogin.setToolTipText("Entrez votre identifiant"); //indication à l'utilisateur
+    	tfLogin = new JTextField();
+    	tfLogin.setPreferredSize(new Dimension (90, 20));
+    	tfLogin.setToolTipText("Enter your login");
 
     	lblMdp = new JLabel("Mot de passe :"); //label mot de passe
-    	tfMdp = new JPasswordField(); //champ texte mot de passe pour renseigner le mot de passe
-    	tfMdp.setPreferredSize(new Dimension (90, 20)); //redimensionnement du champ texte
-    	tfMdp.setToolTipText("Entrez votre mot de passe"); //indication à l'utilisateur
+    	tfMdp = new JPasswordField();
+    	tfMdp.setPreferredSize(new Dimension (90, 20));
+    	tfMdp.setToolTipText("Enter your password");
     	
     	/** ajout des widgets du panneau nord */
     	
@@ -69,10 +55,10 @@ public class LoginView extends JFrame implements ActionListener
     	
 		/** construction du panneau sud */
 
-    	pSouth = new JPanel (); //panneau sud contenant les boutons
+    	pSouth = new JPanel (); //panneau sud
     	
-    	bValid = new JButton("Valider"); bValid.setActionCommand("valid"); bValid.addActionListener(this); //création et initialisation du bouton "valider"
-    	bCancel = new JButton("Annuler"); bCancel.setActionCommand("cancel"); bCancel.addActionListener(this); //création et initialisation du bouton "annuler"
+    	bValid = new JButton("Valider"); bValid.setActionCommand("valid"); bValid.addActionListener(this);
+    	bCancel = new JButton("Quitter"); bCancel.setActionCommand("cancel"); bCancel.addActionListener(this);
     	
     	/** ajout des widgets du panneau sud */
     	
@@ -83,38 +69,28 @@ public class LoginView extends JFrame implements ActionListener
     	this.getContentPane().add(pNorth, BorderLayout.NORTH); //On ajoute un panneau au nord
     	this.getContentPane().add(pSouth, BorderLayout.SOUTH); //On ajoute un panneau au sud
     	
-    	this.setLocationRelativeTo(null); //on place la fenêtre au centre de l'écran    
-        this.setVisible(true); //la fenêtre est rendue visible
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //termine le programme lorsqu'on le ferme
+    	this.setLocationRelativeTo(null);     
+        this.setVisible(true);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         pack();
     }
 
-	/**
-	 * @param ActionEvent e : évenement provenant d'un clic sue un bouton
-	 * @return : void
-	 * @description : écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
-	 */
-    public void actionPerformed(ActionEvent e) 
+	public void actionPerformed(ActionEvent e) 
 	{		
-		if (e.getActionCommand().equals("valid")) //l'utilisateur clique sur valider
+		if (e.getActionCommand().equals("valid"))
 		{
-			this.account = new TeacherFacade(); //on crée un nouvel objet compte identifiant un enseignant
-
-				boolean connected = this.account.connect(this.tfLogin.getText(), new String(this.tfMdp.getPassword()));
-				
-				if (connected)
-				{
-					this.menu = new MenuView(account);
-					this.setVisible(false);
-				}
-				
-				else
-				{
-					System.out.println("L'utilisateur n'est pas connecté");
-					erreur = new MsgPopup("Impossible de se connecter. Vérifiez vos identifiant et mot de passe.");
-				}
-				
-
+			this.account = new TeacherFacade();
+			
+			boolean connected = this.account.connect(this.tfLogin.getText(), new String(this.tfMdp.getPassword()));
+			if (!connected)
+			{
+				System.out.println("L'utilisateur n'est pas connecté");
+			}
+			else
+			{
+				this.menu = new MenuView(account);
+				this.setVisible(false);
+			}
 		}
 		else if (e.getActionCommand().equals("cancel")) 
 		{

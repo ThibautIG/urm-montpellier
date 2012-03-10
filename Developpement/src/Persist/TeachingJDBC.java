@@ -13,11 +13,14 @@ class TeachingJDBC extends Teaching {
 	Connection dbConnection;
 
 	public TeachingJDBC(Connection dbConnection) {
-		// TODO Auto-generated constructor stub
+		this.dbConnection = dbConnection;
 	}
 
-	public void load(String id) throws Exception {
-		String query = "select count(*) from ENSEIGNEMENT where id = '" + id + "'";
+	public void load(String reference) throws Exception 
+	{
+		String idField;
+		
+		String query = "select count(*) from ENSEIGNEMENT where ID_ENSEIGNEMENT = '" + reference + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 
@@ -29,22 +32,40 @@ class TeachingJDBC extends Teaching {
 		}
 
 		// Récupérer les infos du créneau
-		query = "select * from ENSEIGNEMENT where id = '" + id + "'";
+		query = "select * from ENSEIGNEMENT where ID_ENSEIGNEMENT = '" + reference + "'";
 		results = stmt.executeQuery(query);
-
-		Teacher teacher = new TeacherJDBC(dbConnection);
-		teacher.load(teacher.getId(), teacher.getPassword());
+		results.next();
+		
+		/** teacher??? **/
 		
 		this.id = results.getString(1);
-		this.field = results.getString(2);
-		this.teacher = teacher;
-		if (results.getString(4) == null) {
+
+		if (results.getString(4) == "") {
 			this.type = "reunion";
 		}
 		else 
 			this.group = results.getInt(4);
 			
 		this.hours = results.getInt(5);
+		
+		idField = results.getString(2);
+		
+		// Récupérer l'intitulé du cours
+		query = "select COUNT(*) from COURS c, MATIERE m where c.ID_MATIERE = m.ID_MATIERE and c.ID_COURS = '" + idField + "'";
+		results = stmt.executeQuery(query);
+		results.next();
+		if(results.getString(1) == "")
+		{
+			throw new SQLException(); 
+		}
+		
+		query = "select m.LIBELLE_MATIERE from COURS c, MATIERE m where c.ID_MATIERE = m.ID_MATIERE and c.ID_COURS = '" + idField + "'";
+		results = stmt.executeQuery(query);
+		results.next();
+		field = results.getString(1);
+
+		
+		
 
 	}
 
