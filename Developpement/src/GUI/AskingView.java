@@ -30,9 +30,9 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 	private String teachingSelected;
 	private Date dateSelected;
 	private String scheduleSelected;
-	private Enumeration<String> featuresSelected;
-	private int capacity;
-	private String comments;
+	private Enumeration<String> featuresSelected = null;
+	private int capacity = 0;
+	private String comments = "";
 	
 	// Widgets
 	private final ButtonGroup buttonGroup = new ButtonGroup();
@@ -40,7 +40,8 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 	private JComboBox<String> teachingChoice;
 	private JCalendar calendar;
 	private JList<String> schedulesList, lSelectedFt, lUnselectedFt;
-
+	private JTextArea taComments;
+	private JLabel lblNbRooms;
 
 	AskingView(TeacherFacade account) 
 	{
@@ -97,9 +98,12 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 		timeAndDate.add(lblSelectSchedule);
 		
 		schedulesList = new JList<String>();
-		DefaultListModel<String> dlm = new DefaultListModel<String>();
-		dlm.addElement("8h00 - 9h30");
-		dlm.addElement("9h45 - 11h15");
+		DefaultListModel<String> dlms = new DefaultListModel<String>();
+		for (int i=0; i<this.account.getSchedules().length; i++)
+		{
+			dlms.addElement(this.account.getSchedules()[i]);
+		}
+		this.schedulesList.setModel(dlms);
 		schedulesList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
 		schedulesList.setBounds(246, 19, 196, 140);
 		this.schedulesList.addListSelectionListener(this);
@@ -135,13 +139,20 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 		tfCapacity.setColumns(10);
 		
 		lSelectedFt = new JList<String>();
+		this.lSelectedFt.setModel(new DefaultListModel<String>());
 		lSelectedFt.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		lSelectedFt.setBounds(10, 21, 180, 118);
+		lSelectedFt.setBounds(252, 21, 180, 118);
 		features.add(lSelectedFt);
 		
 		lUnselectedFt = new JList<String>();
+		DefaultListModel<String> dlm = new DefaultListModel<String>();
+		for (int i=0; i<this.account.getFeatures().length; i++)
+		{
+			dlm.addElement(this.account.getFeatures()[i]);
+		}
+		this.lUnselectedFt.setModel(dlm);
 		lUnselectedFt.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		lUnselectedFt.setBounds(252, 21, 180, 118);
+		lUnselectedFt.setBounds(10, 21, 180, 118);
 		features.add(lUnselectedFt);
 		
 		// Panneau des commentaires
@@ -154,7 +165,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 		lblComments.setBounds(10, 5, 147, 14);
 		commentsPanel.add(lblComments);
 		
-		JTextArea taComments = new JTextArea();
+		taComments = new JTextArea();
 		taComments.setBounds(116, 0, 326, 37);
 		commentsPanel.add(taComments);
 		
@@ -166,11 +177,13 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 		getContentPane().add(roomNb);
 		roomNb.setLayout(null);
 		
-		JLabel lblNbRooms = new JLabel("Nombre de salles disponibles estim\u00E9 : 0 ");
+		lblNbRooms = new JLabel("Nombre de salles disponibles estim\u00E9 : ? ");
 		lblNbRooms.setBounds(10, 11, 291, 14);
 		roomNb.add(lblNbRooms);
 		
 		JButton bCheck = new JButton("V\u00E9rifier");
+		bCheck.setActionCommand("ck");
+		bCheck.addActionListener(this);
 		bCheck.setBounds(246, 8, 88, 20);
 		roomNb.add(bCheck);
 		
@@ -181,10 +194,14 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 		finish.setLayout(null);
 		
 		JButton bCancel = new JButton("Annuler");
+		bCancel.setActionCommand("cancel");
+		bCancel.addActionListener(this);
 		bCancel.setBounds(10, 5, 86, 23);
 		finish.add(bCancel);
 		
 		JButton bValid = new JButton("Valider");
+		bValid.setActionCommand("valid");
+		bValid.addActionListener(this);
 		bValid.setBounds(106, 5, 87, 23);
 		finish.add(bValid);
 		
@@ -197,12 +214,11 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 	{
 		if(e.getActionCommand().equals("teach"))
 		{
-			//ArrayList<String> ens = this.tf.getTeaching();
+			String[] ens = this.account.getTeaching();
 			
-			for(int i=0; i < 5; i++)
+			for(int i=0; i < ens.length; i++)
 			{
-				//this.teachingChoice.addItem(ens.get(i));
-				this.teachingChoice.addItem("enseignement"+i);
+				this.teachingChoice.addItem(ens[i]);
 			}
 			
 			this.teachingChoice.setEnabled(true);
@@ -214,19 +230,56 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 		}
 		else if(e.getActionCommand().equals("add"))
 		{
-			DefaultListModel<String> dlm = (DefaultListModel<String>)this.lSelectedFt.getModel();
-			dlm.addElement(this.lUnselectedFt.getSelectedValue());
-			dlm = (DefaultListModel<String>)this.lUnselectedFt.getModel();
-			dlm.removeElementAt(this.lUnselectedFt.getSelectedIndex());
-			this.featuresSelected = ((DefaultListModel<String>)this.lSelectedFt.getModel()).elements();
+			if(!this.lUnselectedFt.isSelectionEmpty())
+			{
+				DefaultListModel<String> dlm = (DefaultListModel<String>)this.lSelectedFt.getModel();
+				dlm.addElement(this.lUnselectedFt.getSelectedValue());
+				this.lSelectedFt.setModel(dlm);
+				this.featuresSelected = ((DefaultListModel<String>)this.lSelectedFt.getModel()).elements();
+				
+				DefaultListModel<String> dlm2 = (DefaultListModel<String>)this.lUnselectedFt.getModel();
+				dlm2.removeElementAt(this.lUnselectedFt.getSelectedIndex());
+				this.lUnselectedFt.setModel(dlm2);
+			}
 		}
 		else if(e.getActionCommand().equals("del"))
 		{
-			DefaultListModel<String> dlm = (DefaultListModel<String>)this.lUnselectedFt.getModel();
-			dlm.addElement(this.lSelectedFt.getSelectedValue());
-			dlm = (DefaultListModel<String>)this.lSelectedFt.getModel();
-			dlm.removeElementAt(this.lSelectedFt.getSelectedIndex());
-			this.featuresSelected = dlm.elements();
+			if(!this.lSelectedFt.isSelectionEmpty())
+			{
+				DefaultListModel<String> dlm = (DefaultListModel<String>)this.lUnselectedFt.getModel();
+				dlm.addElement(this.lSelectedFt.getSelectedValue());
+				this.lUnselectedFt.setModel(dlm);
+				
+				DefaultListModel<String> dlm2 = (DefaultListModel<String>)this.lSelectedFt.getModel();
+				dlm2.removeElementAt(this.lSelectedFt.getSelectedIndex());
+				this.lSelectedFt.setModel(dlm2);
+				this.featuresSelected = dlm2.elements();
+			}
+		}
+		else if(e.getActionCommand().equals("ck"))
+		{
+			if(this.dateSelected != null && this.scheduleSelected != null)
+			{
+				this.capacity = Integer.parseInt(this.tfCapacity.getText());
+				this.lblNbRooms.setText("Nombre de salles disponibles estim\u00E9 : "+this.account.checkFreeRooms(this.dateSelected, this.scheduleSelected, this.featuresSelected, this.capacity));
+			}
+		}
+		else if(e.getActionCommand().equals("cancel"))
+		{
+			dispose();
+		}
+		else if(e.getActionCommand().equals("valid"))
+		{
+			if(this.teachingSelected != null)
+			{
+				if(this.dateSelected != null && this.scheduleSelected != null)
+				{
+					this.capacity = Integer.parseInt(this.tfCapacity.getText());
+					this.comments = this.taComments.getText();
+					this.account.confirmBooking(teachingSelected, dateSelected, scheduleSelected, featuresSelected, capacity, comments);
+					dispose();
+				}
+			}
 		}
 	}
 
