@@ -1,0 +1,56 @@
+package GUI;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+
+public class MsgPopup extends JFrame implements ActionListener{
+
+	JButton okButton;
+	JLabel msgToDisplay;
+	JPanel pNorth, pSouth;
+	
+	public MsgPopup(String msg)
+	{
+		initComponents("\t"+msg+"\t");
+	}
+	
+
+	private void initComponents(String msg)
+	{
+		this.setSize(300,300);
+		okButton = new JButton ("Ok"); okButton.setActionCommand("ok"); okButton.addActionListener(this); //création et initialisation du bouton "valider"
+		msgToDisplay = new JLabel (msg);
+		pNorth = new JPanel (new BorderLayout());
+		pSouth = new JPanel (new BorderLayout());
+		pNorth.add(msgToDisplay);
+		pSouth.add(okButton);
+		
+		this.getContentPane().add(pNorth, BorderLayout.NORTH); //On ajoute un panneau au Nord
+		this.getContentPane().add(pSouth, BorderLayout.SOUTH); //On ajoute un panneau au sud
+		
+		this.setResizable(false);
+    	this.setLocationRelativeTo(null); //on place la fenêtre au centre de l'écran    
+        this.setVisible(true); //la fenêtre est rendue visible
+        pack();
+		
+	}
+	
+	public void actionPerformed(ActionEvent e)
+	{
+		if (e.getActionCommand().equals("ok"))
+		{
+			this.setVisible(false);
+		}
+		
+	}
+
+}
