@@ -29,30 +29,40 @@ class ConsulterView extends JFrame implements ActionListener{
 	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours
 	 */
 	private int week;
+	
 	private TeacherFacade account;
+	private JPanel Boutons_panel;
 	private JTable table;
+	private JButton bPrecedent;
+	private JButton bSuivant;
+	private JPanel panel;
+	private JButton bQuit;
+	private JPanel quit_panel;
+	private JPanel planning_panel;
+	private JLabel lblNewLabel;
+	private JPanel panel_1;
 
 
 	@SuppressWarnings("serial")
 	public ConsulterView(TeacherFacade c) 
 	{
-		
+
 		super("Consultation Planning");
 		this.setSize(new Dimension(800, 600));
 
 		getContentPane().setLayout(new BorderLayout(0, 19));
 
-		JPanel panel_1 = new JPanel();
+		panel_1 = new JPanel();
 		panel_1.setPreferredSize(new Dimension(50, 50));
 		getContentPane().add(panel_1, BorderLayout.NORTH);
 		panel_1.setLayout(new BorderLayout(0, 0));
 
-		JLabel lblNewLabel = new JLabel("Consultation du planning");
+		lblNewLabel = new JLabel("Consultation du planning");
 		panel_1.add(lblNewLabel);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-		JPanel planning_panel = new JPanel();
+		planning_panel = new JPanel();
 		getContentPane().add(planning_panel, BorderLayout.CENTER);
 		planning_panel.setLayout(new BorderLayout(10, 10));
 
@@ -97,42 +107,41 @@ class ConsulterView extends JFrame implements ActionListener{
 			}
 		});
 
-		JPanel Boutons_panel = new JPanel();
+		Boutons_panel = new JPanel();
 		Boutons_panel.setMinimumSize(new Dimension(20, 20));
 		planning_panel.add(Boutons_panel, BorderLayout.SOUTH);
 
-		JButton btnNewButton = new JButton("<-   Precedent");
-		btnNewButton.setActionCommand("Precedent");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
+		bPrecedent = new JButton("<  Precedent");
+		bPrecedent.setActionCommand("Precedent");
+		bPrecedent.addActionListener(this);
 		Boutons_panel.setLayout(new BorderLayout(0, 5));
-		Boutons_panel.add(btnNewButton, BorderLayout.WEST);
+		Boutons_panel.add(bPrecedent, BorderLayout.WEST);
 
-		JButton btnNewButton_1 = new JButton("Suivant   ->");
-		btnNewButton_1.setActionCommand("Suivant");
-		Boutons_panel.add(btnNewButton_1, BorderLayout.EAST);
+		bSuivant = new JButton("Suivant  >");
+		bSuivant.setActionCommand("Suivant");
+		bSuivant.addActionListener(this);
+		Boutons_panel.add(bSuivant, BorderLayout.EAST);
 
-		JPanel quit_panel = new JPanel();
+		quit_panel = new JPanel();
 		getContentPane().add(quit_panel, BorderLayout.SOUTH);
 		quit_panel.setLayout(new BoxLayout(quit_panel, BoxLayout.X_AXIS));
 
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		quit_panel.add(panel);
 		panel.setLayout(new BorderLayout(20, 0));
 
-		JButton quit = new JButton("Fermer");
-		panel.add(quit, BorderLayout.EAST);
-		quit.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		
-		
+		bQuit = new JButton("Fermer");
+		bQuit.setActionCommand("Fermer");
+		bQuit.addActionListener(this);
+		panel.add(bQuit, BorderLayout.EAST);
+		bQuit.setAlignmentX(Component.RIGHT_ALIGNMENT);
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
-	
-	
-	
+
+
+
 
 	/**
 	 * Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre.
@@ -144,8 +153,18 @@ class ConsulterView extends JFrame implements ActionListener{
 	}
 
 
-
-	public void actionPerformed(ActionEvent arg0) {
-
+	public void actionPerformed(ActionEvent e) {
+		Object source = e.getSource();
+		if (source instanceof JButton){
+			if (source == bSuivant) {
+				week = week++;
+			}
+			else if (source == bPrecedent) {
+				week = week--;
+			}
+			else if (source == bQuit) {
+				this.setVisible(false);
+			}
+		}
 	}
 }
