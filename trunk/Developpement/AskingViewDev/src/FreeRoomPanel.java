@@ -1,6 +1,8 @@
+
+
 import javax.swing.JPanel;
 
-class FreeRoomPanel extends JPanel
+public class FreeRoomPanel extends JPanel
 {
 
 	public FreeRoomPanel(TeacherFacade tf) {

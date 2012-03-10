@@ -2,7 +2,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import com.sun.xml.internal.ws.api.server.Container;
 
 @SuppressWarnings("serial")
 class AskingView extends JFrame implements ActionListener
@@ -34,27 +33,28 @@ class AskingView extends JFrame implements ActionListener
 		  this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		  
 		  java.awt.Container cp = this.getContentPane();
-		  cp.setLayout(new FlowLayout());
+		  
+		  cp.setLayout(new BoxLayout(cp, BoxLayout.Y_AXIS));
 		  
 		  // Panneau 1 Choix du type de réservation et le cas échéant de l'enseignement
 		  this.p1 = new ChooseTypePanel(this.account);
-		  cp.add(p1);
+		  //cp.add(p1);
 		  
 		  // Panneau 2 Choix de la date et du créneau
 		  this.p2 = new TimePanel(this.account);
-		  cp.add(this.p2);
+		  //cp.add(this.p2);
 		  
 		  // Panneau 3 Choix des caractéristiques
 		  this.p3 = new FeaturePanel(this.account);
-		  cp.add(this.p3);
+		  //cp.add(this.p3);
 		  
 		  // Panneau 4 Choix de la capacitée et commentaires
 		  this.p4 = new CommentsCapacityPanel(this.account);
-		  cp.add(this.p4);
+		  //cp.add(this.p4);
 		  
 		  // Panneau 5 Affichage du nombre de salles libres
 		  this.p5 = new FreeRoomPanel(this.account);
-		  cp.add(this.p5);
+		  //cp.add(this.p5);
 		  
 		  // Boutons
 		  this.p6 = new JPanel();
@@ -62,16 +62,8 @@ class AskingView extends JFrame implements ActionListener
 		  this.cancel = new JButton("Annuler");
 		  this.p6.add(this.valid);
 		  this.p6.add(this.cancel);
-		  cp.add(p6);
+		  //cp.add(p6);
 	}
-
-  /**
-   * Ajoute la caractéristique sélectionnée dans la liste de gauche à la liste de droite. Sauvegarde cette caractéristique.
-   */
-  void addFeature() 
-  {
-	  
-  }
 
   /**
    * écoute la boite d'éddition capacité et sauvegarde la donnée rentrée.
@@ -106,7 +98,8 @@ class AskingView extends JFrame implements ActionListener
   }
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent arg0) 
+	{
 		// TODO Auto-generated method stub
 		
 	}

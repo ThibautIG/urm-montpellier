@@ -1,7 +1,9 @@
+
+
 import javax.swing.JPanel;
 
 
-class CommentsCapacityPanel extends JPanel
+public class CommentsCapacityPanel extends JPanel
 {
 
 	public CommentsCapacityPanel(TeacherFacade tf) {

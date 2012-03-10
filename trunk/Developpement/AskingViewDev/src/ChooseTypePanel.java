@@ -1,12 +1,12 @@
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-class ChooseTypePanel extends JPanel implements ActionListener, ItemListener
+public class ChooseTypePanel extends JPanel implements ActionListener, ItemListener
 {
 	private JRadioButton enseignement, reunion;
 	private JComboBox<String> enseignements;

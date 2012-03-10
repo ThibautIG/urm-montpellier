@@ -1,3 +1,5 @@
+
+
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
@@ -32,6 +34,10 @@ public class TimePanel extends JPanel implements PropertyChangeListener, ListSel
 		// Créneaux
 		DefaultListModel<String> dlm = new DefaultListModel<String>();
 		this.sc = new JList<String>(dlm);
+		
+		dlm.addElement("8h00 - 9h30");
+		dlm.addElement("9h45 - 11h15");
+		dlm.addElement("11h30 - 13h00");
 		
 		//ArrayList<String> scs = this.tf.getSchedules();
 		//for(int i=0; i < scs.size(); i++)
