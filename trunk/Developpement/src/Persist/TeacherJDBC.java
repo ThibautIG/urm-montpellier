@@ -2,6 +2,8 @@ package Persist;
 import java.sql.*;
 import java.util.ArrayList;
 
+import oracle.sql.*;
+
 import BL.Booking;
 import BL.Teacher;
 import BL.Teaching;
@@ -52,7 +54,9 @@ class TeacherJDBC extends Teacher
 	{
 		ArrayList<Booking> listBookings = new ArrayList<Booking>();
 
-		String query = "select listReserv from VEnseignant where id = '" + id + "'";
+		String query = "select res.ID_RESERVATION from RESERVATION res, ENSEIGNEMENT ens where res.id_enseignement = ens.id_enseignement AND ens.id_enseignant = '" 
+				+ this.id + "'";
+
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 

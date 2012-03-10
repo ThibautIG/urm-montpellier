@@ -1,8 +1,6 @@
 package BL;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
 
 
 public class TeacherFacade {
@@ -45,28 +43,24 @@ public class TeacherFacade {
 	/**
 	 * Retourne la liste des créneaux disponibles sous la forme d'une liste de String.
 	 */
-	public String[] getSchedules() 
-	{
-		String[] s =  {"8h00 - 9h30", "9h45 - 11h15"};
-		return s;
+	String getSchedules() {
+		return "";
 	}
 
 	/**
 	 * retourne la liste des caractéristiques disponibles dans une liste de String.
 	 */
-	public String[] getFeatures() 
+	String getFeatures() 
 	{
-		String[] s =  {"Rétroprojecteur", "Amphi"};
-		return s;
+		return "";
 	}
 
 	/**
 	 * retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans une liste de String.
 	 */
-	public String[] getTeaching() 
+	ArrayList<String> getTeaching() 
 	{
-		String[] s = {"BDRO", "Graphe"};
-		return s;
+		return null;
 	}
 
 	/**
@@ -89,11 +83,18 @@ public class TeacherFacade {
 		
 		for (i=0; i<resaValides.size(); i++){
 			booking = resaValides.get(i);
+//			System.out.println(booking.getDate());
+//			System.out.println(booking.getStringSchedule());
+//			System.out.println(booking.getRoom());
+//			System.out.println(booking.getField());
+//			System.out.println("");
+
 			resaString.add(booking.getDate());
 			resaString.add(booking.getStringSchedule());
-			resaString.add(booking.getTeacherInfos());
+			//resaString.add(booking.getTeacherInfos());
 			resaString.add(booking.getRoom());
-			//resaString.add(booking.getFieldString());
+			resaString.add(booking.getField());
+			resaValidesString.add(resaString);
 		}
 		return resaValidesString;
 	}
@@ -117,17 +118,15 @@ public class TeacherFacade {
 	/**
 	 * Valide définitivement la reservation, c'est à dire sauvegarde les données de celle-ci.
 	 */
-	public void confirmBooking(String teaching, Date d, String sc, Enumeration<String> fts, int capacity, String comments) 
-	{
-		
+	void confirmBooking() {
 	}
 
 	/**
 	 * Retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie.
 	 */
-	public int checkFreeRooms(Date d, String sc, Enumeration<String> fts, int capacity) 
-	{
-		return 1;
+	int checkFreeRooms() {
+
+		return 0;
 	}
 
 }

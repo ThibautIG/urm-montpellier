@@ -121,6 +121,8 @@ public abstract class Booking
 	public abstract boolean save() ;
 
 
-
+	public String getField() {
+		return teaching.getField();
+	}
 
 }

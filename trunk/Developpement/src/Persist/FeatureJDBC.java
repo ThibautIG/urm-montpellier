@@ -22,7 +22,7 @@ class FeatureJDBC extends Feature {
 	}
 
 	public void load(String id) throws Exception {
-		String query = "select count(*) from CARACTERISTIQUE where id = '" + id + "'";
+		String query = "select count(*) from CARACTERISTIQUE where ID_CARACTERISTIQUE = '" + id + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 
@@ -34,9 +34,10 @@ class FeatureJDBC extends Feature {
 		}
 
 		// Récupérer les infos du créneau
-		query = "select * from CARACTERISTIQUE where id = '" + id + "'";
+		query = "select * from CARACTERISTIQUE where ID_CARACTERISTIQUE = '" + id + "'";
 		results = stmt.executeQuery(query);
-
+		results.next();
+		
 		this.id = results.getString(1);
 		this.name = results.getString(2);
 	}

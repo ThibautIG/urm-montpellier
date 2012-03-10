@@ -20,8 +20,9 @@ public abstract class Schedule {
 		return id;
 	}
 
-	public String toString() {
-		return id+" "+startTime+"-"+endTime;
+	public String toString() 
+	{
+		return startTime + " - " + endTime;
 	}
 
 }
