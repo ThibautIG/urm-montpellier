@@ -5,18 +5,29 @@ import BL.Booking;
 
 
 class BookingJDBC extends Booking {
-   public BookingJDBC(Connection dbConnection) 
-   {
+	public BookingJDBC(Connection dbConnection) 
+	{
 		// TODO Auto-generated constructor stub
 	}
 
-load() {
-  }
+	public int checkFreeRooms() {
+		return 0;
+	}
 
-  int checkFreeRooms() {
-  }
+	public boolean save() {
+		return false;
+	}
 
-   save() {
-  }
+	@Override
+	public void load(String reference) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSalle() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

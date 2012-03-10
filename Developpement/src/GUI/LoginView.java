@@ -23,6 +23,8 @@ public class LoginView extends JFrame implements ActionListener
 
     public LoginView() 
     {
+    	setResizable(false);
+    	//setResizable(false);
         initComponents();
     }
 
@@ -30,8 +32,7 @@ public class LoginView extends JFrame implements ActionListener
     {
     	//initialisation des widgets
     	this.setTitle("URM Authentification");
-    	this.setSize(400,300); //On donne une taille à notre fenêtre
-    	this.setResizable(false);
+    	this.setSize(384,232);
     	
 		/** construction du panneau nord */
     	pNorth = new JPanel (new GridLayout(2,2)); //panneau nord

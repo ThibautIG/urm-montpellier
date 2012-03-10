@@ -1,5 +1,6 @@
 package Persist;
 import java.sql.Connection;
+import java.util.ArrayList;
 
 import BL.Booking;
 import BL.Feature;
@@ -8,29 +9,39 @@ import BL.Schedule;
 
 
 class ManagerJDBC extends Manager {
-  public ManagerJDBC() {
-  }
+	public ManagerJDBC() {
+	}
 
-  public ManagerJDBC(Connection dbConnection) {
-	// TODO Auto-generated constructor stub
-}
+	public ManagerJDBC(Connection dbConnection) {
+		// TODO Auto-generated constructor stub
+	}
 
-Feature getFeatures() {
-  }
+	public ArrayList<Feature> getFeatures() {
+		return null;
+	}
 
-  Schedule getSchedules() {
-  }
+	public ArrayList<Schedule> getSchedules() {
+		return null;
+	}
 
-  Booking getAllUnvalidBookings() {
-  }
+	public ArrayList<Booking> getAllUnvalidBookings() {
+		return null;
+	}
 
-  void deleteSelectedBooking() {
-  }
+	public void deleteSelectedBooking() {
+	}
 
-  /**
-   * Retourne sous forme de liste de structure les dates et créneaux pour lesquelles il y des salles libre avec les paramètre de la réservation selectionnée.
-   */
-  list struct string getWeekValidSchedules() {
-  }
+	/**
+	 * Retourne sous forme de liste de structure les dates et créneaux pour lesquelles il y des salles libre avec les paramètre de la réservation selectionnée.
+	 */
+	ArrayList<String> getWeekValidSchedules() {
+		return null;
+	}
+
+	@Override
+	public ArrayList<String> getWeekUnvalidSchedules() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
