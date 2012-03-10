@@ -1,29 +1,30 @@
 package BL;
 
+import java.util.ArrayList;
+
 
 public abstract class Manager {
 
-  private list<Feature> allFeatures;
-
-  private list<Schedule> allSchedules;
-
-  private list<Booking> allBookings;
-  
+  private ArrayList<Feature> allFeatures;
+  private ArrayList<Schedule> allSchedules;
+  private ArrayList<Booking> allBookings;
   private Booking selectedBooking;
+  
+  
   /**
    * retourne une liste de toutes les caractéristiques existantes.
    */
-  public abstract list<Feature> getFeatures() ;
+  public abstract ArrayList<Feature> getFeatures() ;
 
   /**
    * retourne une liste de tous les créneaux existants.
    */
-  public abstract list<Schedule> getSchedules() ;
+  public abstract ArrayList<Schedule> getSchedules() ;
 
   /**
    * Retourne la liste de toutes les réservations qui ne sont pas encore validées, c'est à dire pour lesquelles aucune salle n'est attribuée.
    */
-  public abstract list<Booking> getAllUnvalidBookings() ;
+  public abstract ArrayList<Booking> getAllUnvalidBookings() ;
 
   /**
    * Ecoute les événements sur le tableau, lors d'un clique sur celui-ci enregistre la réservation sélectionné puis affiche toutes ses informations.
@@ -56,7 +57,7 @@ public abstract class Manager {
   /**
    * Retourne sous forme de liste de structure les dates et créneaux pour lesquelles il y aucune salle libre avec les paramètre de la réservation selectionnée.
    */
-  public abstract list<String> getWeekUnvalidSchedules() ;
+  public abstract ArrayList<String> getWeekUnvalidSchedules() ;
 
   /**
    * Remplace l'ancienne date de la reservation par la nouvelle date.
@@ -68,14 +69,14 @@ public abstract class Manager {
   /**
    * Remplace l'ancien créneau de la reservation par le nouveau créneau.
    */
-  public void setSelectedBookingSchedule(String schedule) {
+  public void setSelectedBookingSchedule(Schedule schedule) {
 	  selectedBooking.setSchedule(schedule);
   }
 
   /**
    * Remplace les anciennes caractéristiques de la reservation par les nouvelles.
    */
-  public void setSelectedBookingFeatures(list<String> features) {
+  public void setSelectedBookingFeatures(ArrayList<Feature> features) {
 	  selectedBooking.setFeatures(features);
   }
 

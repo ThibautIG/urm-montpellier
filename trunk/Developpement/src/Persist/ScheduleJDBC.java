@@ -5,14 +5,15 @@ import BL.Schedule;
 
 
 class ScheduleJDBC extends Schedule {
-   public ScheduleJDBC(Connection dbConnection) {
-		// TODO Auto-generated constructor stub
+	public ScheduleJDBC(Connection dbConnection) {
 	}
 
-load() {
-  }
+	public void load(String id) {
+		
+	}
 
-  String getId() {
-  }
+	public String getId() {
+		return null;
+	}
 
 }

@@ -1,108 +1,104 @@
 package BL;
 
+import java.util.ArrayList;
+
 
 /**
  * 																																																																																																																																																																																																										
  */
 public abstract class Booking 
 {
-  private String id;
+	private String id;
+	private int capacity;
+	private String date;
+	private String comments;
+	private String idSalle;
+	private Schedule schedule;
+	private ArrayList<Feature> features;
+	private Teaching teaching;
 
-  private int capacity;
+	/**
+	 * Crée une nouvelle réservation.
+	 */
+	public static Booking create() {
+		return null;
+	}
 
-  private String date;
+	/**
+	 * Charge la réservation qui à pour id reference.
+	 */
+	public abstract void load(String reference) ;
 
-  private String comments;
+	/**
+	 * Retourne le nombre de salles de disponibles pour les paramètres de cette réservation.
+	 */
+	public abstract int checkFreeRooms() ;
 
-  private String idSalle;
+	/**
+	 * Retourne l'enseignement lié à cette réservation.
+	 */
+	public Teaching getTeaching() {
+		return teaching;
+	}
 
-  private Schedule schedule;
+	/**
+	 * Retourne la date de réservation.
+	 */
+	public String getDate() {
+		return date;
+	}
 
-  private list<Feature> features;
+	/**
+	 * Remplace la date de reservation.
+	 */
+	public void setDate(String date) {
+		this.date=date;
+	}
 
-  private Teaching teaching;
+	/**
+	 * Retourne le créneau de réservation.
+	 */
+	public Schedule getSchedule() {
+		return schedule;
+	}
 
-  /**
-   * Crée une nouvelle réservation.
-   */
-  public static Booking create() {
-  }
+	/**
+	 * Remplace le créneau de réservation.
+	 */
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
+	}
 
-  /**
-   * Charge la réservation qui à pour id reference.
-   */
-  public abstract void load(String reference) ;
+	/**
+	 * Retourne la liste des caractéristiques de la réservation.
+	 */
+	public ArrayList<Feature> getFeatures() {
+		return features;
+	}
 
-  /**
-   * Retourne le nombre de salles de disponibles pour les paramètres de cette réservation.
-   */
-  public abstract int checkFreeRooms() ;
+	/**
+	 * Remplace la liste des caractéristiques de la réservation.
+	 */
+	public void setFeatures(ArrayList<Feature> features) {
+		this.features = features;
+	}
 
-  /**
-   * Retourne l'enseignement lié à cette réservation.
-   */
-  public Teaching getTeaching() {
-	  	return teaching;
-  }
+	/**
+	 * Associe une salle à la réservation.
+	 */
+	public abstract void setSalle() ;
 
-  /**
-   * Retourne la date de réservation.
-   */
-  public String getDate() {
-	  	return date;
-  }
+	/**
+	 * Sauvegarde la réservation.
+	 */
+	public abstract boolean save() ;
 
-  /**
-   * Remplace la date de reservation.
-   */
-  public void setDate(String date) {
-	  	this.date=date;
-  }
+	public String getTeacherInfos() {
+		return teaching.getTeacherInfos();
+	}
 
-  /**
-   * Retourne le créneau de réservation.
-   */
-  public String getSchedule() {
-	  	return schedule;
-  }
-
-  /**
-   * Remplace le créneau de réservation.
-   */
-  public void setSchedule(String schedule) {
-	  	this.schedule = schedule;
-  }
-
-  /**
-   * Retourne la liste des caractéristiques de la réservation.
-   */
-  public list<string> getFeatures() {
-	  	return features;
-  }
-
-  /**
-   * Remplace la liste des caractéristiques de la réservation.
-   */
-  public void setFeatures(list<string> features) {
-	  this.features = features;
-  }
-
-  /**
-   * Associe une salle à la réservation.
-   */
-  public abstract void setSalle() ;
-
-  /**
-   * Sauvegarde la réservation.
-   */
-  public abstract boolean save() ;
-  
-  public String getTeacherInfos() {
-	  return teaching.getTeacherInfos();
-  }
-  
-  public String getStringSchedule() {
-	  return schedule.toString();
-  }
+	public String getStringSchedule() {
+		return schedule.toString();
+	}
 
 }
