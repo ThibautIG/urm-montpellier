@@ -24,7 +24,6 @@ public class LoginView extends JFrame implements ActionListener
     public LoginView() 
     {
     	setResizable(false);
-    	//setResizable(false);
         initComponents();
     }
 

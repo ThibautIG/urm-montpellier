@@ -1,6 +1,7 @@
 package Persist;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -35,9 +36,21 @@ class BookingJDBC extends Booking
 	{
 		ArrayList<Feature> listFeatures = new ArrayList<Feature>();
 
-		String query = "select * from Reservation where id = '" + reference + "'";
+		String query = "select count(*) from Reservation where id = '" + reference + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
+		
+		// vérifier qu'il y a qu'un seul compte
+		results.next();
+		if(results.getInt(1) != 1)
+		{
+			throw new SQLException(); 
+		}
+		
+		// Récupérer les infos de la réservation
+		query = "select * from Reservation where id = '" + reference + "'";
+		stmt = dbConnection.createStatement();
+		results = stmt.executeQuery(query);
 		
 		Schedule schedule = new ScheduleJDBC(dbConnection);
 		Teaching teaching = new TeachingJDBC(dbConnection);

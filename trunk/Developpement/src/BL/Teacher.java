@@ -1,6 +1,5 @@
 package BL;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -22,6 +21,14 @@ public abstract class Teacher
 	 * @throws Exception 
 	 */
 	public abstract void load(String id, String pwd) throws Exception;
+
+	public String getId() {
+		return id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
 
 	/**
 	 * Retourne la liste des enseignements de cet enseignant.
