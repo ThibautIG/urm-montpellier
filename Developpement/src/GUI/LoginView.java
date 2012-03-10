@@ -71,13 +71,8 @@ public class LoginView extends JFrame implements ActionListener
 
     	pSouth = new JPanel (); //panneau sud contenant les boutons
     	
-<<<<<<< .mine
     	bValid = new JButton("Valider"); bValid.setActionCommand("valid"); bValid.addActionListener(this); //création et initialisation du bouton "valider"
     	bCancel = new JButton("Annuler"); bCancel.setActionCommand("cancel"); bCancel.addActionListener(this); //création et initialisation du bouton "annuler"
-=======
-    	bValid = new JButton("Valider"); bValid.setActionCommand("valid"); bValid.addActionListener(this);
-    	bCancel = new JButton("Quitter"); bCancel.setActionCommand("cancel"); bCancel.addActionListener(this);
->>>>>>> .r115
     	
     	/** ajout des widgets du panneau sud */
     	
