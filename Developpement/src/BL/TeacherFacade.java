@@ -35,7 +35,6 @@ public class TeacherFacade {
 			this.user = null;
 		}
 
-
 		return isConnected;
 
 	}
@@ -71,7 +70,7 @@ public class TeacherFacade {
 		int i=0;
 		/* liste de liste de string */
 		ArrayList<ArrayList<String>> resaValidesString = new ArrayList<ArrayList<String>>();
-		ArrayList<String> resaString = new ArrayList<String>();
+		ArrayList<String> resaString;
 		ArrayList<Booking> resaValides = new ArrayList<Booking>();
 		Booking booking;
 		
@@ -82,18 +81,22 @@ public class TeacherFacade {
 		}
 		
 		for (i=0; i<resaValides.size(); i++){
+			
 			booking = resaValides.get(i);
+		
 //			System.out.println(booking.getDate());
 //			System.out.println(booking.getStringSchedule());
 //			System.out.println(booking.getRoom());
 //			System.out.println(booking.getField());
 //			System.out.println("");
-
+			
+			resaString = new ArrayList<String>();
 			resaString.add(booking.getDate());
 			resaString.add(booking.getStringSchedule());
 			//resaString.add(booking.getTeacherInfos());
 			resaString.add(booking.getRoom());
 			resaString.add(booking.getField());
+			
 			resaValidesString.add(resaString);
 		}
 		return resaValidesString;
