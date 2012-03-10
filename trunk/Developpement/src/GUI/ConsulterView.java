@@ -31,7 +31,7 @@ class ConsulterView extends JFrame implements ActionListener{
 	 */
 	private int week;
 	private TeacherFacade account;
-	
+
 	private JPanel Boutons_panel;
 	private JTable table;
 	private JButton bPrecedent;
@@ -48,7 +48,7 @@ class ConsulterView extends JFrame implements ActionListener{
 	public ConsulterView(TeacherFacade c) 
 	{
 		super("Consultation Planning");
-		
+
 		this.account = c;
 
 		this.setSize(new Dimension(800, 600));
@@ -97,7 +97,7 @@ class ConsulterView extends JFrame implements ActionListener{
 				) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
-					String.class, Object.class, Object.class, Object.class, Object.class, Object.class
+				String.class, Object.class, Object.class, Object.class, Object.class, Object.class
 			};
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
@@ -142,7 +142,7 @@ class ConsulterView extends JFrame implements ActionListener{
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
-		
+
 		this.genCalendar(1);
 	}
 
@@ -154,31 +154,29 @@ class ConsulterView extends JFrame implements ActionListener{
 	 */
 	public void genCalendar(int week)
 	{
-		int i,j;
+		int i;
 		ArrayList<ArrayList<String>> infosPlanning;
 		infosPlanning = account.getValidBooking(week);
-		
+
 		for (i=0; i<infosPlanning.size(); i++){
-			for (j=0; j<infosPlanning.get(i).size(); j++){
-				System.out.println(infosPlanning.get(i).get(j));
-			}
-		}
-
-	}
-
-
-	public void actionPerformed(ActionEvent e) {
-		Object source = e.getSource();
-		if (source instanceof JButton){
-			if (source == bSuivant) {
-				week = week++;
-			}
-			else if (source == bPrecedent) {
-				week = week--;
-			}
-			else if (source == bQuit) {
-				this.setVisible(false);
-			}
+			System.out.println(infosPlanning.get(i).get(3));
+			table.setValueAt(infosPlanning.get(i).get(3), i+1, i+1);
 		}
 	}
+
+
+public void actionPerformed(ActionEvent e) {
+	Object source = e.getSource();
+	if (source instanceof JButton){
+		if (source == bSuivant) {
+			week = week++;
+		}
+		else if (source == bPrecedent) {
+			week = week--;
+		}
+		else if (source == bQuit) {
+			this.setVisible(false);
+		}
+	}
+}
 }
