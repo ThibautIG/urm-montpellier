@@ -46,7 +46,10 @@ class MenuView extends JFrame implements ActionListener
     	
     	// liste des boutons
     	consult = new JButton("Consulter planning"); consult.setPreferredSize(new Dimension (250,30)); consult.setActionCommand("consult"); consult.addActionListener(this);
-    	ask = new JButton("Demande de réservation"); ask.setPreferredSize(new Dimension (250,30)); ask.setActionCommand("ask"); ask.addActionListener(this);
+    	ask = new JButton("Demande de réservation"); 
+    	ask.setPreferredSize(new Dimension (250,30)); 
+    	ask.setActionCommand("ask"); 
+    	ask.addActionListener(this);
     	
     	
     	/** Initialisation du panneau */
@@ -79,7 +82,8 @@ class MenuView extends JFrame implements ActionListener
 		}
 		else if (e.getActionCommand().equals("ask"))
 		{
-			System.out.println("demande");
+			System.out.println("pass");
+			AskingView av = new AskingView(this.user);
 		}
 		else if (e.getActionCommand().equals("handle"))
 		{
