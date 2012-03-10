@@ -1,26 +1,27 @@
 package BL;
 
 public abstract class Schedule {
-  private String id;
 
-  private String endTime;
+	protected String id;
+	protected String startTime;
+	protected String endTime;
 
-  private String startTime;
 
-  /**
-   * Charge le créneau avec l'id correspondant.
-   */
-  public abstract void load(String id) ;
+	/**
+	 * Charge le créneau avec l'id correspondant.
+	 * @throws Exception 
+	 */
+	public abstract void load(String id) throws Exception ;
 
-  /**
-   * Retourne l'id du créneau.
-   */
-  public String getId() {
-	  	return id;
-  }
-  
-  public String toString() {
-	  return id+" "+startTime+"-"+endTime;
-  }
+	/**
+	 * Retourne l'id du créneau.
+	 */
+	public String getId() {
+		return id;
+	}
+
+	public String toString() {
+		return id+" "+startTime+"-"+endTime;
+	}
 
 }
