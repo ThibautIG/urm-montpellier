@@ -26,7 +26,7 @@ class FeatureJDBC extends Feature {
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 
-		// vérifier qu'il y a qu'un seul compte
+		// vérifier qu'il y a qu'une seule caractéristique
 		results.next();
 		if(results.getInt(1) != 1)
 		{

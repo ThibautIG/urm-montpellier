@@ -44,7 +44,7 @@ public class TeacherFacade {
 	 * Retourne la liste des créneaux disponibles sous la forme d'une liste de String.
 	 */
 	String getSchedules() {
-		return "null";
+		return "";
 	}
 
 	/**
@@ -66,15 +66,30 @@ public class TeacherFacade {
 	/**
 	 * Renvoie la liste des Réservations faites par l'enseignant qui sont validées.
 	 */
-	public ArrayList<String> getValidBooking(int week) 
+	public ArrayList<ArrayList<String>> getValidBooking(int week) 
 	{
-		ArrayList<Booking> booklist = new ArrayList<Booking>();
+		int i=0;
+		/* liste de liste de string */
+		ArrayList<ArrayList<String>> resaValidesString = new ArrayList<ArrayList<String>>();
+		ArrayList<String> resaString = new ArrayList<String>();
+		ArrayList<Booking> resaValides = new ArrayList<Booking>();
+		Booking booking;
+		
 		try {
-			booklist = user.getValidBooking();
+			resaValides = user.getValidBooking();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		
+		for (i=0; i<resaValides.size(); i++){
+			booking = resaValides.get(i);
+			resaString.add(booking.getDate());
+			resaString.add(booking.getStringSchedule());
+			resaString.add(booking.getTeacherInfos());
+			resaString.add(booking.getRoom());
+			//resaString.add(booking.getFieldString());
+		}
+		return resaValidesString;
 	}
 
 	/**
