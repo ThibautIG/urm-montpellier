@@ -1,6 +1,8 @@
 package BL;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
 
 
 public class TeacherFacade {
@@ -43,24 +45,28 @@ public class TeacherFacade {
 	/**
 	 * Retourne la liste des créneaux disponibles sous la forme d'une liste de String.
 	 */
-	String getSchedules() {
-		return "";
+	public String[] getSchedules() 
+	{
+		String[] s =  {"8h00 - 9h30", "9h45 - 11h15"};
+		return s;
 	}
 
 	/**
 	 * retourne la liste des caractéristiques disponibles dans une liste de String.
 	 */
-	String getFeatures() 
+	public String[] getFeatures() 
 	{
-		return "";
+		String[] s =  {"Rétroprojecteur", "Amphi"};
+		return s;
 	}
 
 	/**
 	 * retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans une liste de String.
 	 */
-	ArrayList<String> getTeaching() 
+	public String[] getTeaching() 
 	{
-		return null;
+		String[] s = {"BDRO", "Graphe"};
+		return s;
 	}
 
 	/**
@@ -111,15 +117,17 @@ public class TeacherFacade {
 	/**
 	 * Valide définitivement la reservation, c'est à dire sauvegarde les données de celle-ci.
 	 */
-	void confirmBooking() {
+	public void confirmBooking(String teaching, Date d, String sc, Enumeration<String> fts, int capacity, String comments) 
+	{
+		
 	}
 
 	/**
 	 * Retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie.
 	 */
-	int checkFreeRooms() {
-
-		return 0;
+	public int checkFreeRooms(Date d, String sc, Enumeration<String> fts, int capacity) 
+	{
+		return 1;
 	}
 
 }
