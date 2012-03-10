@@ -34,8 +34,11 @@ class ConsulterView extends JFrame implements ActionListener{
 
 
 	@SuppressWarnings("serial")
-	public ConsulterView(TeacherFacade c) {
-
+	public ConsulterView(TeacherFacade c) 
+	{
+		
+		super("Consultation Planning");
+		this.setSize(new Dimension(800, 600));
 
 		getContentPane().setLayout(new BorderLayout(0, 19));
 
@@ -122,7 +125,14 @@ class ConsulterView extends JFrame implements ActionListener{
 		JButton quit = new JButton("Fermer");
 		panel.add(quit, BorderLayout.EAST);
 		quit.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
 	}
+	
+	
+	
 
 	/**
 	 * Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre.
