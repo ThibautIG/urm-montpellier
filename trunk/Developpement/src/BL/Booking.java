@@ -8,14 +8,16 @@ import java.util.ArrayList;
  */
 public abstract class Booking 
 {
-	private String id;
-	private int capacity;
-	private String date;
-	private String comments;
-	private String idSalle;
-	private Schedule schedule;
-	private ArrayList<Feature> features;
-	private Teaching teaching;
+	protected String id;
+	protected String idSalle;
+	protected Schedule schedule;
+	protected Teaching teaching;
+	protected String date;
+
+	protected int capacity;
+	protected String comments;
+	
+	protected ArrayList<Feature> features;
 
 	/**
 	 * Crée une nouvelle réservation.
@@ -24,10 +26,12 @@ public abstract class Booking
 		return null;
 	}
 
+
 	/**
 	 * Charge la réservation qui à pour id reference.
+	 * @throws Exception 
 	 */
-	public abstract void load(String reference) ;
+	public abstract void load(String reference) throws Exception ;
 
 	/**
 	 * Retourne le nombre de salles de disponibles pour les paramètres de cette réservation.

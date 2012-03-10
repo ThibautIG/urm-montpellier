@@ -64,8 +64,14 @@ public class TeacherFacade {
 	/**
 	 * Renvoie la liste des Réservations faites par l'enseignant qui sont validées.
 	 */
-	public ArrayList<Booking> getValidBooking(int week) 
+	public ArrayList<String> getValidBooking(int week) 
 	{
+		ArrayList<Booking> booklist = new ArrayList<Booking>();
+		try {
+			booklist = user.getValidBooking();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

@@ -9,11 +9,11 @@ import BL.Schedule;
 
 
 class ManagerJDBC extends Manager {
-	public ManagerJDBC() {
-	}
+
+	Connection dbConnection;
 
 	public ManagerJDBC(Connection dbConnection) {
-		// TODO Auto-generated constructor stub
+		this.dbConnection = dbConnection;
 	}
 
 	public ArrayList<Feature> getFeatures() {
