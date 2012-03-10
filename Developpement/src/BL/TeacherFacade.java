@@ -8,9 +8,11 @@ public class TeacherFacade {
 	private Teacher user;
 	private Manager manager;
 	private Booking myBooking;
-	
+
 	public TeacherFacade() 
-	{}
+	{
+
+	}
 
 	/**
 	 * Connecte l'utilisateur si id/pwd est valide
@@ -18,7 +20,7 @@ public class TeacherFacade {
 	public boolean connect(String nom, String pwd) 
 	{
 		boolean isConnected = false;
-		
+
 		this.user = PersistFactory.getInstance().createTeacher(); //crée un teacher
 		try 
 		{
@@ -32,7 +34,7 @@ public class TeacherFacade {
 			isConnected = false;
 			this.user = null;
 		}
-		
+
 
 		return isConnected;
 

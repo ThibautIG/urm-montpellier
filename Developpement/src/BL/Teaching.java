@@ -1,19 +1,20 @@
 package BL;
 
 
-public abstract class Teaching {
-	private String id;
-
-	private int hours;
-	private String group;
-	private String type;
-	private String field;
-	private Teacher teacher;
+public abstract class Teaching 
+{
+	protected String id;
+	protected int hours;
+	protected int group;
+	protected String field;
+	protected Teacher teacher;
+	protected String type;
 
 	/**
 	 * Charge l'enseignement correspondant à l'id donné en paramètre.
+	 * @throws Exception 
 	 */
-	public abstract void load(String id) ;
+	public abstract void load(String id) throws Exception ;
 
 	/**
 	 * Retourne l'enseignant qui enseigne cet enseignement.
