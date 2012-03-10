@@ -11,7 +11,11 @@ import javax.swing.WindowConstants;
 import BL.TeacherFacade;
 
 
-@SuppressWarnings("serial")
+/**
+ * 
+ * @author URM Team
+ * @description : classe permettant de générer l'interface graphique pour le menu utilisateur
+ */
 class MenuView extends JFrame implements ActionListener
 {
 	private ConsulterView consulting;
@@ -23,6 +27,7 @@ class MenuView extends JFrame implements ActionListener
 	
 	/**
 	 * Constructeur
+	 * @param : c : objet de type TeacherFacade faisant référence au compte d'un enseignant
 	 */
 	public  MenuView(TeacherFacade c) 
 	{
@@ -30,26 +35,18 @@ class MenuView extends JFrame implements ActionListener
 		initComponents();
 	}
 	
-	public  MenuView() //constructeur à supprimer
-	{
-		initComponents();
-	}
-
 	
 	private void initComponents() 
 	{
 
-		//initialisation des widgets
+		/** initialisation de la fenêtre et des widgets */
     	this.setTitle("URM Menu");
     	this.setSize(300,110); //On donne une taille à notre fenêtre
     	this.setResizable(false);
     	
     	// liste des boutons
     	consult = new JButton("Consulter planning"); consult.setPreferredSize(new Dimension (250,30)); consult.setActionCommand("consult"); consult.addActionListener(this);
-    	ask = new JButton("Demande de réservation"); 
-    	ask.setPreferredSize(new Dimension (250,30)); 
-    	ask.setActionCommand("ask"); 
-    	ask.addActionListener(this);
+    	ask = new JButton("Demande de réservation"); ask.setPreferredSize(new Dimension (250,30)); ask.setActionCommand("ask"); ask.addActionListener(this);
     	
     	
     	/** Initialisation du panneau */
@@ -59,8 +56,8 @@ class MenuView extends JFrame implements ActionListener
     	p.add(ask);
     	if(this.user.isSuperUser())
     	{
-    		this.setSize(300,150); //On donne une taille à notre fenêtre
-			handle = new JButton("Traitement des demandes"); handle.setPreferredSize(new Dimension (250,30)); handle.setActionCommand("handle"); handle.addActionListener(this);
+        	this.setSize(300,150); //On ajuste la taille de la fenêtre
+    		handle = new JButton("Traitement des demandes"); handle.setPreferredSize(new Dimension (250,30)); handle.setActionCommand("handle"); handle.addActionListener(this);
         	p.add(handle);
     	}
     	
@@ -74,28 +71,34 @@ class MenuView extends JFrame implements ActionListener
 
 
 
+	/**
+	 * @param ActionEvent e : évenement provenant d'un clic sue un bouton
+	 * @return : void
+	 * @description : écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
+	 */
 	public void actionPerformed(ActionEvent e) 
 	{
 		if (e.getActionCommand().equals("consult"))
 		{
+			//new ConsulterView(c);
 			System.out.println("consulter");
-			ConsulterView cv = new ConsulterView(this.user);
 		}
 		else if (e.getActionCommand().equals("ask"))
 		{
+<<<<<<< .mine
+			//new AskingView(c);
+			System.out.println("demande");
+=======
 			AskingView av = new AskingView(this.user);
+>>>>>>> .r115
 		}
 		else if (e.getActionCommand().equals("handle"))
 		{
+			//new HandlingView(c);
 			System.out.println("traitement");
 		}
 	}
 	
-	/**
-	 * Ecoute les actions sur le bouton.
-	 */
-	//selectBouton() {
-	//}
 
 
 
