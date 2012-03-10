@@ -22,7 +22,7 @@ class TeacherJDBC extends Teacher
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 
-		// vérifier qu'il y a qu'un seul compte
+		// vérifier qu'il y a qu'un seul enseignant
 		results.next();
 		if(results.getInt(1) != 1)
 		{

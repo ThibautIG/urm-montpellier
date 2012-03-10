@@ -9,14 +9,14 @@ import java.util.ArrayList;
 public abstract class Booking 
 {
 	protected String id;
-	protected String idSalle;
+	protected String room;
 	protected Schedule schedule;
 	protected Teaching teaching;
 	protected String date;
 
 	protected int capacity;
 	protected String comments;
-	
+
 	protected ArrayList<Feature> features;
 
 	/**
@@ -88,21 +88,39 @@ public abstract class Booking
 	}
 
 	/**
+	 * Renvoie la salle de la réservation.
+	 */
+	public String getRoom() {
+		return room;
+	}
+
+	/**
 	 * Associe une salle à la réservation.
 	 */
-	public abstract void setSalle() ;
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	
+	/**
+	 * Retourne l'enseignant de la réservation en chaine de caracteres.
+	 */
+	public String getTeacherInfos() {
+		return teaching.getTeacherInfos();
+	}
+
+	/**
+	 * Retourne le créneau de réservation en chaine de caracteres.
+	 */
+	public String getStringSchedule() {
+		return schedule.toString();
+	}
 
 	/**
 	 * Sauvegarde la réservation.
 	 */
 	public abstract boolean save() ;
 
-	public String getTeacherInfos() {
-		return teaching.getTeacherInfos();
-	}
 
-	public String getStringSchedule() {
-		return schedule.toString();
-	}
+
 
 }

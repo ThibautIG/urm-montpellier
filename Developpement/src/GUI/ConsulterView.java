@@ -18,6 +18,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
 import java.awt.Color;
+import java.util.ArrayList;
 
 
 class ConsulterView extends JFrame implements ActionListener{
@@ -29,8 +30,8 @@ class ConsulterView extends JFrame implements ActionListener{
 	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours
 	 */
 	private int week;
-	
 	private TeacherFacade account;
+	
 	private JPanel Boutons_panel;
 	private JTable table;
 	private JButton bPrecedent;
@@ -93,9 +94,11 @@ class ConsulterView extends JFrame implements ActionListener{
 						"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"
 				}
 				) {
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
 					String.class, Object.class, Object.class, Object.class, Object.class, Object.class
 			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
@@ -146,9 +149,11 @@ class ConsulterView extends JFrame implements ActionListener{
 	/**
 	 * Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre.
 	 */
-	public void genCalendar(Booking listeReservationsValidees) {
-
-		account.getValidBooking(week);
+	public void genCalendar(Booking listeReservationsValidees) 
+	{
+		ArrayList<ArrayList<String>> infosPlanning = new ArrayList<ArrayList<String>>();
+		infosPlanning = account.getValidBooking(week);
+		System.out.println();
 
 	}
 

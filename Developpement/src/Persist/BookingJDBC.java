@@ -35,12 +35,13 @@ class BookingJDBC extends Booking
 	public void load(String reference) throws Exception 
 	{
 		ArrayList<Feature> listFeatures = new ArrayList<Feature>();
-
+		int idSalle;
+		
 		String query = "select count(*) from Reservation where id = '" + reference + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		
-		// vérifier qu'il y a qu'un seul compte
+		// vérifier qu'il y a qu'une seule réservation
 		results.next();
 		if(results.getInt(1) != 1)
 		{
@@ -58,11 +59,29 @@ class BookingJDBC extends Booking
 		teaching.load(results.getString(4));
 		
 		this.id = results.getString(1);
-		this.idSalle = results.getString(2);
 		this.schedule = schedule;
 		this.teaching = teaching;
 		this.date = results.getString(5);
 
+		/** Salle **/
+		idSalle = results.getInt(2);
+		query = "select count(*) from SALLE where ID_SALLE = '" + idSalle + "'";
+		stmt = dbConnection.createStatement();
+		results = stmt.executeQuery(query);
+
+		// vérifier qu'il y a qu'une seule salle
+		results.next();
+		if(results.getInt(1) != 1)
+		{
+			throw new SQLException(); 
+		}
+		
+		query = "select NUMERO_SALLE from SALLE where ID_SALLE = '" + idSalle + "'";
+		stmt = dbConnection.createStatement();
+		results = stmt.executeQuery(query);
+		this.room = results.getString(1);
+
+		/** Caractéristique **/
 		query = "select * from RESERVATION_CARACTERISTIQUE where ID_RESERVATION = '" + this.id + "'";
 		stmt = dbConnection.createStatement();
 		results = stmt.executeQuery(query);
@@ -76,11 +95,4 @@ class BookingJDBC extends Booking
 
 		this.features = listFeatures;
 	}
-
-	@Override
-	public void setSalle() {
-		// TODO Auto-generated method stub
-
-	}
-
 }
