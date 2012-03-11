@@ -26,10 +26,10 @@ class BookingJDBC extends Booking
 		
 		for(int i=0; i<this.features.size(); i++)
 		{
-			query += ""+this.features.get(i).getId()+" IN (select ID_CARACTERISTIQUE from CARACTERISTIQUE_SALLE cs where s.ID_SALLE = cs.ID_SALLE and )";
+			query += ""+this.features.get(i).getId()+" IN (select ID_CARACTERISTIQUE from CARACTERISTIQUE_SALLE cs where s.ID_SALLE = cs.ID_SALLE) and ";
 		}
 		
-		query += "(select count(*) from RESERVATION r where r.ID_SALLE=s.ID_SALLE and r.ID_CRENEAU="+this.schedule.getId()+" and r.DATE_RESERVATION='"+this.date+"')=0";
+		query += "(select count(*) from RESERVATION r where r.ID_SALLE=s.ID_SALLE and r.ID_CRENEAU="+this.schedule.getId()+")=0";
 		System.out.println(query);
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
@@ -107,8 +107,25 @@ class BookingJDBC extends Booking
 		this.features = listFeatures;
 	}
 	
-	public boolean save() 
+	public boolean save() throws SQLException 
 	{
-		return false;
+		if(this.schedule!=null && this.teaching!=null)
+		{
+			String query1 = "select count(*) from reservation";
+			Statement stmt1 = dbConnection.createStatement();
+			ResultSet results1 = stmt1.executeQuery(query1);
+			results1.next();
+			
+			String query = "insert into reservation values("+(results1.getInt(1)+1)+",null,"+this.schedule.getId()+","+this.teaching.getId()+",null)";
+			Statement stmt = dbConnection.createStatement();
+			@SuppressWarnings("unused")
+			ResultSet results = stmt.executeQuery(query);
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
+		
 	}
 }

@@ -164,6 +164,26 @@ public class TeacherFacade
 	 */
 	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity, String comments) 
 	{
+		try 
+		{
+			if(this.myBooking==null)
+			{
+				this.checkFreeRooms(dateSelected, scheduleSelected, featuresSelected, capacity);
+			}
+			
+			int i = 0;
+			while(!this.user.getTeachings().get(i).toString().equals(teachingSelected))
+			{
+				i++;
+			}
+			this.myBooking.setTeaching(this.user.getTeachings().get(i));
+			
+			this.myBooking.save();
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -192,7 +212,7 @@ public class TeacherFacade
 			this.myBooking.setSchedule(this.manager.getSchedules().get(s));
 			
 			ArrayList<Feature> alf = new ArrayList<Feature>();
-			while(featuresSelected.hasMoreElements())
+			while(featuresSelected!=null && featuresSelected.hasMoreElements())
 			{
 				String ft = featuresSelected.nextElement();
 				int ftus = 0;
@@ -200,6 +220,7 @@ public class TeacherFacade
 				{
 					ftus++;
 				}
+				alf.add(this.manager.getFeatures().get(ftus));
 			}
 			
 			this.myBooking.setFeatures(alf);

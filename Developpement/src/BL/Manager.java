@@ -90,8 +90,9 @@ public abstract class Manager
 
 	/**
 	 * Sauvegarde la réservation selectionnée et lui associe une salle.
+	 * @throws Exception 
 	 */
-	public void saveSelectedBooking() 
+	public void saveSelectedBooking() throws Exception 
 	{
 		selectedBooking.save();
 	}

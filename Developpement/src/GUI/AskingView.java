@@ -240,7 +240,9 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                                 DefaultListModel<String> dlm = (DefaultListModel<String>)this.lSelectedFt.getModel();
                                 dlm.addElement(this.lUnselectedFt.getSelectedValue());
                                 this.lSelectedFt.setModel(dlm);
+                                
                                 this.featuresSelected = ((DefaultListModel<String>)this.lSelectedFt.getModel()).elements();
+                                
                                 
                                 DefaultListModel<String> dlm2 = (DefaultListModel<String>)this.lUnselectedFt.getModel();
                                 dlm2.removeElementAt(this.lUnselectedFt.getSelectedIndex());
