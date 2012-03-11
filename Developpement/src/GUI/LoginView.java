@@ -23,6 +23,7 @@ public class LoginView extends JFrame implements ActionListener
 	private static final long serialVersionUID = 1L;
 	
 	private TeacherFacade account;
+	@SuppressWarnings("unused")
 	private MenuView menu;
 	
     private JPanel pNorth, pSouth; //panneaux
@@ -31,7 +32,8 @@ public class LoginView extends JFrame implements ActionListener
     private JTextField tfLogin; //champ texte login
     private JPasswordField tfMdp; //champ texte mot de passe
     private JButton bValid, bCancel; // boutons valider et annuler
-    private MsgPopup erreur;
+    @SuppressWarnings("unused")
+	private MsgPopup erreur;
 
     /**
      * @param aucun
@@ -109,12 +111,10 @@ public class LoginView extends JFrame implements ActionListener
 		if (e.getActionCommand().equals("valid")) //l'utilisateur clique sur valider
 
 		{
-			this.account = new TeacherFacade(); //on crée un nouvel objet compte identifiant un enseignant
 
 			try
 			{
-				@SuppressWarnings("unused")
-				boolean connected = this.account.connect(this.tfLogin.getText(), new String(this.tfMdp.getPassword()));
+				this.account = new TeacherFacade(this.tfLogin.getText(), new String(this.tfMdp.getPassword())); //on crée un nouvel objet compte identifiant un enseignant
 				this.menu = new MenuView(account);
 				this.setVisible(false);
 			}

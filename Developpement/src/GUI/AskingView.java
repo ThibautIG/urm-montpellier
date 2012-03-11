@@ -148,9 +148,10 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 
                 lUnselectedFt = new JList<String>();
                 DefaultListModel<String> dlm = new DefaultListModel<String>();
-                for (int i=0; i<this.account.getFeatures().length; i++)
+                ArrayList<String> fts = this.account.getFeatures(); 
+                for (int i=0; i<fts.size(); i++)
                 {
-                        dlm.addElement(this.account.getFeatures()[i]);
+                	dlm.addElement(fts.get(i));
                 }
                 this.lUnselectedFt.setModel(dlm);
                 lUnselectedFt.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -217,7 +218,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
         {
                 if(e.getActionCommand().equals("teach"))
                 {
-                        ArrayList<String> ens = this.account.getTeaching();
+                        ArrayList<String> ens = this.account.getTeachings();
                         
                         for(int i=0; i < ens.size(); i++)
                         {

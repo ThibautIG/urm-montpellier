@@ -16,7 +16,7 @@ import BL.TeacherFacade;
  * @author URM Team
  * @description : classe permettant de générer l'interface graphique pour le menu utilisateur
  */
-
+@SuppressWarnings("unused")
 class MenuView extends JFrame implements ActionListener
 {
 	/**
@@ -24,6 +24,7 @@ class MenuView extends JFrame implements ActionListener
 	 */
 	private static final long serialVersionUID = 1L;
 	
+
 	private ConsulterView consulting;
 	private AskingView Asking;
 	private HandlingView Handling;

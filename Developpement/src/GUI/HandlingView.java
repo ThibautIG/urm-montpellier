@@ -3,7 +3,8 @@ package GUI;
 
 
 class HandlingView {
-  private int askingSelected = -1;
+  @SuppressWarnings("unused")
+private int askingSelected = -1;
 
   public HandlingView() {
   }

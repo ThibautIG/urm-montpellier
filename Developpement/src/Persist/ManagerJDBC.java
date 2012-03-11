@@ -22,8 +22,22 @@ class ManagerJDBC extends Manager
 		this.dbConnection = dbConnection;
 	}
 
-	public ArrayList<Feature> getFeatures() {
-		return null;
+	public ArrayList<Feature> getFeatures() throws SQLException 
+	{
+		ArrayList<Feature> alf = new ArrayList<Feature>();
+		
+		String query = "select * from CARACTERISTIQUE";
+		Statement stmt = dbConnection.createStatement();
+		ResultSet results = stmt.executeQuery(query);
+		
+		while(results.next())
+		{
+			Feature ft = PersistFactory.getInstance().createFeature();
+			ft.create(results.getString(1), results.getString(2));
+			alf.add(ft);
+		}
+		
+		return alf;
 	}
 
 	public ArrayList<Schedule> getSchedules() throws SQLException

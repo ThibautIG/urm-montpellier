@@ -11,6 +11,12 @@ public abstract class Feature
 	 */
 	public abstract void load(String id) throws Exception ;
 
+	public void create(String id, String name)
+	{
+		this.id = id;
+		this.name = name;
+	}
+	
 	/**
 	 * Retourne l'id de la caractéristique.
 	 */
@@ -24,6 +30,11 @@ public abstract class Feature
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String toString()
+	{
+		return this.name.substring(0, 30);
 	}
 
 }
