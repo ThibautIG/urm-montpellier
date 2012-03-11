@@ -131,12 +131,17 @@ public abstract class Booking
 	/**
 	 * Sauvegarde la réservation.
 	 */
-	public abstract boolean save() ;
+	public abstract boolean save() throws Exception;
 
 
 	public String getField() 
 	{
 		return teaching.getField();
+	}
+	
+	public void setTeaching(Teaching t)
+	{
+		this.teaching = t;
 	}
 
 }

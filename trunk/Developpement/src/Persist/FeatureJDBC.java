@@ -16,11 +16,6 @@ class FeatureJDBC extends Feature {
 		this.dbConnection = dbConnection;
 	}
 
-
-	public String getId() {
-		return null;
-	}
-
 	public void load(String id) throws Exception {
 		String query = "select count(*) from CARACTERISTIQUE where ID_CARACTERISTIQUE = '" + id + "'";
 		Statement stmt = dbConnection.createStatement();
