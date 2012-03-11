@@ -11,34 +11,21 @@ public class TeacherFacade
 	private Manager manager;
 	private Booking myBooking;
 
-	public TeacherFacade() 
+	public TeacherFacade(String nom, String pwd) 
 	{
 		this.manager = PersistFactory.getInstance().createManager();
-	}
-
-	/**
-	 * Connecte l'utilisateur si id/pwd est valide
-	 */
-	public boolean connect(String nom, String pwd) 
-	{
-		boolean isConnected = false;
-
+		
 		this.user = PersistFactory.getInstance().createTeacher(); //crée un teacher
 		try 
 		{
 			this.user.load(nom, pwd);
 			System.out.println(this.user.isSuperUser());
-			isConnected = true;
 		} catch (Exception e) 
 		{
 			//e.printStackTrace();
 			System.out.println("non connecté");
-			isConnected = false;
 			this.user = null;
 		}
-
-		return isConnected;
-
 	}
 
 	/**
@@ -55,8 +42,8 @@ public class TeacherFacade
 			{
 				als.add(scs.get(i).toString());
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) 
+		{
 			e.printStackTrace();
 		}
 		
@@ -67,28 +54,44 @@ public class TeacherFacade
 	/**
 	 * retourne la liste des caractéristiques disponibles dans une liste de String.
 	 */
-	public String[] getFeatures() 
+	public ArrayList<String> getFeatures() 
 	{
-		String[] s = {""};
-		return s;
+		ArrayList<Feature> alft;
+		ArrayList<String> als = new ArrayList<String>();
+		try {
+			alft = this.manager.getFeatures();
+			
+			for (int i=0; i<alft.size(); i++)
+			{
+				als.add(alft.get(i).toString());
+			}
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return als;
 	}
 
 	/**
 	 * retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans une liste de String.
 	 */
-	public ArrayList<String> getTeaching() 
+	public ArrayList<String> getTeachings() 
 	{
 		ArrayList<Teaching> scs;
 		ArrayList<String> alt = new ArrayList<String>();
-		try {
+		try 
+		{
 			scs = this.user.getTeachings();
 			
 			for (int i=0; i<scs.size(); i++)
 			{
 				alt.add(scs.get(i).toString());
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (Exception e) 
+		{
 			e.printStackTrace();
 		}
 		
@@ -159,7 +162,8 @@ public class TeacherFacade
 	 * @param dateSelected 
 	 * @param teachingSelected 
 	 */
-	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity, String comments) {
+	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity, String comments) 
+	{
 	}
 
 	/**

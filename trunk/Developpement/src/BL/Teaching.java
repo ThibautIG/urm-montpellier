@@ -7,8 +7,6 @@ public abstract class Teaching
 	protected int hours;
 	protected String group;
 	protected String field;
-
-
 	protected Teacher teacher;
 	protected String type;
 

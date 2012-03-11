@@ -1,21 +1,19 @@
 package BL;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-public abstract class Manager {
-
-	private ArrayList<Feature> allFeatures;
-	private ArrayList<Schedule> allSchedules;
-	private ArrayList<Booking> allBookings;
-	private Booking selectedBooking;
+public abstract class Manager 
+{
+	protected ArrayList<Feature> allFeatures;
+	protected ArrayList<Schedule> allSchedules;
+	protected ArrayList<Booking> allBookings;
+	protected Booking selectedBooking;
 
 
 	/**
 	 * retourne une liste de toutes les caractéristiques existantes.
 	 */
-	public abstract ArrayList<Feature> getFeatures() ;
+	public abstract ArrayList<Feature> getFeatures() throws Exception;
 
 	/**
 	 * retourne une liste de tous les créneaux existants.
@@ -31,28 +29,32 @@ public abstract class Manager {
 	/**
 	 * Ecoute les événements sur le tableau, lors d'un clique sur celui-ci enregistre la réservation sélectionné puis affiche toutes ses informations.
 	 */
-	public void selectBooking(int reference) {
+	public void selectBooking(int reference) 
+	{
 		selectedBooking = allBookings.get(reference);
 	}
 
 	/**
 	 * retourne sous la forme d'une structure composée de strings toutes les informations sur le teacher, c'est à dire nom, prénom, téléphone, mail et enseignement.
 	 */
-	public String getBookingTeacherInfos() {
+	public String getBookingTeacherInfos() 
+	{
 		return selectedBooking.getTeacherInfos();
 	}
 
 	/**
 	 * Retourne la date de la réservation selectionnée.
 	 */
-	public String getSelectedBookingDate() {
+	public String getSelectedBookingDate() 
+	{
 		return selectedBooking.getDate();
 	}
 
 	/**
 	 * Retourne le créneau de la réservation selectionnée.
 	 */
-	public String getSelectedBookingSchedule() {
+	public String getSelectedBookingSchedule() 
+	{
 		return selectedBooking.getStringSchedule();
 	}
 
@@ -64,28 +66,32 @@ public abstract class Manager {
 	/**
 	 * Remplace l'ancienne date de la reservation par la nouvelle date.
 	 */
-	public void setSelectedBookingDate(String date) {
+	public void setSelectedBookingDate(String date) 
+	{
 		selectedBooking.setDate(date);
 	}
 
 	/**
 	 * Remplace l'ancien créneau de la reservation par le nouveau créneau.
 	 */
-	public void setSelectedBookingSchedule(Schedule schedule) {
+	public void setSelectedBookingSchedule(Schedule schedule) 
+	{
 		selectedBooking.setSchedule(schedule);
 	}
 
 	/**
 	 * Remplace les anciennes caractéristiques de la reservation par les nouvelles.
 	 */
-	public void setSelectedBookingFeatures(ArrayList<Feature> features) {
+	public void setSelectedBookingFeatures(ArrayList<Feature> features) 
+	{
 		selectedBooking.setFeatures(features);
 	}
 
 	/**
 	 * Sauvegarde la réservation selectionnée et lui associe une salle.
 	 */
-	public void saveSelectedBooking() {
+	public void saveSelectedBooking() 
+	{
 		selectedBooking.save();
 	}
 

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import BL.Booking;
 import BL.PersistFactory;
-import BL.Schedule;
 import BL.Teacher;
 import BL.Teaching;
 
