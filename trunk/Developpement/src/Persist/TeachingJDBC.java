@@ -11,7 +11,8 @@ class TeachingJDBC extends Teaching {
 
 	Connection dbConnection;
 
-	public TeachingJDBC(Connection dbConnection) {
+	public TeachingJDBC(Connection dbConnection) 
+	{
 		this.dbConnection = dbConnection;
 	}
 
@@ -43,7 +44,7 @@ class TeachingJDBC extends Teaching {
 			this.type = "reunion";
 		}
 		else 
-			this.group = results.getInt(4);
+			this.group = results.getString(4);
 			
 		this.hours = results.getInt(5);
 		

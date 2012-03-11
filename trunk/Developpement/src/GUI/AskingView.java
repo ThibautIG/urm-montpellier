@@ -13,6 +13,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 
@@ -99,9 +100,10 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 
                 schedulesList = new JList<String>();
                 DefaultListModel<String> dlms = new DefaultListModel<String>();
-                for (int i=0; i<this.account.getSchedules().length; i++)
+                ArrayList<String> als = this.account.getSchedules();
+                for (int i=0; i<als.size(); i++)
                 {
-                        dlms.addElement(this.account.getSchedules()[i]);
+                        dlms.addElement(als.get(i));
                 }
                 this.schedulesList.setModel(dlms);
                 schedulesList.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
@@ -215,11 +217,11 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
         {
                 if(e.getActionCommand().equals("teach"))
                 {
-                        String[] ens = this.account.getTeaching();
+                        ArrayList<String> ens = this.account.getTeaching();
                         
-                        for(int i=0; i < ens.length; i++)
+                        for(int i=0; i < ens.size(); i++)
                         {
-                                this.teachingChoice.addItem(ens[i]);
+                            this.teachingChoice.addItem(ens.get(i));
                         }
                         
                         this.teachingChoice.setEnabled(true);

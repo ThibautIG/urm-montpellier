@@ -5,7 +5,7 @@ public abstract class Teaching
 {
 	protected String id;
 	protected int hours;
-	protected int group;
+	protected String group;
 	protected String field;
 
 
@@ -17,6 +17,16 @@ public abstract class Teaching
 	 * @throws Exception 
 	 */
 	public abstract void load(String id) throws Exception ;
+	
+	public void create(String id, int hours, String group, Teacher teacher, String field, String type)
+	{
+		this.id = id;
+		this.hours = hours;
+		this.group = group;
+		this.field = field;
+		this.teacher = teacher;
+		this.type = type;
+	}
 
 	/**
 	 * Retourne l'enseignant qui enseigne cet enseignement.
@@ -35,5 +45,11 @@ public abstract class Teaching
 
 	public String getField() {
 		return field;
+	}
+	
+	public String toString()
+	{
+		return this.type.substring(0, 5) + " " +this.field;
+		
 	}
 }

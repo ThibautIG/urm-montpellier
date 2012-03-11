@@ -1,18 +1,24 @@
 package Persist;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import BL.Booking;
 import BL.Feature;
 import BL.Manager;
+import BL.PersistFactory;
 import BL.Schedule;
 
 
-class ManagerJDBC extends Manager {
+class ManagerJDBC extends Manager 
+{
 
 	Connection dbConnection;
 
-	public ManagerJDBC(Connection dbConnection) {
+	public ManagerJDBC(Connection dbConnection) 
+	{
 		this.dbConnection = dbConnection;
 	}
 
@@ -20,8 +26,22 @@ class ManagerJDBC extends Manager {
 		return null;
 	}
 
-	public ArrayList<Schedule> getSchedules() {
-		return null;
+	public ArrayList<Schedule> getSchedules() throws SQLException
+	{
+		ArrayList<Schedule> scs = new ArrayList<Schedule>();
+		
+		String query = "select * from crenaux";
+		Statement stmt = dbConnection.createStatement();
+		ResultSet results = stmt.executeQuery(query);
+		
+		while(results.next())
+		{
+			Schedule schedule = PersistFactory.getInstance().createSchedule();
+			schedule.create(results.getString(1), results.getString(2), results.getString(3));
+			scs.add(schedule);
+		}
+		
+		return scs;
 	}
 
 	public ArrayList<Booking> getAllUnvalidBookings() {
