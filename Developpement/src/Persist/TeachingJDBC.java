@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import BL.Teacher;
 import BL.Teaching;
 
 
@@ -63,10 +62,6 @@ class TeachingJDBC extends Teaching {
 		results = stmt.executeQuery(query);
 		results.next();
 		field = results.getString(1);
-
-		
-		
-
 	}
 
 }

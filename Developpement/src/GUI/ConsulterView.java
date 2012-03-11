@@ -4,23 +4,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
-import BL.Booking;
 import BL.TeacherFacade;
-import java.awt.BorderLayout;
 import javax.swing.JTable;
 import java.awt.Dimension;
+
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
 import javax.swing.JPanel;
 import java.awt.Component;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
 import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.SystemColor;
@@ -57,62 +52,72 @@ class ConsulterView extends JFrame implements ActionListener{
 
 		planning_panel = new JPanel();
 		planning_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		planning_panel.setBounds(0, 0, 784, 282);
+		planning_panel.setBounds(10, 10, 764, 282);
 		getContentPane().add(planning_panel);
 		planning_panel.setLayout(null);
 
 		table = new JTable();
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, Color.GRAY, null, null));
-		table.setBounds(82, 0, 619, 272);
+		table.setBounds(73, 4, 619, 272);
 		table.setBackground(SystemColor.menu);
 		planning_panel.add(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"},
-				{"8:00 - 9:30", null, null, null, null, null},
-				{"9:45 - 10:15", null, null, null, null, null},
-				{"10:30 - 11:15", null, null, null, null, null},
-				{"11:15 - 13:00", null, null, null, null, null},
-				{"13:15 - 14:45", null, null, null, null, null},
-				{"15:00 - 16:30", null, null, null, null, null},
-				{"16:45 - 18:15", null, null, null, null, null},
-				{"18:30 - 20:00", null, null, null, null, null},
-			},
-			new String[] {
-				"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"
-			}
-		) {
+				new Object[][] {
+						{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"},
+						{"8:00 - 9:30", null, null, null, null, null},
+						{"9:45 - 10:15", null, null, null, null, null},
+						{"10:30 - 11:15", null, null, null, null, null},
+						{"11:15 - 13:00", null, null, null, null, null},
+						{"13:15 - 14:45", null, null, null, null, null},
+						{"15:00 - 16:30", null, null, null, null, null},
+						{"16:45 - 18:15", null, null, null, null, null},
+						{"18:30 - 20:00", null, null, null, null, null},
+				},
+				new String[] {
+						"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi"
+				}
+				) {
+			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
-				String.class, Object.class, Object.class, Object.class, Object.class, Object.class
+					String.class, Object.class, Object.class, Object.class, Object.class, Object.class
 			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
+			boolean[] columnEditables = new boolean[] {
+					false, false, false, false, true, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
 		});
-				table.setRowHeight(30);
-				bPrecedent = new JButton("<");
-				bPrecedent.setBounds(10, 113, 58, 46);
-				planning_panel.add(bPrecedent);
-				bPrecedent.setActionCommand("Precedent");
-				
-						bSuivant = new JButton(">");
-						bSuivant.setBounds(717, 113, 57, 46);
-						planning_panel.add(bSuivant);
-						bSuivant.setActionCommand("Suivant");
-						bSuivant.addActionListener(this);
-				bPrecedent.addActionListener(this);
-				
-						quit_panel = new JPanel();
-						quit_panel.setBounds(0, 284, 784, 41);
-						getContentPane().add(quit_panel);
-						quit_panel.setLayout(null);
-						
-								bQuit = new JButton("Fermer");
-								bQuit.setBounds(690, 11, 94, 23);
-								quit_panel.add(bQuit);
-								bQuit.setActionCommand("Fermer");
-								bQuit.addActionListener(this);
-								bQuit.setAlignmentX(Component.RIGHT_ALIGNMENT);
+		table.setRowHeight(30);
+		centrerTable(table);
+		
+		bPrecedent = new JButton("<");
+		bPrecedent.setBounds(9, 113, 58, 46);
+		planning_panel.add(bPrecedent);
+		bPrecedent.setActionCommand("Precedent");
+
+		bSuivant = new JButton(">");
+		bSuivant.setBounds(697, 113, 57, 46);
+		planning_panel.add(bSuivant);
+		bSuivant.setActionCommand("Suivant");
+		bSuivant.addActionListener(this);
+		bPrecedent.addActionListener(this);
+
+		quit_panel = new JPanel();
+		quit_panel.setBounds(0, 284, 784, 41);
+		getContentPane().add(quit_panel);
+		quit_panel.setLayout(null);
+
+		bQuit = new JButton("Fermer");
+		bQuit.setBounds(680, 9, 94, 23);
+		quit_panel.add(bQuit);
+		bQuit.setActionCommand("Fermer");
+		bQuit.addActionListener(this);
+		bQuit.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
@@ -140,7 +145,7 @@ class ConsulterView extends JFrame implements ActionListener{
 	}
 
 
-public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().equals("Suivant")) 
 		{
@@ -158,5 +163,14 @@ public void actionPerformed(ActionEvent e) {
 		{
 			this.setVisible(false);
 		}
-}
+	}
+
+
+	private void centrerTable(JTable table) 
+	{     
+		DefaultTableCellRenderer custom = new DefaultTableCellRenderer(); 
+		custom.setHorizontalAlignment(JLabel.CENTER); 
+		for (int i=0 ; i<table.getColumnCount() ; i++) 
+			table.getColumnModel().getColumn(i).setCellRenderer(custom); 
+	}
 }

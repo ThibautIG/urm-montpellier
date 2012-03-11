@@ -42,14 +42,14 @@ public class TeacherFacade {
 	/**
 	 * Retourne la liste des créneaux disponibles sous la forme d'une liste de String.
 	 */
-	String getSchedules() {
+	public String getSchedules() {
 		return "";
 	}
 
 	/**
 	 * retourne la liste des caractéristiques disponibles dans une liste de String.
 	 */
-	String getFeatures() 
+	public String getFeatures() 
 	{
 		return "";
 	}
@@ -57,7 +57,7 @@ public class TeacherFacade {
 	/**
 	 * retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans une liste de String.
 	 */
-	ArrayList<String> getTeaching() 
+	public ArrayList<String> getTeaching() 
 	{
 		return null;
 	}
@@ -93,7 +93,6 @@ public class TeacherFacade {
 			resaString = new ArrayList<String>();
 			resaString.add(booking.getDate());
 			resaString.add(booking.getStringSchedule());
-			//resaString.add(booking.getTeacherInfos());
 			resaString.add(booking.getRoom());
 			resaString.add(booking.getField());
 			
