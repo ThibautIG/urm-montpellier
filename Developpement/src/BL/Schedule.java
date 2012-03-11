@@ -22,9 +22,9 @@ public abstract class Schedule
 	/**
 	 * Retourne l'id du créneau.
 	 */
-	protected String getId() 
+	public String getId() 
 	{
-		return id;
+		return this.id;
 	}
 
 	public String toString() 

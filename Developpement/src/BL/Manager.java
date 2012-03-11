@@ -1,6 +1,7 @@
 package BL;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public abstract class Manager 
 {
@@ -45,7 +46,7 @@ public abstract class Manager
 	/**
 	 * Retourne la date de la réservation selectionnée.
 	 */
-	public String getSelectedBookingDate() 
+	public Date getSelectedBookingDate() 
 	{
 		return selectedBooking.getDate();
 	}
@@ -66,7 +67,7 @@ public abstract class Manager
 	/**
 	 * Remplace l'ancienne date de la reservation par la nouvelle date.
 	 */
-	public void setSelectedBookingDate(String date) 
+	public void setSelectedBookingDate(Date date) 
 	{
 		selectedBooking.setDate(date);
 	}

@@ -38,9 +38,4 @@ class ScheduleJDBC extends Schedule {
 		this.endTime = results.getString(3);
 	}
 
-	public String getId() 
-	{
-		return null;
-	}
-
 }

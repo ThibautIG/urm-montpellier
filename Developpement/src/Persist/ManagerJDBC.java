@@ -24,38 +24,44 @@ class ManagerJDBC extends Manager
 
 	public ArrayList<Feature> getFeatures() throws SQLException 
 	{
-		ArrayList<Feature> alf = new ArrayList<Feature>();
-		
-		String query = "select * from CARACTERISTIQUE";
-		Statement stmt = dbConnection.createStatement();
-		ResultSet results = stmt.executeQuery(query);
-		
-		while(results.next())
+		if(this.allFeatures == null)
 		{
-			Feature ft = PersistFactory.getInstance().createFeature();
-			ft.create(results.getString(1), results.getString(2));
-			alf.add(ft);
+			this.allFeatures = new ArrayList<Feature>();
+			
+			String query = "select * from CARACTERISTIQUE";
+			Statement stmt = dbConnection.createStatement();
+			ResultSet results = stmt.executeQuery(query);
+			
+			while(results.next())
+			{
+				Feature ft = PersistFactory.getInstance().createFeature();
+				ft.create(results.getString(1), results.getString(2));
+				this.allFeatures.add(ft);
+			}
 		}
 		
-		return alf;
+		return this.allFeatures;
 	}
 
 	public ArrayList<Schedule> getSchedules() throws SQLException
 	{
-		ArrayList<Schedule> scs = new ArrayList<Schedule>();
-		
-		String query = "select * from crenaux";
-		Statement stmt = dbConnection.createStatement();
-		ResultSet results = stmt.executeQuery(query);
-		
-		while(results.next())
+		if(this.allSchedules == null)
 		{
-			Schedule schedule = PersistFactory.getInstance().createSchedule();
-			schedule.create(results.getString(1), results.getString(2), results.getString(3));
-			scs.add(schedule);
+			this.allSchedules = new ArrayList<Schedule>();
+			
+			String query = "select * from crenaux";
+			Statement stmt = dbConnection.createStatement();
+			ResultSet results = stmt.executeQuery(query);
+			
+			while(results.next())
+			{
+				Schedule schedule = PersistFactory.getInstance().createSchedule();
+				schedule.create(results.getString(1), results.getString(2), results.getString(3));
+				this.allSchedules.add(schedule);
+			}
 		}
 		
-		return scs;
+		return this.allSchedules;
 	}
 
 	public ArrayList<Booking> getAllUnvalidBookings() {
