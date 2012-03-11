@@ -89,12 +89,10 @@ class MenuView extends JFrame implements ActionListener
 	{
 		if (e.getActionCommand().equals("consult"))
 		{
-			System.out.println("consulter");
 			ConsulterView cv = new ConsulterView(this.user);
 		}
 		else if (e.getActionCommand().equals("ask"))
 		{
-			System.out.println("pass");
 			AskingView av = new AskingView(this.user);
 		}
 		else if (e.getActionCommand().equals("handle"))
