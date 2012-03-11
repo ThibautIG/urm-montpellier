@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 
 import javax.swing.*;
 import BL.TeacherFacade;
@@ -18,6 +17,11 @@ import BL.TeacherFacade;
 
 public class LoginView extends JFrame implements ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private TeacherFacade account;
 	private MenuView menu;
 	
