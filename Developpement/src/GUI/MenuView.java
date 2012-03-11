@@ -11,7 +11,12 @@ import javax.swing.WindowConstants;
 import BL.TeacherFacade;
 
 
-@SuppressWarnings("serial")
+/**
+ * 
+ * @author URM Team
+ * @description : classe permettant de générer l'interface graphique pour le menu utilisateur
+ */
+
 class MenuView extends JFrame implements ActionListener
 {
 	private ConsulterView consulting;
@@ -21,9 +26,11 @@ class MenuView extends JFrame implements ActionListener
 	private JButton consult, ask, handle;
 	private TeacherFacade user;
 	
-	/**
-	 * Constructeur
-	 */
+	 /**
+     * Constructeur
+     * @param : c : objet de type TeacherFacade faisant référence au compte d'un enseignant
+     */
+
 	public  MenuView(TeacherFacade c) 
 	{
 		this.user = c;
@@ -39,9 +46,9 @@ class MenuView extends JFrame implements ActionListener
 	private void initComponents() 
 	{
 
-		//initialisation des widgets
+		/** initialisation de la fenêtre et des widgets */
     	this.setTitle("URM Menu");
-    	this.setSize(300,110); //On donne une taille à notre fenêtre
+    	this.setSize(300,110); //On ajuste la taille de la fenêtre
     	this.setResizable(false);
     	
     	// liste des boutons
@@ -73,7 +80,11 @@ class MenuView extends JFrame implements ActionListener
 	}
 
 
-
+	 /**
+     * @param ActionEvent e : évenement provenant d'un clic sue un bouton
+     * @return : void
+     * @description : écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
+     */
 	public void actionPerformed(ActionEvent e) 
 	{
 		if (e.getActionCommand().equals("consult"))
@@ -92,12 +103,4 @@ class MenuView extends JFrame implements ActionListener
 		}
 	}
 	
-	/**
-	 * Ecoute les actions sur le bouton.
-	 */
-	//selectBouton() {
-	//}
-
-
-
 }
