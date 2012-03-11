@@ -29,7 +29,7 @@ public class TeacherFacade {
 			isConnected = true;
 		} catch (Exception e) 
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.out.println("non connecté");
 			isConnected = false;
 			this.user = null;
