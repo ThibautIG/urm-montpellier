@@ -136,6 +136,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 features.add(lblCapacity);
                 
                 tfCapacity = new JTextField();
+                tfCapacity.setText("0");
                 tfCapacity.setBounds(71, 147, 86, 20);
                 features.add(tfCapacity);
                 tfCapacity.setColumns(10);
@@ -264,7 +265,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 {
                         if(this.dateSelected != null && this.scheduleSelected != null)
                         {
-                                this.capacity = Integer.parseInt(this.tfCapacity.getText());
+                                this.capacity = 0 + Integer.parseInt(this.tfCapacity.getText());
                                 this.lblNbRooms.setText("Nombre de salles disponibles estim\u00E9 : "+this.account.checkFreeRooms(this.dateSelected, this.scheduleSelected, this.featuresSelected, this.capacity));
                         }
                 }

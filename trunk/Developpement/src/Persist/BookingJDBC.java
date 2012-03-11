@@ -13,7 +13,6 @@ import BL.Teaching;
 
 class BookingJDBC extends Booking 
 {
-
 	Connection dbConnection;
 
 	public BookingJDBC(Connection dbConnection) 
@@ -21,16 +20,23 @@ class BookingJDBC extends Booking
 		this.dbConnection = dbConnection;
 	}
 
-	public int checkFreeRooms() 
+	public int checkFreeRooms() throws SQLException 
 	{
-		return 0;
+		String query = "select count(*) from SALLE s where ";
+		
+		for(int i=0; i<this.features.size(); i++)
+		{
+			query += ""+this.features.get(i).getId()+" IN (select ID_CARACTERISTIQUE from CARACTERISTIQUE_SALLE cs where s.ID_SALLE = cs.ID_SALLE and )";
+		}
+		
+		query += "(select count(*) from RESERVATION r where r.ID_SALLE=s.ID_SALLE and r.ID_CRENEAU="+this.schedule.getId()+" and r.DATE_RESERVATION='"+this.date+"')=0";
+		System.out.println(query);
+		Statement stmt = dbConnection.createStatement();
+		ResultSet results = stmt.executeQuery(query);
+		results.next();
+		
+		return results.getInt(1);
 	}
-
-	public boolean save() 
-	{
-		return false;
-	}
-
 
 	public void load(String reference) throws Exception 
 	{
@@ -64,7 +70,7 @@ class BookingJDBC extends Booking
 		this.id = results.getString(1);
 		this.schedule = schedule;
 		this.teaching = teaching;
-		this.date = results.getString(5);
+		this.date = results.getDate(5);
 
 		/** Salle **/
 		idSalle = results.getInt(2);
@@ -99,5 +105,10 @@ class BookingJDBC extends Booking
 		}
 
 		this.features = listFeatures;
+	}
+	
+	public boolean save() 
+	{
+		return false;
 	}
 }

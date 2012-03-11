@@ -127,7 +127,7 @@ public class TeacherFacade
 //			System.out.println("");
 			
 			resaString = new ArrayList<String>();
-			resaString.add(booking.getDate());
+			resaString.add(booking.getDate().toString());
 			resaString.add(booking.getStringSchedule());
 			resaString.add(booking.getRoom());
 			resaString.add(booking.getField());
@@ -175,8 +175,46 @@ public class TeacherFacade
 	 */
 	public int checkFreeRooms(Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity) 
 	{
+		int freeRooms = 0;
+		this.myBooking = PersistFactory.getInstance().createBooking();
+		
+		this.myBooking.setDate(dateSelected);
+		
+		try 
+		{
+			int s = 0;
+			
+			while(!this.manager.getSchedules().get(s).toString().equals(scheduleSelected))
+			{
+				s++;
+			}
+			
+			this.myBooking.setSchedule(this.manager.getSchedules().get(s));
+			
+			ArrayList<Feature> alf = new ArrayList<Feature>();
+			while(featuresSelected.hasMoreElements())
+			{
+				String ft = featuresSelected.nextElement();
+				int ftus = 0;
+				while(!this.manager.getFeatures().get(ftus).toString().equals(ft))
+				{
+					ftus++;
+				}
+			}
+			
+			this.myBooking.setFeatures(alf);
+			
+			this.myBooking.capacity = capacity;
+			
+			freeRooms = this.myBooking.checkFreeRooms();
+			
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 
-		return 0;
+		return freeRooms;
 	}
 
 }
