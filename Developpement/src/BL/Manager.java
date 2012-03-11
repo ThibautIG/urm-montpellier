@@ -1,5 +1,6 @@
 package BL;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 
@@ -18,8 +19,9 @@ public abstract class Manager {
 
 	/**
 	 * retourne une liste de tous les créneaux existants.
+	 * @throws Exception 
 	 */
-	public abstract ArrayList<Schedule> getSchedules() ;
+	public abstract ArrayList<Schedule> getSchedules() throws Exception ;
 
 	/**
 	 * Retourne la liste de toutes les réservations qui ne sont pas encore validées, c'est à dire pour lesquelles aucune salle n'est attribuée.

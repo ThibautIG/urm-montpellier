@@ -1,17 +1,19 @@
 package BL;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
 
 
-public class TeacherFacade {
-
+public class TeacherFacade 
+{
 	private Teacher user;
 	private Manager manager;
 	private Booking myBooking;
 
 	public TeacherFacade() 
 	{
-
+		this.manager = PersistFactory.getInstance().createManager();
 	}
 
 	/**
@@ -42,16 +44,33 @@ public class TeacherFacade {
 	/**
 	 * Retourne la liste des créneaux disponibles sous la forme d'une liste de String.
 	 */
-	public String getSchedules() {
-		return "";
+	public ArrayList<String> getSchedules() 
+	{
+		ArrayList<Schedule> scs;
+		ArrayList<String> als = new ArrayList<String>();
+		try {
+			scs = this.manager.getSchedules();
+			
+			for (int i=0; i<scs.size(); i++)
+			{
+				als.add(scs.get(i).toString());
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return als;
 	}
 
 	/**
 	 * retourne la liste des caractéristiques disponibles dans une liste de String.
 	 */
-	public String getFeatures() 
+	public String[] getFeatures() 
 	{
-		return "";
+		String[] s = {""};
+		return s;
 	}
 
 	/**
@@ -59,7 +78,21 @@ public class TeacherFacade {
 	 */
 	public ArrayList<String> getTeaching() 
 	{
-		return null;
+		ArrayList<Teaching> scs;
+		ArrayList<String> alt = new ArrayList<String>();
+		try {
+			scs = this.user.getTeachings();
+			
+			for (int i=0; i<scs.size(); i++)
+			{
+				alt.add(scs.get(i).toString());
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return alt;
 	}
 
 	/**
@@ -119,14 +152,25 @@ public class TeacherFacade {
 
 	/**
 	 * Valide définitivement la reservation, c'est à dire sauvegarde les données de celle-ci.
+	 * @param comments 
+	 * @param capacity 
+	 * @param featuresSelected 
+	 * @param scheduleSelected 
+	 * @param dateSelected 
+	 * @param teachingSelected 
 	 */
-	void confirmBooking() {
+	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity, String comments) {
 	}
 
 	/**
 	 * Retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie.
+	 * @param capacity 
+	 * @param featuresSelected 
+	 * @param scheduleSelected 
+	 * @param dateSelected 
 	 */
-	int checkFreeRooms() {
+	public int checkFreeRooms(Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity) 
+	{
 
 		return 0;
 	}
