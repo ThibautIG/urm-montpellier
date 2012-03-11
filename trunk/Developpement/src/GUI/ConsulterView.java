@@ -50,6 +50,7 @@ class ConsulterView extends JFrame implements ActionListener{
 		super("Consultation Planning");
 
 		this.account = c;
+		this.week = 1;
 
 		this.setSize(new Dimension(800, 600));
 		getContentPane().setLayout(new BorderLayout(0, 19));
@@ -140,10 +141,10 @@ class ConsulterView extends JFrame implements ActionListener{
 		panel.add(bQuit, BorderLayout.EAST);
 		bQuit.setAlignmentX(Component.RIGHT_ALIGNMENT);
 
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
 
-		this.genCalendar(1);
+		this.genCalendar(week);
 	}
 
 
@@ -158,7 +159,8 @@ class ConsulterView extends JFrame implements ActionListener{
 		ArrayList<ArrayList<String>> infosPlanning;
 		infosPlanning = account.getValidBooking(week);
 
-		for (i=0; i<infosPlanning.size(); i++){
+		for (i=week; i<infosPlanning.size(); i++) //modification de int i = 0 en int i = week
+		{
 			System.out.println(infosPlanning.get(i).get(3));
 			table.setValueAt(infosPlanning.get(i).get(3), i+1, i+1);
 		}
@@ -166,17 +168,22 @@ class ConsulterView extends JFrame implements ActionListener{
 
 
 public void actionPerformed(ActionEvent e) {
-	Object source = e.getSource();
-	if (source instanceof JButton){
-		if (source == bSuivant) {
-			week = week++;
+
+		if (e.getActionCommand().equals("Suivant")) 
+		{
+			this.week = this.week++;
+			genCalendar(week);
+			new MsgPopup("Ok","Semaine" +week);
 		}
-		else if (source == bPrecedent) {
-			week = week--;
+		else if (e.getActionCommand().equals("Precedent"))  
+		{
+			this.week = this.week--;
+			genCalendar(week);
+			new MsgPopup("Ok","Semaine" +week);
 		}
-		else if (source == bQuit) {
+		else if (e.getActionCommand().equals("Fermer"))  
+		{
 			this.setVisible(false);
 		}
-	}
 }
 }

@@ -18,15 +18,16 @@ public class MsgPopup extends JFrame implements ActionListener{
 	JLabel msgToDisplay;
 	JPanel pNorth, pSouth;
 	
-	public MsgPopup(String msg)
+	public MsgPopup(String title, String msg)
 	{
-		initComponents("\t"+msg+"\t");
+		initComponents(title, "\t"+msg+"\t");
 	}
 	
 
-	private void initComponents(String msg)
+	private void initComponents(String title, String msg)
 	{
 		this.setSize(300,300);
+		this.setTitle("Erreur");
 		okButton = new JButton ("Ok"); okButton.setActionCommand("ok"); okButton.addActionListener(this); //création et initialisation du bouton "valider"
 		msgToDisplay = new JLabel (msg);
 		pNorth = new JPanel (new BorderLayout());
@@ -40,6 +41,7 @@ public class MsgPopup extends JFrame implements ActionListener{
 		this.setResizable(false);
     	this.setLocationRelativeTo(null); //on place la fenêtre au centre de l'écran    
         this.setVisible(true); //la fenêtre est rendue visible
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         pack();
 		
 	}
