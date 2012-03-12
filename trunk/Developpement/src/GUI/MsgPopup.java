@@ -29,7 +29,7 @@ public class MsgPopup extends JFrame implements ActionListener{
 	private void initComponents(String title, String msg)
 	{
 		this.setSize(300,300);
-		this.setTitle("Erreur");
+		this.setTitle(title);
 		okButton = new JButton ("Ok"); okButton.setActionCommand("ok"); okButton.addActionListener(this); //création et initialisation du bouton "valider"
 		msgToDisplay = new JLabel (msg);
 		pNorth = new JPanel (new BorderLayout());

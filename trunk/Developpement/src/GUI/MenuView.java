@@ -104,6 +104,7 @@ class MenuView extends JFrame implements ActionListener
 		else if (e.getActionCommand().equals("handle"))
 		{
 			System.out.println("traitement");
+			new MsgPopup("Non disponible", "Cette fonctionnalité n'est pour le moment pas disponible.");
 		}
 	}
 	
