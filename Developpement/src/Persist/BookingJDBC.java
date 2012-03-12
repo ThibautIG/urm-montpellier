@@ -55,7 +55,7 @@ class BookingJDBC extends Booking
 		}
 		
 		// Récupérer les infos de la réservation
-		query = "select * from Reservation where id_reservation = '" + reference + "'";
+		query = "select * from Reservation where ID_SALLE is not null and id_reservation = '" + reference + "'";
 		stmt = dbConnection.createStatement();
 		results = stmt.executeQuery(query);
 		results.next();

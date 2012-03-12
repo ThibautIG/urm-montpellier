@@ -30,6 +30,7 @@ class ConsulterView extends JFrame implements ActionListener{
 	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours
 	 */
 	private int week;
+	
 	private TeacherFacade account;
 	private JTable table;
 	private JButton bPrecedent;
@@ -149,13 +150,13 @@ class ConsulterView extends JFrame implements ActionListener{
 
 		if (e.getActionCommand().equals("Suivant")) 
 		{
-			this.week = this.week++;
+			this.week++;
 			genCalendar(week);
 			new MsgPopup("Ok","Semaine" +week);
 		}
 		else if (e.getActionCommand().equals("Precedent"))  
 		{
-			this.week = this.week--;
+			this.week--;
 			genCalendar(week);
 			new MsgPopup("Ok","Semaine" +week);
 		}
