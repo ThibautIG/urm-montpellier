@@ -29,7 +29,7 @@ public abstract class Schedule
 
 	public String toString() 
 	{
-		return startTime.subSequence(0, 5) + " - " + endTime.subSequence(0, 5);
+		return startTime + " - " + endTime;
 	}
 
 }

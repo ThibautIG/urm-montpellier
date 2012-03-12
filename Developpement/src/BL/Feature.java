@@ -34,7 +34,7 @@ public abstract class Feature
 	
 	public String toString()
 	{
-		return this.name.substring(0, 30);
+		return this.name;
 	}
 
 }
