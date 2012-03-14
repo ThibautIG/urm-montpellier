@@ -6,18 +6,14 @@ CREATE OR REPLACE TYPE TEnseignement AS OBJECT
 	ID_GROUPE NUMBER(10) ,
 	NB_HEURE_PREVUE NUMBER(4) 
 );
-/
-
 
 CREATE OR REPLACE TYPE TCaracteristique AS OBJECT
 (
    ID_CARACTERISTIQUE NUMBER(10)  ,
    LIBELLE_CARACTERISTIQUE CHAR(255)
 );
-/
 
 CREATE TYPE nt_Caracteristiques AS TABLE OF TCaracteristique;
-
 
 CREATE OR REPLACE TYPE TReservation AS OBJECT
 (
@@ -28,11 +24,9 @@ CREATE OR REPLACE TYPE TReservation AS OBJECT
 	DATE_RESERVATION DATE ,
 	listCaract nt_Caracteristiques
 );
-/
 
 CREATE TYPE nt_Enseignement AS TABLE OF TEnseignement;
 CREATE TYPE nt_Reservation AS TABLE OF TReservation;
-
 
 CREATE OR REPLACE TYPE TSalle AS OBJECT
 (
@@ -41,7 +35,6 @@ CREATE OR REPLACE TYPE TSalle AS OBJECT
 	listCaract nt_Caracteristiques ,
 	listReserv nt_Reservation	
 );
-/
 
 CREATE OR REPLACE TYPE TEnseignant AS OBJECT
 (
@@ -53,11 +46,8 @@ CREATE OR REPLACE TYPE TEnseignant AS OBJECT
 	listEmp nt_Enseignement,
 	listReserv nt_Reservation
 );
-/
 
-
--- Vue Enseignant
-  
+-- Vue Enseignant  
 create view VEnseignant of TEnseignant
 with object oid(id_enseignant) as
 	SELECT e.id_enseignant, e.nom, e.prenom, e.mdp, e.super_user,
@@ -75,11 +65,7 @@ with object oid(id_enseignant) as
 		as nt_Reservation)
 	FROM enseignant e;
 
-
-
 -- Vue VReservation 
-
-  
 create view VReservation of TReservation
 with object oid(id_reservation) as
 	SELECT r.id_reservation, r.id_salle, r.id_creneau, r.id_enseignement, r.date_reservation ,
@@ -90,9 +76,7 @@ with object oid(id_reservation) as
 		as nt_Caracteristiques)
 from Reservation r;
 
-
 -- Vue Salle  
-
 create view VSalle of TSalle
 with object oid(id_salle) as
 	SELECT s.id_salle, s.numero_salle,
@@ -110,10 +94,7 @@ with object oid(id_salle) as
 		as nt_Reservation)
 	from Salle s;
 
-
-
 -- Trigger
-
 create or replace trigger ins_VReservation 
 instead of insert on VReservation
 for each row
@@ -128,4 +109,3 @@ begin
 		end loop;
 	end if;
 end;
-/
