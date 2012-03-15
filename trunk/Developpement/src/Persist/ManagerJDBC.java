@@ -35,7 +35,7 @@ class ManagerJDBC extends Manager
 			while(results.next())
 			{
 				Feature ft = PersistFactory.getInstance().createFeature();
-				ft.create(results.getString(1).trim(), results.getString(2).trim());
+				ft.create(results.getString(1), results.getString(2));
 				this.allFeatures.add(ft);
 			}
 		}
@@ -56,7 +56,7 @@ class ManagerJDBC extends Manager
 			while(results.next())
 			{
 				Schedule schedule = PersistFactory.getInstance().createSchedule();
-				schedule.create(results.getString(1).trim(), results.getString(2).trim(), results.getString(3).trim());
+				schedule.create(results.getString(1), results.getString(2), results.getString(3));
 				this.allSchedules.add(schedule);
 			}
 		}

@@ -38,23 +38,23 @@ class TeachingJDBC extends Teaching {
 		
 		/** teacher??? **/
 		
-		this.id = results.getString(1).trim();
+		this.id = results.getString(1);
 
-		if (results.getString(4).trim() == "") {
+		if (results.getString(4) == "") {
 			this.type = "reunion";
 		}
 		else 
-			this.group = results.getString(4).trim();
+			this.group = results.getString(4);
 			
 		this.hours = results.getInt(5);
 		
-		idField = results.getString(2).trim();
+		idField = results.getString(2);
 		
 		// Récupérer l'intitulé du cours
 		query = "select COUNT(*) from COURS c, MATIERE m where c.ID_MATIERE = m.ID_MATIERE and c.ID_COURS = '" + idField + "'";
 		results = stmt.executeQuery(query);
 		results.next();
-		if(results.getString(1).trim() == "")
+		if(results.getString(1) == "")
 		{
 			throw new SQLException(); 
 		}
@@ -62,7 +62,7 @@ class TeachingJDBC extends Teaching {
 		query = "select m.LIBELLE_MATIERE from COURS c, MATIERE m where c.ID_MATIERE = m.ID_MATIERE and c.ID_COURS = '" + idField + "'";
 		results = stmt.executeQuery(query);
 		results.next();
-		field = results.getString(1).trim();
+		field = results.getString(1);
 	}
 
 }

@@ -49,9 +49,10 @@ public abstract class Teacher
 
 	/**
 	 * Retourne la liste des réservations qui ont été faites par l'utilisateur et qui ont été validées (Qui ont reçu une salle). 
+	 * @param week 
 	 * @throws Exception 
 	 */
-	public abstract ArrayList<Booking> getValidBooking() throws Exception;
+	public abstract ArrayList<Booking> getValidBooking(int week) throws Exception;
 
 	public String toString() {
 		String result = "null";

@@ -33,8 +33,8 @@ class FeatureJDBC extends Feature {
 		results = stmt.executeQuery(query);
 		results.next();
 		
-		this.id = results.getString(1).trim();
-		this.name = results.getString(2).trim();
+		this.id = results.getString(1);
+		this.name = results.getString(2);
 	}
 
 }

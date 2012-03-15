@@ -29,7 +29,28 @@ public abstract class Schedule
 
 	public String toString() 
 	{
-		return startTime + " - " + endTime;
+		String result = new String();
+		if(startTime.charAt(1) == 'h')
+		{
+			result = result+startTime.subSequence(0,4);
+		}
+		else
+		{
+			result = result+startTime.subSequence(0,5);
+		}
+		
+		result = result + " - ";
+		
+		if(endTime.charAt(1) == 'h')
+		{
+			result = result+endTime.subSequence(0,4);
+		}
+		else
+		{
+			result = result+endTime.subSequence(0,5);
+		}
+		
+		return result;
 	}
 
 }
