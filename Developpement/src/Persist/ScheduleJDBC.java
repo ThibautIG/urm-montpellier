@@ -33,9 +33,9 @@ class ScheduleJDBC extends Schedule {
 		results = stmt.executeQuery(query);
 		results.next();
 		
-		this.id = results.getString(1).trim();
-		this.startTime = results.getString(2).trim();
-		this.endTime = results.getString(3).trim();
+		this.id = results.getString(1);
+		this.startTime = results.getString(2);
+		this.endTime = results.getString(3);
 	}
 
 }

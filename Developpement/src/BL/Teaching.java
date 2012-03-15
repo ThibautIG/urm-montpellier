@@ -29,29 +29,25 @@ public abstract class Teaching
 	/**
 	 * Retourne l'enseignant qui enseigne cet enseignement.
 	 */
-	public Teacher getTeacher() 
-	{
+	public Teacher getTeacher() {
 		return teacher;
 	}
 
-	public String getTeacherInfos() 
-	{
+	public String getTeacherInfos() {
 		return teacher.toString();
 	}
 
-	public String getId() 
-	{
+	public String getId() {
 		return id;
 	}	
 
-	public String getField() 
-	{
+	public String getField() {
 		return field;
 	}
 	
 	public String toString()
 	{
-		return this.type + " " +this.field;
+		return this.type.substring(0, 5) + " " +this.field;
 		
 	}
 }

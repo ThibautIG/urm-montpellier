@@ -38,9 +38,9 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
         // Widgets
         private final ButtonGroup buttonGroup = new ButtonGroup();
         private JTextField tfCapacity;
-        private JComboBox<String> teachingChoice;
+        private JComboBox teachingChoice;
         private JCalendar calendar;
-        private JList<String> schedulesList, lSelectedFt, lUnselectedFt;
+        private JList schedulesList, lSelectedFt, lUnselectedFt;
         private JTextArea taComments;
         private JLabel lblNbRooms;
 
@@ -76,7 +76,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 buttonGroup.add(rdbtnMeeting);
                 chooseType.add(rdbtnMeeting);
                 
-                teachingChoice = new JComboBox<String>();
+                teachingChoice = new JComboBox();
                 teachingChoice.setEnabled(false);
                 teachingChoice.addItemListener(this);
                 teachingChoice.setBounds(133, 28, 186, 23);
@@ -98,8 +98,8 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 lblSelectSchedule.setBounds(246, 6, 146, 14);
                 timeAndDate.add(lblSelectSchedule);
                 
-                schedulesList = new JList<String>();
-                DefaultListModel<String> dlms = new DefaultListModel<String>();
+                schedulesList = new JList();
+                DefaultListModel dlms = new DefaultListModel();
                 ArrayList<String> als = this.account.getSchedules();
                 for (int i=0; i<als.size(); i++)
                 {
@@ -141,14 +141,14 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 features.add(tfCapacity);
                 tfCapacity.setColumns(10);
                 
-                lSelectedFt = new JList<String>();
-                this.lSelectedFt.setModel(new DefaultListModel<String>());
+                lSelectedFt = new JList();
+                this.lSelectedFt.setModel(new DefaultListModel());
                 lSelectedFt.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
                 lSelectedFt.setBounds(252, 21, 180, 118);
                 features.add(lSelectedFt);
                 
-                lUnselectedFt = new JList<String>();
-                DefaultListModel<String> dlm = new DefaultListModel<String>();
+                lUnselectedFt = new JList();
+                DefaultListModel dlm = new DefaultListModel();
                 ArrayList<String> fts = this.account.getFeatures(); 
                 for (int i=0; i<fts.size(); i++)
                 {
@@ -237,14 +237,14 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 {
                         if(!this.lUnselectedFt.isSelectionEmpty())
                         {
-                                DefaultListModel<String> dlm = (DefaultListModel<String>)this.lSelectedFt.getModel();
+                                DefaultListModel dlm = (DefaultListModel)this.lSelectedFt.getModel();
                                 dlm.addElement(this.lUnselectedFt.getSelectedValue());
                                 this.lSelectedFt.setModel(dlm);
                                 
-                                this.featuresSelected = ((DefaultListModel<String>)this.lSelectedFt.getModel()).elements();
+                                this.featuresSelected = (Enumeration<String>) ((DefaultListModel)this.lSelectedFt.getModel()).elements();
                                 
                                 
-                                DefaultListModel<String> dlm2 = (DefaultListModel<String>)this.lUnselectedFt.getModel();
+                                DefaultListModel dlm2 = (DefaultListModel)this.lUnselectedFt.getModel();
                                 dlm2.removeElementAt(this.lUnselectedFt.getSelectedIndex());
                                 this.lUnselectedFt.setModel(dlm2);
                         }
@@ -253,14 +253,14 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                 {
                         if(!this.lSelectedFt.isSelectionEmpty())
                         {
-                                DefaultListModel<String> dlm = (DefaultListModel<String>)this.lUnselectedFt.getModel();
+                                DefaultListModel dlm = (DefaultListModel)this.lUnselectedFt.getModel();
                                 dlm.addElement(this.lSelectedFt.getSelectedValue());
                                 this.lUnselectedFt.setModel(dlm);
                                 
-                                DefaultListModel<String> dlm2 = (DefaultListModel<String>)this.lSelectedFt.getModel();
+                                DefaultListModel dlm2 = (DefaultListModel)this.lSelectedFt.getModel();
                                 dlm2.removeElementAt(this.lSelectedFt.getSelectedIndex());
                                 this.lSelectedFt.setModel(dlm2);
-                                this.featuresSelected = dlm2.elements();
+                                this.featuresSelected = (Enumeration<String>) dlm2.elements();
                         }
                 }
                 else if(e.getActionCommand().equals("ck"))
