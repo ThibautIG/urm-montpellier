@@ -54,49 +54,43 @@ class ConsulterView extends JFrame implements ActionListener{
 
 		this.account = c;
 
-		this.setSize(new Dimension(800, 357));
+		this.setSize(new Dimension(965, 357));
 		getContentPane().setLayout(null);
 
 		planning_panel = new JPanel();
 		planning_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		planning_panel.setBounds(10, 10, 764, 282);
+		planning_panel.setBounds(10, 10, 929, 282);
 		getContentPane().add(planning_panel);
 		planning_panel.setLayout(null);
 
 		table = new JTable();
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, Color.GRAY, null, null));
-		table.setBounds(73, 4, 619, 272);
+		table.setBounds(73, 4, 783, 272);
 		table.setBackground(SystemColor.menu);
 		planning_panel.add(table);
 		table.setModel(new DefaultTableModel(
-				new Object[][] {
-						{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
-						{"8h00 - 9h30", null, null, null, null, null, null, null},
-						{"9h45 - 10h15", null, null, null, null, null, null, null},
-						{"10h30 - 11h15", null, null, null, null, null, null, null},
-						{"11h15 - 13h00", null, null, null, null, null, null, null},
-						{"13h15 - 14h45", null, null, null, null, null, null, null},
-						{"15h00 - 16h30", null, null, null, null, null, null, null},
-						{"16h45 - 18h15", null, null, null, null, null, null, null},
-						{"18h30 - 20h00", null, null, null, null, null, null, null},
-				},
-				new String[] {
-						"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
-				}
-				) {
+			new Object[][] {
+				{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
+				{"8h00 - 9h30", null, null, null, null, null, null, null},
+				{"9h45 - 10h15", null, null, null, null, null, null, null},
+				{"10h30 - 11h15", null, null, null, null, null, null, null},
+				{"11h15 - 13h00", null, null, null, null, null, null, null},
+				{"13h15 - 14h45", null, null, null, null, null, null, null},
+				{"15h00 - 16h30", null, null, null, null, null, null, null},
+				{"16h45 - 18h15", null, null, null, null, null, null, null},
+				{"18h30 - 20h00", null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+			}
+		) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
-					String.class, Object.class, Object.class, Object.class, Object.class, Object.class
+				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
 			};
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
-			}
-			boolean[] columnEditables = new boolean[] {
-					false, false, false, false, true, false
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
 			}
 		});
 		table.setRowHeight(30);
@@ -108,19 +102,19 @@ class ConsulterView extends JFrame implements ActionListener{
 		bPrecedent.setActionCommand("Precedent");
 
 		bSuivant = new JButton(">");
-		bSuivant.setBounds(697, 113, 57, 46);
+		bSuivant.setBounds(862, 113, 57, 46);
 		planning_panel.add(bSuivant);
 		bSuivant.setActionCommand("Suivant");
 		bSuivant.addActionListener(this);
 		bPrecedent.addActionListener(this);
 
 		quit_panel = new JPanel();
-		quit_panel.setBounds(0, 284, 784, 41);
+		quit_panel.setBounds(0, 284, 939, 41);
 		getContentPane().add(quit_panel);
 		quit_panel.setLayout(null);
 
 		bQuit = new JButton("Fermer");
-		bQuit.setBounds(680, 9, 94, 23);
+		bQuit.setBounds(845, 9, 94, 23);
 		quit_panel.add(bQuit);
 		bQuit.setActionCommand("Fermer");
 		bQuit.addActionListener(this);
@@ -162,11 +156,11 @@ class ConsulterView extends JFrame implements ActionListener{
 				
 				// CRENEAU
 				int cren = 1;
-				while(cren<9 && ((String) table.getValueAt(cren,0)).startsWith(infosPlanning.get(i).get(1))==false)
+				while(cren<table.getRowCount() && ((String) table.getValueAt(cren,0)).startsWith(infosPlanning.get(i).get(1))==false)
 				{
 					++cren;
 				}
-				if (cren<9) 
+				if (cren<table.getRowCount()) 
 				{
 					table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)-1);
 

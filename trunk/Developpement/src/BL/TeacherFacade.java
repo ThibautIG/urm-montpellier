@@ -120,11 +120,11 @@ public class TeacherFacade
 			
 			booking = resaValides.get(i);
 		
-			System.out.println(booking.getDate());
-			System.out.println(booking.getStringSchedule());
-			System.out.println(booking.getRoom());
-			System.out.println(booking.getField());
-			System.out.println("");
+//			System.out.println(booking.getDate());
+//			System.out.println(booking.getStringSchedule());
+//			System.out.println(booking.getRoom());
+//			System.out.println(booking.getField());
+//			System.out.println("");
 			
 			resaString = new ArrayList<String>();
 			resaString.add(booking.getDate().toString());
