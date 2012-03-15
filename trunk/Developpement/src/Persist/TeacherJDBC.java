@@ -1,15 +1,12 @@
 package Persist;
 
-import java.sql.Date;
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.TimeZone;
 
 import BL.Booking;
 import BL.PersistFactory;
@@ -110,7 +107,6 @@ class TeacherJDBC extends Teacher
 
 		String query = "select res.ID_RESERVATION from RESERVATION res, ENSEIGNEMENT ens where res.id_enseignement = ens.id_enseignement AND ens.id_enseignant = '" 
 				+ this.id + "' and DATE_RESERVATION >= '"+debut+"' AND DATE_RESERVATION <= '"+fin+"'";
-		System.out.println(query);
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		

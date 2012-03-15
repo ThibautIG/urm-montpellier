@@ -155,19 +155,15 @@ class ConsulterView extends JFrame implements ActionListener{
 		for (i=0; i<infosPlanning.size(); i++) //modification de int i = 0 en int i = week
 		{
 			//DATE
-			System.out.println("ici"+infosPlanning.get(i).get(0));
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd" );
 			try {
 				Date date = dateFormat.parse(infosPlanning.get(i).get(0));
 				cal.setTime(date);
-				System.out.println(cal.get(Calendar.DAY_OF_WEEK)-1);
 				
 				// CRENEAU
 				int cren = 1;
 				while(cren<9 && ((String) table.getValueAt(cren,0)).startsWith(infosPlanning.get(i).get(1))==false)
 				{
-					System.out.println(infosPlanning.get(i).get(1));
-					System.out.println(table.getValueAt(cren,0));
 					++cren;
 				}
 				if (cren<9) 
