@@ -43,19 +43,20 @@ class BookingJDBC extends Booking
 		ArrayList<Feature> listFeatures = new ArrayList<Feature>();
 		int idSalle;
 		
-		String query = "select count(*) from Reservation where ID_SALLE is not null and id_reservation = '" + reference + "'";
+		String query = "select count(*) from Reservation where id_reservation = '" + reference + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
-		
+
 		// vérifier qu'il y a qu'une seule réservation
 		results.next();
 		if(results.getInt(1) != 1)
 		{
+			System.out.println("Aucune ou trop de reservations");
 			throw new SQLException(); 
 		}
 		
 		// Récupérer les infos de la réservation
-		query = "select * from Reservation where ID_SALLE is not null and id_reservation = '" + reference + "'";
+		query = "select * from Reservation where id_reservation = '" + reference + "'";
 		stmt = dbConnection.createStatement();
 		results = stmt.executeQuery(query);
 		results.next();

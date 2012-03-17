@@ -105,8 +105,9 @@ class TeacherJDBC extends Teacher
 		fin += cal.get(Calendar.YEAR);
 		
 
-		String query = "select res.ID_RESERVATION from RESERVATION res, ENSEIGNEMENT ens where res.id_enseignement = ens.id_enseignement AND ens.id_enseignant = '" 
-				+ this.id + "' and DATE_RESERVATION >= '"+debut+"' AND DATE_RESERVATION <= '"+fin+"'";
+//		String query = "select res.ID_RESERVATION from RESERVATION res, ENSEIGNEMENT ens where ID_SALLE is not null and res.id_enseignement = ens.id_enseignement AND ens.id_enseignant = '" 
+//				+ this.id + "' and DATE_RESERVATION >= '"+debut+"' AND DATE_RESERVATION <= '"+fin+"'";
+		String query = "select res.ID_RESERVATION from RESERVATION res where ID_SALLE is not null and DATE_RESERVATION >= '"+debut+"' AND DATE_RESERVATION <= '"+fin+"'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		
