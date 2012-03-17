@@ -37,7 +37,7 @@ class ConsulterView extends JFrame implements ActionListener{
 	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours
 	 */
 	private int week;
-	
+
 	private TeacherFacade account;
 	private JTable table;
 	private JButton bPrecedent;
@@ -69,21 +69,20 @@ class ConsulterView extends JFrame implements ActionListener{
 		table.setBackground(SystemColor.menu);
 		planning_panel.add(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
-				{"8h00 - 9h30", null, null, null, null, null, null, null},
-				{"9h45 - 10h15", null, null, null, null, null, null, null},
-				{"10h30 - 11h15", null, null, null, null, null, null, null},
-				{"11h15 - 13h00", null, null, null, null, null, null, null},
-				{"13h15 - 14h45", null, null, null, null, null, null, null},
-				{"15h00 - 16h30", null, null, null, null, null, null, null},
-				{"16h45 - 18h15", null, null, null, null, null, null, null},
-				{"18h30 - 20h00", null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
-			}
-		) {
+				new Object[][] {
+						{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
+						{"8h00 - 9h30", null, null, null, null, null, null, null},
+						{"9h45 - 11h15", null, null, null, null, null, null, null},
+						{"11h30 - 13h00", null, null, null, null, null, null, null},
+						{"13h15 - 14h45", null, null, null, null, null, null, null},
+						{"15h00 - 16h30", null, null, null, null, null, null, null},
+						{"16h45 - 18h15", null, null, null, null, null, null, null},
+						{"18h30 - 20h00", null, null, null, null, null, null, null},
+				},
+				new String[] {
+						"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+				}
+				) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
 				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
@@ -95,7 +94,7 @@ class ConsulterView extends JFrame implements ActionListener{
 		});
 		table.setRowHeight(30);
 		centrerTable(table);
-		
+
 		bPrecedent = new JButton("<");
 		bPrecedent.setBounds(9, 113, 58, 46);
 		planning_panel.add(bPrecedent);
@@ -122,11 +121,11 @@ class ConsulterView extends JFrame implements ActionListener{
 
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
-		
+
 		Calendar cal = new GregorianCalendar();
 		java.util.Date date= cal.getTime();
 		SimpleDateFormat weekNum = new SimpleDateFormat("w");
-		
+
 		this.week = Integer.parseInt(weekNum.format(date));	
 		this.genCalendar(week);
 	}
@@ -142,7 +141,7 @@ class ConsulterView extends JFrame implements ActionListener{
 		int i;
 		ArrayList<ArrayList<String>> infosPlanning;
 		infosPlanning = account.getValidBooking(week);
-		
+
 		Calendar cal = new GregorianCalendar();
 		initPlaning();
 		init_labels(week);
@@ -153,7 +152,7 @@ class ConsulterView extends JFrame implements ActionListener{
 			try {
 				Date date = dateFormat.parse(infosPlanning.get(i).get(0));
 				cal.setTime(date);
-				
+
 				// CRENEAU
 				int cren = 1;
 				while(cren<table.getRowCount() && ((String) table.getValueAt(cren,0)).startsWith(infosPlanning.get(i).get(1))==false)
@@ -162,7 +161,14 @@ class ConsulterView extends JFrame implements ActionListener{
 				}
 				if (cren<table.getRowCount()) 
 				{
-					table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)-1);
+					if (cal.get(Calendar.DAY_OF_WEEK) == 1) /* qui correspond a SUNDAY */
+					{
+						table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)+6);
+					}
+					else
+					{
+						table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)-1);
+					}
 
 				}
 				else 
@@ -172,11 +178,11 @@ class ConsulterView extends JFrame implements ActionListener{
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-		
+
 		}
 	}
-	
-	
+
+
 	private void init_labels(int week)
 	{
 		Calendar cal = new GregorianCalendar();
@@ -185,6 +191,8 @@ class ConsulterView extends JFrame implements ActionListener{
 		cal.setFirstDayOfWeek(Calendar.MONDAY);
 		cal.setMinimalDaysInFirstWeek(7);
 		cal.set(Calendar.WEEK_OF_YEAR, week);
+		cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+
 		for(int i=1;i<=days.length;i++)
 		{
 			table.setValueAt(days[i-1]+" "+cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1),0,i);
@@ -192,7 +200,7 @@ class ConsulterView extends JFrame implements ActionListener{
 		}
 	}
 
-	
+
 	private void initPlaning() 
 	{
 		int i,j;
@@ -232,5 +240,5 @@ class ConsulterView extends JFrame implements ActionListener{
 		for (int i=0 ; i<table.getColumnCount() ; i++) 
 			table.getColumnModel().getColumn(i).setCellRenderer(custom); 
 	}
-	
+
 }

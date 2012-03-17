@@ -121,7 +121,6 @@ public class LoginView extends JFrame implements ActionListener
 		if (e.getActionCommand().equals("valid")) //l'utilisateur clique sur valider
 
 		{
-
 			try
 			{
 				this.account = new TeacherFacade(this.tfLogin.getText(), new String(this.tfMdp.getPassword())); //on crée un nouvel objet compte identifiant un enseignant
@@ -132,7 +131,6 @@ public class LoginView extends JFrame implements ActionListener
 			{
 				System.out.println("L'utilisateur n'est pas connecté");
 				JOptionPane.showMessageDialog(this, "Impossible de se connecter. Vérifiez vos identifiant et mot de passe.", "Erreur", JOptionPane.INFORMATION_MESSAGE);
-
 			}
 		}
 		else if (e.getActionCommand().equals("cancel")) 
