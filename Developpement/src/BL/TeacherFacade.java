@@ -4,27 +4,43 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 
-
+/**
+ * Façade qui permet la communication avec la BL à travers un enseignant.
+ * @author URM Team
+ */
 public class TeacherFacade 
 {
+	/**
+	 * Enseignant qui est connecté.
+	 */
 	private Teacher user;
+	
+	/**
+	 * Gestionnaire qui rend des services globaux à tous les enseignants.
+	 */
 	private Manager manager;
+	
+	/**
+	 * Réservation créée par l'utilisateur.
+	 */
 	private Booking myBooking;
 
-	public TeacherFacade(String nom, String pwd) 
+	/**
+	 * Constructeur.
+	 * @param nom
+	 * 			Nom de l'utilisateur, qui est aussi son identifiant.
+	 * @param pwd
+	 * 			Mot de passe de l'utilisateur.
+	 * @throws Exception 
+	 * 			Problème lors de la connection de l'utilisateur.
+	 */
+	public TeacherFacade(String nom, String pwd) throws Exception 
 	{
 		this.manager = PersistFactory.getInstance().createManager();
 		
 		this.user = PersistFactory.getInstance().createTeacher(); //crée un teacher
-		try 
-		{
-			this.user.load(nom, pwd);
-		}
-		catch (Exception e) 
-		{
-			System.out.println("non connecté");
-			this.user = null;
-		}
+			
+		this.user.load(nom, pwd);
 	}
 
 	/**
@@ -45,7 +61,6 @@ public class TeacherFacade
 		{
 			e.printStackTrace();
 		}
-		
 		
 		return als;
 	}
@@ -74,7 +89,7 @@ public class TeacherFacade
 	}
 
 	/**
-	 * retourne la liste des enseignement de l'user (l'enseignant qui utilise l'application), dans une liste de String.
+	 * retourne la liste des enseignement de l'enseignant dans une liste de String.
 	 */
 	public ArrayList<String> getTeachings() 
 	{
@@ -99,6 +114,8 @@ public class TeacherFacade
 
 	/**
 	 * Renvoie la liste des Réservations faites par l'enseignant qui sont validées.
+	 * @param week
+	 * 			Numéro de la semaine pour laquelle on veut les réservations validées.
 	 */
 	public ArrayList<ArrayList<String>> getValidBooking(int week) 
 	{
@@ -121,12 +138,6 @@ public class TeacherFacade
 		for (i=0; i<resaValides.size(); i++){
 			
 			booking = resaValides.get(i);
-		
-//			System.out.println(booking.getDate());
-//			System.out.println(booking.getStringSchedule());
-//			System.out.println(booking.getRoom());
-//			System.out.println(booking.getField());
-//			System.out.println("");
 			
 			resaString = new ArrayList<String>();
 			resaString.add(booking.getDate().toString());
@@ -157,84 +168,83 @@ public class TeacherFacade
 	/**
 	 * Valide définitivement la reservation, c'est à dire sauvegarde les données de celle-ci.
 	 * @param comments 
+	 * 			commentaires entrés par l'utilisateur.
 	 * @param capacity 
+	 * 			capacitée demandée par l'utilisateur.
 	 * @param featuresSelected 
+	 * 			caractéristiques choisies par l'utilisateur.
 	 * @param scheduleSelected 
+	 * 			créneau choisi par l'utilisateur.
 	 * @param dateSelected 
+	 * 			date chosie par l'utilisateur.
 	 * @param teachingSelected 
+	 * 			enseignement choisi par l'utilisateur.
+	 * @throws Exception 
+	 * 			Déclenchée si les informations de la réservation n'ont pas pu être récupérées.
 	 */
-	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity, String comments) 
+	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity, String comments) throws Exception 
 	{
-		try 
+		if(this.myBooking==null)
 		{
-			if(this.myBooking==null)
-			{
-				this.checkFreeRooms(dateSelected, scheduleSelected, featuresSelected, capacity);
-			}
-			
-			int i = 0;
-			while(!this.user.getTeachings().get(i).toString().equals(teachingSelected))
-			{
-				i++;
-			}
-			this.myBooking.setTeaching(this.user.getTeachings().get(i));
-			
-			this.myBooking.save();
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
+			this.checkFreeRooms(dateSelected, scheduleSelected, featuresSelected, capacity);
 		}
+		
+		int i = 0;
+		while(!this.user.getTeachings().get(i).toString().equals(teachingSelected))
+		{
+			i++;
+		}
+		this.myBooking.setTeaching(this.user.getTeachings().get(i));
+		
+		this.myBooking.save();
 	}
 
 	/**
 	 * Retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie.
 	 * @param capacity 
+	 * 			capacitée demandée par l'utilisateur.
 	 * @param featuresSelected 
+	 * 			caractéristiques choisies par l'utilisateur.
 	 * @param scheduleSelected 
+	 * 			créneau choisi par l'utilisateur.
 	 * @param dateSelected 
+	 * 			date chosie par l'utilisateur.
+	 * @throws Exception 
+	 * 			Déclenchée si les informations de la réservation n'ont pas pu être récupérées.
 	 */
-	public int checkFreeRooms(Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity) 
+	public int checkFreeRooms(Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity) throws Exception 
 	{
 		int freeRooms = 0;
 		this.myBooking = PersistFactory.getInstance().createBooking();
 		
 		this.myBooking.setDate(dateSelected);
 		
-		try 
+		int s = 0;
+		
+		while(!this.manager.getSchedules().get(s).toString().equals(scheduleSelected))
 		{
-			int s = 0;
-			
-			while(!this.manager.getSchedules().get(s).toString().equals(scheduleSelected))
-			{
-				s++;
-			}
-			
-			this.myBooking.setSchedule(this.manager.getSchedules().get(s));
-			
-			ArrayList<Feature> alf = new ArrayList<Feature>();
-			while(featuresSelected!=null && featuresSelected.hasMoreElements())
-			{
-				String ft = featuresSelected.nextElement();
-				int ftus = 0;
-				while(!this.manager.getFeatures().get(ftus).toString().equals(ft))
-				{
-					ftus++;
-				}
-				alf.add(this.manager.getFeatures().get(ftus));
-			}
-			
-			this.myBooking.setFeatures(alf);
-			
-			this.myBooking.capacity = capacity;
-			
-			freeRooms = this.myBooking.checkFreeRooms();
-			
-		} 
-		catch (Exception e) 
-		{
-			e.printStackTrace();
+			s++;
 		}
+		
+		this.myBooking.setSchedule(this.manager.getSchedules().get(s));
+		
+		ArrayList<Feature> alf = new ArrayList<Feature>();
+		while(featuresSelected!=null && featuresSelected.hasMoreElements())
+		{
+			String ft = featuresSelected.nextElement();
+			int ftus = 0;
+			while(!this.manager.getFeatures().get(ftus).toString().equals(ft))
+			{
+				ftus++;
+			}
+			alf.add(this.manager.getFeatures().get(ftus));
+		}
+		
+		this.myBooking.setFeatures(alf);
+		
+		this.myBooking.capacity = capacity;
+		
+		freeRooms = this.myBooking.checkFreeRooms();
 
 		return freeRooms;
 	}

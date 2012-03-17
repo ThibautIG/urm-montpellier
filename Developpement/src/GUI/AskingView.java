@@ -342,7 +342,11 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                     if(this.dateSelected != null && this.scheduleSelected != null)
                     {
                             this.capacity = 0 + Integer.parseInt(this.tfCapacity.getText());
-                            this.lblNbRooms.setText("Nombre de salles disponibles estim\u00E9 : "+this.account.checkFreeRooms(this.dateSelected, this.scheduleSelected, this.featuresSelected, this.capacity));
+                            try {
+								this.lblNbRooms.setText("Nombre de salles disponibles estim\u00E9 : "+this.account.checkFreeRooms(this.dateSelected, this.scheduleSelected, this.featuresSelected, this.capacity));
+							} catch (Exception e1) {
+								JOptionPane.showMessageDialog(this, "Problème d'accès à la base de données", "Erreur", JOptionPane.ERROR_MESSAGE);
+							}
                     }
             }
             else if(e.getActionCommand().equals("cancel"))
@@ -357,7 +361,11 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                             {
                                     this.capacity = Integer.parseInt(this.tfCapacity.getText());
                                     this.comments = this.taComments.getText();
-                                    this.account.confirmBooking(teachingSelected, dateSelected, scheduleSelected, featuresSelected, capacity, comments);
+                                    try {
+										this.account.confirmBooking(teachingSelected, dateSelected, scheduleSelected, featuresSelected, capacity, comments);
+									} catch (Exception e1) {
+										JOptionPane.showMessageDialog(this, "Problème d'accès à la base de données", "Erreur", JOptionPane.ERROR_MESSAGE);
+									}
                                     dispose();
                             }
                     }
