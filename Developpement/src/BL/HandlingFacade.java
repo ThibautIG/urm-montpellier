@@ -10,7 +10,7 @@ import java.util.ArrayList;
 class HandlingFacade {
 	
 	
-	@SuppressWarnings("unused")
+	//@SuppressWarnings("unused")
 	private Manager manager;
 	
 	
