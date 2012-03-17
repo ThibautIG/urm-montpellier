@@ -6,54 +6,78 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import BL.TeacherFacade;
 
-
 /**
- * 
+ * Classe permettant de générer l'interface graphique pour le menu utilisateur.
  * @author URM Team
- * @description : classe permettant de générer l'interface graphique pour le menu utilisateur
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({ "unused", "serial" })
 class MenuView extends JFrame implements ActionListener
 {
 	/**
-	 * 
+	 * Vue graphique de la consultation de l'emploi du temps.
+	 * @see MenuView#actionPerformed(ActionEvent)
 	 */
-	private static final long serialVersionUID = 1L;
-	
-
 	private ConsulterView consulting;
+	
+	/**
+	 * Vue graphique de la demande de réservation.
+	 * @see MenuView#actionPerformed(ActionEvent)
+	 */
 	private AskingView Asking;
+	
+	/**
+	 * Vue graphique du traitement des réservations.
+	 * @see MenuView#actionPerformed(ActionEvent)
+	 */
 	private HandlingView Handling;
-	private JPanel p;
-	private JButton consult, ask, handle;
+	
+	/**
+	 * Bouton qui déclenche le lancement de la vue de consultation.
+	 * @see MenuView#actionPerformed(ActionEvent)
+	 */
+	private JButton consult;
+	
+	/**
+	 * Bouton qui déclenche le lancement de la vue de demande de réservation.
+	 * @see MenuView#actionPerformed(ActionEvent)
+	 */
+	private JButton ask;
+	
+	/**
+	 * Bouton qui déclenche le lancement de la vue de traitement des réservations.
+	 * @see MenuView#actionPerformed(ActionEvent)
+	 */
+	private JButton handle;
+	
+	/**
+	 * Façade permettant le dialogue avec la BL.
+	 */
 	private TeacherFacade user;
 	
 	 /**
      * Constructeur
-     * @param : c : objet de type TeacherFacade faisant référence au compte d'un enseignant
+     * @param : c
+     * 			Fait référence au compte d'un enseignant.
      */
-
 	public  MenuView(TeacherFacade c) 
 	{
 		this.user = c;
 		initComponents();
 	}
 	
-	public  MenuView() //constructeur à supprimer
-	{
-		initComponents();
-	}
-
-	
+	/**
+	 * Initialise les widgets qui composent la fenêtre.
+	 */
 	private void initComponents() 
 	{
 
-		/** initialisation de la fenêtre et des widgets */
-    	this.setTitle("URM Menu");
+		//initialisation de la fenêtre et des widgets
+    	this.setTitle("URM");
     	this.setSize(300,110); //On ajuste la taille de la fenêtre
     	this.setResizable(false);
     	
@@ -65,8 +89,8 @@ class MenuView extends JFrame implements ActionListener
     	ask.addActionListener(this);
     	
     	
-    	/** Initialisation du panneau */
-    	p = new JPanel (new FlowLayout());
+    	// Initialisation du panneau
+    	JPanel p = new JPanel (new FlowLayout());
     	
     	p.add(consult);
     	p.add(ask);
@@ -85,11 +109,12 @@ class MenuView extends JFrame implements ActionListener
     	
 	}
 
-
 	 /**
-     * @param ActionEvent e : évenement provenant d'un clic sue un bouton
-     * @return : void
-     * @description : écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
+	 * écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
+     * @param ActionEvent e : évenement provenant d'un clic sur un des bouton
+     * @see MenuView#consult
+     * @see MenuView#ask
+     * @see MenuView#handle
      */
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -103,7 +128,7 @@ class MenuView extends JFrame implements ActionListener
 		}
 		else if (e.getActionCommand().equals("handle"))
 		{
-			System.out.println("traitement");
+			JOptionPane.showMessageDialog(this, "Le traitement des demandes n'est pas encore disponible.", "Erreur", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 	
