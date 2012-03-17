@@ -19,10 +19,9 @@ public class TeacherFacade
 		try 
 		{
 			this.user.load(nom, pwd);
-			System.out.println(this.user.isSuperUser());
-		} catch (Exception e) 
+		}
+		catch (Exception e) 
 		{
-			//e.printStackTrace();
 			System.out.println("non connecté");
 			this.user = null;
 		}
@@ -110,9 +109,12 @@ public class TeacherFacade
 		ArrayList<Booking> resaValides = new ArrayList<Booking>();
 		Booking booking;
 		
-		try {
+		try 
+		{
 			resaValides = user.getValidBooking(week);
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 			e.printStackTrace();
 		}
 		
