@@ -1,125 +1,130 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.*;
-import BL.TeacherFacade;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-/**
- * 
- * @author URM Team
- * @description : classe permettant de générer l'interface graphique pour l'authentification - hérite de JFrame et implémente l'interface ActionListener
- */
+import javax.swing.*;
+import BL.TeacherFacade;
 
+/**
+ * Permet de générer l'interface graphique pour l'authentification.
+ * @author URM Team
+ */
+@SuppressWarnings("serial")
 public class LoginView extends JFrame implements ActionListener
 {
 	/**
-	 * 
+	 * Façade permettant le dialogue avec la BL
+	 * @see LoginView#actionPerformed(ActionEvent)
 	 */
-	private static final long serialVersionUID = 1L;
-
 	private TeacherFacade account;
+	
+	/**
+	 * Menu généré si la personne a été identifiée
+	 * @see LoginView#actionPerformed(ActionEvent)
+	 */
 	@SuppressWarnings("unused")
 	private MenuView menu;
-
-	private JPanel pNorth, pSouth; //panneaux
-	private JLabel lblLogin; //label Login
-	private JLabel lblMdp; //label mot de passe
-	private JTextField tfLogin; //champ texte login
-	private JPasswordField tfMdp; //champ texte mot de passe
-	private JButton bValid, bCancel; // boutons valider et annuler
-
+	
 	/**
-	 * @param aucun
-	 * @description : constructeur de la fenêtre Login faisant appel à la métode initComponents();
+	 * Boîte d'éddition du login.
+	 * @see LoginView#LoginView()
 	 */
-
+	private JTextField tfLogin;
+	
+	/**
+	 * Boîte d'éddition du mot de passe.
+	 * @see LoginView#LoginView()
+	 */
+	private JPasswordField tfMdp;
+	
+	/**
+	 * Bouton qui permet de valider l'entrée du login et du mot de passe.
+	 * @see LoginView#LoginView()
+	 */
+	private JButton bValid;
+	
+	/**
+	 * Bouton qui ferme le logiciel.
+	 * @see LoginView#LoginView()
+	 */
+	private JButton bCancel;
+	
+	/**
+	 * Constructeur de la fenêtre Login.
+	 */
 	public LoginView() 
 	{
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setSize(299, 154);
 		setResizable(false);
-		initComponents();
-	}
-
-	/**
-	 * @return void
-	 * @description : méthode d'initialisation de la fenêtre graphique permettant l'authentification
-	 */
-
-	private void initComponents() 
-	{
-		//initialisation des widgets
-		this.setTitle("URM Authentification");
-		this.setSize(384,232); //On donne une taille à notre fenêtre
-		this.setResizable(false); //elle ne peut pas être redimensionnée
-
-		/** construction du panneau nord */
-		pNorth = new JPanel (new GridLayout(2,2)); //panneau nord composé de 2 Jlabel et de 2 champs
-
-		lblLogin = new JLabel("Login :"); //label Login
-		tfLogin = new JTextField(); //champ texte pour renseigner l'identifiant
-		tfLogin.setPreferredSize(new Dimension (90, 20)); //redimensionnement du champ texte
+		setTitle("URM Authentification");
+		getContentPane().setLayout(null);
+		
+		JPanel pIn = new JPanel();
+		pIn.setBounds(53, 11, 186, 69);
+		getContentPane().add(pIn);
+		pIn.setLayout(null);
+		
+		tfLogin = new JTextField();
+		tfLogin.setBounds(91, 8, 86, 20);
+		pIn.add(tfLogin);
+		tfLogin.setColumns(10);
 		tfLogin.setToolTipText("Entrez votre identifiant"); //indication à l'utilisateur
-
-		lblMdp = new JLabel("Mot de passe :"); //label mot de passe
-		tfMdp = new JPasswordField(); //champ texte mot de passe pour renseigner le mot de passe
+		
+		JLabel lblMotDePasse = new JLabel("Mot de passe :");
+		lblMotDePasse.setBounds(0, 42, 167, 14);
+		pIn.add(lblMotDePasse);
+		
+		JLabel lblLogin = new JLabel("Login : ");
+		lblLogin.setBounds(39, 11, 108, 14);
+		pIn.add(lblLogin);
+		
+		tfMdp = new JPasswordField();
+		tfMdp.setBounds(91, 39, 86, 20);
 		tfMdp.addKeyListener(new KeyAdapter() 
-		{
-			public void keyPressed(KeyEvent e) 
-			{
-				if (e.getKeyCode() == KeyEvent.VK_ENTER) 
-				{
-					getRootPane().setDefaultButton(bValid);
-				}
-			}
-		});
-		tfMdp.setPreferredSize(new Dimension (90, 20)); //redimensionnement du champ texte
+        {
+                public void keyPressed(KeyEvent e) 
+                {
+                        if (e.getKeyCode() == KeyEvent.VK_ENTER) 
+                        {
+                                getRootPane().setDefaultButton(bValid);
+                        }
+                }
+        });
 		tfMdp.setToolTipText("Entrez votre mot de passe"); //indication à l'utilisateur
-
-		/** ajout des widgets du panneau nord */
-
-		pNorth.add(lblLogin);
-		pNorth.add(tfLogin);
-		pNorth.add(lblMdp);
-		pNorth.add(tfMdp);
-
-		/** construction du panneau sud */
-
-		pSouth = new JPanel (); //panneau sud contenant les boutons
-
-		bValid = new JButton("Valider"); bValid.setActionCommand("valid"); bValid.addActionListener(this); //création et initialisation du bouton "valider"
-		bCancel = new JButton("Quitter"); bCancel.setActionCommand("cancel"); bCancel.addActionListener(this); //création et initialisation du bouton "annuler"
-
-		/** ajout des widgets du panneau sud */
-
-		pSouth.add(bValid);
-		pSouth.add(bCancel);
-
-		/** ajout des panneaux à la fenêtre */
-		this.getContentPane().add(pNorth, BorderLayout.NORTH); //On ajoute un panneau au nord
-		this.getContentPane().add(pSouth, BorderLayout.SOUTH); //On ajoute un panneau au sud
-
-		this.setLocationRelativeTo(null); //on place la fenêtre au centre de l'écran    
-		this.setVisible(true); //la fenêtre est rendue visible
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE); //termine le programme lorsqu'on le ferme
-		pack();
+		pIn.add(tfMdp);
+		
+		JPanel pOut = new JPanel();
+		pOut.setBounds(38, 82, 217, 33);
+		getContentPane().add(pOut);
+		pOut.setLayout(null);
+		
+		bValid = new JButton("Valider");
+		bValid.setActionCommand("valid");
+		bValid.setBounds(10, 5, 86, 23);
+		bValid.addActionListener(this);
+		pOut.add(bValid);
+		
+		bCancel = new JButton("Annuler");
+		bCancel.setActionCommand("cancel");
+		bCancel.addActionListener(this);
+		bCancel.setBounds(121, 5, 86, 23);
+		pOut.add(bCancel);
+		this.setVisible(true);
+		
 	}
 
 	/**
-	 * @param ActionEvent e : évenement provenant d'un clic sue un bouton
-	 * @return : void
-	 * @description : écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
+	 * écoute les événements provenant d'un clic sur le bouton valider ou le bouton annuler - méthode issue de l'interface ActionListener
+	 * @param ActionEvent e
+	 * 			évenement provenant d'un clic sur un bouton
 	 */
-
 	public void actionPerformed(ActionEvent e) 
 	{		
 		if (e.getActionCommand().equals("valid")) //l'utilisateur clique sur valider
-
 		{
 			try
 			{
@@ -139,13 +144,12 @@ public class LoginView extends JFrame implements ActionListener
 		}
 	}
 
-
 	/**
+	 * Lanceur du programme
 	 * @param args the command line arguments
 	 */
 	public static void main(String args[]) 
 	{
 		new LoginView();
 	}
-
 }
