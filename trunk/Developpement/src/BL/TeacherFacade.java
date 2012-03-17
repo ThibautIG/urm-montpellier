@@ -142,7 +142,6 @@ public class TeacherFacade
 	 */
 	public boolean isSuperUser()
 	{
-		System.out.println(this.user.isSuperUser());
 		if(this.user != null)
 		{
 			return this.user.isSuperUser();
