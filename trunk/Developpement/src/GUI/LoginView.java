@@ -134,7 +134,7 @@ public class LoginView extends JFrame implements ActionListener
 			}
 			catch (Exception sqle)
 			{
-				System.out.println("L'utilisateur n'est pas connecté");
+				//System.out.println("L'utilisateur n'est pas connecté");
 				JOptionPane.showMessageDialog(this, "Impossible de se connecter. Vérifiez vos identifiant et mot de passe.", "Erreur", JOptionPane.INFORMATION_MESSAGE);
 			}
 		}
