@@ -307,6 +307,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
             {
                     this.teachingChoice.setEnabled(false);
                     this.teachingChoice.removeAllItems();
+                    this.teachingSelected = "reunion";
             }
             else if(e.getActionCommand().equals("add"))
             {
