@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTextArea;
+
 import java.awt.Color;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -203,11 +205,19 @@ class ConsulterView extends JFrame implements ActionListener
 				{
 					if (cal.get(Calendar.DAY_OF_WEEK) == 1) /* qui correspond a SUNDAY */
 					{
-						table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)+6);
+						JTextArea input = new JTextArea();
+						input.setText(infosPlanning.get(i).get(3));
+						input.setToolTipText(infosPlanning.get(i).get(3));
+						System.out.println(input.getText()+input.getToolTipText());
+						table.setValueAt(input, cren, cal.get(Calendar.DAY_OF_WEEK)+6);
 					}
 					else
 					{
-						table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)-1);
+						JTextArea input = new JTextArea();
+						input.setText(infosPlanning.get(i).get(3));
+						input.setToolTipText(infosPlanning.get(i).get(3));
+						System.out.println(input.getText()+input.getToolTipText());
+						table.setValueAt(input, cren, cal.get(Calendar.DAY_OF_WEEK)-1);
 					}
 
 				}
