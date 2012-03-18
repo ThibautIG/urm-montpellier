@@ -1,17 +1,44 @@
 package BL;
 
+/**
+ * Contient toutes les données sur un créneau et les méthodes permettant de le gérer.
+ * @author URM Team
+ */
 public abstract class Schedule 
 {
+	/**
+	 * Identifiant du créneau.
+	 */
 	protected String id;
+	
+	/**
+	 * Heure de début du créneau.
+	 */
 	protected String startTime;
+	
+	/**
+	 * Heure de fin du créneau.
+	 */
 	protected String endTime;
 
 	/**
 	 * Charge le créneau avec l'id correspondant.
+	 * @param id
+	 * 			identifiant du créneau à charger.
 	 * @throws Exception 
+	 * 			Problème d'accés aux données.
 	 */
 	public abstract void load(String id) throws Exception;
 	
+	/**
+	 * Création d'un créneau.
+	 * @param id
+	 * 			Identifiant du créneau.
+	 * @param startTime
+	 * 			Heure de début du créneau.
+	 * @param endTime
+	 * 			Heure de fin du créneau.
+	 */
 	public void create(String id, String startTime, String endTime)
 	{
 		this.id = id;
@@ -20,37 +47,19 @@ public abstract class Schedule
 	}
 
 	/**
-	 * Retourne l'id du créneau.
+	 * @eturn l'id du créneau.
 	 */
 	public String getId() 
 	{
 		return this.id;
 	}
 
+	/**
+	 * @return une chaîne de caractère avec toutes les informations du créneau.
+	 */
 	public String toString() 
 	{
-		String result = new String();
-		if(startTime.charAt(1) == 'h')
-		{
-			result = result+startTime.subSequence(0,4);
-		}
-		else
-		{
-			result = result+startTime.subSequence(0,5);
-		}
-		
-		result = result + " - ";
-		
-		if(endTime.charAt(1) == 'h')
-		{
-			result = result+endTime.subSequence(0,4);
-		}
-		else
-		{
-			result = result+endTime.subSequence(0,5);
-		}
-		
-		return result;
+		return this.startTime+" - "+this.endTime;
 	}
 
 }

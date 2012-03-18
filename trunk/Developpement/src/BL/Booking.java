@@ -5,7 +5,8 @@ import java.util.Date;
 
 
 /**
- * 	Contient toutes les données d'une réservation de la demande à la validation.																																																																																																																																																																																																							
+ * 	Contient toutes les données d'une réservation de la demande à la validation.	
+ * @author URM Team																																																																																																																																																																																																						
  */
 public abstract class Booking 
 {
@@ -143,22 +144,6 @@ public abstract class Booking
 	public void setRoom(String room) 
 	{
 		this.room = room;
-	}
-	
-	/**
-	 * @return Retourne l'enseignant de la réservation en chaine de caracteres.
-	 */
-	public String getTeacherInfos() 
-	{
-		return teaching.getTeacherInfos();
-	}
-
-	/**
-	 * @return Retourne le créneau de réservation en chaine de caracteres.
-	 */
-	public String getStringSchedule() 
-	{
-		return schedule.toString();
 	}
 
 	/**

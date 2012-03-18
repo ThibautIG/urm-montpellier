@@ -4,22 +4,38 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import BL.Booking;
 import BL.Feature;
+import BL.PersistFactory;
 import BL.Schedule;
 import BL.Teaching;
 
-
+/**
+ * Persistance des données de la réservation vers une base de données.
+ * @author URM Team
+ */
 class BookingJDBC extends Booking 
 {
+	/**
+	 * Connection vers la base de données.
+	 */
 	Connection dbConnection;
 
+	/**
+	 * Constructeur
+	 * @param dbConnection
+	 * 			Connection commune à la base de données.
+	 */
 	public BookingJDBC(Connection dbConnection) 
 	{
 		this.dbConnection = dbConnection;
 	}
 
+	/**
+	 * @see Booking#checkFreeRooms()
+	 * @throws SQLException 
+	 * 			Problème de récupération des données dans la base SQL
+	 */
 	public int checkFreeRooms() throws SQLException 
 	{
 		String query = "select count(*) from SALLE s where ";
@@ -30,7 +46,6 @@ class BookingJDBC extends Booking
 		}
 		
 		query += "(select count(*) from RESERVATION r where r.ID_SALLE=s.ID_SALLE and r.ID_CRENEAU="+this.schedule.getId()+")=0";
-		System.out.println(query);
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		results.next();
@@ -38,6 +53,11 @@ class BookingJDBC extends Booking
 		return results.getInt(1);
 	}
 
+	/**
+	 * @see Booking#load(String)
+	 * @param reference
+	 * 			référence de la réservation à charger
+	 */
 	public void load(String reference) throws Exception 
 	{
 		ArrayList<Feature> listFeatures = new ArrayList<Feature>();
@@ -61,14 +81,13 @@ class BookingJDBC extends Booking
 		results = stmt.executeQuery(query);
 		results.next();
 		
-		Schedule schedule = new ScheduleJDBC(dbConnection);
-		Teaching teaching = new TeachingJDBC(dbConnection);
-
+		Schedule schedule = PersistFactory.getInstance().createSchedule();
+		Teaching teaching = PersistFactory.getInstance().createTeaching();
 		
-		schedule.load(results.getString(3));
-		teaching.load(results.getString(4));
+		schedule.load(results.getString(3).trim());
+		teaching.load(results.getString(4).trim());
 		
-		this.id = results.getString(1);
+		this.id = results.getString(1).trim();
 		this.schedule = schedule;
 		this.teaching = teaching;
 		this.date = results.getDate(5);
@@ -91,7 +110,7 @@ class BookingJDBC extends Booking
 		results = stmt.executeQuery(query);
 		results.next();
 
-		this.room = results.getString(1);
+		this.room = results.getString(1).trim();
 
 		/** Caractéristique **/
 		query = "select * from RESERVATION_CARACTERISTIQUE where ID_RESERVATION = '" + this.id + "'";
@@ -101,13 +120,18 @@ class BookingJDBC extends Booking
 		while(results.next())
 		{
 			Feature feature = new FeatureJDBC(dbConnection);
-			feature.load(results.getString(1));
+			feature.load(results.getString(1).trim());
 			listFeatures.add(feature);
 		}
 
 		this.features = listFeatures;
 	}
-	
+
+	/**
+	 * @see Booking#save()
+	 * @throws SQLException 
+	 * 				Problème d'accés à la base de données
+	 */
 	public boolean save() throws SQLException 
 	{
 		if(this.schedule!=null && this.teaching!=null)

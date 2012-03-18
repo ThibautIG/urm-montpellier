@@ -294,6 +294,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
             if(e.getActionCommand().equals("teach"))
             {
                     ArrayList<String> ens = this.account.getTeachings();
+                    this.teachingChoice.removeAllItems();
                     
                     for(int i=0; i < ens.size(); i++)
                     {

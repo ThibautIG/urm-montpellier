@@ -1,13 +1,19 @@
 package BL;
 import Persist.*;
 
-
+/**
+ * Fabrique abstraite qui permet de créer des objets en charge de la persistance des données.
+ * @author URM Team
+ */
 public abstract class PersistFactory 
 {
+	/**
+	 * Instance static de la persistFactory (Pattern singleton)
+	 */
 	private static PersistFactory PF;
 
 	/**
-	 * Retourne l'instance de la persistFactory.
+	 * @return l'instance de la persistFactory si existant, sinon crée l'instance et la renvoie.
 	 */
 	public static PersistFactory getInstance()
 	{
@@ -16,32 +22,32 @@ public abstract class PersistFactory
 	}
 
 	/**
-	 * Renvoie un objet de type enseignant.
+	 * @return et crée un objet de type enseignant.
 	 */
 	public abstract Teacher createTeacher();
 
 	/**
-	 * Renvoie un objet de type enseignement.
+	 * @return et crée un objet de type enseignement.
 	 */
 	public abstract Teaching createTeaching();
 
 	/**
-	 * Renvoie un objet de type reservation.
+	 * @return et crée un objet de type reservation.
 	 */
 	public abstract Booking createBooking();
 
 	/**
-	 * Renvoie un objet de type caractéristique.
+	 * @eturn et crée un objet de type caractéristique.
 	 */
 	public abstract Feature createFeature();
 
 	/**
-	 * Renvoie un objet de type créneau horaire.
+	 * @return et crée un objet de type créneau horaire.
 	 */
 	public abstract Schedule createSchedule();
 
 	/**
-	 * Renvoie un objet de type gestionnaire.
+	 * @return et crée un objet de type gestionnaire.
 	 */
 	public abstract Manager createManager();
 

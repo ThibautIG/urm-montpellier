@@ -41,43 +41,37 @@ class TeacherJDBC extends Teacher
 		results = stmt.executeQuery(query);
 
 		results.next();
-		this.id = results.getString(1);
-		this.lastName = results.getString(2);
-		this.firstName = results.getString(3);
-		this.password = results.getString(4);
+		this.id = results.getString(1).trim();
+		this.lastName = results.getString(2).trim();
+		this.firstName = results.getString(3).trim();
+		this.password = results.getString(4).trim();
 		this.superUser = results.getBoolean(5);
-	}
-
-
-	public ArrayList<Teaching> getTeachings()  throws SQLException
-	{
+		
 		ArrayList<Teaching> scs = new ArrayList<Teaching>();
 
-		String query = "select * from ENSEIGNEMENT e where e.ID_ENSEIGNANT='"+this.id+"'";
-		Statement stmt = dbConnection.createStatement();
-		ResultSet results = stmt.executeQuery(query);
+		String query3 = "select * from ENSEIGNEMENT e where e.ID_ENSEIGNANT='"+this.id+"'";
+		Statement stmt3 = dbConnection.createStatement();
+		ResultSet results3 = stmt3.executeQuery(query3);
 
-		while(results.next())
+		while(results3.next())
 		{
 			Teaching tc = PersistFactory.getInstance().createTeaching();
 
-			String query1 = "select m.LIBELLE_MATIERE from COURS c, MATIERE m where c.ID_COURS='"+results.getString(2)+"' and c.ID_MATIERE=m.ID_MATIERE";
+			String query1 = "select m.LIBELLE_MATIERE from COURS c, MATIERE m where c.ID_COURS='"+results3.getString(2)+"' and c.ID_MATIERE=m.ID_MATIERE";
 			Statement stmt1 = dbConnection.createStatement();
 			ResultSet results1 = stmt1.executeQuery(query1);
 			results1.next();
 
-			String query2 = "select tc.LIBELLE_TYPE_DE_COURS from TYPECOURS tc, COURS c where c.ID_COURS='"+results.getString(2)+"' and c.ID_TYPE_DE_COURS=tc.ID_TYPE_DE_COURS";
+			String query2 = "select tc.LIBELLE_TYPE_DE_COURS from TYPECOURS tc, COURS c where c.ID_COURS='"+results3.getString(2)+"' and c.ID_TYPE_DE_COURS=tc.ID_TYPE_DE_COURS";
 			Statement stmt2 = dbConnection.createStatement();
 			ResultSet results2 = stmt2.executeQuery(query2);
 			results2.next();
 
-			tc.create(results.getString(1), results.getInt(5), results.getString(4), this, results1.getString(1), results2.getString(1));
+			tc.create(results3.getString(1), results3.getInt(5), results3.getString(4), this, results1.getString(1), results2.getString(1));
 			scs.add(tc);
 		}
-
-		return scs;
+		this.myTeachings = scs;
 	}
-
 
 	public ArrayList<Booking> getValidBooking(int week) throws Exception 
 	{

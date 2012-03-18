@@ -11,17 +11,32 @@ import BL.Manager;
 import BL.PersistFactory;
 import BL.Schedule;
 
-
+/**
+ * Accès aux informations communes de la base de données.
+ * @author URM Team
+ */
 class ManagerJDBC extends Manager 
 {
-
+	/**
+	 * Connection vers la base de données.
+	 */
 	Connection dbConnection;
 
+	/**
+	 * Constructeur
+	 * @param dbConnection
+	 * 			Connection commune à la base de données.
+	 */
 	public ManagerJDBC(Connection dbConnection) 
 	{
 		this.dbConnection = dbConnection;
 	}
 
+	/**
+	 * @see Manager#getFeatures()
+	 * @throws SQLException 
+	 * 			Problème d'accès à la base de données.
+	 */
 	public ArrayList<Feature> getFeatures() throws SQLException 
 	{
 		if(this.allFeatures == null)
@@ -35,7 +50,7 @@ class ManagerJDBC extends Manager
 			while(results.next())
 			{
 				Feature ft = PersistFactory.getInstance().createFeature();
-				ft.create(results.getString(1), results.getString(2));
+				ft.create(results.getString(1).trim(), results.getString(2).trim());
 				this.allFeatures.add(ft);
 			}
 		}
@@ -43,6 +58,11 @@ class ManagerJDBC extends Manager
 		return this.allFeatures;
 	}
 
+	/**
+	 * @see Manager#getSchedules()
+	 * @throws SQLException 
+	 * 			Problème d'accès à la base de données.
+	 */
 	public ArrayList<Schedule> getSchedules() throws SQLException
 	{
 		if(this.allSchedules == null)
@@ -56,7 +76,7 @@ class ManagerJDBC extends Manager
 			while(results.next())
 			{
 				Schedule schedule = PersistFactory.getInstance().createSchedule();
-				schedule.create(results.getString(1), results.getString(2), results.getString(3));
+				schedule.create(results.getString(1).trim(), results.getString(2).trim(), results.getString(3).trim());
 				this.allSchedules.add(schedule);
 			}
 		}
@@ -64,23 +84,28 @@ class ManagerJDBC extends Manager
 		return this.allSchedules;
 	}
 
-	public ArrayList<Booking> getAllUnvalidBookings() {
+	/**
+	 * @see Manager#getAllUnvalidBookings()
+	 */
+	public ArrayList<Booking> getAllUnvalidBookings() 
+	{
 		return null;
-	}
-
-	public void deleteSelectedBooking() {
 	}
 
 	/**
-	 * Retourne sous forme de liste de structure les dates et créneaux pour lesquelles il y des salles libre avec les paramètre de la réservation selectionnée.
+	 * @see Manager#deleteSelectedBooking()
 	 */
-	ArrayList<String> getWeekValidSchedules() {
-		return null;
+	public void deleteSelectedBooking() 
+	{
 	}
 
+	/**
+	 * @see Manager#getWeekUnvalidSchedules()
+	 * @return sous forme de liste de structure les dates et créneaux pour lesquelles il y des salles libre avec les paramètre de la réservation selectionnée.
+	 */
 	@Override
-	public ArrayList<String> getWeekUnvalidSchedules() {
-		// TODO Auto-generated method stub
+	public ArrayList<String> getWeekUnvalidSchedules() 
+	{
 		return null;
 	}
 

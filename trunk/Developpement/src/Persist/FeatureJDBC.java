@@ -3,20 +3,36 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import BL.Feature;
 
-
-class FeatureJDBC extends Feature {
-
+/**
+ * Persistance des données de la caractéristique vers une base de données.
+ * @author URM Team
+ */
+class FeatureJDBC extends Feature 
+{
+	/**
+	 * Connection vers la base de données.
+	 */
 	Connection dbConnection;
 
-
-	public FeatureJDBC(Connection dbConnection) {
+	/**
+	 * Constructeur
+	 * @param dbConnection
+	 * 			Connection commune à la base de données.
+	 */
+	public FeatureJDBC(Connection dbConnection) 
+	{
 		this.dbConnection = dbConnection;
 	}
 
-	public void load(String id) throws Exception {
+	/**
+	 * @see Feature#load(String)
+	 * @param id
+	 * 			id de la caractéristique à charger
+	 */
+	public void load(String id) throws Exception 
+	{
 		String query = "select count(*) from CARACTERISTIQUE where ID_CARACTERISTIQUE = '" + id + "'";
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
@@ -33,8 +49,8 @@ class FeatureJDBC extends Feature {
 		results = stmt.executeQuery(query);
 		results.next();
 		
-		this.id = results.getString(1);
-		this.name = results.getString(2);
+		this.id = results.getString(1).trim();
+		this.name = results.getString(2).trim();
 	}
 
 }
