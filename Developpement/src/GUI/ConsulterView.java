@@ -28,26 +28,59 @@ import javax.swing.border.EtchedBorder;
 import java.awt.SystemColor;
 
 
-class ConsulterView extends JFrame implements ActionListener{
+/**	
+*  Génére l'interface graphique pour la consultation de l'emploi du temps.	
+* @author URM Team		
+*/		
+@SuppressWarnings("serial")		
+class ConsulterView extends JFrame implements ActionListener		
+{		
+	/**		
+ 	* la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours.		
+ 	*/		
+	private int week;		
+		
 	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	/**
-	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours
-	 */
-	private int week;
-
+ 	* Façade permettant le dialogue avec la BL.	33		 *
+ 	*/
 	private TeacherFacade account;
+	
+	
+	/**
+	 * Table contenant l'emploi du temps.
+	 */
 	private JTable table;
+	
+	/**
+	 * Bouton ppour passer à la semaine précédente.
+	 */
 	private JButton bPrecedent;
+	
+	/**
+	 * Bouton pour passer à la semaine suivante.
+	 */
 	private JButton bSuivant;
+	
+	/**
+	 * Bouton pour quitter l'emploi du temps.
+	 */
 	private JButton bQuit;
+	
+	/**
+	 * Panneau qui contient le bouton pour quitter.
+	 */
 	private JPanel quit_panel;
+	
+	/**
+	 * Panneau qui contient l'emploi du temps.
+	 */
 	private JPanel planning_panel;
 
-
-	@SuppressWarnings("serial")
+    /**
+     * Constructeur de la fenêtre.
+     * @param c
+     * 			Façade contenant les données de l'utilisateur et permettant le dialogue avec la BL.
+     */
 	public ConsulterView(TeacherFacade c) 
 	{
 		super("Mon planning");
@@ -138,9 +171,10 @@ class ConsulterView extends JFrame implements ActionListener{
 
 
 
-
 	/**
-	 * Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre.
+	 * Génère l'affichage du calendrier en fonction de la semaine qu'il reçoit en paramètre.
+	 * @param week
+	 * 			génére les réservations de cette semaine.
 	 */
 	public void genCalendar(int week)
 	{
@@ -188,7 +222,11 @@ class ConsulterView extends JFrame implements ActionListener{
 		}
 	}
 
-
+	/**
+	 * Initialise les labels de la semaine avec les bonnes dates.
+	 * @param week
+	 * 			Numéro de la semaine à générer.
+	 */
 	private void init_labels(int week)
 	{
 		Calendar cal = new GregorianCalendar();
@@ -206,7 +244,9 @@ class ConsulterView extends JFrame implements ActionListener{
 		}
 	}
 
-
+	/**
+	 * Initialise les valeurs du tableau.
+	 */
 	private void initPlaning() 
 	{
 		int i,j;
@@ -219,7 +259,11 @@ class ConsulterView extends JFrame implements ActionListener{
 		}
 	}
 
-
+	/**
+	 * écoute les événements provenant d'un clic sur les bouton  - méthode issue de l'interface ActionListener
+	 * @param e
+	 * 			évenement provenant d'un clic sur un bouton
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		if (e.getActionCommand().equals("Suivant")) 
@@ -238,7 +282,10 @@ class ConsulterView extends JFrame implements ActionListener{
 		}
 	}
 
-
+	/**
+	 * Centrer les données de l'emploi du temps.
+	 * @param table
+	 */
 	private void centrerTable(JTable table) 
 	{     
 		DefaultTableCellRenderer custom = new DefaultTableCellRenderer(); 

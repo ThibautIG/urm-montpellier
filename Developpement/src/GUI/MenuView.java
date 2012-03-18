@@ -54,6 +54,12 @@ class MenuView extends JFrame implements ActionListener
 	 */
 	private JButton handle;
 	
+	/**		
+	* Bouton qui ferme l'application.		
+	* @see MenuView#actionPerformed(ActionEvent)		
+	*/		
+	private JButton quit;
+	
 	/**
 	 * Façade permettant le dialogue avec la BL.
 	 */
@@ -78,7 +84,7 @@ class MenuView extends JFrame implements ActionListener
 
 		//initialisation de la fenêtre et des widgets
     	this.setTitle("URM");
-    	this.setSize(300,110); //On ajuste la taille de la fenêtre
+    	this.setSize(300,140); //On ajuste la taille de la fenêtre
     	this.setResizable(false);
     	
     	// liste des boutons
@@ -88,6 +94,10 @@ class MenuView extends JFrame implements ActionListener
     	ask.setActionCommand("ask"); 
     	ask.addActionListener(this);
     	
+    	quit = new JButton("Quitter");		
+    	quit.setPreferredSize(new Dimension (250,30));		
+    	quit.setActionCommand("quit");		
+    	quit.addActionListener(this);		
     	
     	// Initialisation du panneau
     	JPanel p = new JPanel (new FlowLayout());
@@ -96,11 +106,11 @@ class MenuView extends JFrame implements ActionListener
     	p.add(ask);
     	if(this.user.isSuperUser())
     	{
-    		this.setSize(300,150); //On donne une taille à notre fenêtre
+    		this.setSize(300,180); //On donne une taille à notre fenêtre
 			handle = new JButton("Traitement des demandes"); handle.setPreferredSize(new Dimension (250,30)); handle.setActionCommand("handle"); handle.addActionListener(this);
         	p.add(handle);
     	}
-    	
+    	p.add(quit);
     	this.add(p);
     	
     	this.setLocationRelativeTo(null);     
@@ -130,6 +140,10 @@ class MenuView extends JFrame implements ActionListener
 		else if (e.getActionCommand().equals("handle"))
 		{
 			JOptionPane.showMessageDialog(this, "Le traitement des demandes n'est pas encore disponible.", "Erreur", JOptionPane.INFORMATION_MESSAGE);
+		}
+		else if (e.getActionCommand().equals("quit"))		
+		{		
+			System.exit(0);		
 		}
 	}
 	
