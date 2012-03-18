@@ -190,11 +190,19 @@ public class TeacherFacade
 		}
 		
 		int i = 0;
-		while(!this.user.getTeachings().get(i).toString().equals(teachingSelected))
+		
+		if(teachingSelected.equals("reunion"))
 		{
-			i++;
+			
 		}
-		this.myBooking.setTeaching(this.user.getTeachings().get(i));
+		else
+		{
+			while(!this.user.getTeachings().get(i).toString().equals(teachingSelected))
+			{
+				i++;
+			}
+			this.myBooking.setTeaching(this.user.getTeachings().get(i));
+		}
 		
 		this.myBooking.save();
 	}
