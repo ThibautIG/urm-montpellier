@@ -1,7 +1,6 @@
 package Persist;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -33,11 +32,11 @@ class ManagerJDBC extends Manager
 	}
 
 	/**
+	 * @throws Exception 
+	 * 			Problème de connexion à la base.
 	 * @see Manager#getFeatures()
-	 * @throws SQLException 
-	 * 			Problème d'accès à la base de données.
 	 */
-	public ArrayList<Feature> getFeatures() throws SQLException 
+	public ArrayList<Feature> getFeatures() throws Exception 
 	{
 		if(this.allFeatures == null)
 		{
@@ -59,11 +58,11 @@ class ManagerJDBC extends Manager
 	}
 
 	/**
+	 * @throws Exception 
+	 * 				Problème de connexion à la base.
 	 * @see Manager#getSchedules()
-	 * @throws SQLException 
-	 * 			Problème d'accès à la base de données.
 	 */
-	public ArrayList<Schedule> getSchedules() throws SQLException
+	public ArrayList<Schedule> getSchedules() throws Exception
 	{
 		if(this.allSchedules == null)
 		{

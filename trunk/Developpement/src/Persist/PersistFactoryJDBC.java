@@ -3,73 +3,100 @@ import BL.*;
 
 import java.sql.*;
 
-
+/**
+ * Fabrique qi permet de créer des objets à partir d'une base de données.
+ * @author URM Team
+ */
 public class PersistFactoryJDBC extends PersistFactory 
 {
-  /**
-   * Objet qui contient la connection à la base de données.
-   */
-  private Connection dbConnection;
-  private String driver= "oracle.jdbc.driver.OracleDriver";
-  private String url="jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ORA10";
-  private String login="thibaut.rouquette";
-  private String password="oracle";
+	/**
+	 * Connection vers la base de données.
+	 */
+	private Connection dbConnection;
+	
+	/**
+	 * Driver de la base de données
+	 */
+	private String driver= "oracle.jdbc.driver.OracleDriver";
+	
+	/**
+	 * URL de la base de données
+	 */
+	private String url="jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ORA10";
+	
+	/**
+	 * Login de l'accès à la base de données
+	 */
+	private String login="thibaut.rouquette";
+	
+	/**
+	 * Mot de passe de l'accès à la base de données.
+	 */
+	private String password="oracle";
   
-  public PersistFactoryJDBC()
-  {
-	 super();
+	/**
+	 * Constructeur
+	 * @throws SQLException 
+	 * 			Problème de connection à la base.
+	 * @throws ClassNotFoundException 
+	 * 			Problème de chargement du Driver.
+	 */
+	public PersistFactoryJDBC() throws SQLException, ClassNotFoundException
+  	{
+		super();
 	  
-	  // Charger le driver
-	  try 
-	  {
-		  Class.forName(driver); //Or any other driver
-	  }
-	  catch(Exception x)
-	  {
-		  System.out.println("Unable to load the driver class!");
-	  }
-	  
-	  // Créer la connection
-	  try
-	  {
-		  this.dbConnection=DriverManager.getConnection(url,login,password);
-	  }
-	  catch(SQLException x)
-	  {
-		 	System.out.println("Couldn’t get connection!");
-	  }
-  }
-
-  public Teacher createTeacher() 
-  {
-	  return new TeacherJDBC(this.dbConnection);
-  }
-
-  public Teaching createTeaching() 
-  {
-	  return new TeachingJDBC(this.dbConnection);
-  }
+		// Charger le driver
+		Class.forName(driver); //Or any other driver
   
-  public Booking createBooking() 
-  {
-	  return new BookingJDBC(this.dbConnection);
-  }
+		// Créer la connection
+		this.dbConnection=DriverManager.getConnection(url,login,password);
+  	}
 
-  public Feature createFeature()
-  {
-	  return new FeatureJDBC(this.dbConnection);
-  }
+	/**
+	 * @see PersistFactory#createTeacher()
+	 */
+	public Teacher createTeacher() 
+	{
+		return new TeacherJDBC(this.dbConnection);
+	}
 
-  public Schedule createSchedule() 
-  {
-	  return new ScheduleJDBC(this.dbConnection);
-  }
+	/**
+	 * @see PersistFactory#createTeaching()
+	 */
+	public Teaching createTeaching() 
+	{
+		return new TeachingJDBC(this.dbConnection);
+	}
+  
+	/**
+	 * @see PersistFactory#createBooking()
+	 */
+	public Booking createBooking() 
+	{
+		return new BookingJDBC(this.dbConnection);
+	}
 
-  public Manager createManager() 
-  {
-	  return new ManagerJDBC(this.dbConnection);
-  }
+	/**
+	 * @see PersistFactory#createFeature()
+	 */
+	public Feature createFeature()
+	{
+		return new FeatureJDBC(this.dbConnection);
+	}
 
+	/**
+	 * @see PersistFactory#createSchedule()
+	 */
+	public Schedule createSchedule() 
+	{
+		return new ScheduleJDBC(this.dbConnection);
+	}
 
-
+	/**
+	 * @see PersistFactory#createManager()
+	 */
+	public Manager createManager() 
+	{
+		return new ManagerJDBC(this.dbConnection);
+	}
 }

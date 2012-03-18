@@ -5,16 +5,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import BL.Schedule;
 
-
-class ScheduleJDBC extends Schedule {
-
+/**
+ * Persistance des données du créneau vers une base de données.
+ * @author URM Team
+ */
+class ScheduleJDBC extends Schedule 
+{
+	/**
+	 * Connection vers la base de données.
+	 */
 	Connection dbConnection;
 
+	/**
+	 * Constructeur
+	 * @param dbConnection
+	 * 			Connection commune à la base de données.
+	 */
 	public ScheduleJDBC(Connection dbConnection) 
 	{
 		this.dbConnection = dbConnection;
 	}
 
+	/**
+	 * @see Schedule#load(String)
+	 * @param id
+	 * 			id du créneau à charger
+	 */
 	public void load(String id) throws Exception 
 	{
 		String query = "select count(*) from Crenaux where id_creneau = '" + id + "'";
@@ -33,9 +49,9 @@ class ScheduleJDBC extends Schedule {
 		results = stmt.executeQuery(query);
 		results.next();
 		
-		this.id = results.getString(1);
-		this.startTime = results.getString(2);
-		this.endTime = results.getString(3);
+		this.id = results.getString(1).trim();
+		this.startTime = results.getString(2).trim();
+		this.endTime = results.getString(3).trim();
 	}
 
 }
