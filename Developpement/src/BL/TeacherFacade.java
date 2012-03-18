@@ -141,7 +141,7 @@ public class TeacherFacade
 			
 			resaString = new ArrayList<String>();
 			resaString.add(booking.getDate().toString());
-			resaString.add(booking.getStringSchedule());
+			resaString.add(booking.getSchedule().toString());
 			resaString.add(booking.getRoom());
 			resaString.add(booking.getField());
 			

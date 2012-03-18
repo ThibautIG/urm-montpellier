@@ -67,7 +67,7 @@ public abstract class Feature
 	 */
 	public String toString()
 	{
-		return this.name.trim();
+		return this.name;
 	}
 
 }

@@ -3,48 +3,53 @@ package BL;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Classe qui permet de gérer tous les service qui n'ont pas de lien avec l'enseignant, les services généraux sur les données.
+ * @author URM Team
+ */
 public abstract class Manager 
 {
+	/**
+	 * Contient toutes les caractéristiques de salle disponibles.
+	 */
 	protected ArrayList<Feature> allFeatures;
+	
+	/**
+	 * Contient tous les créneaux disponibles.
+	 */
 	protected ArrayList<Schedule> allSchedules;
+	
+	/**
+	 * Contient toutes les réservations disponibles.
+	 */
 	protected ArrayList<Booking> allBookings;
+	
+	/**
+	 * Réservation sélectionnée par l'utilisateur.
+	 */
 	protected Booking selectedBooking;
 
-
 	/**
-	 * retourne une liste de toutes les caractéristiques existantes.
+	 * @return une liste de toutes les caractéristiques existantes.
+	 * @throws Exception 
+	 * 				Problème d'accés aux données
 	 */
 	public abstract ArrayList<Feature> getFeatures() throws Exception;
 
 	/**
-	 * retourne une liste de tous les créneaux existants.
+	 * @return une liste de tous les créneaux existants.
 	 * @throws Exception 
+	 * 				Problème d'accés aux données
 	 */
 	public abstract ArrayList<Schedule> getSchedules() throws Exception ;
 
 	/**
-	 * Retourne la liste de toutes les réservations qui ne sont pas encore validées, c'est à dire pour lesquelles aucune salle n'est attribuée.
+	 * @return la liste de toutes les réservations qui ne sont pas encore validées, c'est à dire pour lesquelles aucune salle n'est attribuée.
 	 */
-	public abstract ArrayList<Booking> getAllUnvalidBookings() ;
+	public abstract ArrayList<Booking> getAllUnvalidBookings();
 
 	/**
-	 * Ecoute les événements sur le tableau, lors d'un clique sur celui-ci enregistre la réservation sélectionné puis affiche toutes ses informations.
-	 */
-	public void selectBooking(int reference) 
-	{
-		selectedBooking = allBookings.get(reference);
-	}
-
-	/**
-	 * retourne sous la forme d'une structure composée de strings toutes les informations sur le teacher, c'est à dire nom, prénom, téléphone, mail et enseignement.
-	 */
-	public String getBookingTeacherInfos() 
-	{
-		return selectedBooking.getTeacherInfos();
-	}
-
-	/**
-	 * Retourne la date de la réservation selectionnée.
+	 * @eturn la date de la réservation selectionnée.
 	 */
 	public Date getSelectedBookingDate() 
 	{
@@ -52,20 +57,22 @@ public abstract class Manager
 	}
 
 	/**
-	 * Retourne le créneau de la réservation selectionnée.
+	 * @return le créneau de la réservation selectionnée.
 	 */
-	public String getSelectedBookingSchedule() 
+	public Schedule getSelectedBookingSchedule() 
 	{
-		return selectedBooking.getStringSchedule();
+		return selectedBooking.getSchedule();
 	}
 
 	/**
-	 * Retourne sous forme de liste de structure les dates et créneaux pour lesquelles il y aucune salle libre avec les paramètre de la réservation selectionnée.
+	 * @return sous forme de liste de structure les dates et créneaux pour lesquelles il y aucune salle libre avec les paramètre de la réservation selectionnée.
 	 */
 	public abstract ArrayList<String> getWeekUnvalidSchedules() ;
 
 	/**
 	 * Remplace l'ancienne date de la reservation par la nouvelle date.
+	 * @param date
+	 * 			la nouvelle date
 	 */
 	public void setSelectedBookingDate(Date date) 
 	{
@@ -74,6 +81,8 @@ public abstract class Manager
 
 	/**
 	 * Remplace l'ancien créneau de la reservation par le nouveau créneau.
+	 * @param schedule
+	 * 			le nouveau créneau
 	 */
 	public void setSelectedBookingSchedule(Schedule schedule) 
 	{
@@ -82,6 +91,8 @@ public abstract class Manager
 
 	/**
 	 * Remplace les anciennes caractéristiques de la reservation par les nouvelles.
+	 * @param features
+	 * 			les nouvelles caractéristiques
 	 */
 	public void setSelectedBookingFeatures(ArrayList<Feature> features) 
 	{
@@ -91,6 +102,7 @@ public abstract class Manager
 	/**
 	 * Sauvegarde la réservation selectionnée et lui associe une salle.
 	 * @throws Exception 
+	 * 				Problème lors de la sauvegarde des données
 	 */
 	public void saveSelectedBooking() throws Exception 
 	{

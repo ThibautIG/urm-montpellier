@@ -2,19 +2,20 @@ package BL;
 
 import java.util.ArrayList;
 
-/*not yet*/
-
 /**
- * 																																																																
+ * 	Classe en cours de construction																																																															
  */
-class HandlingFacade {
-	
+class HandlingFacade 
+{
 	
 	@SuppressWarnings("unused")
 	private Manager manager;
 	
-	
-	public HandlingFacade() {
+	/**
+	 * Constructeur
+	 */
+	public HandlingFacade() 
+	{
 	}
 
 	/**
@@ -97,7 +98,5 @@ class HandlingFacade {
 	 */
 	public void changeBookingData(String date, String schedule, ArrayList<String> features) {
 	}
-
-
 
 }
