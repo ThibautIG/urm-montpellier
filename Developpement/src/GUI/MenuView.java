@@ -61,7 +61,7 @@ class MenuView extends JFrame implements ActionListener
 	
 	 /**
      * Constructeur
-     * @param : c
+     * @param c
      * 			Fait référence au compte d'un enseignant.
      */
 	public  MenuView(TeacherFacade c) 
@@ -111,7 +111,8 @@ class MenuView extends JFrame implements ActionListener
 
 	 /**
 	 * écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
-     * @param ActionEvent e : évenement provenant d'un clic sur un des bouton
+     * @param e
+     * 			évenement provenant d'un clic sur un des bouton
      * @see MenuView#consult
      * @see MenuView#ask
      * @see MenuView#handle

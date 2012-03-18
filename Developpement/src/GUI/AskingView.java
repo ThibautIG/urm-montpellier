@@ -285,7 +285,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 
 	/**
 	 * écoute les événements provenant d'un clic sur les bouton  - méthode issue de l'interface ActionListener
-	 * @param ActionEvent e
+	 * @param e
 	 * 			évenement provenant d'un clic sur un bouton
 	 */
     @Override
@@ -374,7 +374,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 
 	/**
 	 * écoute les événements provenant d'une selection d'un item dans la liste déroulante des enseignements.
-	 * @param ItemEvent i
+	 * @param i
 	 */
     @Override
     public void itemStateChanged(ItemEvent i) 
@@ -384,7 +384,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 
     /**
      * écoute les événements de sélection d'un item dans la liste des créneaux 
-     * @param ListSelectionEvent arg0
+     * @param arg0
      */
     @Override
     public void valueChanged(ListSelectionEvent arg0) 
@@ -394,7 +394,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
 
     /**
      * écoute les événements déclenchés lors de la sélection d'une date.
-     * @param PropertyChangeEvent arg0
+     * @param arg0
      */
     @Override
     public void propertyChange(PropertyChangeEvent arg0) 
