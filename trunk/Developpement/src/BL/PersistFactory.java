@@ -1,5 +1,5 @@
 package BL;
-import Persist.*;
+import PersistJDBC.PersistFactoryJDBC;
 
 /**
  * Fabrique abstraite qui permet de créer des objets en charge de la persistance des données.
