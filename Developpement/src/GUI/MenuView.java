@@ -59,12 +59,6 @@ class MenuView extends JFrame implements ActionListener
 	 */
 	private TeacherFacade user;
 	
-	/**
-	 * Bouton qui ferme l'application.
-	 * @see MenuView#actionPerformed(ActionEvent)
-	 */
-	JButton quit; 
-	
 	 /**
      * Constructeur
      * @param c
@@ -84,7 +78,7 @@ class MenuView extends JFrame implements ActionListener
 
 		//initialisation de la fenêtre et des widgets
     	this.setTitle("URM");
-    	this.setSize(300,140); //On ajuste la taille de la fenêtre
+    	this.setSize(300,110); //On ajuste la taille de la fenêtre
     	this.setResizable(false);
     	
     	// liste des boutons
@@ -102,16 +96,10 @@ class MenuView extends JFrame implements ActionListener
     	p.add(ask);
     	if(this.user.isSuperUser())
     	{
-    		this.setSize(300,180); //On donne une taille à notre fenêtre
+    		this.setSize(300,150); //On donne une taille à notre fenêtre
 			handle = new JButton("Traitement des demandes"); handle.setPreferredSize(new Dimension (250,30)); handle.setActionCommand("handle"); handle.addActionListener(this);
         	p.add(handle);
     	}
-    	
-    	quit = new JButton("Quitter");
-    	quit.setPreferredSize(new Dimension (250,30)); 
-    	quit.setActionCommand("quit"); 
-    	quit.addActionListener(this);
-    	p.add(quit);
     	
     	this.add(p);
     	
@@ -138,10 +126,6 @@ class MenuView extends JFrame implements ActionListener
 		else if (e.getActionCommand().equals("ask"))
 		{
 			AskingView av = new AskingView(this.user);
-		}
-		else if (e.getActionCommand().equals("quit"))
-		{
-			System.exit(0);
 		}
 		else if (e.getActionCommand().equals("handle"))
 		{

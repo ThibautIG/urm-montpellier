@@ -1,10 +1,13 @@
 package GUI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
+
 import BL.TeacherFacade;
 import javax.swing.JTable;
 import java.awt.Dimension;
+
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JPanel;
@@ -19,97 +22,67 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.SystemColor;
 
-/**
- *  Génére l'interface graphique pour la consultation de l'emploi du temps.
- * @author URM Team
- */
-@SuppressWarnings("serial")
-class ConsulterView extends JFrame implements ActionListener
-{
+
+class ConsulterView extends JFrame implements ActionListener{
 	/**
-	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours.
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours
 	 */
 	private int week;
 
-	/**
-	 * Façade permettant le dialogue avec la BL.
-	 */
 	private TeacherFacade account;
-	
-	/**
-	 * Table contenant l'emploi du temps.
-	 */
 	private JTable table;
-	
-	/**
-	 * Bouton ppour passer à la semaine précédente.
-	 */
 	private JButton bPrecedent;
-	
-	/**
-	 * Bouton pour passer à la semaine suivante.
-	 */
 	private JButton bSuivant;
-	
-	/**
-	 * Bouton pour quitter l'emploi du temps.
-	 */
 	private JButton bQuit;
-	
-	/**
-	 * Panneau qui contient le bouton pour quitter.
-	 */
 	private JPanel quit_panel;
-	
-	/**
-	 * Panneau qui contient l'emploi du temps.
-	 */
 	private JPanel planning_panel;
 
-    /**
-     * Constructeur de la fenêtre.
-     * @param c
-     * 			Façade contenant les données de l'utilisateur et permettant le dialogue avec la BL.
-     */
+
+	@SuppressWarnings("serial")
 	public ConsulterView(TeacherFacade c) 
 	{
 		super("Mon planning");
 
 		this.account = c;
 
-		this.setSize(new Dimension(965, 357));
+		this.setSize(new Dimension(965, 467));
 		getContentPane().setLayout(null);
 
 		planning_panel = new JPanel();
 		planning_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
-		planning_panel.setBounds(10, 10, 929, 282);
+		planning_panel.setBounds(10, 10, 929, 356);
 		getContentPane().add(planning_panel);
 		planning_panel.setLayout(null);
 
 		table = new JTable();
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, Color.GRAY, null, null));
-		table.setBounds(73, 4, 783, 272);
+		table.setBounds(73, 4, 783, 341);
 		table.setBackground(SystemColor.menu);
 		planning_panel.add(table);
 		table.setModel(new DefaultTableModel(
-				new Object[][] {
-						{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
-						{"8h00 - 9h30", null, null, null, null, null, null, null},
-						{"9h45 - 11h15", null, null, null, null, null, null, null},
-						{"11h30 - 13h00", null, null, null, null, null, null, null},
-						{"13h15 - 14h45", null, null, null, null, null, null, null},
-						{"15h00 - 16h30", null, null, null, null, null, null, null},
-						{"16h45 - 18h15", null, null, null, null, null, null, null},
-						{"18h30 - 20h00", null, null, null, null, null, null, null},
-				},
-				new String[] {
-						"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
-				}
-				) {
+			new Object[][] {
+				{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
+				{"8h00 - 9h30", null, null, null, null, null, null, null},
+				{"9h45 - 11h15", null, null, null, null, null, null, null},
+				{"11h30 - 13h00", null, null, null, null, null, null, null},
+				{"13h15 - 14h45", null, null, null, null, null, null, null},
+				{"15h00 - 16h30", null, null, null, null, null, null, null},
+				{"16h45 - 18h15", null, null, null, null, null, null, null},
+				{"18h30 - 20h00", null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+			}
+		) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
 				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
@@ -118,8 +91,14 @@ class ConsulterView extends JFrame implements ActionListener
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
 		});
-		table.setRowHeight(30);
+		table.setRowHeight(42);
 		centrerTable(table);
 
 		bPrecedent = new JButton("<");
@@ -135,7 +114,7 @@ class ConsulterView extends JFrame implements ActionListener
 		bPrecedent.addActionListener(this);
 
 		quit_panel = new JPanel();
-		quit_panel.setBounds(0, 284, 939, 41);
+		quit_panel.setBounds(0, 377, 939, 41);
 		getContentPane().add(quit_panel);
 		quit_panel.setLayout(null);
 
@@ -157,10 +136,11 @@ class ConsulterView extends JFrame implements ActionListener
 		this.genCalendar(week);
 	}
 
+
+
+
 	/**
-	 * Génère l'affichage du calendrier en fonction de la semaine qu'il reçoit en paramètre.
-	 * @param week
-	 * 			génére les réservations de cette semaine.
+	 * Génère l'affichage du calendrier en fonction des séances qu'il reçoit en paramètre.
 	 */
 	public void genCalendar(int week)
 	{
@@ -208,11 +188,7 @@ class ConsulterView extends JFrame implements ActionListener
 		}
 	}
 
-	/**
-	 * Initialise les labels de la semaine avec les bonnes dates.
-	 * @param week
-	 * 			Numéro de la semaine à générer.
-	 */
+
 	private void init_labels(int week)
 	{
 		Calendar cal = new GregorianCalendar();
@@ -230,9 +206,7 @@ class ConsulterView extends JFrame implements ActionListener
 		}
 	}
 
-	/**
-	 * Initialise les valeurs du tableau.
-	 */
+
 	private void initPlaning() 
 	{
 		int i,j;
@@ -245,13 +219,9 @@ class ConsulterView extends JFrame implements ActionListener
 		}
 	}
 
-	/**
-	 * écoute les événements provenant d'un clic sur les bouton  - méthode issue de l'interface ActionListener
-	 * @param e
-	 * 			évenement provenant d'un clic sur un bouton
-	 */
-	public void actionPerformed(ActionEvent e) 
-	{
+
+	public void actionPerformed(ActionEvent e) {
+
 		if (e.getActionCommand().equals("Suivant")) 
 		{
 			this.week++;
@@ -268,10 +238,7 @@ class ConsulterView extends JFrame implements ActionListener
 		}
 	}
 
-	/**
-	 * Centrer les données de l'emploi du temps.
-	 * @param table
-	 */
+
 	private void centrerTable(JTable table) 
 	{     
 		DefaultTableCellRenderer custom = new DefaultTableCellRenderer(); 
