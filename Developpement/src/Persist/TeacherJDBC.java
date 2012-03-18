@@ -1,5 +1,4 @@
 package Persist;
-
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -7,23 +6,40 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-
 import BL.Booking;
 import BL.PersistFactory;
 import BL.Teacher;
 import BL.Teaching;
 
-
+/**
+ * Persistance des données d'un enseignant vers une base de données.
+ * @author URM Team
+ */
 class TeacherJDBC extends Teacher 
 {
+	/**
+	 * Connection vers la base de données.
+	 */
 	Connection dbConnection;
 
+	/**
+	 * Constructeur
+	 * @param dbConnection
+	 * 			Connection commune à la base de données.
+	 */
 	public TeacherJDBC(Connection dbConnection) 
 	{
 		this.dbConnection = dbConnection;
 	}
 
-	public void load(String pseudo, String pwd) throws SQLException
+	/**
+	 * @see Teacher#load(String, String)
+	 * @param pseudo
+	 * @param pwd
+	 * @throws Exception 
+	 * 			Problème de récupération des données dans la base SQL
+	 */
+	public void load(String pseudo, String pwd) throws Exception
 	{
 		String query = "select count(*) from enseignant where nom = '" + pseudo + "' and mdp = '" + pwd + "'";
 		Statement stmt = dbConnection.createStatement();
@@ -56,23 +72,18 @@ class TeacherJDBC extends Teacher
 		while(results3.next())
 		{
 			Teaching tc = PersistFactory.getInstance().createTeaching();
-
-			String query1 = "select m.LIBELLE_MATIERE from COURS c, MATIERE m where c.ID_COURS='"+results3.getString(2)+"' and c.ID_MATIERE=m.ID_MATIERE";
-			Statement stmt1 = dbConnection.createStatement();
-			ResultSet results1 = stmt1.executeQuery(query1);
-			results1.next();
-
-			String query2 = "select tc.LIBELLE_TYPE_DE_COURS from TYPECOURS tc, COURS c where c.ID_COURS='"+results3.getString(2)+"' and c.ID_TYPE_DE_COURS=tc.ID_TYPE_DE_COURS";
-			Statement stmt2 = dbConnection.createStatement();
-			ResultSet results2 = stmt2.executeQuery(query2);
-			results2.next();
-
-			tc.create(results3.getString(1), results3.getInt(5), results3.getString(4), this, results1.getString(1), results2.getString(1));
+			tc.load(results3.getString(1));
+			tc.setTeacher(this);
 			scs.add(tc);
 		}
 		this.myTeachings = scs;
 	}
 
+	/**
+	 * @see Teacher#getValidBooking(int)
+	 * @param week
+	 * 			numéro de la semaine dont on veut les réservations validées
+	 */
 	public ArrayList<Booking> getValidBooking(int week) throws Exception 
 	{
 		ArrayList<Booking> listBookings = new ArrayList<Booking>();
@@ -107,7 +118,7 @@ class TeacherJDBC extends Teacher
 		while(results.next())
 		{
 			Booking booking = new BookingJDBC(dbConnection);
-			booking.load(results.getString(1));
+			booking.load(results.getString(1).trim());
 			listBookings.add(booking);
 		}
 

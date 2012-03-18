@@ -135,21 +135,21 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
             JRadioButton rdbtnTeaching = new JRadioButton("Enseignement");
             rdbtnTeaching.setActionCommand("teach");
             rdbtnTeaching.addActionListener(this);
-            rdbtnTeaching.setBounds(132, 0, 118, 23);
+            rdbtnTeaching.setBounds(97, 0, 118, 23);
             buttonGroup.add(rdbtnTeaching);
             chooseType.add(rdbtnTeaching);
             
             JRadioButton rdbtnMeeting = new JRadioButton("R\u00E9union");
             rdbtnMeeting.setActionCommand("meet");
             rdbtnMeeting.addActionListener(this);
-            rdbtnMeeting.setBounds(253, 0, 94, 23);
+            rdbtnMeeting.setBounds(261, 0, 94, 23);
             buttonGroup.add(rdbtnMeeting);
             chooseType.add(rdbtnMeeting);
             
             teachingChoice = new JComboBox<String>();
             teachingChoice.setEnabled(false);
             teachingChoice.addItemListener(this);
-            teachingChoice.setBounds(133, 28, 186, 23);
+            teachingChoice.setBounds(97, 28, 258, 23);
             chooseType.add(teachingChoice);
             
             // Panneau de la date et du créneau

@@ -14,8 +14,10 @@ public abstract class PersistFactory
 
 	/**
 	 * @return l'instance de la persistFactory si existant, sinon crée l'instance et la renvoie.
+	 * @throws Exception 
+	 * 				Problème de connexion aux données.
 	 */
-	public static PersistFactory getInstance()
+	public static PersistFactory getInstance() throws Exception
 	{
 		if(PF==null) PF = new PersistFactoryJDBC();
 		return PF;

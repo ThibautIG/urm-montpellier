@@ -77,6 +77,16 @@ public abstract class Teaching
 	{
 		return teacher;
 	}
+	
+	/**
+	 * Modifie l'enseignant en le remplaçant par t.
+	 * @param t
+	 * 		Le nouvel enseignant
+	 */
+	public void setTeacher(Teacher t) 
+	{
+		this.teacher = t;
+	}
 
 	/**
 	 * @return l'id de l'enseignement.
@@ -99,7 +109,7 @@ public abstract class Teaching
 	 */
 	public String toString()
 	{
-		return this.type + " " +this.field;
+		return this.type + " " +this.field+" "+this.group;
 		
 	}
 }
