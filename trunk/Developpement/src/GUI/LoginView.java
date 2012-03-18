@@ -119,7 +119,7 @@ public class LoginView extends JFrame implements ActionListener
 
 	/**
 	 * écoute les événements provenant d'un clic sur le bouton valider ou le bouton annuler - méthode issue de l'interface ActionListener
-	 * @param ActionEvent e
+	 * @param e
 	 * 			évenement provenant d'un clic sur un bouton
 	 */
 	public void actionPerformed(ActionEvent e) 
