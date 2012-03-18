@@ -47,7 +47,7 @@ public abstract class Schedule
 	}
 
 	/**
-	 * @eturn l'id du créneau.
+	 * @return l'id du créneau.
 	 */
 	public String getId() 
 	{

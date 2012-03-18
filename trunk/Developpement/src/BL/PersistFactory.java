@@ -39,7 +39,7 @@ public abstract class PersistFactory
 	public abstract Booking createBooking();
 
 	/**
-	 * @eturn et crée un objet de type caractéristique.
+	 * @return et crée un objet de type caractéristique.
 	 */
 	public abstract Feature createFeature();
 

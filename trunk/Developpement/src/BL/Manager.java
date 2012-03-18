@@ -49,7 +49,7 @@ public abstract class Manager
 	public abstract ArrayList<Booking> getAllUnvalidBookings();
 
 	/**
-	 * @eturn la date de la réservation selectionnée.
+	 * @return la date de la réservation selectionnée.
 	 */
 	public Date getSelectedBookingDate() 
 	{
