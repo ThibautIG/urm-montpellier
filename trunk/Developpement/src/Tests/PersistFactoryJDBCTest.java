@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import junit.framework.TestCase;
 
-public class BookingJDBCTest extends TestCase {
+public class PersistFactoryJDBCTest extends TestCase {
 
 	@Before
 	protected void setUp() throws Exception {
@@ -14,32 +14,22 @@ public class BookingJDBCTest extends TestCase {
 	}
 
 	@Test
-	public void testCheckFreeRooms() {
+	public void testCreateTeacher() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testSave() {
+	public void testCreateBooking() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testSetDate() {
+	public void testCreateManager() {
 		fail("Not yet implemented"); // TODO
 	}
 
 	@Test
-	public void testSetSchedule() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testSetFeatures() {
-		fail("Not yet implemented"); // TODO
-	}
-
-	@Test
-	public void testSetTeaching() {
+	public void testGetInstance() {
 		fail("Not yet implemented"); // TODO
 	}
 

@@ -1,6 +1,6 @@
 format 76
 
-classinstancecanvas 128002 classinstance_ref 135042 // Bob
+classinstancecanvas 128002 classinstance_ref 135042 // 
   xyz 48 4 2000 life_line_z 2000
 end
 classinstancecanvas 128130 classinstance_ref 134914 // 
@@ -147,7 +147,7 @@ msg 132610 found_synchronous
 msg 132866 asynchronous
   from durationcanvas_ref 132354
   to durationcanvas_ref 132738
-  yz 333 2020 msg operation_ref 200322 // "getTeaching() : string"
+  yz 333 2020 msg operation_ref 200322 // "getTeaching() : list<string>"
   show_full_operations_definition default drawing_language default show_context_mode default
   label_xy 318 319
 msg 133378 asynchronous
