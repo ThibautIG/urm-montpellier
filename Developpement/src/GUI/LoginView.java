@@ -113,6 +113,7 @@ public class LoginView extends JFrame implements ActionListener
 		bCancel.addActionListener(this);
 		bCancel.setBounds(121, 5, 86, 23);
 		pOut.add(bCancel);
+    	this.setLocationRelativeTo(null);     
 		this.setVisible(true);
 		
 	}
