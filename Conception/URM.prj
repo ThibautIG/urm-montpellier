@@ -1,7 +1,7 @@
 format 76
 "URM"
   revision 30
-  modified_by 24 "Thibaut"
+  modified_by 2 "D-Day"
   java_root_dir "C:/Users/D-Day/workspace/URM/"
 
 
@@ -9,7 +9,7 @@ format 76
   // class settings
   default_attribute_visibility private default_relation_visibility private default_operation_visibility public
   //class diagram settings
-  draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition yes show_members_visibility yes show_members_stereotype yes show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes show_stereotype_properties no
+  draw_all_relations yes hide_attributes no hide_operations no hide_getset_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_members_context no show_members_multiplicity no show_members_initialization no show_attribute_modifiers no member_max_width 127 show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_relation_modifiers no show_relation_visibility no show_infonote no shadow yes show_stereotype_properties no
   //use case diagram settings
   package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes class_drawing_mode actor shadow yes show_stereotype_properties no
   //sequence diagram settings
@@ -216,6 +216,32 @@ ${members}}
 	
 	
 	comment "Connecte l'utilisateur si son id/pwd est valide"
+      end
+
+      operation 128899 "getId"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Récupère le champ id"
+      end
+
+      operation 129027 "getPwd"
+	public explicit_return_type "string"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "récupère le champ pwd"
       end
 
       classrelation 128003 // account (<unidirectional association>)
@@ -1200,18 +1226,6 @@ ${members}}
 	
 	
 	comment "Ajoute la caractéristique sélectionnée dans la liste de gauche à la liste de droite. Sauvegarde cette caractéristique."
-      end
-
-      operation 128024 "removeFeature"
-	public explicit_return_type ""
-	nparams 0
-	
-	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
-  ${body}}
-"
-	
-	
-	
       end
 
       operation 199426 "setCapacity"

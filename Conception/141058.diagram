@@ -18,7 +18,7 @@ classcanvas 128514 class_ref 147970 // Manager
 end
 classcanvas 128642 class_ref 155266 // Booking
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
-  xyz 706.2 401.7 2005
+  xyz 707.2 380.7 2005
 end
 classcanvas 129154 class_ref 155650 // Feature
   draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
@@ -74,54 +74,54 @@ packagecanvas 132994
 end
 relationcanvas 128386 relation_ref 128131 // <unidirectional association>
   from ref 128130 z 2007 to ref 128258
-  no_role_a no_role_b
+  role_a_pos 636 292 3000 no_role_b
   multiplicity_a_pos 667 317 3000 multiplicity_b_pos 556 446 3000
 end
 relationcanvas 128770 relation_ref 171522 // <unidirectional association>
   from ref 128002 z 2001 to ref 128130
-  no_role_a no_role_b
+  role_a_pos 356 495 3000 no_role_b
   multiplicity_a_pos 389 520 3000 multiplicity_b_pos 257 520 3000
 end
 relationcanvas 128898 relation_ref 171650 // <unidirectional association>
   from ref 128130 z 2001 to ref 128514
-  no_role_a no_role_b
+  role_a_pos 637 716 3000 no_role_b
   multiplicity_a_pos 673 741 3000 multiplicity_b_pos 556 600 3000
 end
 relationcanvas 129026 relation_ref 171778 // <unidirectional association>
   from ref 128130 z 2006 to ref 128642
-  no_role_a no_role_b
-  multiplicity_a_pos 689 536 3000 multiplicity_b_pos 556 525 3000
+  role_a_pos 644 506 3000 no_role_b
+  multiplicity_a_pos 690 531 3000 multiplicity_b_pos 556 523 3000
 end
 relationcanvas 129666 relation_ref 158082 // <unidirectional association>
   from ref 128642 z 2012 to ref 129538
-  no_role_a no_role_b
-  multiplicity_a_pos 977 412 3000 multiplicity_b_pos 824 505 3000
+  role_a_pos 942 386 3000 no_role_b
+  multiplicity_a_pos 977 411 3000 multiplicity_b_pos 825 502 3000
 end
 relationcanvas 129794 relation_ref 171906 // <association>
   from ref 128258 z 2012 to ref 129538
-  no_role_a no_role_b
+  role_a_pos 919 363 3000 role_b_pos 808 279 3000
   multiplicity_a_pos 979 388 3000 multiplicity_b_pos 808 304 3000
 end
 relationcanvas 129922 relation_ref 172034 // <unidirectional association>
   from ref 128514 z 2012 to ref 129154
-  no_role_a no_role_b
+  role_a_pos 906 627 3000 no_role_b
   multiplicity_a_pos 955 652 3000 multiplicity_b_pos 860 742 3000
 end
 relationcanvas 130050 relation_ref 172162 // <unidirectional association>
   from ref 128514 z 2001 to ref 129410
-  no_role_a no_role_b
+  role_a_pos 1048 703 3000 no_role_b
   multiplicity_a_pos 1105 728 3000 multiplicity_b_pos 860 790 3000
 end
 relationcanvas 130178 relation_ref 172290 // <unidirectional association>
   from ref 128642 z 2006 to point 1120 535
   line 130434 z 2006 to ref 129410
-  no_role_a no_role_b
-  multiplicity_a_pos 1133 635 3000 multiplicity_b_pos 824 541 3000
+  role_a_pos 1159 635 3000 no_role_b
+  multiplicity_a_pos 1133 635 3000 multiplicity_b_pos 825 537 3000
 end
 relationcanvas 130562 relation_ref 158210 // <unidirectional association>
   from ref 128642 z 2012 to ref 129154
-  no_role_a no_role_b
-  multiplicity_a_pos 955 619 3000 multiplicity_b_pos 824 563 3000
+  role_a_pos 924 593 3000 no_role_b
+  multiplicity_a_pos 955 618 3000 multiplicity_b_pos 825 559 3000
 end
 relationcanvas 131714 relation_ref 147970 // <generalisation>
   decenter_end 930
@@ -156,7 +156,7 @@ relationcanvas 132354 relation_ref 128259 // <generalisation>
 end
 relationcanvas 132610 relation_ref 172546 // <unidirectional association>
   from ref 132482 z 2001 to ref 128002
-  no_role_a no_role_b
+  role_a_pos 156 352 3000 no_role_b
   multiplicity_a_pos 130 352 3000 multiplicity_b_pos 130 276 3000
 end
 end
