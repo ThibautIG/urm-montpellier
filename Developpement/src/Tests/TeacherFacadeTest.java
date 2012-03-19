@@ -102,11 +102,10 @@ public class TeacherFacadeTest extends TestCase
 		fts.add("videoprojecteur");
 		try 
 		{
-			this.tf.confirmBooking("TP Langue 1: anglais IG4 G2", new Date(), "9h45 - 11h15", fts, 45, "URGENT SVP");
+			//this.tf.confirmBooking("TP Langue 1: anglais IG4 G2", new Date(), "9h45 - 11h15", fts, 45, "URGENT SVP");
 		} 
 		catch (Exception e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -124,7 +123,6 @@ public class TeacherFacadeTest extends TestCase
 		} 
 		catch (Exception e) 
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
