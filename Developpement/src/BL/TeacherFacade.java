@@ -2,7 +2,7 @@ package BL;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Enumeration;
+import java.util.Iterator;
 
 /**
  * Façade qui permet la communication avec la BL à travers un enseignant.
@@ -182,7 +182,7 @@ public class TeacherFacade
 	 * @throws Exception 
 	 * 			Déclenchée si les informations de la réservation n'ont pas pu être récupérées.
 	 */
-	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity, String comments) throws Exception 
+	public void confirmBooking(String teachingSelected, Date dateSelected, String scheduleSelected, ArrayList<String> featuresSelected, int capacity, String comments) throws Exception 
 	{
 		if(this.myBooking==null)
 		{
@@ -220,7 +220,7 @@ public class TeacherFacade
 	 * @throws Exception 
 	 * 			Déclenchée si les informations de la réservation n'ont pas pu être récupérées.
 	 */
-	public int checkFreeRooms(Date dateSelected, String scheduleSelected, Enumeration<String> featuresSelected, int capacity) throws Exception 
+	public int checkFreeRooms(Date dateSelected, String scheduleSelected, ArrayList<String> featuresSelected, int capacity) throws Exception 
 	{
 		int freeRooms = 0;
 		this.myBooking = PersistFactory.getInstance().createBooking();
@@ -237,9 +237,10 @@ public class TeacherFacade
 		this.myBooking.setSchedule(this.manager.getSchedules().get(s));
 		
 		ArrayList<Feature> alf = new ArrayList<Feature>();
-		while(featuresSelected!=null && featuresSelected.hasMoreElements())
+		Iterator<String> i = featuresSelected.iterator();
+		while(featuresSelected!=null && i.hasNext())
 		{
-			String ft = featuresSelected.nextElement();
+			String ft = i.next();
 			int ftus = 0;
 			while(!this.manager.getFeatures().get(ftus).toString().equals(ft))
 			{

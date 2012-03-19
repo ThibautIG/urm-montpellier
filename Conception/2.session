@@ -2,13 +2,13 @@ window_sizes 1280 738 258 1016 853 35
 diagrams
   classdiagram_ref 141058 // Asking
     1016 629 100 0 180 0
-  sequencediagram_ref 141186 // AskingCase1
-    808 503 100 0 0 0
-  active  sequencediagram_ref 128131 // LoginViewSeq
+  active  sequencediagram_ref 141186 // AskingCase1
+    1016 629 100 0 36 0
+  sequencediagram_ref 128131 // LoginViewSeq
     1012 629 100 4 0 0
 end
 show_stereotypes
-selected classview_ref 128003 // Login and menu
+selected sequencediagram_ref 141186 // AskingCase1
 open
   classview_ref 147714 // Asking
 end

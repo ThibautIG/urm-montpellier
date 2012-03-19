@@ -48,7 +48,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
     /**
      * Ensemble des caractéristiques sélectionnées par l'utilisateur.
      */
-    private Enumeration<String> featuresSelected = null;
+    private ArrayList<String> featuresSelected = new ArrayList<String>();
     
     /**
      * Capacité de la salle demandée par l'utilisateur.
@@ -316,7 +316,12 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                             dlm.addElement(this.lUnselectedFt.getSelectedValue());
                             this.lSelectedFt.setModel(dlm);
                             
-                            this.featuresSelected = (Enumeration<String>) ((DefaultListModel<String>)this.lSelectedFt.getModel()).elements();
+                            Enumeration<String> es = (Enumeration<String>) ((DefaultListModel<String>)this.lSelectedFt.getModel()).elements();
+                            while (es.hasMoreElements())
+                            {
+                            	this.featuresSelected.add(es.nextElement());
+                            }
+                            
                             
                             
                             DefaultListModel<String> dlm2 = (DefaultListModel<String>)this.lUnselectedFt.getModel();
@@ -335,7 +340,11 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                             DefaultListModel<String> dlm2 = (DefaultListModel<String>)this.lSelectedFt.getModel();
                             dlm2.removeElementAt(this.lSelectedFt.getSelectedIndex());
                             this.lSelectedFt.setModel(dlm2);
-                            this.featuresSelected = (Enumeration<String>) dlm2.elements();
+                            Enumeration<String> es = (Enumeration<String>) dlm2.elements();
+                            while (es.hasMoreElements())
+                            {
+                            	this.featuresSelected.add(es.nextElement());
+                            }
                     }
             }
             else if(e.getActionCommand().equals("ck"))
