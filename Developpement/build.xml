@@ -37,4 +37,11 @@
 	<target name="run" depends="create_run_jar">
 			<java jar="exe/urm.jar" fork="true" />
 	</target>
+	
+	<target name="runtests" depends="compile">
+		<java fork="true" classname="junit.textui.TestRunner" taskname="junit" failonerror="true" classpathref="classpath">
+			<arg value="bin.Tests.AllTests"/>
+		</java>
+	</target>
+
 </project>
