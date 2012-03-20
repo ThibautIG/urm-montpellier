@@ -171,6 +171,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
             timeAndDate.add(lblSelectSchedule);
             
             schedulesList = new JList<String>();
+            schedulesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             DefaultListModel<String> dlms = new DefaultListModel<String>();
             ArrayList<String> als = this.account.getSchedules();
             for (int i=0; i<als.size(); i++)
@@ -214,12 +215,14 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
             tfCapacity.setColumns(10);
             
             lSelectedFt = new JList<String>();
+            lSelectedFt.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             this.lSelectedFt.setModel(new DefaultListModel<String>());
             lSelectedFt.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
             lSelectedFt.setBounds(252, 21, 180, 118);
             features.add(lSelectedFt);
             
             lUnselectedFt = new JList<String>();
+            lUnselectedFt.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             DefaultListModel<String> dlm = new DefaultListModel<String>();
             ArrayList<String> fts = this.account.getFeatures(); 
             for (int i=0; i<fts.size(); i++)
@@ -353,10 +356,17 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
             {
                     if(this.dateSelected != null && this.scheduleSelected != null)
                     {
-                            this.capacity = 0 + Integer.parseInt(this.tfCapacity.getText());
-                            try {
-								this.lblNbRooms.setText("Nombre de salles disponibles estim\u00E9 : "+this.account.checkFreeRooms(this.dateSelected, this.scheduleSelected, this.featuresSelected, this.capacity));
-							} catch (Exception e1) {
+	                    	try
+	                    	{
+	                    		 this.capacity = 0 + Integer.parseInt(this.tfCapacity.getText());
+	                    		 this.lblNbRooms.setText("Nombre de salles disponibles estim\u00E9 : "+this.account.checkFreeRooms(this.dateSelected, this.scheduleSelected, this.featuresSelected, this.capacity));
+	                    	}
+	                    	catch(NumberFormatException ex)
+	                    	{
+	                    		JOptionPane.showMessageDialog(this, "Veuillez rentrer un entier pour la capacité de la salle", "Erreur", JOptionPane.ERROR_MESSAGE);
+	                    	}
+	                    	catch (Exception e1) 
+	                    	{
 								JOptionPane.showMessageDialog(this, "Problème d'accès à la base de données", "Erreur", JOptionPane.ERROR_MESSAGE);
 							}
                     }
@@ -371,14 +381,22 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                     {
                             if(this.dateSelected != null && this.scheduleSelected != null)
                             {
-                                    this.capacity = Integer.parseInt(this.tfCapacity.getText());
-                                    this.comments = this.taComments.getText();
-                                    try {
-										this.account.confirmBooking(teachingSelected, dateSelected, scheduleSelected, featuresSelected, capacity, comments);
-									} catch (Exception e1) {
+                            		try
+                            		{
+                            			this.capacity = 0+Integer.parseInt(this.tfCapacity.getText());
+                            			this.comments = this.taComments.getText();
+                            			this.account.confirmBooking(teachingSelected, dateSelected, scheduleSelected, featuresSelected, capacity, comments);
+                            			dispose();
+                            		}
+                                    catch(NumberFormatException ex)
+                                    {
+                                    	JOptionPane.showMessageDialog(this, "Veuillez rentrer un entier pour la capacité de la salle", "Erreur", JOptionPane.ERROR_MESSAGE);
+                                    }
+									catch (Exception e1) 
+									{
 										JOptionPane.showMessageDialog(this, "Problème d'accès à la base de données", "Erreur", JOptionPane.ERROR_MESSAGE);
 									}
-                                    dispose();
+                                    
                             }
                     }
             }
