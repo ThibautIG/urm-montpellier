@@ -10,11 +10,15 @@ import java.awt.Dimension;
 
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 import javax.swing.JPanel;
 import java.awt.Component;
-import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 import java.awt.Color;
 import java.text.DateFormat;
@@ -134,7 +138,16 @@ class ConsulterView extends JFrame implements ActionListener
 			}
 		});
 		table.setRowHeight(42);
-		centrerTable(table);
+
+		TableCellRenderer renderer = new CustomTableCellRenderer();
+		try 
+		{
+			table.setDefaultRenderer(Class.forName("java.lang.Object"), renderer);
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
 
 		bPrecedent = new JButton("<");
 		bPrecedent.setBounds(9, 113, 58, 46);
@@ -172,7 +185,37 @@ class ConsulterView extends JFrame implements ActionListener
 	}
 
 
+	/**
+     * Create specific Cell renderer.
+     */
+    public class CustomTableCellRenderer extends DefaultTableCellRenderer
+    {
+        private static final long serialVersionUID = 1L;
 
+        public Component getTableCellRendererComponent(JTable table,
+                Object value, boolean isSelected, boolean hasFocus, int row,
+                int column)
+        {
+            JTextPane cell = new JTextPane();
+            StyledDocument doc = cell.getStyledDocument();
+            MutableAttributeSet center = new SimpleAttributeSet();
+            StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+            doc.setParagraphAttributes(0, 0, center, true);
+            
+            
+            if ((String) value != null)
+            {
+                cell.setText((String)value);
+            }
+            if ((row % 2) == 0)
+                cell.setBackground(new Color(230, 230, 230));
+            else
+                cell.setBackground(Color.white);
+            return cell;
+        } 
+        
+    }
+    
 	/**
 	 * Génère l'affichage du calendrier en fonction de la semaine qu'il reçoit en paramètre.
 	 * @param week
@@ -205,19 +248,11 @@ class ConsulterView extends JFrame implements ActionListener
 				{
 					if (cal.get(Calendar.DAY_OF_WEEK) == 1) /* qui correspond a SUNDAY */
 					{
-						JTextArea input = new JTextArea();
-						input.setText(infosPlanning.get(i).get(3));
-						input.setToolTipText(infosPlanning.get(i).get(3));
-						System.out.println(input.getText()+input.getToolTipText());
-						table.setValueAt(input, cren, cal.get(Calendar.DAY_OF_WEEK)+6);
+						table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)+6);
 					}
 					else
 					{
-						JTextArea input = new JTextArea();
-						input.setText(infosPlanning.get(i).get(3));
-						input.setToolTipText(infosPlanning.get(i).get(3));
-						System.out.println(input.getText()+input.getToolTipText());
-						table.setValueAt(input, cren, cal.get(Calendar.DAY_OF_WEEK)-1);
+						table.setValueAt(infosPlanning.get(i).get(3), cren, cal.get(Calendar.DAY_OF_WEEK)-1);
 					}
 
 				}
@@ -292,16 +327,5 @@ class ConsulterView extends JFrame implements ActionListener
 		}
 	}
 
-	/**
-	 * Centrer les données de l'emploi du temps.
-	 * @param table
-	 */
-	private void centrerTable(JTable table) 
-	{     
-		DefaultTableCellRenderer custom = new DefaultTableCellRenderer(); 
-		custom.setHorizontalAlignment(JLabel.CENTER); 
-		for (int i=0 ; i<table.getColumnCount() ; i++) 
-			table.getColumnModel().getColumn(i).setCellRenderer(custom); 
-	}
 
 }
