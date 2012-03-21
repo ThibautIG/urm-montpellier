@@ -1,0 +1,19 @@
+class Teaching
+!!!137090.java!!!	create(in id : String, in hours : int, in group : String, inout teacher : Teacher, in field : String, in type : String) : void
+		this.id = id;
+		this.hours = hours;
+		this.group = group;
+		this.field = field;
+		this.teacher = teacher;
+		this.type = type;
+!!!137218.java!!!	getTeacher() : Teacher
+		return teacher;
+!!!137346.java!!!	setTeacher(inout t : Teacher) : void
+		this.teacher = t;
+!!!137474.java!!!	getId() : String
+		return id;
+!!!137602.java!!!	getField() : String
+		return field;
+!!!137730.java!!!	toString() : String
+		return this.type + " " +this.field+" "+this.group;
+		

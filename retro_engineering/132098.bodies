@@ -1,0 +1,21 @@
+class TeacherFacadeTest
+!!!147074.java!!!	setUp() : void
+		if(this.tf == null)
+		{
+			this.tf = new TeacherFacade("Laurent", "anne");   
+		}
+!!!147202.java!!!	testGetSchedules() : void
+		fail("Not yet implemented");
+!!!147330.java!!!	testGetFeatures() : void
+		fail("Not yet implemented");
+!!!147458.java!!!	testGetTeachings() : void
+		fail("Not yet implemented");
+!!!147586.java!!!	testGetValidBooking() : void
+		fail("Not yet implemented");
+!!!147714.java!!!	testIsSuperUser() : void
+		boolean superuser = this.tf.isSuperUser();
+		assertEquals(false, superuser);
+!!!147842.java!!!	testConfirmBooking() : void
+		fail("Not yet implemented");
+!!!147970.java!!!	testCheckFreeRooms() : void
+		fail("Not yet implemented");

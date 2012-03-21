@@ -1,0 +1,4 @@
+class PersistFactory
+!!!133634.java!!!	getInstance() : PersistFactory
+		if(PF==null) PF = new PersistFactoryJDBC();
+		return PF;

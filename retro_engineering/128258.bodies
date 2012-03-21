@@ -1,0 +1,12 @@
+class Feature
+!!!129922.java!!!	create(in id : String, in name : String) : void
+		this.id = id;
+		this.name = name;
+!!!130050.java!!!	getId() : String
+		return id;
+!!!130178.java!!!	getName() : String
+		return name;
+!!!130306.java!!!	setName(in name : String) : void
+		this.name = name;
+!!!130434.java!!!	toString() : String
+		return this.name;

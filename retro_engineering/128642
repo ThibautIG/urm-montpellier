@@ -1,0 +1,881 @@
+format 76
+"PersistJDBC" // Developpement::src::PersistJDBC
+  revision 1
+  modified_by 2 "D-Day"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  java_dir "C:/Users/D-Day/workspace/URM/Developpement/src/PersistJDBC/"
+  java_package "PersistJDBC"
+  classview 128386 "PersistJDBC"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    class 130434 "BookingJDBC"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Persistance des données de la réservation vers une base de données.
+@author URM Team"
+      classrelation 132226 // <generalisation>
+	relation 132226 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132226 // <generalisation>
+	  b parent class_ref 128002 // Booking
+      end
+
+      attribute 134786 "dbConnection"
+	package explicit_type "Connection"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Connection vers la base de données.
+"
+      end
+
+      operation 140802 "BookingJDBC"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "dbConnection" explicit_type "Connection"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@param dbConnection
+			Connection commune à la base de données."
+      end
+
+      operation 140930 "checkFreeRooms"
+	public explicit_return_type "int"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "SQLException"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Booking#checkFreeRooms()
+@throws SQLException 
+			Problème de récupération des données dans la base SQL"
+      end
+
+      operation 141058 "load"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Booking#load(String)
+@param reference
+			référence de la réservation à charger"
+      end
+
+      operation 141186 "save"
+	public explicit_return_type "boolean"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "SQLException"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Booking#save()
+@throws SQLException 
+				Problème d'accés à la base de données"
+      end
+    end
+
+    class 130562 "FeatureJDBC"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Persistance des données de la caractéristique vers une base de données.
+@author URM Team"
+      classrelation 132354 // <generalisation>
+	relation 132354 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132354 // <generalisation>
+	  b parent class_ref 128258 // Feature
+      end
+
+      attribute 134914 "dbConnection"
+	package explicit_type "Connection"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Connection vers la base de données.
+"
+      end
+
+      operation 141314 "FeatureJDBC"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "dbConnection" explicit_type "Connection"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@param dbConnection
+			Connection commune à la base de données."
+      end
+
+      operation 141442 "load"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "id" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Feature#load(String)
+@param id
+			id de la caractéristique à charger"
+      end
+    end
+
+    class 130690 "ManagerJDBC"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Accès aux informations communes de la base de données.
+@author URM Team"
+      classrelation 132482 // <generalisation>
+	relation 132482 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132482 // <generalisation>
+	  b parent class_ref 128642 // Manager
+      end
+
+      attribute 135042 "dbConnection"
+	package explicit_type "Connection"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Connection vers la base de données.
+"
+      end
+
+      operation 141570 "ManagerJDBC"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "dbConnection" explicit_type "Connection"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@param dbConnection
+			Connection commune à la base de données."
+      end
+
+      operation 141698 "getFeatures"
+	public return_type class_ref 128258 // Feature
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@throws Exception 
+			Problème de connexion à la base.
+@see Manager#getFeatures()"
+      end
+
+      operation 141826 "getSchedules"
+	public return_type class_ref 128130 // Schedule
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@throws Exception 
+				Problème de connexion à la base.
+@see Manager#getSchedules()"
+      end
+
+      operation 141954 "getAllUnvalidBookings"
+	public return_type class_ref 128002 // Booking
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Manager#getAllUnvalidBookings()"
+      end
+
+      operation 142082 "deleteSelectedBooking"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Manager#deleteSelectedBooking()"
+      end
+
+      operation 142210 "getWeekUnvalidSchedules"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "@see Manager#getWeekUnvalidSchedules()
+@return sous forme de liste de structure les dates et créneaux pour lesquelles il y des salles libre avec les paramètre de la réservation selectionnée."
+      end
+    end
+
+    class 130818 "PersistFactoryJDBC"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Fabrique qi permet de créer des objets à partir d'une base de données.
+@author URM Team"
+      classrelation 132610 // <generalisation>
+	relation 132610 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132610 // <generalisation>
+	  b parent class_ref 128770 // PersistFactory
+      end
+
+      attribute 135170 "dbConnection"
+	private explicit_type "Connection"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Connection vers la base de données.
+"
+      end
+
+      attribute 135298 "driver"
+	private explicit_type "String"
+	init_value " \"oracle.jdbc.driver.OracleDriver\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Driver de la base de données
+"
+      end
+
+      attribute 135426 "url"
+	private explicit_type "String"
+	init_value "\"jdbc:oracle:thin:@v240.ig.polytech.univ-montp2.fr:1521:ORA10\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "URL de la base de données
+"
+      end
+
+      attribute 135554 "login"
+	private explicit_type "String"
+	init_value "\"thibaut.rouquette\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Login de l'accès à la base de données
+"
+      end
+
+      attribute 135682 "password"
+	private explicit_type "String"
+	init_value "\"oracle\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Mot de passe de l'accès à la base de données.
+"
+      end
+
+      operation 142338 "PersistFactoryJDBC"
+	public explicit_return_type ""
+	nparams 0
+	nexceptions 2
+	  explicit_exception "SQLException"
+	  explicit_exception "ClassNotFoundException"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@throws SQLException 
+			Problème de connection à la base.
+@throws ClassNotFoundException 
+			Problème de chargement du Driver."
+      end
+
+      operation 142466 "createTeacher"
+	public return_type class_ref 128898 // Teacher
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see PersistFactory#createTeacher()"
+      end
+
+      operation 142594 "createTeaching"
+	public return_type class_ref 128386 // Teaching
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see PersistFactory#createTeaching()"
+      end
+
+      operation 142722 "createBooking"
+	public return_type class_ref 128002 // Booking
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see PersistFactory#createBooking()"
+      end
+
+      operation 142850 "createFeature"
+	public return_type class_ref 128258 // Feature
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see PersistFactory#createFeature()"
+      end
+
+      operation 142978 "createSchedule"
+	public return_type class_ref 128130 // Schedule
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see PersistFactory#createSchedule()"
+      end
+
+      operation 143106 "createManager"
+	public return_type class_ref 128642 // Manager
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see PersistFactory#createManager()"
+      end
+    end
+
+    class 130946 "ScheduleJDBC"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Persistance des données du créneau vers une base de données.
+@author URM Team"
+      classrelation 132738 // <generalisation>
+	relation 132738 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132738 // <generalisation>
+	  b parent class_ref 128130 // Schedule
+      end
+
+      attribute 135810 "dbConnection"
+	package explicit_type "Connection"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Connection vers la base de données.
+"
+      end
+
+      operation 143234 "ScheduleJDBC"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "dbConnection" explicit_type "Connection"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@param dbConnection
+			Connection commune à la base de données."
+      end
+
+      operation 143362 "load"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "id" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Schedule#load(String)
+@param id
+			id du créneau à charger"
+      end
+    end
+
+    class 131074 "TeacherJDBC"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Persistance des données d'un enseignant vers une base de données.
+@author URM Team"
+      classrelation 132866 // <generalisation>
+	relation 132866 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132866 // <generalisation>
+	  b parent class_ref 128898 // Teacher
+      end
+
+      attribute 135938 "dbConnection"
+	package explicit_type "Connection"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Connection vers la base de données.
+"
+      end
+
+      operation 143490 "TeacherJDBC"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "dbConnection" explicit_type "Connection"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@param dbConnection
+			Connection commune à la base de données."
+      end
+
+      operation 143618 "load"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "pseudo" explicit_type "String"
+	  param in name "pwd" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Teacher#load(String, String)
+@param pseudo
+@param pwd
+@throws Exception 
+			Problème de récupération des données dans la base SQL"
+      end
+
+      operation 143746 "getValidBooking"
+	public return_type class_ref 128002 // Booking
+	nparams 1
+	  param in name "week" explicit_type "int"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Teacher#getValidBooking(int)
+@param week
+			numéro de la semaine dont on veut les réservations validées"
+      end
+    end
+
+    class 131202 "TeachingJDBC"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Persistance des données de l'enseignement vers une base de données.
+@author URM Team"
+      classrelation 132994 // <generalisation>
+	relation 132994 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 132994 // <generalisation>
+	  b parent class_ref 128386 // Teaching
+      end
+
+      attribute 136066 "dbConnection"
+	package explicit_type "Connection"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Connection vers la base de données.
+"
+      end
+
+      operation 143874 "TeachingJDBC"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "dbConnection" explicit_type "Connection"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@param dbConnection
+			Connection commune à la base de données."
+      end
+
+      operation 144002 "load"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@see Teaching#load(String)
+@param reference
+			référence de l'enseignement à charger"
+      end
+    end
+  end
+
+  deploymentview 128258 "PersistJDBC"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 129794 "BookingJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import BL.Booking;
+import BL.Feature;
+import BL.PersistFactory;
+import BL.Schedule;
+import BL.Teaching;
+${definition}"
+      associated_classes
+	class_ref 130434 // BookingJDBC
+      end
+    end
+
+    artifact 129922 "FeatureJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import BL.Feature;
+${definition}"
+      associated_classes
+	class_ref 130562 // FeatureJDBC
+      end
+    end
+
+    artifact 130050 "ManagerJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import BL.Booking;
+import BL.Feature;
+import BL.Manager;
+import BL.PersistFactory;
+import BL.Schedule;
+${definition}"
+      associated_classes
+	class_ref 130690 // ManagerJDBC
+      end
+    end
+
+    artifact 130178 "PersistFactoryJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import BL.*;
+import java.sql.*;
+${definition}"
+      associated_classes
+	class_ref 130818 // PersistFactoryJDBC
+      end
+    end
+
+    artifact 130306 "ScheduleJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import BL.Schedule;
+${definition}"
+      associated_classes
+	class_ref 130946 // ScheduleJDBC
+      end
+    end
+
+    artifact 130434 "TeacherJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.sql.Statement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import BL.Booking;
+import BL.PersistFactory;
+import BL.Teacher;
+import BL.Teaching;
+${definition}"
+      associated_classes
+	class_ref 131074 // TeacherJDBC
+      end
+    end
+
+    artifact 130562 "TeachingJDBC"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import BL.Teaching;
+${definition}"
+      associated_classes
+	class_ref 131202 // TeachingJDBC
+      end
+    end
+  end
+end

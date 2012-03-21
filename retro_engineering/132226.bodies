@@ -1,0 +1,11 @@
+class TeacherJDBCTest
+!!!148098.java!!!	setUp() : void
+		super.setUp();
+!!!148226.java!!!	testLoad() : void
+		fail("Not yet implemented"); // TODO
+!!!148354.java!!!	testGetValidBooking() : void
+		fail("Not yet implemented"); // TODO
+!!!148482.java!!!	testGetTeachings() : void
+		fail("Not yet implemented"); // TODO
+!!!148610.java!!!	testIsSuperUser() : void
+		fail("Not yet implemented"); // TODO

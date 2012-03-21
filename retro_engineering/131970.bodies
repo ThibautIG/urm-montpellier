@@ -1,0 +1,11 @@
+class PersistFactoryJDBCTest
+!!!146434.java!!!	setUp() : void
+		super.setUp();
+!!!146562.java!!!	testCreateTeacher() : void
+		fail("Not yet implemented"); // TODO
+!!!146690.java!!!	testCreateBooking() : void
+		fail("Not yet implemented"); // TODO
+!!!146818.java!!!	testCreateManager() : void
+		fail("Not yet implemented"); // TODO
+!!!146946.java!!!	testGetInstance() : void
+		fail("Not yet implemented"); // TODO

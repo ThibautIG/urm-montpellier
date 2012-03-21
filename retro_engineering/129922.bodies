@@ -1,0 +1,182 @@
+class ConsulterView
+!!!138498.java!!!	ConsulterView(inout c : TeacherFacade)
+		super("Mon planning");
+
+		this.account = c;
+
+		this.setSize(new Dimension(965, 467));
+		getContentPane().setLayout(null);
+
+		planning_panel = new JPanel();
+		planning_panel.setBorder(new EtchedBorder(EtchedBorder.LOWERED, null, null));
+		planning_panel.setBounds(10, 10, 929, 356);
+		getContentPane().add(planning_panel);
+		planning_panel.setLayout(null);
+
+		table = new JTable();
+		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, Color.GRAY, null, null));
+		table.setBounds(73, 4, 783, 341);
+		table.setBackground(SystemColor.menu);
+		planning_panel.add(table);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
+				{"8h00 - 9h30", null, null, null, null, null, null, null},
+				{"9h45 - 11h15", null, null, null, null, null, null, null},
+				{"11h30 - 13h00", null, null, null, null, null, null, null},
+				{"13h15 - 14h45", null, null, null, null, null, null, null},
+				{"15h00 - 16h30", null, null, null, null, null, null, null},
+				{"16h45 - 18h15", null, null, null, null, null, null, null},
+				{"18h30 - 20h00", null, null, null, null, null, null, null},
+			},
+			new String[] {
+				"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+			}
+		) {
+			@SuppressWarnings("rawtypes")
+			Class[] columnTypes = new Class[] {
+				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
+			};
+			@SuppressWarnings({ "unchecked", "rawtypes" })
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+			boolean[] columnEditables = new boolean[] {
+				false, false, false, false, false, false, false, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		table.setRowHeight(42);
+		centrerTable(table);
+
+		bPrecedent = new JButton("<");
+		bPrecedent.setBounds(9, 113, 58, 46);
+		planning_panel.add(bPrecedent);
+		bPrecedent.setActionCommand("Precedent");
+
+		bSuivant = new JButton(">");
+		bSuivant.setBounds(862, 113, 57, 46);
+		planning_panel.add(bSuivant);
+		bSuivant.setActionCommand("Suivant");
+		bSuivant.addActionListener(this);
+		bPrecedent.addActionListener(this);
+
+		quit_panel = new JPanel();
+		quit_panel.setBounds(0, 377, 939, 41);
+		getContentPane().add(quit_panel);
+		quit_panel.setLayout(null);
+
+		bQuit = new JButton("Fermer");
+		bQuit.setBounds(845, 9, 94, 23);
+		quit_panel.add(bQuit);
+		bQuit.setActionCommand("Fermer");
+		bQuit.addActionListener(this);
+		bQuit.setAlignmentX(Component.RIGHT_ALIGNMENT);
+
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setVisible(true);
+
+		Calendar cal = new GregorianCalendar();
+		java.util.Date date= cal.getTime();
+		SimpleDateFormat weekNum = new SimpleDateFormat("w");
+
+		this.week = Integer.parseInt(weekNum.format(date));	
+		this.genCalendar(week);
+!!!138626.java!!!	genCalendar(in week : int) : void
+		int i;
+		ArrayList<ArrayList<String>> infosPlanning;
+		infosPlanning = account.getValidBooking(week);
+
+		Calendar cal = new GregorianCalendar();
+		initPlaning();
+		init_labels(week);
+		for (i=0; i<infosPlanning.size(); i++) //modification de int i = 0 en int i = week
+		{
+			//DATE
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd" );
+			try {
+				Date date = dateFormat.parse(infosPlanning.get(i).get(0));
+				cal.setTime(date);
+
+				// CRENEAU
+				int cren = 1;
+				while(cren<table.getRowCount() && ((String) table.getValueAt(cren,0)).startsWith(infosPlanning.get(i).get(1))==false)
+				{
+					++cren;
+				}
+				if (cren<table.getRowCount()) 
+				{
+					if (cal.get(Calendar.DAY_OF_WEEK) == 1) /* qui correspond a SUNDAY */
+					{
+						JTextArea input = new JTextArea();
+						input.setText(infosPlanning.get(i).get(3));
+						input.setToolTipText(infosPlanning.get(i).get(3));
+						System.out.println(input.getText()+input.getToolTipText());
+						table.setValueAt(input, cren, cal.get(Calendar.DAY_OF_WEEK)+6);
+					}
+					else
+					{
+						JTextArea input = new JTextArea();
+						input.setText(infosPlanning.get(i).get(3));
+						input.setToolTipText(infosPlanning.get(i).get(3));
+						System.out.println(input.getText()+input.getToolTipText());
+						table.setValueAt(input, cren, cal.get(Calendar.DAY_OF_WEEK)-1);
+					}
+
+				}
+				else 
+				{
+					System.out.println("Creneau inexistant!");
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+
+		}
+!!!138754.java!!!	init_labels(in week : int) : void
+		Calendar cal = new GregorianCalendar();
+		String days[] = {"Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"};
+
+		cal.setFirstDayOfWeek(Calendar.MONDAY);
+		cal.setMinimalDaysInFirstWeek(7);
+		cal.set(Calendar.WEEK_OF_YEAR, week);
+		cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+
+		for(int i=1;i<=days.length;i++)
+		{
+			table.setValueAt(days[i-1]+" "+cal.get(Calendar.DAY_OF_MONTH)+"/"+(cal.get(Calendar.MONTH)+1),0,i);
+			cal.add(Calendar.DAY_OF_WEEK,1);
+		}
+!!!138882.java!!!	initPlaning() : void
+		int i,j;
+		for(i=1; i<table.getRowCount(); i++)
+		{
+			for(j=1; j<table.getColumnCount();j++) 
+			{
+				table.setValueAt(null,i,j);
+			}
+		}
+!!!139010.java!!!	actionPerformed(inout e : ActionEvent) : void
+
+		if (e.getActionCommand().equals("Suivant")) 
+		{
+			this.week++;
+			genCalendar(week);
+		}
+		else if (e.getActionCommand().equals("Precedent"))  
+		{
+			this.week--;
+			genCalendar(week);
+		}
+		else if (e.getActionCommand().equals("Fermer"))  
+		{
+			this.setVisible(false);
+		}
+!!!139138.java!!!	centrerTable(inout table : JTable) : void
+     
+		DefaultTableCellRenderer custom = new DefaultTableCellRenderer(); 
+		custom.setHorizontalAlignment(JLabel.CENTER); 
+		for (int i=0 ; i<table.getColumnCount() ; i++) 
+			table.getColumnModel().getColumn(i).setCellRenderer(custom); 

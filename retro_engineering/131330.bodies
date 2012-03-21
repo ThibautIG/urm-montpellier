@@ -1,0 +1,19 @@
+class PersistFactorySerialization
+!!!144130.java!!!	createTeacher() : Teacher
+		// TODO Auto-generated method stub
+		return null;
+!!!144258.java!!!	createTeaching() : Teaching
+		// TODO Auto-generated method stub
+		return null;
+!!!144386.java!!!	createBooking() : Booking
+		// TODO Auto-generated method stub
+		return null;
+!!!144514.java!!!	createFeature() : Feature
+		// TODO Auto-generated method stub
+		return null;
+!!!144642.java!!!	createSchedule() : Schedule
+		// TODO Auto-generated method stub
+		return null;
+!!!144770.java!!!	createManager() : Manager
+		// TODO Auto-generated method stub
+		return null;

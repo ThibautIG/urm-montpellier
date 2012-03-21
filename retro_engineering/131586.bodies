@@ -1,0 +1,15 @@
+class BookingJDBCTest
+!!!145154.java!!!	setUp() : void
+		super.setUp();
+!!!145282.java!!!	testCheckFreeRooms() : void
+		fail("Not yet implemented"); // TODO
+!!!145410.java!!!	testSave() : void
+		fail("Not yet implemented"); // TODO
+!!!145538.java!!!	testSetDate() : void
+		fail("Not yet implemented"); // TODO
+!!!145666.java!!!	testSetSchedule() : void
+		fail("Not yet implemented"); // TODO
+!!!145794.java!!!	testSetFeatures() : void
+		fail("Not yet implemented"); // TODO
+!!!145922.java!!!	testSetTeaching() : void
+		fail("Not yet implemented"); // TODO

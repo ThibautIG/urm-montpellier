@@ -1,0 +1,9 @@
+class Schedule
+!!!134658.java!!!	create(in id : String, in startTime : String, in endTime : String) : void
+		this.id = id;
+		this.startTime = startTime;
+		this.endTime = endTime;
+!!!134786.java!!!	getId() : String
+		return this.id;
+!!!134914.java!!!	toString() : String
+		return this.startTime+" - "+this.endTime;

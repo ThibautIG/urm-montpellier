@@ -1,0 +1,11 @@
+window_sizes 1280 738 212 1062 629 35
+show_stereotypes
+selected classdiagram_ref 134530 // classe_complete
+open
+  
+package_ref 128258 // BL
+  classview_ref 128386 // PersistJDBC
+  classview_ref 128258 // unknown
+  classview_ref 128770 // complete
+end
+end
