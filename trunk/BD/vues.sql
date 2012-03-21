@@ -32,6 +32,7 @@ CREATE OR REPLACE TYPE TSalle AS OBJECT
 (
 	ID_SALLE NUMBER(10)   ,
 	NUMERO_SALLE CHAR(255) ,
+	Batiment REF TBatiment ,
 	listCaract nt_Caracteristiques ,
 	listReserv nt_Reservation	
 );
@@ -79,7 +80,7 @@ from Reservation r;
 -- Vue Salle  
 create view VSalle of TSalle
 with object oid(id_salle) as
-	SELECT s.id_salle, s.numero_salle,
+	SELECT s.id_salle, s.numero_salle, MAKE_REF(VBATIMENT,id_batiment)
 		cast (multiset(SELECT TCaracteristique(c.ID_CARACTERISTIQUE, c.LIBELLE_CARACTERISTIQUE)
 					  FROM CARACTERISTIQUE c, CARACTERISTIQUE_SALLE carsalle
 				      WHERE c.id_caracteristique = carsalle.id_caracteristique
