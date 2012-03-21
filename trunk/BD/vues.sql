@@ -26,17 +26,17 @@ CREATE OR REPLACE TYPE TReservation AS OBJECT
 );
 
 CREATE TYPE nt_Enseignement AS TABLE OF TEnseignement;
-CREATE TYPE nt_Reservation AS TABLE OF TReservation;
+CREATE TYPE nt_Reservation2 AS TABLE OF REF TReservation;
 
-CREATE OR REPLACE TYPE TSalle AS OBJECT
+CREATE OR REPLACE TYPE TSalle2 AS OBJECT
 (
 	ID_SALLE NUMBER(10)   ,
 	NUMERO_SALLE CHAR(255) ,
 	listCaract nt_Caracteristiques ,
-	listReserv nt_Reservation	
+	listReserv nt_Reservation2	
 );
 
-CREATE OR REPLACE TYPE TEnseignant AS OBJECT
+CREATE OR REPLACE TYPE TEnseignant2 AS OBJECT
 (
 	ID_ENSEIGNANT NUMBER(10)  ,
 	NOM CHAR(255)  ,
@@ -44,27 +44,25 @@ CREATE OR REPLACE TYPE TEnseignant AS OBJECT
 	MDP CHAR(255) ,
 	SUPER_USER NUMBER(1) ,
 	listEmp nt_Enseignement,
-	listReserv nt_Reservation
+	listReserv nt_Reservation2
 );
 
 -- Vue Enseignant  
-create view VEnseignant of TEnseignant
+create view VEnseignant2 of TEnseignant2
 with object oid(id_enseignant) as
 	SELECT e.id_enseignant, e.nom, e.prenom, e.mdp, e.super_user,
 	   cast (multiset(SELECT TEnseignement(ID_ENSEIGNEMENT,ID_COURS ,ID_ENSEIGNANT ,ID_GROUPE , NB_HEURE_PREVUE)
 					  FROM ENSEIGNEMENT ens
 				      WHERE ens.id_enseignant = e.id_enseignant)
 		as nt_Enseignement),
-		cast (multiset(SELECT ID_RESERVATION,ID_SALLE,ID_CRENEAU,res.ID_ENSEIGNEMENT,
-											DATE_RESERVATION,
-											(cast (multiset (SELECT cr.ID_CARACTERISTIQUE, cr.LIBELLE_CARACTERISTIQUE FROM CARACTERISTIQUE cr )
-											as nt_Caracteristiques))
-					  FROM RESERVATION res, ENSEIGNEMENT ens
-				      WHERE res.id_enseignement = ens.id_enseignement
+		cast (multiset (SELECT make_ref(VReservation, r.ID_RESERVATION)
+					  FROM RESERVATION r, ENSEIGNEMENT ens
+				      WHERE r.id_enseignement = ens.id_enseignement
 					  AND ens.id_enseignant = e.id_enseignant)
-		as nt_Reservation)
+		as nt_Reservation2)
 	FROM enseignant e;
-
+		
+	
 -- Vue VReservation 
 create view VReservation of TReservation
 with object oid(id_reservation) as
@@ -77,7 +75,7 @@ with object oid(id_reservation) as
 from Reservation r;
 
 -- Vue Salle  
-create view VSalle of TSalle
+create view VSalle2 of TSalle2
 with object oid(id_salle) as
 	SELECT s.id_salle, s.numero_salle,
 		cast (multiset(SELECT TCaracteristique(c.ID_CARACTERISTIQUE, c.LIBELLE_CARACTERISTIQUE)
@@ -85,13 +83,10 @@ with object oid(id_salle) as
 				      WHERE c.id_caracteristique = carsalle.id_caracteristique
 					  AND carsalle.id_salle = s.id_salle)
 		as nt_Caracteristiques) ,
-		cast (multiset(SELECT ID_RESERVATION,ID_SALLE,ID_CRENEAU, ID_ENSEIGNEMENT,
-											DATE_RESERVATION,
-											(cast (multiset (SELECT cr.ID_CARACTERISTIQUE, cr.LIBELLE_CARACTERISTIQUE FROM CARACTERISTIQUE cr )
-											as nt_Caracteristiques))
-					  FROM RESERVATION r
-				      WHERE r.id_salle = s.id_salle)
-		as nt_Reservation)
+		cast (multiset(SELECT make_ref(VReservation, r.ID_RESERVATION)
+						FROM RESERVATION r
+						WHERE r.id_salle = s.id_salle)
+		as nt_Reservation2)
 	from Salle s;
 
 -- Trigger
