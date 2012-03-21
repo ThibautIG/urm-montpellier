@@ -1,0 +1,13 @@
+class Manager
+!!!132610.java!!!	getSelectedBookingDate() : Date
+		return selectedBooking.getDate();
+!!!132738.java!!!	getSelectedBookingSchedule() : Schedule
+		return selectedBooking.getSchedule();
+!!!132994.java!!!	setSelectedBookingDate(inout date : Date) : void
+		selectedBooking.setDate(date);
+!!!133122.java!!!	setSelectedBookingSchedule(inout schedule : Schedule) : void
+		selectedBooking.setSchedule(schedule);
+!!!133250.java!!!	setSelectedBookingFeatures(inout features : ArrayList<Feature>) : void
+		selectedBooking.setFeatures(features);
+!!!133378.java!!!	saveSelectedBooking() : void
+		selectedBooking.save();

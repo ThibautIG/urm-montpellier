@@ -1,0 +1,1080 @@
+format 76
+"GUI" // Developpement::src::GUI
+  revision 2
+  modified_by 2 "D-Day"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  java_dir "C:/Users/D-Day/workspace/URM/Developpement/src/GUI/"
+  java_package "GUI"
+  classview 128130 "GUI"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    class 129154 "AskingView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@SuppressWarnings(\"serial\")
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Génére l'interface graphique pour les demandes de réservation.
+@author URM Team"
+      classrelation 129794 // <generalisation>
+	relation 129794 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129794 // <generalisation>
+	  b parent class_ref 129282 // JFrame
+      end
+
+      classrelation 129922 // <realization>
+	relation 129922 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 129922 // <realization>
+	  b parent class_ref 129410 // ActionListener
+      end
+
+      classrelation 130050 // <realization>
+	relation 130050 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130050 // <realization>
+	  b parent class_ref 129538 // ItemListener
+      end
+
+      classrelation 130178 // <realization>
+	relation 130178 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130178 // <realization>
+	  b parent class_ref 129666 // PropertyChangeListener
+      end
+
+      classrelation 130306 // <realization>
+	relation 130306 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130306 // <realization>
+	  b parent class_ref 129794 // ListSelectionListener
+      end
+
+      classrelation 130434 // account (<unidirectional association>)
+	relation 130434 --->
+	  a role_name "account" private
+	    comment "
+Façade permettant le dialogue avec la BL.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130434 // account (<unidirectional association>)
+	  b parent class_ref 129026 // TeacherFacade
+      end
+
+      attribute 130818 "teachingSelected"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Enseignement sélectionné par l'utilisateur.
+"
+      end
+
+      attribute 130946 "dateSelected"
+	private explicit_type "Date"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Date sélectionnée par l'utilisateur.
+"
+      end
+
+      attribute 131074 "scheduleSelected"
+	private explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Créneau sélectionné par l'utilisateur
+"
+      end
+
+      attribute 131202 "featuresSelected"
+	private explicit_type "String"
+	init_value " null"
+	stereotype "Enumeration"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Ensemble des caractéristiques sélectionnées par l'utilisateur.
+"
+      end
+
+      attribute 131330 "capacity"
+	private explicit_type "int"
+	init_value " 0"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Capacité de la salle demandée par l'utilisateur.
+"
+      end
+
+      attribute 131458 "comments"
+	private explicit_type "String"
+	init_value " \"\""
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Commentaires entrés par l'utilisateur.
+"
+      end
+
+      attribute 131586 "buttonGroup"
+	const_attribute private explicit_type "ButtonGroup"
+	init_value " new ButtonGroup()"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Groupe de bouton qui rassemble les radio boutons réunion et enseignement.
+"
+      end
+
+      attribute 131714 "tfCapacity"
+	private explicit_type "JTextField"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Boite d'éddition de la capacitée de la salle.
+@see AskingView#actionPerformed(ActionEvent)
+"
+      end
+
+      attribute 131842 "teachingChoice"
+	private explicit_type "String"
+	stereotype "JComboBox"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Boite déroulante du choix d'enseignement.
+@see AskingView#itemStateChanged(ItemEvent)
+"
+      end
+
+      attribute 131970 "calendar"
+	private explicit_type "JCalendar"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Calendrier pour le choix de la date.
+@see AskingView#propertyChange(PropertyChangeEvent)
+"
+      end
+
+      attribute 132098 "schedulesList"
+	private explicit_type "String"
+	stereotype "JList"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Liste des créneaux.
+@see AskingView#valueChanged(ListSelectionEvent)
+"
+      end
+
+      attribute 132226 "lSelectedFt"
+	private explicit_type "String"
+	stereotype "JList"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Liste des caractéristiques selectionnées.
+"
+      end
+
+      attribute 132354 "lUnselectedFt"
+	private explicit_type "String"
+	stereotype "JList"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Liste des caractéristiques non selectionnées.
+"
+      end
+
+      attribute 132482 "taComments"
+	private explicit_type "JTextArea"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Zone de texte pour entrer les commentaires.
+"
+      end
+
+      attribute 132610 "lblNbRooms"
+	private explicit_type "JLabel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Libellé affichant le nombre de salles libres pour les paramètres selectionnés.
+"
+      end
+
+      operation 137858 "AskingView"
+	package explicit_return_type ""
+	nparams 1
+	  param inout name "account" type class_ref 129026 // TeacherFacade
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur de la fenêtre.
+@param account
+			Façade contenant les données de l'utilisateur et permettant le dialogue avec la BL."
+      end
+
+      operation 137986 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "écoute les événements provenant d'un clic sur les bouton  - méthode issue de l'interface ActionListener
+@param e
+			évenement provenant d'un clic sur un bouton"
+      end
+
+      operation 138114 "itemStateChanged"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "i" explicit_type "ItemEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "écoute les événements provenant d'une selection d'un item dans la liste déroulante des enseignements.
+@param i"
+      end
+
+      operation 138242 "valueChanged"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "arg0" explicit_type "ListSelectionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "écoute les événements de sélection d'un item dans la liste des créneaux 
+@param arg0"
+      end
+
+      operation 138370 "propertyChange"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "arg0" explicit_type "PropertyChangeEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	java_annotation "@Override
+"
+	
+	
+	
+	comment "écoute les événements déclenchés lors de la sélection d'une date.
+@param arg0"
+      end
+    end
+
+    class 129922 "ConsulterView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@SuppressWarnings(\"serial\")
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment " Génére l'interface graphique pour la consultation de l'emploi du temps.	
+@author URM Team		"
+      classrelation 130562 // <generalisation>
+	relation 130562 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130562 // <generalisation>
+	  b parent class_ref 129282 // JFrame
+      end
+
+      classrelation 130690 // <realization>
+	relation 130690 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130690 // <realization>
+	  b parent class_ref 129410 // ActionListener
+      end
+
+      attribute 132738 "week"
+	private explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours.		
+"
+      end
+
+      classrelation 130818 // account (<unidirectional association>)
+	relation 130818 --->
+	  a role_name "account" private
+	    comment "
+Façade permettant le dialogue avec la BL.	33		 *
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 130818 // account (<unidirectional association>)
+	  b parent class_ref 129026 // TeacherFacade
+      end
+
+      attribute 132866 "table"
+	private explicit_type "JTable"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Table contenant l'emploi du temps.
+"
+      end
+
+      attribute 132994 "bPrecedent"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton ppour passer à la semaine précédente.
+"
+      end
+
+      attribute 133122 "bSuivant"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton pour passer à la semaine suivante.
+"
+      end
+
+      attribute 133250 "bQuit"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton pour quitter l'emploi du temps.
+"
+      end
+
+      attribute 133378 "quit_panel"
+	private explicit_type "JPanel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Panneau qui contient le bouton pour quitter.
+"
+      end
+
+      attribute 133506 "planning_panel"
+	private explicit_type "JPanel"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Panneau qui contient l'emploi du temps.
+"
+      end
+
+      operation 138498 "ConsulterView"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "c" type class_ref 129026 // TeacherFacade
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur de la fenêtre.
+@param c
+			Façade contenant les données de l'utilisateur et permettant le dialogue avec la BL."
+      end
+
+      operation 138626 "genCalendar"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "week" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Génère l'affichage du calendrier en fonction de la semaine qu'il reçoit en paramètre.
+@param week
+			génére les réservations de cette semaine."
+      end
+
+      operation 138754 "init_labels"
+	private explicit_return_type "void"
+	nparams 1
+	  param in name "week" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Initialise les labels de la semaine avec les bonnes dates.
+@param week
+			Numéro de la semaine à générer."
+      end
+
+      operation 138882 "initPlaning"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Initialise les valeurs du tableau."
+      end
+
+      operation 139010 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "écoute les événements provenant d'un clic sur les bouton  - méthode issue de l'interface ActionListener
+@param e
+			évenement provenant d'un clic sur un bouton"
+      end
+
+      operation 139138 "centrerTable"
+	private explicit_return_type "void"
+	nparams 1
+	  param inout name "table" explicit_type "JTable"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Centrer les données de l'emploi du temps.
+@param table"
+      end
+    end
+
+    class 130050 "HandlingView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "import BL.HandlingFacade;
+
+Cette classe est en cours de construction
+@author URM Team"
+    end
+
+    class 130178 "LoginView"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@SuppressWarnings(\"serial\")
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Permet de générer l'interface graphique pour l'authentification.
+@author URM Team"
+      classrelation 130946 // <generalisation>
+	relation 130946 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 130946 // <generalisation>
+	  b parent class_ref 129282 // JFrame
+      end
+
+      classrelation 131074 // <realization>
+	relation 131074 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131074 // <realization>
+	  b parent class_ref 129410 // ActionListener
+      end
+
+      classrelation 131202 // account (<unidirectional association>)
+	relation 131202 --->
+	  a role_name "account" private
+	    comment "
+Façade permettant le dialogue avec la BL
+@see LoginView#actionPerformed(ActionEvent)
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131202 // account (<unidirectional association>)
+	  b parent class_ref 129026 // TeacherFacade
+      end
+
+      classrelation 131330 // menu (<unidirectional association>)
+	relation 131330 --->
+	  a role_name "menu" private
+	    comment "
+Menu généré si la personne a été identifiée
+@see LoginView#actionPerformed(ActionEvent)
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@SuppressWarnings(\"unused\")
+"
+	    classrelation_ref 131330 // menu (<unidirectional association>)
+	  b parent class_ref 130306 // MenuView
+      end
+
+      attribute 133762 "tfLogin"
+	private explicit_type "JTextField"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Boîte d'éddition du login.
+@see LoginView#LoginView()
+"
+      end
+
+      attribute 133890 "tfMdp"
+	private explicit_type "JPasswordField"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Boîte d'éddition du mot de passe.
+@see LoginView#LoginView()
+"
+      end
+
+      attribute 134018 "bValid"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton qui permet de valider l'entrée du login et du mot de passe.
+@see LoginView#LoginView()
+"
+      end
+
+      attribute 134146 "bCancel"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton qui ferme le logiciel.
+@see LoginView#LoginView()
+"
+      end
+
+      operation 140034 "LoginView"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur de la fenêtre Login."
+      end
+
+      operation 140162 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "écoute les événements provenant d'un clic sur le bouton valider ou le bouton annuler - méthode issue de l'interface ActionListener
+@param e
+			évenement provenant d'un clic sur un bouton"
+      end
+
+      operation 140290 "main"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param inout name "args" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0}[] ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Lanceur du programme
+@param args the command line arguments"
+      end
+    end
+
+    class 130306 "MenuView"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      java_annotation "@SuppressWarnings({ \"unused\", \"serial\" })
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Classe permettant de générer l'interface graphique pour le menu utilisateur.
+@author URM Team"
+      classrelation 131458 // <generalisation>
+	relation 131458 ---|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131458 // <generalisation>
+	  b parent class_ref 129282 // JFrame
+      end
+
+      classrelation 131586 // <realization>
+	relation 131586 -_-|>
+	  a public
+	    java "${type}"
+	    classrelation_ref 131586 // <realization>
+	  b parent class_ref 129410 // ActionListener
+      end
+
+      classrelation 131714 // consulting (<unidirectional association>)
+	relation 131714 --->
+	  a role_name "consulting" private
+	    comment "
+Vue graphique de la consultation de l'emploi du temps.
+@see MenuView#actionPerformed(ActionEvent)
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131714 // consulting (<unidirectional association>)
+	  b parent class_ref 129922 // ConsulterView
+      end
+
+      classrelation 131842 // Asking (<unidirectional association>)
+	relation 131842 --->
+	  a role_name "Asking" private
+	    comment "
+Vue graphique de la demande de réservation.
+@see MenuView#actionPerformed(ActionEvent)
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 131842 // Asking (<unidirectional association>)
+	  b parent class_ref 129154 // AskingView
+      end
+
+      attribute 134274 "consult"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton qui déclenche le lancement de la vue de consultation.
+@see MenuView#actionPerformed(ActionEvent)
+"
+      end
+
+      attribute 134402 "ask"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton qui déclenche le lancement de la vue de demande de réservation.
+@see MenuView#actionPerformed(ActionEvent)
+"
+      end
+
+      attribute 134530 "handle"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton qui déclenche le lancement de la vue de traitement des réservations.
+@see MenuView#actionPerformed(ActionEvent)
+"
+      end
+
+      attribute 134658 "quit"
+	private explicit_type "JButton"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Bouton qui ferme l'application.		
+@see MenuView#actionPerformed(ActionEvent)		
+"
+      end
+
+      classrelation 132098 // user (<unidirectional association>)
+	relation 132098 --->
+	  a role_name "user" private
+	    comment "
+Façade permettant le dialogue avec la BL.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 132098 // user (<unidirectional association>)
+	  b parent class_ref 129026 // TeacherFacade
+      end
+
+      operation 140418 "MenuView"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "c" type class_ref 129026 // TeacherFacade
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur
+@param c
+			Fait référence au compte d'un enseignant."
+      end
+
+      operation 140546 "initComponents"
+	private explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Initialise les widgets qui composent la fenêtre."
+      end
+
+      operation 140674 "actionPerformed"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "e" explicit_type "ActionEvent"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "écoute les événements provenant d'un clic sur bouton - méthode issue de l'interface ActionListener
+@param e
+			évenement provenant d'un clic sur un des bouton
+@see MenuView#consult
+@see MenuView#ask
+@see MenuView#handle"
+      end
+    end
+  end
+
+  deploymentview 128130 "GUI"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 129154 "AskingView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Dimension;
+import javax.swing.*;
+import BL.TeacherFacade;
+import com.toedter.calendar.JCalendar;
+import javax.swing.border.TitledBorder;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
+import javax.swing.border.EtchedBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+${definition}"
+      associated_classes
+	class_ref 129154 // AskingView
+      end
+    end
+
+    artifact 129282 "ConsulterView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import BL.TeacherFacade;
+import javax.swing.JTable;
+import java.awt.Dimension;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JPanel;
+import java.awt.Component;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import java.awt.Color;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
+import java.awt.SystemColor;
+${definition}"
+      associated_classes
+	class_ref 129922 // ConsulterView
+      end
+    end
+
+    artifact 129410 "HandlingView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+      end
+    end
+
+    artifact 129538 "LoginView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.*;
+import BL.TeacherFacade;
+${definition}"
+      associated_classes
+	class_ref 130178 // LoginView
+      end
+    end
+
+    artifact 129666 "MenuView"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.WindowConstants;
+import BL.TeacherFacade;
+${definition}"
+      associated_classes
+	class_ref 130306 // MenuView
+      end
+    end
+  end
+end

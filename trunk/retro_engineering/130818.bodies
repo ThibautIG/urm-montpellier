@@ -1,0 +1,21 @@
+class PersistFactoryJDBC
+!!!142338.java!!!	PersistFactoryJDBC()
+		super();
+	  
+		// Charger le driver
+		Class.forName(driver); //Or any other driver
+  
+		// Créer la connection
+		this.dbConnection=DriverManager.getConnection(url,login,password);
+!!!142466.java!!!	createTeacher() : Teacher
+		return new TeacherJDBC(this.dbConnection);
+!!!142594.java!!!	createTeaching() : Teaching
+		return new TeachingJDBC(this.dbConnection);
+!!!142722.java!!!	createBooking() : Booking
+		return new BookingJDBC(this.dbConnection);
+!!!142850.java!!!	createFeature() : Feature
+		return new FeatureJDBC(this.dbConnection);
+!!!142978.java!!!	createSchedule() : Schedule
+		return new ScheduleJDBC(this.dbConnection);
+!!!143106.java!!!	createManager() : Manager
+		return new ManagerJDBC(this.dbConnection);

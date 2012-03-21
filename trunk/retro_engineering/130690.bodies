@@ -1,0 +1,43 @@
+class ManagerJDBC
+!!!141570.java!!!	ManagerJDBC(inout dbConnection : Connection)
+		this.dbConnection = dbConnection;
+!!!141698.java!!!	getFeatures() : Feature
+		if(this.allFeatures == null)
+		{
+			this.allFeatures = new ArrayList<Feature>();
+			
+			String query = "select * from CARACTERISTIQUE";
+			Statement stmt = dbConnection.createStatement();
+			ResultSet results = stmt.executeQuery(query);
+			
+			while(results.next())
+			{
+				Feature ft = PersistFactory.getInstance().createFeature();
+				ft.create(results.getString(1).trim(), results.getString(2).trim());
+				this.allFeatures.add(ft);
+			}
+		}
+		
+		return this.allFeatures;
+!!!141826.java!!!	getSchedules() : Schedule
+		if(this.allSchedules == null)
+		{
+			this.allSchedules = new ArrayList<Schedule>();
+			
+			String query = "select * from crenaux";
+			Statement stmt = dbConnection.createStatement();
+			ResultSet results = stmt.executeQuery(query);
+			
+			while(results.next())
+			{
+				Schedule schedule = PersistFactory.getInstance().createSchedule();
+				schedule.create(results.getString(1).trim(), results.getString(2).trim(), results.getString(3).trim());
+				this.allSchedules.add(schedule);
+			}
+		}
+		
+		return this.allSchedules;
+!!!141954.java!!!	getAllUnvalidBookings() : Booking
+		return null;
+!!!142210.java!!!	getWeekUnvalidSchedules() : ArrayList<String>
+		return null;

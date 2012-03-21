@@ -1,0 +1,5 @@
+class ManagerJDBCTest
+!!!146178.java!!!	testGetFeatures() : void
+		fail("Not yet implemented");
+!!!146306.java!!!	testGetSchedules() : void
+		fail("Not yet implemented");

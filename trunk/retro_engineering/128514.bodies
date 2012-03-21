@@ -1,0 +1,17 @@
+class HandlingFacade
+!!!130690.java!!!	getAllUnvalidBookings() : ArrayList<String>
+		return null;
+!!!130946.java!!!	getBookingTeacherInfos() : String
+		return null;
+!!!131074.java!!!	getSelectedBookingDate() : String
+		return null;
+!!!131202.java!!!	getFeatures() : ArrayList<String>
+		return null;
+!!!131330.java!!!	getSelectedBookingFeatures() : ArrayList<String>
+		return null;
+!!!131458.java!!!	getSchedules() : ArrayList<String>
+		return null;
+!!!131586.java!!!	getSelectedBookingSchedule() : String
+		return null;
+!!!131714.java!!!	getWeekValidSchedules() : String
+		return null;

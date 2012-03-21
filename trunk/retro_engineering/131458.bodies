@@ -1,0 +1,7 @@
+class TeacherSerialization
+!!!144898.java!!!	load(in nom : String, in pwd : String) : void
+		// TODO Auto-generated method stub
+
+!!!145026.java!!!	getValidBooking(in week : int) : Booking
+		// TODO Auto-generated method stub
+		return null;

@@ -1,0 +1,1915 @@
+format 76
+"BL" // Developpement::src::BL
+  revision 1
+  modified_by 2 "D-Day"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default class_drawing_mode default shadow default show_stereotype_properties default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default show_stereotype_properties default
+  
+  java_dir "C:/Users/D-Day/workspace/URM/Developpement/src/BL/"
+  java_package "BL"
+  classview 128002 "BL"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default hide_getset_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_members_context default show_members_multiplicity default show_members_initialization default show_attribute_modifiers default member_max_width 0 show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_relation_modifiers default show_relation_visibility default show_infonote default shadow default show_stereotype_properties default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default class_drawing_mode default drawing_language default package_name_in_tab default show_context default show_msg_context default draw_all_relations default shadow default show_stereotype_properties default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default show_stereotype_properties default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default show_stereotype_properties default show_class_context_mode default show_msg_context_mode default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default show_stereotype_properties default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default show_stereotype_properties default
+    class 128002 "Booking"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "	Contient toutes les données d'une réservation de la demande à la validation.	
+@author URM Team																																																																																																																																																																																																						"
+      attribute 128002 "id"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Identifiant de la réservation
+"
+      end
+
+      attribute 128130 "date"
+	protected explicit_type "Date"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Date de la réservation
+"
+      end
+
+      classrelation 128002 // schedule (<unidirectional association>)
+	relation 128002 --->
+	  a role_name "schedule" protected
+	    comment "
+Créneau de la réservation.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128002 // schedule (<unidirectional association>)
+	  b parent class_ref 128130 // Schedule
+      end
+
+      classrelation 128130 // features (<unidirectional association>)
+	relation 128130 --->
+	  stereotype "ArrayList"
+	  a role_name "features" protected
+	    comment "Caractéristiques de la réservation.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 128130 // features (<unidirectional association>)
+	  b parent class_ref 128258 // Feature
+      end
+
+      attribute 128258 "capacity"
+	protected explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Capacitée de la réservation.
+"
+      end
+
+      classrelation 128258 // teaching (<unidirectional association>)
+	relation 128258 --->
+	  a role_name "teaching" protected
+	    comment "
+Enseignement de la réservation.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128258 // teaching (<unidirectional association>)
+	  b parent class_ref 128386 // Teaching
+      end
+
+      attribute 128386 "comments"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Commentaires de la réservation.
+"
+      end
+
+      attribute 128514 "room"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Salle choisie lors de la validation de la réservation.
+"
+      end
+
+      operation 128002 "load"
+	abstract public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge la réservation qui à pour id reference.
+@param reference
+			reference de la réservation
+@throws Exception 
+			Problème lors de la récupération des données."
+      end
+
+      operation 128130 "checkFreeRooms"
+	abstract public explicit_return_type "int"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Retourne le nombre de salles de disponibles pour les paramètres de cette réservation.
+@throws Exception 
+			Problème lors de la récupération des données."
+      end
+
+      operation 128258 "getTeaching"
+	public return_type class_ref 128386 // Teaching
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Retourne l'enseignement lié à cette réservation."
+      end
+
+      operation 128386 "getDate"
+	public explicit_return_type "Date"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Retourne la date de réservation."
+      end
+
+      operation 128514 "setDate"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "date" explicit_type "Date"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remplace la date de reservation.
+@param date
+			nouvelle date"
+      end
+
+      operation 128642 "getSchedule"
+	public return_type class_ref 128130 // Schedule
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Retourne le créneau de réservation."
+      end
+
+      operation 128770 "setSchedule"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "schedule" type class_ref 128130 // Schedule
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remplace le créneau de réservation.
+@param schedule
+			nouveau créneau"
+      end
+
+      operation 128898 "getFeatures"
+	public return_type class_ref 128258 // Feature
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Retourne la liste des caractéristiques de la réservation."
+      end
+
+      operation 129026 "setFeatures"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "features" explicit_type "ArrayList<Feature>"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remplace la liste des caractéristiques de la réservation.
+@param features
+			liste de caractéristiques"
+      end
+
+      operation 129154 "getRoom"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Renvoie la salle de la réservation."
+      end
+
+      operation 129282 "setRoom"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "room" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Associe une salle à la réservation.
+@param room
+			salle choisie"
+      end
+
+      operation 129410 "save"
+	abstract public explicit_return_type "boolean"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Sauvegarde la réservation.
+@return vrai si la sauvegarde a réussie, faux sinon.
+@throws Exception 
+			Problème lors de la sauvegarde des données."
+      end
+
+      operation 129538 "getField"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return le domaine d'activité de la réservation."
+      end
+
+      operation 129666 "setTeaching"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "t" type class_ref 128386 // Teaching
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Modifie l'enseignement de la réservation.
+@param t
+			le nouvel enseignement"
+      end
+    end
+
+    class 128130 "Schedule"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Contient toutes les données sur un créneau et les méthodes permettant de le gérer.
+@author URM Team"
+      attribute 128898 "id"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Identifiant du créneau.
+"
+      end
+
+      attribute 129026 "startTime"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Heure de début du créneau.
+"
+      end
+
+      attribute 129154 "endTime"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Heure de fin du créneau.
+"
+      end
+
+      operation 134530 "load"
+	abstract public explicit_return_type "void"
+	nparams 1
+	  param in name "id" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge le créneau avec l'id correspondant.
+@param id
+			identifiant du créneau à charger.
+@throws Exception 
+			Problème d'accés aux données."
+      end
+
+      operation 134658 "create"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "id" explicit_type "String"
+	  param in name "startTime" explicit_type "String"
+	  param in name "endTime" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Création d'un créneau.
+@param id
+			Identifiant du créneau.
+@param startTime
+			Heure de début du créneau.
+@param endTime
+			Heure de fin du créneau."
+      end
+
+      operation 134786 "getId"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return l'id du créneau."
+      end
+
+      operation 134914 "toString"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return une chaîne de caractère avec toutes les informations du créneau."
+      end
+    end
+
+    class 128258 "Feature"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Contient toute les données d'une caractéristique.
+@author URM Team"
+      attribute 128642 "id"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Identifiant de la caractéristique.
+"
+      end
+
+      attribute 128770 "name"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Nom de la caractéristique.
+"
+      end
+
+      operation 129794 "load"
+	abstract public explicit_return_type "void"
+	nparams 1
+	  param in name "id" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge la caractéristique correspondant à l'id donné en paramètre.
+@param id
+			identifiant de la caractéristique
+@throws Exception 
+			Problème lors de la récupération des données"
+      end
+
+      operation 129922 "create"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "id" explicit_type "String"
+	  param in name "name" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Cré une nouvelle caractéristique.
+@param id
+			identifiant de la caractéristique
+@param name
+			Nom de la caractéristique."
+      end
+
+      operation 130050 "getId"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Retourne l'id de la caractéristique."
+      end
+
+      operation 130178 "getName"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return Retourne le nom de la caractéristique."
+      end
+
+      operation 130306 "setName"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "name" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Modifie le nom de la caractéristique.
+@param name
+			nouveau nom choisi."
+      end
+
+      operation 130434 "toString"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return le nom de la caractéristique"
+      end
+    end
+
+    class 128386 "Teaching"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Contient toutes les données d'un enseignement et les méthodes pour le gérer.
+@author URM Team"
+      attribute 130178 "id"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Identifiant de l'enseignement.
+"
+      end
+
+      attribute 130306 "hours"
+	protected explicit_type "int"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Nombre d'heures de l'enseignement.
+"
+      end
+
+      attribute 130434 "group"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Groupe qui suit cet enseignement.
+"
+      end
+
+      attribute 130562 "field"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Matière de cet enseignement.
+"
+      end
+
+      classrelation 129666 // teacher (<unidirectional association>)
+	relation 129666 --->
+	  a role_name "teacher" protected
+	    comment "
+Enseignant qui effectue cet enseignement.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129666 // teacher (<unidirectional association>)
+	  b parent class_ref 128898 // Teacher
+      end
+
+      attribute 130690 "type"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Type d'enseignement (ex: cours ou TD).
+"
+      end
+
+      operation 136962 "load"
+	abstract public explicit_return_type "void"
+	nparams 1
+	  param in name "id" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge l'enseignement correspondant à l'id donné en paramètre.
+@param id
+			identifiant de l'enseignement.
+@throws Exception 
+			Problème d'accés aux données."
+      end
+
+      operation 137090 "create"
+	public explicit_return_type "void"
+	nparams 6
+	  param in name "id" explicit_type "String"
+	  param in name "hours" explicit_type "int"
+	  param in name "group" explicit_type "String"
+	  param inout name "teacher" type class_ref 128898 // Teacher
+	  param in name "field" explicit_type "String"
+	  param in name "type" explicit_type "String"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Crée un enseignement.
+@param id
+			Identifiant de l'enseignement.
+@param hours
+			Nombre d'heures de l'enseignement.
+@param group
+			Groupe qui suit cet enseignement.
+@param teacher
+			Enseignant qui effectue cet enseignement.
+@param field
+			Matière de cet enseignement.
+@param type
+			Type d'enseignement (ex: cours ou TD)."
+      end
+
+      operation 137218 "getTeacher"
+	public return_type class_ref 128898 // Teacher
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return l'enseignant qui enseigne cet enseignement."
+      end
+
+      operation 137346 "setTeacher"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "t" type class_ref 128898 // Teacher
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Modifie l'enseignant en le remplaçant par t.
+@param t
+		Le nouvel enseignant"
+      end
+
+      operation 137474 "getId"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return l'id de l'enseignement."
+      end
+
+      operation 137602 "getField"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return la matière de l'enseignement."
+      end
+
+      operation 137730 "toString"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return une chaîne de caractére avec le titre d'un enseignement."
+      end
+    end
+
+    class 128514 "HandlingFacade"
+      visibility package 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "	Classe en cours de construction																																																															"
+      classrelation 128386 // manager (<unidirectional association>)
+	relation 128386 --->
+	  a role_name "manager" private
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    java_annotation "@SuppressWarnings(\"unused\")
+"
+	    classrelation_ref 128386 // manager (<unidirectional association>)
+	  b parent class_ref 128642 // Manager
+      end
+
+      operation 130562 "HandlingFacade"
+	public explicit_return_type ""
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur"
+      end
+
+      operation 130690 "getAllUnvalidBookings"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Renvoie la liste de toutes les demandes de reservations 
+des enseignants qui ne sont pas validees."
+      end
+
+      operation 130818 "selectBooking"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "reference" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Selectionne la réservation avec la reference donnée en paramètre."
+      end
+
+      operation 130946 "getBookingTeacherInfos"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "retourne sous la forme d'une structure composée de strings toutes les informations sur le teacher, c'est à dire nom, prénom, téléphone, mail et enseignement."
+      end
+
+      operation 131074 "getSelectedBookingDate"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la date de la réservation selectionnée."
+      end
+
+      operation 131202 "getFeatures"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la listes de toutes les caractéristiques disponibles."
+      end
+
+      operation 131330 "getSelectedBookingFeatures"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste des caractéristiques de la réservation selectionnée."
+      end
+
+      operation 131458 "getSchedules"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste de tout les créneaux disponibles."
+      end
+
+      operation 131586 "getSelectedBookingSchedule"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne le créneau de la réservation selectionnée."
+      end
+
+      operation 131714 "getWeekValidSchedules"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne toutes les créneaux pour toutes les dates de la semaine pour lesquels il y a des salles de disponibles avec cette réservation."
+      end
+
+      operation 131842 "validBooking"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Sauvegarde la réservation et lui associe une salle."
+      end
+
+      operation 131970 "deleteBooking"
+	public explicit_return_type "void"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Supprime la réservation."
+      end
+
+      operation 132098 "changeBookingData"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "date" explicit_type "String"
+	  param in name "schedule" explicit_type "String"
+	  param inout name "features" explicit_type "ArrayList<String>"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remplace les données dans la réservation selectionnée."
+      end
+    end
+
+    class 128642 "Manager"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Classe qui permet de gérer tous les service qui n'ont pas de lien avec l'enseignant, les services généraux sur les données.
+@author URM Team"
+      classrelation 128514 // allFeatures (<unidirectional association>)
+	relation 128514 --->
+	  stereotype "ArrayList"
+	  a role_name "allFeatures" protected
+	    comment "Contient toutes les caractéristiques de salle disponibles.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 128514 // allFeatures (<unidirectional association>)
+	  b parent class_ref 128258 // Feature
+      end
+
+      classrelation 128642 // allSchedules (<unidirectional association>)
+	relation 128642 --->
+	  stereotype "ArrayList"
+	  a role_name "allSchedules" protected
+	    comment "Contient tous les créneaux disponibles.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 128642 // allSchedules (<unidirectional association>)
+	  b parent class_ref 128130 // Schedule
+      end
+
+      classrelation 128770 // allBookings (<unidirectional association>)
+	relation 128770 --->
+	  stereotype "ArrayList"
+	  a role_name "allBookings" protected
+	    comment "Contient toutes les réservations disponibles.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 128770 // allBookings (<unidirectional association>)
+	  b parent class_ref 128002 // Booking
+      end
+
+      classrelation 128898 // selectedBooking (<unidirectional association>)
+	relation 128898 --->
+	  a role_name "selectedBooking" protected
+	    comment "
+Réservation sélectionnée par l'utilisateur.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 128898 // selectedBooking (<unidirectional association>)
+	  b parent class_ref 128002 // Booking
+      end
+
+      operation 132226 "getFeatures"
+	abstract public return_type class_ref 128258 // Feature
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return une liste de toutes les caractéristiques existantes.
+@throws Exception 
+				Problème d'accés aux données"
+      end
+
+      operation 132354 "getSchedules"
+	abstract public return_type class_ref 128130 // Schedule
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return une liste de tous les créneaux existants.
+@throws Exception 
+				Problème d'accés aux données"
+      end
+
+      operation 132482 "getAllUnvalidBookings"
+	abstract public return_type class_ref 128002 // Booking
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return la liste de toutes les réservations qui ne sont pas encore validées, c'est à dire pour lesquelles aucune salle n'est attribuée."
+      end
+
+      operation 132610 "getSelectedBookingDate"
+	public explicit_return_type "Date"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return la date de la réservation selectionnée."
+      end
+
+      operation 132738 "getSelectedBookingSchedule"
+	public return_type class_ref 128130 // Schedule
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return le créneau de la réservation selectionnée."
+      end
+
+      operation 132866 "getWeekUnvalidSchedules"
+	abstract public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return sous forme de liste de structure les dates et créneaux pour lesquelles il y aucune salle libre avec les paramètre de la réservation selectionnée."
+      end
+
+      operation 132994 "setSelectedBookingDate"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "date" explicit_type "Date"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remplace l'ancienne date de la reservation par la nouvelle date.
+@param date
+			la nouvelle date"
+      end
+
+      operation 133122 "setSelectedBookingSchedule"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "schedule" type class_ref 128130 // Schedule
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remplace l'ancien créneau de la reservation par le nouveau créneau.
+@param schedule
+			le nouveau créneau"
+      end
+
+      operation 133250 "setSelectedBookingFeatures"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "features" explicit_type "ArrayList<Feature>"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Remplace les anciennes caractéristiques de la reservation par les nouvelles.
+@param features
+			les nouvelles caractéristiques"
+      end
+
+      operation 133378 "saveSelectedBooking"
+	public explicit_return_type "void"
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Sauvegarde la réservation selectionnée et lui associe une salle.
+@throws Exception 
+				Problème lors de la sauvegarde des données"
+      end
+
+      operation 133506 "deleteSelectedBooking"
+	abstract public explicit_return_type "void"
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Supprime la réservation selectionnée."
+      end
+    end
+
+    class 128770 "PersistFactory"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Fabrique abstraite qui permet de créer des objets en charge de la persistance des données.
+@author URM Team"
+      classrelation 129026 // PF (<unidirectional association>)
+	relation 129026 --->
+	  a role_name "PF" class_relation private
+	    comment "
+Instance static de la persistFactory (Pattern singleton)
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129026 // PF (<unidirectional association>)
+	  b parent class_ref 128770 // PersistFactory
+      end
+
+      operation 133634 "getInstance"
+	class_operation public return_type class_ref 128770 // PersistFactory
+	nparams 0
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return l'instance de la persistFactory si existant, sinon crée l'instance et la renvoie.
+@throws Exception 
+				Problème de connexion aux données."
+      end
+
+      operation 133762 "createTeacher"
+	abstract public return_type class_ref 128898 // Teacher
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return et crée un objet de type enseignant."
+      end
+
+      operation 133890 "createTeaching"
+	abstract public return_type class_ref 128386 // Teaching
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return et crée un objet de type enseignement."
+      end
+
+      operation 134018 "createBooking"
+	abstract public return_type class_ref 128002 // Booking
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return et crée un objet de type reservation."
+      end
+
+      operation 134146 "createFeature"
+	abstract public return_type class_ref 128258 // Feature
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return et crée un objet de type caractéristique."
+      end
+
+      operation 134274 "createSchedule"
+	abstract public return_type class_ref 128130 // Schedule
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return et crée un objet de type créneau horaire."
+      end
+
+      operation 134402 "createManager"
+	abstract public return_type class_ref 128642 // Manager
+	nparams 0
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return et crée un objet de type gestionnaire."
+      end
+    end
+
+    class 128898 "Teacher"
+      abstract visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Classe contenant toutes les informations d'un enseignant et permettant de les gérer.
+@author URM Team"
+      attribute 129282 "id"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Identifiant de l'enseignant.
+"
+      end
+
+      attribute 129410 "firstName"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Prénom de l'enseignant.
+"
+      end
+
+      attribute 129538 "lastName"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Nom de l'enseignant.
+"
+      end
+
+      attribute 129666 "password"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Mot de passe de l'enseignant.
+"
+      end
+
+      attribute 129794 "phone"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Numéro de téléphone de l'enseignant.
+"
+      end
+
+      attribute 129922 "mail"
+	protected explicit_type "String"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "e-mail de l'enseignant.
+"
+      end
+
+      attribute 130050 "superUser"
+	protected explicit_type "boolean"
+	cpp_decl ""
+	java_decl "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	php_decl ""
+	python_decl ""
+	idl_decl ""
+	comment "Vrai si cet enseignant est le gestionnaire de l'emploi du temps, faux sinon.
+"
+      end
+
+      classrelation 129154 // myTeachings (<unidirectional association>)
+	relation 129154 --->
+	  stereotype "ArrayList"
+	  a role_name "myTeachings" protected
+	    comment "Enseignements effectués par l'enseignant.
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${stereotype}<${type}> ${name}${value};
+"
+	    classrelation_ref 129154 // myTeachings (<unidirectional association>)
+	  b parent class_ref 128386 // Teaching
+      end
+
+      operation 135042 "load"
+	abstract public explicit_return_type "void"
+	nparams 2
+	  param in name "nom" explicit_type "String"
+	  param in name "pwd" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Charge l'enseignant qui a le nom donné en paramètre, si le mot de passe est le bon.
+@param nom
+			nom de l'enseignant
+@param pwd 
+			mot de passe de l'enseignant
+@throws Exception 
+			Problème lors de l'accès aux données."
+      end
+
+      operation 135170 "getLastName"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return le nom de l'enseignant."
+      end
+
+      operation 135298 "getId"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return l'id de l'enseignant."
+      end
+
+      operation 135426 "getPassword"
+	public explicit_return_type "String"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return le mot de passe de l'utilisateur."
+      end
+
+      operation 135554 "getTeachings"
+	public return_type class_ref 128386 // Teaching
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return la liste des enseignements de cet enseignant."
+      end
+
+      operation 135682 "isSuperUser"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return vrai si l'enseignant est le gestionnaire, faux sinon."
+      end
+
+      operation 135810 "getValidBooking"
+	abstract public return_type class_ref 128002 // Booking
+	nparams 1
+	  param in name "week" explicit_type "int"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}ArrayList<${type}> ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "@return la liste des réservations qui ont été faites par l'utilisateur et qui ont été validées (Qui ont reçu une salle). 
+@param week 
+			Semaine pour laquelle on veut les réservations validées.
+@throws Exception 
+			Problème d'accès aux données."
+      end
+    end
+
+    class 129026 "TeacherFacade"
+      visibility public 
+      cpp_decl ""
+      java_decl "${comment}${@}${visibility}${final}${abstract}class ${name}${extends}${implements} {
+${members}}
+"
+      php_decl ""
+      python_2_2 python_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Façade qui permet la communication avec la BL à travers un enseignant.
+@author URM Team"
+      classrelation 129282 // user (<unidirectional association>)
+	relation 129282 --->
+	  a role_name "user" private
+	    comment "
+Enseignant qui est connecté.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129282 // user (<unidirectional association>)
+	  b parent class_ref 128898 // Teacher
+      end
+
+      classrelation 129410 // manager (<unidirectional association>)
+	relation 129410 --->
+	  a role_name "manager" private
+	    comment "
+Gestionnaire qui rend des services globaux à tous les enseignants.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129410 // manager (<unidirectional association>)
+	  b parent class_ref 128642 // Manager
+      end
+
+      classrelation 129538 // myBooking (<unidirectional association>)
+	relation 129538 --->
+	  a role_name "myBooking" private
+	    comment "
+Réservation créée par l'utilisateur.
+
+"
+	    java "  ${comment}${@}${visibility}${static}${final}${transient}${volatile}${type} ${name}${value};
+"
+	    classrelation_ref 129538 // myBooking (<unidirectional association>)
+	  b parent class_ref 128002 // Booking
+      end
+
+      operation 135938 "TeacherFacade"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "nom" explicit_type "String"
+	  param in name "pwd" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${synchronized}${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Constructeur.
+@param nom
+			Nom de l'utilisateur, qui est aussi son identifiant.
+@param pwd
+			Mot de passe de l'utilisateur.
+@throws Exception 
+			Problème lors de la connection de l'utilisateur."
+      end
+
+      operation 136066 "getSchedules"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne la liste des créneaux disponibles sous la forme d'une liste de String."
+      end
+
+      operation 136194 "getFeatures"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "retourne la liste des caractéristiques disponibles dans une liste de String."
+      end
+
+      operation 136322 "getTeachings"
+	public explicit_return_type "ArrayList<String>"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "retourne la liste des enseignement de l'enseignant dans une liste de String."
+      end
+
+      operation 136450 "getValidBooking"
+	public explicit_return_type "ArrayList<ArrayList<String>>"
+	nparams 1
+	  param in name "week" explicit_type "int"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Renvoie la liste des Réservations faites par l'enseignant qui sont validées.
+@param week
+			Numéro de la semaine pour laquelle on veut les réservations validées."
+      end
+
+      operation 136578 "isSuperUser"
+	public explicit_return_type "boolean"
+	nparams 0
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne vrai si l'utilisateur est le gestionnaire de l'emploi du temps, faux sinon."
+      end
+
+      operation 136706 "confirmBooking"
+	public explicit_return_type "void"
+	nparams 6
+	  param in name "teachingSelected" explicit_type "String"
+	  param inout name "dateSelected" explicit_type "Date"
+	  param in name "scheduleSelected" explicit_type "String"
+	  param inout name "featuresSelected" explicit_type "Enumeration<String>"
+	  param in name "capacity" explicit_type "int"
+	  param in name "comments" explicit_type "String"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Valide définitivement la reservation, c'est à dire sauvegarde les données de celle-ci.
+@param comments 
+			commentaires entrés par l'utilisateur.
+@param capacity 
+			capacitée demandée par l'utilisateur.
+@param featuresSelected 
+			caractéristiques choisies par l'utilisateur.
+@param scheduleSelected 
+			créneau choisi par l'utilisateur.
+@param dateSelected 
+			date chosie par l'utilisateur.
+@param teachingSelected 
+			enseignement choisi par l'utilisateur.
+@throws Exception 
+			Déclenchée si les informations de la réservation n'ont pas pu être récupérées."
+      end
+
+      operation 136834 "checkFreeRooms"
+	public explicit_return_type "int"
+	nparams 4
+	  param inout name "dateSelected" explicit_type "Date"
+	  param in name "scheduleSelected" explicit_type "String"
+	  param inout name "featuresSelected" explicit_type "Enumeration<String>"
+	  param in name "capacity" explicit_type "int"
+	nexceptions 1
+	  explicit_exception "Exception"
+	
+	preserve_java_body_indent java_def "  ${comment}${@}${visibility}${final}${static}${abstract}${synchronized}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${throws}${staticnl}{
+  ${body}}
+"
+	
+	
+	
+	comment "Retourne le nombre de salles disponibles avec les caractéristiques, la date, le créneau et la capacité choisie.
+@param capacity 
+			capacitée demandée par l'utilisateur.
+@param featuresSelected 
+			caractéristiques choisies par l'utilisateur.
+@param scheduleSelected 
+			créneau choisi par l'utilisateur.
+@param dateSelected 
+			date chosie par l'utilisateur.
+@throws Exception 
+			Déclenchée si les informations de la réservation n'ont pas pu être récupérées."
+      end
+    end
+  end
+
+  deploymentview 128002 "BL"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default show_stereotype_properties default
+    artifact 128002 "Booking"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.ArrayList;
+import java.util.Date;
+${definition}"
+      associated_classes
+	class_ref 128002 // Booking
+      end
+    end
+
+    artifact 128130 "Feature"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128258 // Feature
+      end
+    end
+
+    artifact 128258 "HandlingFacade"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.ArrayList;
+${definition}"
+      associated_classes
+	class_ref 128514 // HandlingFacade
+      end
+    end
+
+    artifact 128386 "Manager"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.ArrayList;
+import java.util.Date;
+${definition}"
+      associated_classes
+	class_ref 128642 // Manager
+      end
+    end
+
+    artifact 128514 "PersistFactory"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import PersistJDBC.PersistFactoryJDBC;
+${definition}"
+      associated_classes
+	class_ref 128770 // PersistFactory
+      end
+    end
+
+    artifact 128642 "Schedule"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128130 // Schedule
+      end
+    end
+
+    artifact 128770 "Teacher"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.ArrayList;
+${definition}"
+      associated_classes
+	class_ref 128898 // Teacher
+      end
+    end
+
+    artifact 128898 "TeacherFacade"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Enumeration;
+${definition}"
+      associated_classes
+	class_ref 129026 // TeacherFacade
+      end
+    end
+
+    artifact 129026 "Teaching"
+      stereotype "source"
+      java_src "${comment}
+${package}
+${imports}
+${definition}"
+      associated_classes
+	class_ref 128386 // Teaching
+      end
+    end
+  end
+end

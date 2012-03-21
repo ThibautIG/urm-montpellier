@@ -1,0 +1,23 @@
+class Booking
+!!!128258.java!!!	getTeaching() : Teaching
+		return teaching;
+!!!128386.java!!!	getDate() : Date
+		return date;
+!!!128514.java!!!	setDate(inout date : Date) : void
+		this.date=date;
+!!!128642.java!!!	getSchedule() : Schedule
+		return schedule;
+!!!128770.java!!!	setSchedule(inout schedule : Schedule) : void
+		this.schedule = schedule;
+!!!128898.java!!!	getFeatures() : Feature
+		return features;
+!!!129026.java!!!	setFeatures(inout features : ArrayList<Feature>) : void
+		this.features = features;
+!!!129154.java!!!	getRoom() : String
+		return room;
+!!!129282.java!!!	setRoom(in room : String) : void
+		this.room = room;
+!!!129538.java!!!	getField() : String
+		return teaching.getField();
+!!!129666.java!!!	setTeaching(inout t : Teaching) : void
+		this.teaching = t;

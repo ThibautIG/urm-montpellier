@@ -1,0 +1,22 @@
+class FeatureJDBC
+!!!141314.java!!!	FeatureJDBC(inout dbConnection : Connection)
+		this.dbConnection = dbConnection;
+!!!141442.java!!!	load(in id : String) : void
+		String query = "select count(*) from CARACTERISTIQUE where ID_CARACTERISTIQUE = '" + id + "'";
+		Statement stmt = dbConnection.createStatement();
+		ResultSet results = stmt.executeQuery(query);
+
+		// vérifier qu'il y a qu'une seule caractéristique
+		results.next();
+		if(results.getInt(1) != 1)
+		{
+			throw new SQLException(); 
+		}
+
+		// Récupérer les infos du créneau
+		query = "select * from CARACTERISTIQUE where ID_CARACTERISTIQUE = '" + id + "'";
+		results = stmt.executeQuery(query);
+		results.next();
+		
+		this.id = results.getString(1).trim();
+		this.name = results.getString(2).trim();

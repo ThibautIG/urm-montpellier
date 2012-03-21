@@ -1,0 +1,23 @@
+class ScheduleJDBC
+!!!143234.java!!!	ScheduleJDBC(inout dbConnection : Connection)
+		this.dbConnection = dbConnection;
+!!!143362.java!!!	load(in id : String) : void
+		String query = "select count(*) from Crenaux where id_creneau = '" + id + "'";
+		Statement stmt = dbConnection.createStatement();
+		ResultSet results = stmt.executeQuery(query);
+		
+		// vérifier qu'il y a qu'un seul créneau
+		results.next();
+		if(results.getInt(1) != 1)
+		{
+			throw new SQLException(); 
+		}
+
+		// Récupérer les infos du créneau
+		query = "select * from Crenaux where id_creneau = '" + id + "'";
+		results = stmt.executeQuery(query);
+		results.next();
+		
+		this.id = results.getString(1).trim();
+		this.startTime = results.getString(2).trim();
+		this.endTime = results.getString(3).trim();
