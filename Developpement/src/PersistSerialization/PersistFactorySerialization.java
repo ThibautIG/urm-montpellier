@@ -68,7 +68,6 @@ public class PersistFactorySerialization extends PersistFactory
 		{
 			TeacherSerialization t1 = new TeacherSerialization();
 			t1.create("1", "Anne", "Laurent", "anne", false, null);
-			
 			FileOutputStream fichier = new FileOutputStream("data/teacher/Laurent.ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fichier);
 			oos.writeObject(t1);
@@ -77,7 +76,6 @@ public class PersistFactorySerialization extends PersistFactory
 			
 			TeacherSerialization t2 = new TeacherSerialization();
 			t2.create("2", "Tiberiu", "Stratulat", "tiberiu", true, null);
-			
 			FileOutputStream fichier1 = new FileOutputStream("data/teacher/Stratulat.ser");
 			ObjectOutputStream oos1 = new ObjectOutputStream(fichier1);
 			oos1.writeObject(t2);
