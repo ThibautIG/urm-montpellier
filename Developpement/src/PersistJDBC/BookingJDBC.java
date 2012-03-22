@@ -67,8 +67,9 @@ class BookingJDBC extends Booking
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		results.next();
-		stmt.close();
 		int nb = results.getInt(1);
+		stmt.close();
+
 		results.close();
 		return nb;
 	}

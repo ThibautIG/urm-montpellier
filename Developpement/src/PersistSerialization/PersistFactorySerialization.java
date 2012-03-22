@@ -76,7 +76,7 @@ public class PersistFactorySerialization extends PersistFactory
 			oos.close();
 			
 			TeacherSerialization t2 = new TeacherSerialization();
-			t2.create("1", "Tiberiu", "Stratulat", "tiberiu", true, null);
+			t2.create("2", "Tiberiu", "Stratulat", "tiberiu", true, null);
 			
 			FileOutputStream fichier1 = new FileOutputStream("data/teacher/Stratulat.ser");
 			ObjectOutputStream oos1 = new ObjectOutputStream(fichier1);
