@@ -39,9 +39,14 @@
 	</target>
 	
 	<target name="runtests" depends="compile">
-		<java fork="true" classname="junit.textui.TestRunner" taskname="junit" failonerror="true" classpathref="classpath">
-			<arg value="bin.Tests.AllTests"/>
-		</java>
+			<junit showoutput="true" outputtoformatters="true" printsummary="yes" haltonerror="true" fork="false" >
+			      <classpath>
+			        <pathelement location="Tests" />
+			      	<fileset dir="lib" includes="**/*.jar"/>
+			      </classpath>
+			      <formatter type="plain" usefile="false" />  
+			      <test name="bin.Tests.AllTests" fork="false" />
+			</junit>
 	</target>
 
 </project>
