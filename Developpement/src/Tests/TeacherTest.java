@@ -28,12 +28,8 @@ public class TeacherTest extends TestCase
 	{
 		int week = 10;
 		ArrayList<String> als = new ArrayList<String>();
-		als.add("");
-		als.add("");
-		als.add("");
-		als.add("");
-		als.add("");
-		als.add("");
+		als.add("Cours Méthodologie de gestion de projets IG4 G1");
+		als.add("TP Langue 1: anglais IG4 G2");
 		
 		try 
 		{
@@ -41,9 +37,9 @@ public class TeacherTest extends TestCase
 			assertEquals(als.size(), alb.size());
 			for(int i=0; i<als.size(); i++)
 			{
-				assertEquals(als.get(i), alb.get(i).toString());
-			}	
-		} 
+				assertEquals(als.get(i), alb.get(i).getTeaching().toString());
+			}
+		}
 		catch (Exception e) 
 		{
 			e.printStackTrace();
