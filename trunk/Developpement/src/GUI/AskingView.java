@@ -346,6 +346,7 @@ class AskingView extends JFrame implements ActionListener, ItemListener, Propert
                             dlm2.removeElementAt(this.lSelectedFt.getSelectedIndex());
                             this.lSelectedFt.setModel(dlm2);
                             Enumeration<String> es = (Enumeration<String>) dlm2.elements();
+                            this.featuresSelected.clear();
                             while (es.hasMoreElements())
                             {
                             	this.featuresSelected.add(es.nextElement());

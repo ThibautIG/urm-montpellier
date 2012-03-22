@@ -77,6 +77,10 @@ class TeacherJDBC extends Teacher
 			scs.add(tc);
 		}
 		this.myTeachings = scs;
+		stmt.close();
+		results.close();
+		stmt3.close();
+		results3.close();
 	}
 
 	/**
@@ -121,6 +125,9 @@ class TeacherJDBC extends Teacher
 			booking.load(results.getString(1).trim());
 			listBookings.add(booking);
 		}
+		
+		stmt.close();
+		results.close();
 
 		return listBookings;
 	}

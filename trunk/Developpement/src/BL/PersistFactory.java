@@ -1,5 +1,6 @@
 package BL;
 import PersistJDBC.PersistFactoryJDBC;
+//import PersistSerialization.PersistFactorySerialization;
 
 /**
  * Fabrique abstraite qui permet de créer des objets en charge de la persistance des données.
@@ -20,6 +21,7 @@ public abstract class PersistFactory
 	public static PersistFactory getInstance() throws Exception
 	{
 		if(PF==null) PF = new PersistFactoryJDBC();
+		//if(PF==null) PF = new PersistFactorySerialization();
 		return PF;
 	}
 

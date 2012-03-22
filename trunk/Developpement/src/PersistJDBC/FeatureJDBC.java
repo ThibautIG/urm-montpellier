@@ -51,6 +51,8 @@ class FeatureJDBC extends Feature
 		
 		this.id = results.getString(1).trim();
 		this.name = results.getString(2).trim();
+		stmt.close();
+		results.close();
 	}
 
 }
