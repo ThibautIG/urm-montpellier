@@ -26,7 +26,28 @@ public class TeacherTest extends TestCase
 	@Test
 	public void testGetValidBooking() 
 	{
-		fail("Not yet implemented"); // TODO
+		int week = 10;
+		ArrayList<String> als = new ArrayList<String>();
+		als.add("");
+		als.add("");
+		als.add("");
+		als.add("");
+		als.add("");
+		als.add("");
+		
+		try 
+		{
+			ArrayList<Booking> alb = this.t.getValidBooking(week);
+			assertEquals(als.size(), alb.size());
+			for(int i=0; i<als.size(); i++)
+			{
+				assertEquals(als.get(i), alb.get(i).toString());
+			}	
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Test
