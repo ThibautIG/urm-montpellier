@@ -3,7 +3,6 @@ package PersistSerialization;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-
 import BL.Booking;
 import BL.Feature;
 import BL.Manager;
