@@ -27,13 +27,8 @@ public class TeacherSerialization extends Teacher implements Serializable
 		this.superUser = t.superUser;
 		this.mail = t.mail;
 		this.phone = t.phone;
-		//System.out.println(t.id+" "+t.firstName+" "+t.lastName+" "+t.password);
 		fichier.close();
 		ois.close();
-		if(!this.password.equals(pwd))
-		{
-			//throw new Exception();
-		}
 		
 	}
 
