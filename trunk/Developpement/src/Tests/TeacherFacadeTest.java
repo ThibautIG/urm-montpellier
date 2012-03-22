@@ -5,6 +5,8 @@ import java.util.Date;
 import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
+
+import BL.Booking;
 import BL.TeacherFacade;
 
 public class TeacherFacadeTest extends TestCase
@@ -84,8 +86,28 @@ public class TeacherFacadeTest extends TestCase
 	}
 
 	@Test
-	public void testGetValidBooking() {
-		fail("Not yet implemented");
+	public void testGetValidBooking() 
+	{
+		int week = 11;
+
+		ArrayList<ArrayList<String>> als = new ArrayList<ArrayList<String>>();
+		ArrayList<String> ls = new ArrayList<String>();
+		ls.add("2012-03-12");
+		ls.add("11h30 - 13h00");
+		ls.add("SC001");
+		ls.add("Système d exploitation");
+		als.add(ls);
+		
+		ArrayList<ArrayList<String>> alb = this.tf.getValidBooking(week);
+		assertEquals(alb.size(), als.size());
+		for(int i=0; i<alb.size(); i++)
+		{
+			for (int j=0; j<alb.get(i).size(); j++)
+			{
+				assertEquals(alb.get(i).size(), als.get(i).size());
+				assertEquals(alb.get(i).get(j), als.get(i).get(j));
+			}
+		}
 	}
 
 	@Test
