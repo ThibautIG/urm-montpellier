@@ -52,6 +52,8 @@ class ManagerJDBC extends Manager
 				ft.create(results.getString(1).trim(), results.getString(2).trim());
 				this.allFeatures.add(ft);
 			}
+			stmt.close();
+			results.close();
 		}
 		
 		return this.allFeatures;
@@ -78,6 +80,8 @@ class ManagerJDBC extends Manager
 				schedule.create(results.getString(1).trim(), results.getString(2).trim(), results.getString(3).trim());
 				this.allSchedules.add(schedule);
 			}
+			stmt.close();
+			results.close();
 		}
 		
 		return this.allSchedules;

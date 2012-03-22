@@ -83,6 +83,11 @@ class TeachingJDBC extends Teaching
 		results1 = stmt1.executeQuery(query1);
 		results1.next();
 		this.type = results1.getString(1).trim();
+		
+		stmt.close();
+		results.close();
+		stmt1.close();
+		results1.close();
 	}
 
 }
