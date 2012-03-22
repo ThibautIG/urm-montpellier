@@ -63,7 +63,7 @@ class BookingJDBC extends Booking
 		String dat = das+"-"+ms+"-"+(d.getYear()+1900);
 		
 		query += "(select count(*) from RESERVATION r where r.ID_SALLE=s.ID_SALLE and r.ID_CRENEAU="+this.schedule.getId()+" and r.DATE_RESERVATION='"+dat+"')=0";
-		System.out.println(query);
+		//System.out.println(query);
 		Statement stmt = dbConnection.createStatement();
 		ResultSet results = stmt.executeQuery(query);
 		results.next();
