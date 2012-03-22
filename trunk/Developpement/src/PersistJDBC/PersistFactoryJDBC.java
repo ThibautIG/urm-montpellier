@@ -27,7 +27,7 @@ public class PersistFactoryJDBC extends PersistFactory
 	/**
 	 * Login de l'accès à la base de données
 	 */
-	private String login="thibaut.rouquette";
+	private String login="christophe.gire";
 	
 	/**
 	 * Mot de passe de l'accès à la base de données.
