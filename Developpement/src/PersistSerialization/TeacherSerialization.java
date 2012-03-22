@@ -38,7 +38,8 @@ public class TeacherSerialization extends Teacher implements Serializable
 	}
 
 	@Override
-	public ArrayList<Booking> getValidBooking(int week) throws Exception {
+	public ArrayList<Booking> getValidBooking(int week) throws Exception 
+	{
 		// TODO Auto-generated method stub
 		return null;
 	}
