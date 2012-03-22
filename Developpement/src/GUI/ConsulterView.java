@@ -35,58 +35,58 @@ import java.awt.SystemColor;
 
 
 /**	
-*  Génére l'interface graphique pour la consultation de l'emploi du temps.	
-* @author URM Team		
-*/		
+ *  Génére l'interface graphique pour la consultation de l'emploi du temps.	
+ * @author URM Team		
+ */		
 @SuppressWarnings("serial")		
 class ConsulterView extends JFrame implements ActionListener		
 {		
 	/**		
- 	* la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours.		
- 	*/		
+	 * la semaine à afficher dans l'emploi du temps. Par défaut la semaine en cours.		
+	 */		
 	private int week;		
-		
+
 	/**
- 	* Façade permettant le dialogue avec la BL.	33		 *
- 	*/
+	 * Façade permettant le dialogue avec la BL.	33		 *
+	 */
 	private TeacherFacade account;
-	
-	
+
+
 	/**
 	 * Table contenant l'emploi du temps.
 	 */
 	private JTable table;
-	
+
 	/**
 	 * Bouton ppour passer à la semaine précédente.
 	 */
 	private JButton bPrecedent;
-	
+
 	/**
 	 * Bouton pour passer à la semaine suivante.
 	 */
 	private JButton bSuivant;
-	
+
 	/**
 	 * Bouton pour quitter l'emploi du temps.
 	 */
 	private JButton bQuit;
-	
+
 	/**
 	 * Panneau qui contient le bouton pour quitter.
 	 */
 	private JPanel quit_panel;
-	
+
 	/**
 	 * Panneau qui contient l'emploi du temps.
 	 */
 	private JPanel planning_panel;
 
-    /**
-     * Constructeur de la fenêtre.
-     * @param c
-     * 			Façade contenant les données de l'utilisateur et permettant le dialogue avec la BL.
-     */
+	/**
+	 * Constructeur de la fenêtre.
+	 * @param c
+	 * 			Façade contenant les données de l'utilisateur et permettant le dialogue avec la BL.
+	 */
 	public ConsulterView(TeacherFacade c) 
 	{
 		super("Mon planning");
@@ -108,20 +108,20 @@ class ConsulterView extends JFrame implements ActionListener
 		table.setBackground(SystemColor.menu);
 		planning_panel.add(table);
 		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
-				{"8h00 - 9h30", null, null, null, null, null, null, null},
-				{"9h45 - 11h15", null, null, null, null, null, null, null},
-				{"11h30 - 13h00", null, null, null, null, null, null, null},
-				{"13h15 - 14h45", null, null, null, null, null, null, null},
-				{"15h00 - 16h30", null, null, null, null, null, null, null},
-				{"16h45 - 18h15", null, null, null, null, null, null, null},
-				{"18h30 - 20h00", null, null, null, null, null, null, null},
-			},
-			new String[] {
-				"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
-			}
-		) {
+				new Object[][] {
+						{"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"},
+						{"8h00 - 9h30", null, null, null, null, null, null, null},
+						{"9h45 - 11h15", null, null, null, null, null, null, null},
+						{"11h30 - 13h00", null, null, null, null, null, null, null},
+						{"13h15 - 14h45", null, null, null, null, null, null, null},
+						{"15h00 - 16h30", null, null, null, null, null, null, null},
+						{"16h45 - 18h15", null, null, null, null, null, null, null},
+						{"18h30 - 20h00", null, null, null, null, null, null, null},
+				},
+				new String[] {
+						"Horaires", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"
+				}
+				) {
 			@SuppressWarnings("rawtypes")
 			Class[] columnTypes = new Class[] {
 				String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
@@ -131,7 +131,7 @@ class ConsulterView extends JFrame implements ActionListener
 				return columnTypes[columnIndex];
 			}
 			boolean[] columnEditables = new boolean[] {
-				false, false, false, false, false, false, false, false
+					false, false, false, false, false, false, false, false
 			};
 			public boolean isCellEditable(int row, int column) {
 				return columnEditables[column];
@@ -139,10 +139,10 @@ class ConsulterView extends JFrame implements ActionListener
 		});
 		table.setRowHeight(42);
 
-		TableCellRenderer renderer = new CustomTableCellRenderer();
+		TableCellRenderer myRenderer = new MyTableCellRenderer();
 		try 
 		{
-			table.setDefaultRenderer(Class.forName("java.lang.Object"), renderer);
+			table.setDefaultRenderer(Class.forName("java.lang.Object"), myRenderer);
 		} 
 		catch (ClassNotFoundException e) 
 		{
@@ -186,36 +186,33 @@ class ConsulterView extends JFrame implements ActionListener
 
 
 	/**
-     * Create specific Cell renderer.
-     */
-    public class CustomTableCellRenderer extends DefaultTableCellRenderer
-    {
-        private static final long serialVersionUID = 1L;
+	 * Create specific Cell renderer.
+	 */
+	public class MyTableCellRenderer extends DefaultTableCellRenderer
+	{
 
-        public Component getTableCellRendererComponent(JTable table,
-                Object value, boolean isSelected, boolean hasFocus, int row,
-                int column)
-        {
-            JTextPane cell = new JTextPane();
-            StyledDocument doc = cell.getStyledDocument();
-            MutableAttributeSet center = new SimpleAttributeSet();
-            StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-            doc.setParagraphAttributes(0, 0, center, true);
-            
-            
-            if ((String) value != null)
-            {
-                cell.setText((String)value);
-            }
-            if ((row % 2) == 0)
-                cell.setBackground(new Color(230, 230, 230));
-            else
-                cell.setBackground(Color.white);
-            return cell;
-        } 
-        
-    }
-    
+		public Component getTableCellRendererComponent(JTable table,
+				Object value, boolean isSelected, boolean hasFocus, int row,
+				int column)
+		{
+			JTextPane cellTable = new JTextPane();
+			StyledDocument doc = cellTable.getStyledDocument();
+			
+			MutableAttributeSet center = new SimpleAttributeSet();
+			StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+			doc.setParagraphAttributes(0, 0, center, true);
+
+
+			if ((String) value != null)
+			{
+				cellTable.setText((String)value);
+			}
+
+			return cellTable;
+		} 
+
+	}
+
 	/**
 	 * Génère l'affichage du calendrier en fonction de la semaine qu'il reçoit en paramètre.
 	 * @param week
