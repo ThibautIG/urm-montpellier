@@ -28,12 +28,14 @@ public class TeacherTest extends TestCase
 	{
 		int week = 10;
 		ArrayList<String> als = new ArrayList<String>();
-		als.add("Cours Méthodologie de gestion de projets IG4 G1");
 		als.add("TP Langue 1: anglais IG4 G2");
+		als.add("Cours Méthodologie de gestion de projets IG4 G1");
+		
 		
 		try 
 		{
 			ArrayList<Booking> alb = this.t.getValidBooking(week);
+
 			assertEquals(als.size(), alb.size());
 			for(int i=0; i<als.size(); i++)
 			{

@@ -35,7 +35,7 @@ public class BookingTest extends TestCase
 	{
 		try 
 		{
-			assertEquals(1, this.b.checkFreeRooms());
+			assertEquals(2, this.b.checkFreeRooms());
 		} 
 		catch (Exception e) 
 		{
