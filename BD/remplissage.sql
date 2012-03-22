@@ -1,14 +1,17 @@
 -- on commence par vider toutes les tables
-force delete from enseignant;
- force delete from crenaux;
- force delete from typecours;
- force delete from caracteristique;
- force delete from batiment;
- force delete from groupe;
- force delete from salle;
- force delete from ue;
- force delete from caracteristique_salle;
- force delete from matiere;
+ delete from enseignant;
+  delete from crenaux;
+  delete from typecours;
+  delete from caracteristique;
+  delete from batiment;
+  delete from groupe;
+  delete from salle;
+  delete from ue;
+  delete from caracteristique_salle;
+  delete from matiere;
+  delete from reservation;
+  delete from cours;
+  delete from reservation_caracteristique;
 
 
 --Enseignant :
